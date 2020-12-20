@@ -22,7 +22,7 @@ getjson.onreadystatechange = function() {
 		article.innerHTML = html;
 	}
 };
-getjson.open("GET", "https://raw.githubusercontent.com/CMD-Golem/cmd-golem.github.io/master/json/cmd-golem.json", true);
+getjson.open("GET", "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/creations.json", true);
 getjson.send();
 
 
