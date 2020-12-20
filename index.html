@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem</title>
+<meta name="description" content="A lot of Datapacks and Resource Packs for Minecraft.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="elements/style/article.css"/>
+<link rel="icon" href="elements/nav/favicon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href=""><img src="elements/nav/logo.png"></a>
+	<label for="filter_button" class="nav_button nav_hover"><img src="elements/nav/filter.svg"></label>
+	<input type="checkbox" id="nav_search_button"><label for="nav_search_button" class="nav_button nav_hover nav_search_button"></label>
+	<div class="nav_search">
+		<input type="text" placeholder="Suchen" id="site_search" onkeyup="siteSearch()">
+	</div>
+</nav>
+
+
+
+
+<!--Filter-->
+<input type="checkbox" id="filter_button">
+<aside class="article" id="filters">
+	<div class="filter_row">
+		<p>Version</p>
+		<input type="checkbox" id="1.17" class="version"><label for="1.17">1.17</label><br>
+		<input type="checkbox" id="1.16" class="version"><label for="1.16">1.16</label><br>
+		<input type="checkbox" id="1.15" class="version"><label for="1.15">1.15</label><br>
+		<input type="checkbox" id="1.14" class="version"><label for="1.14">1.14</label><br>
+		<input type="checkbox" id="1.13" class="version"><label for="1.13">1.13</label><br>
+		<input type="checkbox" id="old_version" class="version"><label for="old_version">Older Versions</label><br>
+	</div>
+	<div class="filter_row">
+		<p>Type</p>
+		<input type="checkbox" id="Survival" class="type"><label for="Survival">Survival</label><br>
+		<input type="checkbox" id="Games" class="type"><label for="Games">Games</label><br>
+		<input type="checkbox" id="Creative" class="type"><label for="Creative">Creative</label><br>
+	</div>
+	<div class="filter_row">
+		<p>Pack</p>
+		<input type="checkbox" id="Datapacks" class="pack"><label for="Datapacks">Datapacks</label><br>
+		<input type="checkbox" id="Ressources" class="pack"><label for="Ressources">Resource Packs</label><br>
+		<input type="checkbox" id="Maps" class="pack"><label for="Maps">Maps</label><br>
+	</div>
+</aside>
+
+
+<!--Content-->
+<main>
+	
+	<div class="content" id="article-list"></div>
+	<div id="not-found" style="display:none; text-align: center;">No Results</div>
+
+</main>
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="elements/javascript/article.js"></script>
+<script language="javascript" type="text/javascript" src="elements/javascript/footer.js"></script>
+
+</body>
+</html>

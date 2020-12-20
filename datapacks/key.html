@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem - Key</title>
+<meta name="description" content="Lock your Chest to protect your Items from other Players and Creepers.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><img src="../elements/nav/logo.png"></a>
+	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="#download" id="download_button"><img src="../elements/nav/download.svg"><p>Download</p></a>
+</nav>
+
+
+
+
+<!--Content-->
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/logo_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/picture_1.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/picture_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/picture_3.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/picture_4.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/key/picture_5.png"></div>
+
+	<a class="slideshow_prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="slideshow_next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+
+<header>
+	<h1>Key</h1>
+	<p>1.15 +</p>
+</header>
+
+
+<p>Lock your Chest to protect your Items from other Players and Creepers. Even if something breaks the Chest it will replace itself without any drop.</p>
+<p>Even Hoppers underneath the Chest won't soak up your items. But be aware, if you put items with a hopper into a locked Chest they will drop out if you unlock it.</p>
+<p>[1.16+] You can repair your Key, if you drop a Gold Ingot with the Key on an Anvil. To get more Durability you can also enchant it with Unbreaking.</p>
+
+<h3 class="spoiler_title" title="Open for more Informations">Crafting</h3>
+<div class="spoiler_show">
+	<div class="spoiler_recipe">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/datapacks/key/recipe.png">
+		</div>
+		<div class="spoiler_text">
+			<p>The Crafting Table will show a Gold Nugget as result, but you will get the correct Item after you take it out.</p>
+		</div>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_settings">
+		<p>Show Messages in the Chat instead of above the Hotbar.</p>
+		<code>/scoreboard players set #message chestlock 1</code>
+		<p>If you get a Green Shulker Box when you lock or unlock a chest you can use this two commands to fix it.</p>
+		<code>/scoreboard players set #compatible chestlock 1</code>
+		<code>/scoreboard players set #damage chestlock 1</code>
+		<p>Get the Admin Key.</p>
+		<code>/function chest_lock:craft/admin_key</code>
+		<p>[1.16+] Disable Tool Damage when locking a Chest.</p>
+		<code>/scoreboard players set #damage chestlock 1</code>
+		<p>To disable the Setting again you need to execute the same Command except of the 1 replace with a 0.</p>
+	</div>
+</div>
+
+
+</main>
+
+<section style="display: none;">
+
+	<h1>Key</h1>
+	<h3>Download</h3>
+	<hr>
+
+	<p>It's highly recommeded to use the Texture Pack, but not necessary.</p>
+
+	<table>
+		<tr>
+			<td class="version">1.16.2 - 1.16.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/chest-lock/16oRo-yjFPMQvzF5GShYagKkuLJADFE6C?dl=1">Download Datapack</a></td>
+			<td><a class="button disable_link" href="https://drive.google.com/uc?export=download&id=1BkgPzkEcO5MGtRUdp55VNDwbjuoug8jh">Download Ressource Pack</a></td>
+		</tr>
+		<tr>
+			<td class="version">1.15 - 1.16.1</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/chest-lock/1hOogTqRPd5R-NCI2YSt3VfvkGTT_0HC0?dl=1">Download Datapack</a></td>
+			<td><a class="button disable_link" href="https://drive.google.com/uc?export=download&id=1RCdF-YuNqZ2GzU1u0KOvS04w-vU_sktc">Download Ressource Pack</a></td>
+		</tr>
+	</table>
+
+</section>
+
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>

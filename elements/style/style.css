@@ -1,0 +1,157 @@
+@font-face {
+	font-family: DragonForcE;
+	src: url(../fonts/dragon_force.ttf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: FiraSans;
+	src: url(../fonts/fira_sans.ttf);
+	font-weight: normal;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	min-height: 100%;
+	font-size: 20px;
+	font-family: FiraSans;
+	color: #CCCCCC;
+	display: flex;
+	flex-direction: column;
+	background: #292929;
+}
+
+/* Main */
+main {
+	padding: 50px 20px;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1240px) {
+	main {
+		width: calc(100vw - 40px);
+	}
+}
+
+
+/* Text */
+h1 {
+	font-family: DragonForcE;
+	color: #A10000;
+	font-size: 60px;
+	text-align: center;
+	font-weight: bold;
+}
+
+code {
+	background-color: #333333;
+	padding: 5px;
+	border-radius: 5px;
+	display: block;
+	font-style: italic;
+	font-family: inherit;
+	user-select: all;
+	margin: 5px 0;
+}
+
+a:link, a:visited {
+	color: #A10000;
+}
+
+a:hover, a:active, a:focus {
+	color: #A10000;
+}
+
+hr {
+	border-style: solid;
+	border-width: 2px;
+	border-color: #333333;
+	margin: 0 auto;
+	width: 80%;
+}
+
+/* Disable */
+input[type=checkbox] {
+	display: none;
+}
+
+.disable_link:link, .disable_link:visited, .disable_link:hover, .disable_link:active {
+	color: inherit;
+	text-decoration-line: none;
+}
+
+input:focus:hover, input:focus {
+	outline: none;
+	border-radius: unset;
+}
+
+
+/* ####################################################################### */
+/* Footer */
+footer {
+	background-color: #222222;
+	margin-top: auto;
+	height: 100px;
+	padding-right: 15%;
+	padding-left: 15%;
+	padding-top: 15px;
+	text-align: center;
+	display: flex;
+}
+
+.footer_block {
+	flex-grow: 1;
+}
+
+.footer_block a {
+	margin: 0 20px;
+}
+
+.footer_block a:hover, .footer_block a:focus {
+	outline: none;
+	filter: contrast(100%);
+}
+
+.footer_left {
+	text-align: left;
+	font-size: 12px;
+}
+
+.footer_center {
+	text-align: center;
+}
+
+.footer_right {
+	text-align: right;
+}
+
+.footer_right a {
+	filter: contrast(0%);
+}
+
+footer img {
+	height: 30px;
+}
+
+/* Transformation */
+@media screen and (max-width: 1100px) {
+	footer {
+		height: 160px;
+		flex-direction: column-reverse;
+	}
+	.footer_block {
+		text-align: center;
+	}
+}
+
+/* Touch Screen Footer */
+@media (pointer: coarse) {
+	.footer_right a {
+		filter: contrast(100%);
+	}
+}
