@@ -19,3 +19,10 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
 }
+
+
+//Big Image
+function bigImg(element) {
+  document.getElementById("img").src = element;
+  document.getElementById("bigImg").style.display = "block";
+}

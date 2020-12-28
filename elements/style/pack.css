@@ -47,6 +47,27 @@ nav {
 	height: 50px;
 }
 
+/* Installation */
+.nav_install {
+	float: right;
+	font-size: 17px;
+	padding: 21px 16px;
+	display: flex;
+}
+
+.nav_install p {
+	font-weight: bold;
+	font-size: 15px;
+	padding-left: 5px;
+	margin: 0;
+}
+
+@media (max-width: 500px) {
+	.nav_install {
+		display: none;
+	} 
+}
+
 
 /* Download */
 .nav_download {
@@ -122,11 +143,14 @@ nav {
 .slideshow div {
 	color: #f2f2f2;
 	font-size: 15px;
-	padding: 8px 12px;
+	padding: 8px 18px;
 	position: absolute;
 	bottom: 8px;
-	width: 100%;
 	text-align: center;
+	border-radius: 5px;
+	background-color: rgba(0,0,0,0.5);
+	left: 50%;
+    transform: translate(-50%, 0);
 }
 
 
@@ -138,15 +162,12 @@ header {
 
 header h1 {
 	flex: 1;
-	text-align: left;
+	text-align: center;
 }
 
 header p {
-	flex: 1
-	text-align: right;
 	margin-top: 70px;
 }
-
 
 /* ####################################################################### */
 /* Download */
@@ -161,19 +182,53 @@ section {
 	overflow: auto;
 	background-color: #292929;
 	text-align: center;
+	scrollbar-width: none;
+}
+
+section::-webkit-scrollbar {
+  display: none;
+}
+
+.download_close {
+	padding-right: 15%;
+	right: 0;
+	cursor: pointer;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	color: white;
+}
+
+.download_close:hover {
+	filter: invert(100%);
 }
 
 section h1 {
 	margin-bottom: 5px;
 }
 
-table {
-	margin: 0 auto;
-	width: 850px;
-	margin-top: 50px;
+.section_header {
+	display: flex;
+	justify-content: center;
 }
 
-td {
+.section_header h3{
+	padding: 0 20px;
+}
+.section_header p {
+	display: none;
+	color: #8A8A8A;
+	padding: 0 20px;
+	padding-top: 5px;
+}
+
+
+section table {
+	margin: 50px auto;
+	width: 850px;
+}
+
+section td {
 	width: 30%;
 	padding-bottom: 60px;
 }
@@ -183,16 +238,28 @@ td {
 	font-weight: bold;
 }
 
+@media (max-width: 1600px) {
+	.download_close {
+		padding-right: 10%;
+	}
+}
+
+@media (max-width: 1350px) {
+	.download_close {
+		padding-right: 12px;
+	}
+}
+
 @media (max-width: 850px) {
-	table, thead, tbody, th, td, tr {
+	section table, section thead, section tbody, section th, section td, section tr {
 		display: block;
 	}
 
-	table {
+	section table {
 		width: unset;
 	}
 
-	tr {
+	section tr {
 		width: 300px;
 		margin: 0 auto;
 		margin-bottom: 50px;
@@ -200,7 +267,7 @@ td {
 		border-radius: 2px;
 	}
 
-	td {
+	section td {
 		width: 100%;
 	}
 }
@@ -238,14 +305,14 @@ td {
 	transition: max-height 0.2s ease-out;
 }
 
-.spoiler_recipe, .spoiler_settings {
+.spoiler_content {
 	margin-left: 5px;
 	margin-bottom: 50px;
 	border-bottom: 5px solid #333333;
 	padding-bottom: 10px;
 }
 
-.spoiler_recipe {
+.spoiler_flex {
 	display: flex;
 }
 
@@ -281,13 +348,13 @@ td {
 
 
 @media screen and (max-width: 650px) {
-	.spoiler_recipe {
+	.spoiler_flex {
 		flex-direction: column;
 	}
-	.spoiler_recipe * {
+	.spoiler_flex * {
 		width: 100%;
 	}
-	.spoiler_recipe img {
+	.spoiler_flex img {
 		max-width: 300px;
 	}
 }

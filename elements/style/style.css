@@ -52,11 +52,11 @@ code {
 	background-color: #333333;
 	padding: 5px;
 	border-radius: 5px;
-	display: block;
+	display: inline-block;
 	font-style: italic;
 	font-family: inherit;
 	user-select: all;
-	margin: 5px 0;
+	margin-bottom: 10px;
 }
 
 a:link, a:visited {
@@ -88,6 +88,30 @@ input[type=checkbox] {
 input:focus:hover, input:focus {
 	outline: none;
 	border-radius: unset;
+}
+
+
+/* ####################################################################### */
+/* Table */
+.table {
+	border-collapse: collapse;
+}
+
+.table tr {
+	border-bottom: 2px solid #333333;
+}
+
+.table tr * {
+	padding-right: 10px;
+}
+
+@media (max-width: 850px) {
+	.dyn_table, .dyn_table thead, .dyn_table tbody, .dyn_table th, .dyn_table td, .dyn_table tr {
+		display: block;
+	}
+	.dyn_table {
+		width: unset;
+	}
 }
 
 

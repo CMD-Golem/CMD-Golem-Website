@@ -10,11 +10,17 @@ function openDownload () {
 
 	if (sectionload.style.display == "none") {
 		sectionload.style.display = "block";
-		download_button.href = "#download";
 	}
+
 	else {
-		history.pushState("", document.title, window.location.pathname);
 		sectionload.style.display = "none";
-		download_button.href = "#";
+	}
+}
+
+window.onscroll = function (e) {
+	var sectionload = document.getElementsByTagName("section")[0];
+	
+	if (sectionload.style.display == "block") {
+		sectionload.style.display = "none";
 	}
 }

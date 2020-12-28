@@ -1,0 +1,84 @@
+.arrows {
+	display: flex;
+	justify-content: center;
+}
+
+.arrows table {
+	flex-basis: 400px;
+	text-align: center;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.arrows img {
+	height: 75px;
+	width: auto;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	margin: 0 auto;
+}
+
+.table_img {
+	width: 90px;
+}
+
+.table_text {
+	padding: 30px 0;
+}
+
+
+/* Hover Effekt */
+.arrows tr:hover {
+	background: #333333;
+}
+.arrows tr:hover td:first-child { border-top-left-radius: 10px; }
+.arrows tr:hover td:last-child { border-top-right-radius: 10px; }
+.arrows tr:hover td:first-child { border-bottom-left-radius: 10px; }
+.arrows tr:hover td:last-child { border-bottom-right-radius: 10px; }
+
+/* Big Images*/
+#bigImg {
+	z-index: 6;
+	display: none;
+	padding-top: 100px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.9)
+}
+
+.bigImg_close {
+	right: 0;
+	top: 0;
+	position: fixed;
+	cursor: pointer;
+	font-size: 80px;
+	margin-right: 20px;
+	color: white;
+}
+
+.bigImg_close:hover {
+	color: red;
+}
+
+.bigImg_container {
+	margin: auto;
+	position: relative;
+	padding: 0;
+	outline: 0;
+	max-width: 600px;
+}
+
+@media (max-width: 1500px) {
+	.bigImg_container {
+		width: 60vw;
+	}
+}
+@media (max-width: 800px) {
+	.bigImg_container {
+		width: 90vw;
+	}
+}

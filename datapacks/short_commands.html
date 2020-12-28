@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem - Short Commands</title>
+<meta name="description" content="This Datapack adds new Commands to execute existing Commands faster.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><img src="../elements/nav/logo.png"></a>
+	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg"><p>Download</p></a>
+	<a class="nav_install disable_link nav_hover" href="../installation.html" id="download_button"><p>Installation</p></a>
+</nav>
+
+
+
+
+<!--Content-->
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/datapacks/short_commands/logo_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/short_commands/picture_1.png"></div>
+
+	<a class="slideshow_prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="slideshow_next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Short Commands</h1>
+	<p>1.13 +</p>
+</header>
+
+<p>Do you often change the Gamemode and you want to execute some Commands faster. With this Datapack you can do this very easy.</p>
+<p>It gives you new Commands to change the Gamemode, kill Entities in Radius of 1 Block, teleport to a custom setable Homepoint and a new Chat Menu, where you have a lot more Shortcuts to execute Commands.</p>
+
+<h3 class="spoiler_title" title="Open for more Informations">Commands</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table dyn_table">
+			<tr>
+				<td><code>/trigger kill</code></td>
+				<td><p>Kills all Entities in distance of 1 Block.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger mode</code></td>
+				<td><p>Toggle between survival and creative Mode.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger spawn</code></td>
+				<td><p>Teleports you to your Wordspawn Point.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger cmd</code></td>
+				<td><p>Opens the Chat Menu</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Chat Menu</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table dyn_table">
+			<tr>
+				<td><p>Regeneration</p></td>
+				<td><p>Gives you Regeneration</p></td>
+			</tr>
+			<tr>
+				<td><p>Restistance</p></td>
+				<td><p>Gives you Resistance</p></td>
+			</tr>
+			<tr>
+				<td><p>Night Vision</p></td>
+				<td><p>Gives you Nigth Vision</p></td>
+			</tr>
+			<tr>
+				<td><p>Saturation</p></td>
+				<td><p>Gives you Saturation</p></td>
+			</tr>
+			<tr>
+				<td><p>Clear Effects</p></td>
+				<td><p>Clears every effect you have</p></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><p>Clear Inventory</p></td>
+				<td><p>Clears your Inventory</p></td>
+			</tr>
+			<tr>
+				<td><p>Night</p></td>
+				<td><p>Set the Time to Midnight</p></td>
+			</tr>
+
+			<tr>
+				<td><p>Day</p></td>
+				<td><p>Set the Time to Noon</p></td>
+			</tr>
+			<tr>
+				<td><p>Get the Data of the nearest entity</p></td>
+				<td><p>Place the Command to do this in the Chat, that you don't need to write it</p></td>
+			</tr>
+			<tr>
+				<td><p>Kill Items</td>
+				<td><p>Kills all Items in the World</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+<h3 class="spoiler_title" title="Open for more Informations">Setup</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>On the first Time you join the World with the Datapack installed, you should go to the Spawn and execute this Command:</p>
+		<code>/function shortcmd:setup</code>
+	</div>
+</div>
+
+
+</main>
+
+<section style="display: none;">
+	<div class="download_close" onclick="openDownload()" title="close"><img src="../elements/nav/close.svg"></div>
+
+	<h1>Short Commands</h1>
+	<div class="section_header">
+		<h3>Download</h3>
+		<p title="Download Count">(<span id="download_counter"></span>)</p>
+	</div>
+	<hr>
+	<p>If you install the Datapack over the Datapackmanager you can ignore the not compartible message. It will work fine.</p>
+
+	<table>
+		<tr>
+			<td class="version">1.13 - 1.16.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/short-commands/1lxhxhajBbw95nNy3lxLAptbVAIHjR7BW?dl=1">Download</a></td>
+		</tr>
+	</table>
+
+</section>
+
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>
