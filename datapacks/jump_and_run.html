@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem - Jump and Run</title>
+<meta name="description" content="Build your personal Jump and Run with Checkpoints, Timer and more.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><img src="../elements/nav/logo.png"></a>
+	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg"><p>Download</p></a>
+	<a class="nav_install disable_link nav_hover" href="../installation.html" id="download_button"><p>Installation</p></a>
+</nav>
+
+
+
+
+<!--Content-->
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/datapacks/jump_and_run/logo_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/jump_and_run/picture_1.png"></div>
+
+	<a class="slideshow_prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="slideshow_next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Jump and Run</h1>
+	<p>1.13 +</p>
+</header>
+
+<p>Do you want to build a Jump and Run? So this is the right Datapack for you. With it you can make your own Jump and Run with Check Points and a Timer.</p>
+<p>To start the Game, you need to pass the Jump and Run Start Point. To leave it again you can drop the Barrier in your Inventory.<br>If you pass a Check Point, you will be teleported back to this Point, if you fall down.<br>If you pass the Jump and Run End Point you have finished the Game and the Timer stops.</p>
+
+<h3 class="spoiler_title" title="Open for more Informations">Setup</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/datapacks/jump_and_run/recipe_2.png">
+		</div>
+		<div class="spoiler_text">
+			<ol>
+				<li>Install the Datapack and rejoin the World or restart the Server.</li>
+				<li>Build your Jump and Run. You only can take Block which are listed bellow in the Parkour Blocks Spoiler. The other Blocks will teleport you back to the last Checkpoint.</li>
+				<li>Enable Cheats or give yourself op if you are on a Server, and execute this Command:<br><code>/tag @s add jar_config</code></li>
+				<li>In the Picture you can see what the different Items do if you place them.</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Parkour Blocks</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>For the Jump and Run you can only use the Blocks which are listed below. If the Player stands on an other Block, he will be teleported back to his latest Checkpoint. You also need to place these Blocks below the Start and End Point.</p>
+		<p>The Blocks are:</p>
+		<ul>
+			<li>Walls</li>
+			<li>Fences</li>
+			<li>Chorus Fruit</li>
+			<li>Chorus Plant</li>
+			<li>Ladder</li>
+			<li>Vine</li>
+			<li>Iron Bars</li>
+			<li>Glass Pane (stained and clear)</li>
+			<li>Slime Block</li>
+			<li>Honey Block (1.15 +)</li>
+			<li>Chain (1.16 +)</li>
+			<li>Weeping Vines (1.16 +)</li>
+			<li>Twisting Vines (1.16 +)</li>
+			<li>Slabs</li>
+			<li>Double Slabs (If you place two Slabs on each other, they look like an normal Block, but they aren't)</li>
+		</ul>
+	</div>
+</div>
+
+
+</main>
+
+<section style="display: none;">
+	<div class="download_close" onclick="openDownload()" title="close"><img src="../elements/nav/close.svg"></div>
+
+	<h1>Jump and Run</h1>
+	<div class="section_header">
+		<h3>Download</h3>
+		<p title="Download Count">(<span id="download_counter"></span>)</p>
+	</div>
+	<hr>
+
+	<table>
+		<tr>
+			<td class="version">1.16.2 - 1.16.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/jump-and-run/1S8hj1gBsF8lTryiVlZxaTYH-V51G-aQ_?dl=1">Download Datapack</a></td>
+		</tr>
+		<tr>
+			<td class="version">1.15 - 1.16.1</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/jump-and-run/1oO6nhlClDeR3TKEtFrFR_2Blv1_CJxIr?dl=1">Download Datapack</a></td>
+		</tr>
+		<tr>
+			<td class="version">1.14 - 1.14.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/jump-and-run/1woaSCs3s4gdGgF4I8ngeeaNMt17kTbJ7?dl=1">Download Datapack</a></td>
+		</tr>
+		<tr>
+			<td class="version">1.13 - 1.13.2</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/jump-and-run/1IqeSD2PlTjBk5aPNuDhpXzzQQfWHwGO6?dl=1">Download Datapack</a></td>
+		</tr>
+	</table>
+
+</section>
+
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>

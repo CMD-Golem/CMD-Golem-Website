@@ -55,6 +55,10 @@ function siteSearch() {
 	};
 };
 
+window.addEventListener("load", function(){
+    siteSearch();
+});
+
 //#################################################################################################
 // Filter //https://stackoverflow.com/a/45146800
 var getFilter = function (category) {
@@ -66,6 +70,22 @@ var getFilter = function (category) {
 }
 
 $("#filters :checkbox").click(function () {
+    var all = $(".filterme");
+    var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
+    all.not(tgts).addClass("hide_filter");
+	tgts.removeClass("hide_filter");
+});
+
+
+$(window).on('load', function(){
+	var getFilter = function (category) {
+	    var filter = $("#filters ." + category + ":checked").map(function () {
+	        return '[class*="' + this.id + '"]';
+	    }).get().join(",");
+	    filter = (filter.length > 0) ? filter : "*";
+	    return filter;
+	}
+
     var all = $(".filterme");
     var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
     all.not(tgts).addClass("hide_filter");

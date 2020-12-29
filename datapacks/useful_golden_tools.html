@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem - Useful Golden Tools</title>
+<meta name="description" content="With this Datapack all Golden Tools will get a special Effect or Ability.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><img src="../elements/nav/logo.png"></a>
+	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg"><p>Download</p></a>
+	<a class="nav_install disable_link nav_hover" href="../installation.html" id="download_button"><p>Installation</p></a>
+</nav>
+
+
+
+
+<!--Content-->
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/logo_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_1.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_2.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_3.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_4.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_5.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_6.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_7.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_8.png"></div>
+	<div class="slideshow"><img src="../elements/pictures/datapacks/useful_golden_tools/picture_9.png"></div>
+
+	<a class="slideshow_prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="slideshow_next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Useful Golden Tools</h1>
+	<p>1.15 +</p>
+</header>
+
+<p>This Datapack gives every Golden Tool his own special Ability.<br>But be careful! If you die, all Golden Tools in your Inventory will disappear and it isn't that easy to get them again, because the Crafting Recipes are also changed. Instead of using Golden Ingots, you now need Golden Blocks.</p>
+<p>But this isn't every thing. Since you crafted the Golden Tools with Blocks they got very hard and are unbreakable now.</p>
+
+<h3 class="spoiler_title" title="Open for more Informations">Crafting</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/datapacks/useful_golden_tools/recipe.gif">
+		</div>
+		<div class="spoiler_text">
+			<p>The Crafting remains the same as in vanilla, only the Golden Ingots are replaced with Golden Blocks.</p>
+			<p>The Crafting Table will show a Gold Shovel as result, but you will get the correct Item after you take it out.</p>
+		</div>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Abilities</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table dyn_table">
+			<tr>
+				<td><p><b>Tool</b></p></td>
+				<td><p><b>Ability</b></p></td>
+				<td><p><b>Explanation</b></p></td>
+			</tr>
+			<tr>
+				<td><p>Sword</p></td>
+				<td><p>Fast Hit</p></td>
+				<td><p>You haven't any Cooldown (only 1.15)</p></td>
+			</tr>
+			<tr>
+				<td><p>Pickaxe</p></td>
+				<td><p>Autosmelt</p></td>
+				<td><p>Smelts all Blocks like in furnace</p></td>
+			</tr>
+			<tr>
+				<td><p>Axe</p></td>
+				<td><p>Timber</p></td>
+				<td><p>Breaks all Logs above</p></td>
+			</tr>
+			<tr>
+				<td><p>Hammer (Shovel)</p></td>
+				<td><p>3x3 Mining</p></td>
+				<td><p>Mines a 3x3 area</p></td>
+			</tr>
+			<tr>
+				<td><p>Hoe</p></td>
+				<td><p>Reaping</p></td>
+				<td><p>Replants seeds</p></td>
+			</tr>
+			<tr>
+				<td><p>&nbsp;</p></td>
+				<td><p>&nbsp;</p></td>
+				<td><p>&nbsp;</p></td>
+			</tr>
+			<tr>
+				<td><p>Helmet</p></td>
+				<td><p>Night Vision</p></td>
+				<td><p>Always a bright view</p></td>
+			</tr>
+			<tr>
+				<td><p>Chestplate</p></td>
+				<td><p>Saturation</p></td>
+				<td><p>Never again Hunger</p></td>
+			</tr>
+			<tr>
+				<td><p>Leggings</p></td>
+				<td><p>Stronger Legs</p></td>
+				<td><p>More Speed and higher Jumps</p></td>
+			</tr>
+			<tr>
+				<td><p>Boots</p></td>
+				<td><p>NoFall Damage</p></td>
+				<td><p>No fall Damage</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>0: The Item is unbreakable and you lose it after death if you have it in your Inventory. (Default)<br>1: The Item is breakable and you don't lose it.<br>2: The Item is unbreakable and you don't lose it.<br>3: The Item is breakable and you lose it.</p>
+		<p>To change the setting you need to execute this command and replace x with the matching number from above.</p>
+		<code>/scoreboard players set #setting usfgold x</code>
+	</div>
+</div>
+
+<h3 class="spoiler_title" title="Open for more Informations">Notes</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>The Datapack won't work with Tools, which are crafted before the Datapack was installed.</p>
+		<p>If you press shift to take out a Golden Tool of the Crafting Bench, you will also see a shovel in your Inventory. This is a Minecraft Bug and the Shovel is only an indication error, which disappears after you open a Chest or drop the Item.</p>
+	</div>
+</div>
+
+
+</main>
+
+<section style="display: none;">
+	<div class="download_close" onclick="openDownload()" title="close"><img src="../elements/nav/close.svg"></div>
+
+	<h1>Useful Golden Tools</h1>
+	<div class="section_header">
+		<h3>Download</h3>
+		<p title="Download Count">(<span id="download_counter"></span>)</p>
+	</div>
+	<hr>
+
+	<p>If you install the Datapack over the Datapackmanager you can ignore the not compartible message. It will work fine.</p>
+
+	<table>
+		<tr>
+			<td class="version">1.15 - 1.16.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/useful-golden-tools/1haZ3pfTeynWSzEJsTWrOFh9FvXRk0NDv?dl=1">Download Datapack</a></td>
+		</tr>
+	</table>
+
+</section>
+
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>

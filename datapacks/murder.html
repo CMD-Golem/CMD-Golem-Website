@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+	
+<head>
+<title>CMD-Golem - Murder</title>
+<meta name="description" content="Play Murder with your Friends in your own Map.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><img src="../elements/nav/logo.png"></a>
+	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg"><p>Download</p></a>
+	<a class="nav_install disable_link nav_hover" href="../installation.html" id="download_button"><p>Installation</p></a>
+</nav>
+
+
+
+
+<!--Content-->
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/datapacks/murder/logo_2.png"></div>
+</div>
+
+
+
+<header>
+	<h1>Murder</h1>
+	<p>1.13 +</p>
+</header>
+
+<p>This Datapack adds the Murder Game. The Game is modular so you can play it on any Map with a short and easy installation.</p>
+<h3>How to Play</h3>
+<ol>
+	<li>Finish the Setup and leave the Config Mode.</li>
+	<li>Start the Game with the following command. You don't need to have op to do that.<br><code>/trigger Murder</code></li>
+	<li>Afterwards a 30s countdown starts. In this Time other Players can join the Game. (To play you need to have at least 2 Players in the Game.)</li>
+	<li>If you want to leave the Game, you need to execute this command again.<br><code>/trigger Murder</code></li>
+	<li>After the 30s the Game starts and the Murder will have 5 min to kill all other Player.</li>
+	<li>One of the Player will get a Bow. He is the Detective and needs to find the Murder and kill him before he kills the other Players.</li>
+	<li>The other Players can hide or collect Gold. (With 6 Gold you get a bow with which you can also hunt the Murder)</li>
+	<li>If the Murder kills all Player, he will win. But if the time gets of before the Murder killed all Players or if the Murder dies, the surviving Players win.</li>
+</ol>
+
+<h3 class="spoiler_title" title="Open for more Informations">Setup</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/datapacks/murder/recipe.png">
+		</div>
+		<div class="spoiler_text">
+			<ol>
+				<li>Install the Datapack and rejoin the World or restart the Server.</li>
+				<li>Build your Murder Map.</li>
+				<li>Enable Cheats or give yourself op if you are on a Server, and execute this Command:<br><code>/tag @s add murder_config</code></li>
+				<li>In the Picture you can see what the different Items do if you place them.</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+
+<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>Disable spectator after death.</p>
+		<code>/scoreboard players set #spectator murder 1</code>
+		<p>Disable Gold drop.</p>
+		<code>/scoreboard players set #gold murder 1</code>
+		<p>Disable automated Bow purchase.</p>
+		<code>/scoreboard players set #bow murder 1</code>
+		<p>Disable Chat start with /trigger Murder. (You need to make your own start)</p>
+		<code>/scoreboard players set #chatstart murder 1</code>
+		<p>To enable the Setting again you need to execute the same Command except of the 1 replace with a 0.</p>
+	</div>
+</div>
+
+
+</main>
+
+<section style="display: none;">
+	<div class="download_close" onclick="openDownload()" title="close"><img src="../elements/nav/close.svg"></div>
+
+	<h1>Murder</h1>
+	<div class="section_header">
+		<h3>Download</h3>
+		<p title="Download Count">(<span id="download_counter"></span>)</p>
+	</div>
+	<hr>
+
+	<p>If you install the Datapack over the Datapackmanager you can ignore the not compartible message. It will work fine.</p>
+
+	<table>
+		<tr>
+			<td class="version">1.13 - 1.16.4</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/murder/1VoZ5_j6kWFs8o9ut9L55EAvfM0GPjK6X?dl=1">Download Map</a></td>
+		</tr>
+	</table>
+
+</section>
+
+
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>
