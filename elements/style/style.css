@@ -38,7 +38,7 @@ main {
 	}
 }
 
-
+/* ####################################################################### */
 /* Text */
 h1 {
 	font-family: DragonForcE;
@@ -75,6 +75,7 @@ hr {
 	width: 80%;
 }
 
+/* ####################################################################### */
 /* Disable */
 input[type=checkbox] {
 	display: none;
@@ -112,6 +113,26 @@ input:focus:hover, input:focus {
 	.dyn_table {
 		width: unset;
 	}
+}
+
+
+/* ####################################################################### */
+/* Checkbox */
+input[type=checkbox] + label::before {
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  border: 2px solid #A10000;
+  background-color: transparent;
+  display: block;
+  content: "";
+  float: left;
+  margin-right: 5px;
+}
+
+input[type=checkbox]:checked + label::before {
+  box-shadow: inset 0px 0px 0px 2.5px #333333;
+  background-color: #A10000;
 }
 
 

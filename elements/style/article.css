@@ -151,26 +151,9 @@ aside p {
 	margin-left: 30px;
 }
 
-.filter_row input + label::before {
-  width: 15px;
-  height: 15px;
-  border-radius: 5px;
-  border: 2px solid #A10000;
-  background-color: transparent;
-  display: block;
-  content: "";
-  float: left;
-  margin-right: 5px;
-}
-
-.filter_row input:checked + label::before {
-  box-shadow: inset 0px 0px 0px 2.5px #333333;
-  background-color: #A10000;
-}
-
 @media (max-width: 700px) {
 	aside {
-		flex-direction: column;
+		flex-direction: column-reverse;
 	}
 	.filter_row {
 		margin: 0 auto;

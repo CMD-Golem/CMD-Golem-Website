@@ -45,8 +45,7 @@ function siteSearch() {
 		}
 	}
 
-	const count =  article.length - (document.getElementsByClassName("hide_search").length + document.getElementsByClassName("hide_filter").length);
-	if (count == 0) {
+	if (article.length - document.getElementsByClassName("hide_search").length == 0) {
 		document.getElementById("not-found").style.display = "block";
 	}
 
@@ -77,6 +76,7 @@ $("#filters :checkbox").click(function () {
 });
 
 
+// Filter if return to page
 $(window).on('load', function(){
 	var getFilter = function (category) {
 	    var filter = $("#filters ." + category + ":checked").map(function () {

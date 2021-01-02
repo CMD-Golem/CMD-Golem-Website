@@ -10,6 +10,20 @@
 <link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
 <link rel="icon" href="../elements/nav/favicon.png">
 
+<style type="text/css">
+@media (max-width: 500px) {
+	.usf_cell, .usf_hide {
+		display: none;
+	}
+	.usf_table tr {
+		border-bottom: none;
+	}
+	.usf_border {
+		border-bottom: 2px solid #333333;
+	}
+}
+</style>
+
 </head>
 <body>
 
@@ -68,61 +82,61 @@
 <h3 class="spoiler_title" title="Open for more Informations">Abilities</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
-		<table class="table dyn_table">
+		<table class="table usf_table" id="threecoltable">
 			<tr>
-				<td><p><b>Tool</b></p></td>
-				<td><p><b>Ability</b></p></td>
-				<td><p><b>Explanation</b></p></td>
+				<td class="usf_hide"><p><b>Tool</b></p></td>
+				<td class="usf_hide"><p><b>Ability</b></p></td>
+				<td class="usf_hide"><p><b>Explanation</b></p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Sword</p></td>
 				<td><p>Fast Hit</p></td>
-				<td><p>You haven't any Cool down (only 1.15)</p></td>
+				<td class="usf_cell" colspan="2"><p>You haven't any Cool down (only 1.15)</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Pickaxe</p></td>
 				<td><p>Autosmelt</p></td>
-				<td><p>Smelts all Blocks like in furnace</p></td>
+				<td class="usf_cell" colspan="2"><p>Smelts all Blocks like in furnace</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Axe</p></td>
 				<td><p>Timber</p></td>
-				<td><p>Breaks all Logs above</p></td>
+				<td class="usf_cell" colspan="2"><p>Breaks all Logs above</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Hammer (Shovel)</p></td>
 				<td><p>3x3 Mining</p></td>
-				<td><p>Mines a 3x3 area</p></td>
+				<td class="usf_cell" colspan="2"><p>Mines a 3x3 area</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Hoe</p></td>
 				<td><p>Reaping</p></td>
-				<td><p>Replants seeds</p></td>
+				<td class="usf_cell" colspan="2"><p>Replants seeds</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>&nbsp;</p></td>
 				<td><p>&nbsp;</p></td>
-				<td><p>&nbsp;</p></td>
+				<td class="usf_cell" colspan="2"><p>&nbsp;</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Helmet</p></td>
 				<td><p>Night Vision</p></td>
-				<td><p>Always a bright view</p></td>
+				<td class="usf_cell" colspan="2"><p>Always a bright view</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Chestplate</p></td>
 				<td><p>Saturation</p></td>
-				<td><p>Never again Hunger</p></td>
+				<td class="usf_cell" colspan="2"><p>Never again Hunger</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Leggings</p></td>
 				<td><p>Stronger Legs</p></td>
-				<td><p>More Speed and higher Jumps</p></td>
+				<td class="usf_cell" colspan="2"><p>More Speed and higher Jumps</p></td>
 			</tr>
-			<tr>
+			<tr class="usf_row">
 				<td><p>Boots</p></td>
 				<td><p>NoFall Damage</p></td>
-				<td><p>No fall Damage</p></td>
+				<td class="usf_cell" colspan="2"><p>No fall Damage</p></td>
 			</tr>
 		</table>
 	</div>
@@ -172,6 +186,7 @@
 
 
 <!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/threecoltable.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
