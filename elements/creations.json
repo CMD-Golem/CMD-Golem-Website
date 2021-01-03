@@ -13,6 +13,6 @@
 	{"search":["Jump and Run Mini Game Play Datapacks Games"], "description":"Build your personal Jump and Run with Checkpoints, Timer and more.", "type":"Datapack", "compatibility":"1.13 +", "versions":["1.13 1.14 1.15 1.16"], "link":"datapacks/jump_and_run"},
 	{"search":["Murder Game Play Seek Datapacks Games"], "description":"Play Murder with your Friends in your own Map.", "type":"Datapack", "compatibility":"1.13 +", "versions":["1.13 1.14 1.15 1.16"], "link":"datapacks/murder"},
 	{"search":["Mini Game Map Play Games Maps"], "description":"My Map for all the different Games on my Website. Ready to Play with your Friends.", "type":"Map", "compatibility":"1.14.x", "versions":["1.14"], "link":"maps/mini_game_map"},
-	{"search":["PetBag Bag Backpack Datapacks Survival"], "description":"This Datapacks adds a Chest in which you can store your Items and follows you like a dog.", "type":"Datapack", "compatibility":"1.14 +", "versions":["1.14 1.15 1.16"], "link":"datapacks/petbag"}
-	{"search":["Redstone Dot Datapacks Survival"], "description":"Get the old Look of a single Redstone, without the need of a Resource Pack. (Outdated)", "type":"Datapack", "compatibility":"1.16.x", "versions":["1.16"], "link":"datapacks/redstone_dot"},
+	{"search":["PetBag Bag Backpack Datapacks Survival"], "description":"This Datapacks adds a Chest in which you can store your Items and follows you like a dog.", "type":"Datapack", "compatibility":"1.14 +", "versions":["1.14 1.15 1.16"], "link":"datapacks/petbag"},
+	{"search":["Redstone Dot Datapacks Survival"], "description":"Get the old Look of a single Redstone, without the need of a Resource Pack. (Outdated)", "type":"Datapack", "compatibility":"1.16.x", "versions":["1.16"], "link":"datapacks/redstone_dot"}
 ]
