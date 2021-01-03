@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /404.html
+Disallow: /compatibility.html
+Disallow: /installation.html
+Disallow: /therms_of_use.html
