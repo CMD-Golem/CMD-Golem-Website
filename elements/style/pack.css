@@ -167,6 +167,16 @@ header h1 {
 
 header p {
 	margin-top: 70px;
+	text-align: center;
+}
+
+@media (max-width: 700px) {
+	header {
+		flex-direction: column;
+	}
+	header p {
+		margin-top: 0;
+	}
 }
 
 /* ####################################################################### */

@@ -11,15 +11,9 @@
 <link rel="icon" href="../elements/nav/favicon.png">
 
 <style type="text/css">
-@media (max-width: 500px) {
-	.usf_cell, .usf_hide {
+@media (max-width: 850px) {
+	.usf_hide {
 		display: none;
-	}
-	.usf_table tr {
-		border-bottom: none;
-	}
-	.usf_border {
-		border-bottom: 2px solid #333333;
 	}
 }
 </style>
@@ -82,11 +76,11 @@
 <h3 class="spoiler_title" title="Open for more Informations">Abilities</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
-		<table class="table usf_table" id="threecoltable">
+		<table class="table usf_table dyn_table" id="threecoltable">
 			<tr>
-				<td class="usf_hide"><p><b>Tool</b></p></td>
-				<td class="usf_hide"><p><b>Ability</b></p></td>
-				<td class="usf_hide"><p><b>Explanation</b></p></td>
+				<th class="usf_hide"><p>Tool</p></th>
+				<th class="usf_hide"><p>Ability</p></th>
+				<th class="usf_hide"><p>Explanation</p></th>
 			</tr>
 			<tr class="usf_row">
 				<td><p>Sword</p></td>
@@ -186,7 +180,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/threecoltable.js"></script>
+<!--<script language="javascript" type="text/javascript" src="../elements/javascript/threecoltable.js"></script>-->
 <script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>

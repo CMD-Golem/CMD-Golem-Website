@@ -55,23 +55,25 @@ function siteSearch() {
 };
 
 window.addEventListener("load", function(){
-    siteSearch();
+	siteSearch();
 });
+
+
 
 //#################################################################################################
 // Filter //https://stackoverflow.com/a/45146800
 var getFilter = function (category) {
-    var filter = $("#filters ." + category + ":checked").map(function () {
-        return '[class*="' + this.id + '"]';
-    }).get().join(",");
-    filter = (filter.length > 0) ? filter : "*";
-    return filter;
+	var filter = $("#filters ." + category + ":checked").map(function () {
+		return '[class*="' + this.id + '"]';
+	}).get().join(",");
+	filter = (filter.length > 0) ? filter : "*";
+	return filter;
 }
 
 $("#filters :checkbox").click(function () {
-    var all = $(".filterme");
-    var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
-    all.not(tgts).addClass("hide_filter");
+	var all = $(".filterme");
+	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
+	all.not(tgts).addClass("hide_filter");
 	tgts.removeClass("hide_filter");
 });
 
@@ -79,15 +81,15 @@ $("#filters :checkbox").click(function () {
 // Filter if return to page
 $(window).on('load', function(){
 	var getFilter = function (category) {
-	    var filter = $("#filters ." + category + ":checked").map(function () {
-	        return '[class*="' + this.id + '"]';
-	    }).get().join(",");
-	    filter = (filter.length > 0) ? filter : "*";
-	    return filter;
+		var filter = $("#filters ." + category + ":checked").map(function () {
+			return '[class*="' + this.id + '"]';
+		}).get().join(",");
+		filter = (filter.length > 0) ? filter : "*";
+		return filter;
 	}
 
-    var all = $(".filterme");
-    var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
-    all.not(tgts).addClass("hide_filter");
+	var all = $(".filterme");
+	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
+	all.not(tgts).addClass("hide_filter");
 	tgts.removeClass("hide_filter");
 });

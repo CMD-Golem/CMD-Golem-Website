@@ -54,3 +54,6 @@ function load() {
 		}
 	}
 }
+
+//CSS
+//@media (max-width: 500px) {.usf_cell, .usf_hide {display: none;}.usf_table tr {border-bottom: none;}.usf_border {border-bottom: 2px solid #333333;}}
