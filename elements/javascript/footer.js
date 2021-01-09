@@ -2,8 +2,9 @@ const footer = `
 <footer>
 	<div class="footer_left footer_block">©2019 - <script>document.write(new Date().getFullYear());</script> by CMD-Golem</div>
 	<div class="footer_center footer_block">
-		<a href="https://cmd-golem.netlify.app/therms_of_use.html">Therms of use</a>
-		<a href="https://cmd-golem.netlify.app/compatibility.html">Compatibility</a>
+		<a href="https://cmd-golem.netlify.app/info/disclaimer.html">Disclaimer</a>
+		<a href="https://cmd-golem.netlify.app/info/therms_of_use.html">Therms of use</a>
+		<a href="https://cmd-golem.netlify.app/info/compatibility.html">Compatibility</a>
 	</div>
 	<div class="footer_right footer_block">
 		<a href="https://twitter.com/CmdGolem"><img src="https://cmd-golem.netlify.app/elements/nav/twitter.png" title="Twitter"></a>

@@ -20,6 +20,7 @@ getjson.onreadystatechange = function() {
 			`).join('');
 
 		article.innerHTML = html;
+		siteSearch();
 	}
 };
 getjson.open("GET", "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/creations.json", true);
@@ -53,12 +54,6 @@ function siteSearch() {
 		document.getElementById("not-found").style.display = "none";
 	};
 };
-
-window.addEventListener("load", function(){
-	siteSearch();
-});
-
-
 
 //#################################################################################################
 // Filter //https://stackoverflow.com/a/45146800

@@ -1,6 +1,6 @@
 // Only one Checkbox checked
 function onlyOne(checkbox) {
-	var checkboxes = document.getElementsByClassName('check');
+	var checkboxes = document.getElementsByClassName('checkbox');
 	for (i = 0; i < checkboxes.length; i++) {
 		if (checkboxes[i] !== checkbox) {
 			checkboxes[i].checked = false

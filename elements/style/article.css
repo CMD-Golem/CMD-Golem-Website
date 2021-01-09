@@ -75,6 +75,10 @@ nav {
 	background: transparent url('../nav/search.svg') center/30px no-repeat;
 }
 
+.nav_search_button + label::before {
+	display: none;
+}
+
 @media (max-width: 550px) {
 	.nav_search {
 		display: none;
@@ -123,6 +127,12 @@ nav {
 /* Filter */
 #filter_button:checked ~ aside {
 	top: 0;
+	transition: top 0.5s ease-in-out;
+	background: #333333;
+}
+
+#filter_button:checked ~ aside .filter_row {
+	display: block;
 }
 
 #filter_button:checked ~ main {
@@ -134,17 +144,22 @@ aside {
 	justify-content: space-evenly; 
 	position: fixed;
 	top: -100%;
-	transition: all 0.5s ease-in-out;
 	padding: 30px;
 	padding-top: 50px;
 	width: 100%;
-	background: #333333;
 	z-index: 1;
+	overflow: scroll;
+	scrollbar-width: none;
+}
+
+aside::-webkit-scrollbar {
+  display: none;
 }
 
 /* Checkbox */
 .filter_row {
 	width: 200px;
+	display: none;
 }
 
 aside p {
