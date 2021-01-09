@@ -19,7 +19,7 @@
 <nav>
 	<a class="nav_home disable_link nav_hover" href=""><img src="elements/nav/logo.png"></a>
 	<label for="filter_button" class="nav_button nav_hover"><img src="elements/nav/filter.svg"></label>
-	<input type="checkbox" id="nav_search_button"><label for="nav_search_button" class="nav_button nav_hover nav_search_button"></label>
+	<input type="checkbox" id="nav_search_button"><label for="nav_search_button" class="nav_button nav_hover nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
 	<div class="nav_search">
 		<input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()">
 	</div>
