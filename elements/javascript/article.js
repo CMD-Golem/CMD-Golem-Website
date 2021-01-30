@@ -21,6 +21,7 @@ getjson.onreadystatechange = function() {
 
 		article.innerHTML = html;
 		siteSearch();
+		loadFilter();
 	}
 };
 getjson.open("GET", "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/creations.json", true);
@@ -55,6 +56,19 @@ function siteSearch() {
 	};
 };
 
+
+//#################################################################################################
+// Add filter
+var hashfilter = window.location.hash.substr(1);
+
+if (document.getElementById(hashfilter) == null) {
+	console.log("Filter in Hash isn't a real Filter!");
+}
+else {
+	document.getElementById(hashfilter).checked = true;
+}
+
+
 //#################################################################################################
 // Filter //https://stackoverflow.com/a/45146800
 var getFilter = function (category) {
@@ -74,7 +88,7 @@ $("#filters :checkbox").click(function () {
 
 
 // Filter if return to page
-$(window).on('load', function(){
+function loadFilter() {
 	var getFilter = function (category) {
 		var filter = $("#filters ." + category + ":checked").map(function () {
 			return '[class*="' + this.id + '"]';
@@ -87,4 +101,5 @@ $(window).on('load', function(){
 	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
 	all.not(tgts).addClass("hide_filter");
 	tgts.removeClass("hide_filter");
-});
+};
+
