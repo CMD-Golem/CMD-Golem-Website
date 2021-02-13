@@ -26,12 +26,14 @@ nav {
 
 /* Logo */
 .nav_home {
-	padding: 5px 16px 0 16px;
+	padding: 5px 16px 10px 16px;
 	float: left;
 }
 
-.nav_home img {
-	height: 50px;
+.nav_home h1 {
+	margin: 0;
+	font-size: 40px;
+	text-shadow: 4px 4px 5px rgba(0,0,0,0.65);
 }
 
 /* Installation */
