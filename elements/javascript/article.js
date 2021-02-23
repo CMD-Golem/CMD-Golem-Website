@@ -71,3 +71,10 @@ function loadFilter() {
 	tgts.removeClass("hide_filter");
 };
 
+
+//#################################################################################################
+// Load Filter on reload
+window.onload = function onload() {
+	siteSearch();
+	loadFilter();
+}
