@@ -17,10 +17,13 @@ function openDownload () {
 	}
 }
 
-window.onscroll = function (e) {
-	var sectionload = document.getElementsByTagName("section")[0];
-	
-	if (sectionload.style.display == "block") {
-		sectionload.style.display = "none";
-	}
-}
+//window.onscroll = function (e) {
+//	var sectionload = document.getElementsByTagName("section")[0];
+//	
+//	if (sectionload.style.display == "block") {
+//		sectionload.style.display = "none";
+//	}
+//}
+
+// set newest version
+document.getElementById("newest").innerHTML = "1.17";
