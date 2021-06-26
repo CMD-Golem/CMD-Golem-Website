@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Stats</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/info.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
+</nav>
+
+<!--
+
+https://api.countapi.xyz/create?namespace=mc_cmdgolem&key=NAME&enable_reset=1
+
+-->
+
+
+<!--Content-->
+<main>
+	
+	<table id="data_table">
+		<tr>
+			<td>Fried Eggs</td>
+			<td id="test" class="data"></td>
+		</tr>
+	</table>
+
+</main>
+
+
+<!--Scripts-->
+<script type="text/javascript">
+var data = document.getElementById("data_table").getElementsByClassName("data");
+
+async function getData() {
+	for (var i = 0; i < data.length; i++) {
+		var url = "https://api.countapi.xyz/get/mc_cmdgolem/" + data[i].id;
+		var json = await getJson(url);
+		data[i].innerHTML = json.value;
+	}
+}
+
+async function getJson(url) {
+	let response = await fetch(url);
+	let data = await response.json();
+	return data;
+}
+
+getData();
+
+
+</script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>
