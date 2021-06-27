@@ -1,47 +1,4 @@
-/* Navbar */
-nav {
-	padding-right: 15%;
-	padding-left: 15%;
-	height: 60px;
-	position: sticky;
-	position: -webkit-sticky;
-	top: 0;
-	z-index: 2;
-	background-color: #222222;
-}
-
-.nav_button {
-	display: inline;
-	float: right;
-	padding: 12.5px 16px;
-	margin: 0 5px;
-}
-
-.nav_button img {
-	height: 30px;
-}
-
-.nav_hover:hover, .nav_hover:focus {
-	background-color: #333333;
-	outline: none;
-	color: white;
-}
-
-@media (max-width: 1600px) {
-	nav {
-		padding-right: 10%;
-		padding-left: 10%;
-	}
-}
-
-@media (max-width: 1350px) {
-	nav {
-		padding-right: 10px;
-		padding-left: 10px;
-	}
-}
-
-/* Search */
+/* Navbar Search */
 .nav_search {
 	display: flex;
 	justify-content: center;
@@ -109,29 +66,6 @@ nav {
 	position: fixed;
 	right: 0;
 	background: transparent url('../nav/close.svg') center/30px no-repeat;
-}
-
-
-/* Logo */
-/*.nav_home {
-	padding: 5px 16px 0 16px;
-	float: left;
-	margin: 0 5px;
-}
-
-.nav_home img {
-	height: 50px;
-}*/
-
-.nav_home {
-	padding: 5px 16px 10px 16px;
-	float: left;
-}
-
-.nav_home h1 {
-	margin: 0;
-	font-size: 40px;
-	text-shadow: 4px 4px 5px rgba(0,0,0,0.65);
 }
 
 

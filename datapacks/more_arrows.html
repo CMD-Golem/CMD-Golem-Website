@@ -18,9 +18,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -50,7 +50,7 @@
 <p>This Datapacks adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.</p>
 <p>It also changes the way to craft Tipped Arrows. Now the crafting for them works like the crafting for the new Arrows. You need to drop the normal Potion or the Splash Potion on the Fletching Table and shoot it with a Bow.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Crafting</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<div class="spoiler_flex">
@@ -68,7 +68,7 @@
 
 
 
-<h3 class="spoiler_title active" title="Open for more Informations">Arrows</h3>
+<h3 class="spoiler_title active" onclick="spoiler(this)" title="Open for more Informations">Arrows</h3>
 <div class="spoiler_show" style="max-height: unset;">
 	<p style="text-align: center;">Click on the Arrows to get a preview of the ability of it.</p>
 	<div class="spoiler_content arrows">
@@ -143,7 +143,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>Disable Arrows. Replace #id with the id of the according Arrow from the table bellow.</p>
@@ -252,9 +252,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

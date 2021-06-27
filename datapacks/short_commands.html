@@ -17,9 +17,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -45,7 +45,7 @@
 
 <p>This Datapack gives you new Commands to kill Entities in a radius of 1 Block, teleport to the spawn point, to instant heal you and a new Chat Menu, where you have a lot more Shortcuts to execute Commands.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Commands</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Commands</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<table class="table dyn_table">
@@ -69,7 +69,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Chat Menu</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Chat Menu</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<table class="table dyn_table">
@@ -107,7 +107,7 @@
 </div>
 
 
-<h3 class="spoiler_title" title="Open for more Informations">Setup</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>On the first Time you join the World with the Datapack installed, you should go to the Spawn and execute this Command:</p>
@@ -157,9 +157,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

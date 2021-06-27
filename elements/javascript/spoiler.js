@@ -1,14 +1,9 @@
-var acc = document.getElementsByClassName("spoiler_title");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].onclick = function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  }
+function spoiler(el) {
+	el.classList.toggle("active");
+	var panel = el.nextElementSibling;
+	if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+	} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
+	}
 }

@@ -17,9 +17,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" href="https://powered-enchanting.jimdofree.com/download/"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link" href="https://powered-enchanting.jimdofree.com/download/"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -55,7 +55,7 @@
 
 <a class="button disable_link" href="https://powered-enchanting.jimdofree.com/" style="text-align: center; margin: 40px 0; display: block;">Get more Information on the Powered Enchanting Website</a>
 
-<h3 class="spoiler_title" title="Open for more Informations">Enchanting</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Enchanting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p><b>Build the Enchanting Table</b><br>Place the Enchanting Table and drop a Glowstone Dust on top of it, to show where you need to place the Pillars.<br>At the blue Particles you need to place two Lapis Lazuli Blocks on top of each other and at the white Particles you need to place one Chiseled Quartz Blocks.</p>
@@ -64,7 +64,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Additional Enchantments</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Additional Enchantments</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<table class="table dyn_table">
@@ -160,8 +160,7 @@
 </main>
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

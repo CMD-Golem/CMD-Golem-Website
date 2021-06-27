@@ -17,9 +17,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -52,7 +52,7 @@
 <br>
 <p>Info: If you use this Datapack in 1.15, the Wither Soldier can spawn every where in the Nether.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Drops</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Drops</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p><b>Wither Bones</b></p>
@@ -65,7 +65,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Stats</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Stats</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p><b>Wither Soldier</b> (Changes from normal Wither Skeleton)</p>
@@ -147,9 +147,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

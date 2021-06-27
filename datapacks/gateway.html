@@ -17,9 +17,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -49,7 +49,7 @@
 <p><b>Setup</b><br>Craft two Gateways and a Gateway Linker. Place the Gateways at the two Endpoints and right click bought Gateways with the Gateway Linker. If a Portal isn't linked, it will cry, because it hasn't a partner ; ) .<br>To mark the Gateway you need to drop a Flint and the marking Block underneath the Gateway. Only the Flint will be consumed.</p>
 <p>To remove the Gateway just break the Block underneath it. If the Gateway was linked to another, the linked Gateway will be removed as well.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Crafting</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<div class="spoiler_flex">
@@ -67,7 +67,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>Change the maximum Count of linked Gateways you can have in the World. (Default: 20)<br>It can cause lags, if you have a to big amount of Gateways.</p>
@@ -117,9 +117,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

@@ -25,9 +25,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -62,7 +62,7 @@
 <p>This Datapack gives every Golden Tool his own special Ability.<br>But be careful! If you die, all Golden Tools in your Inventory will disappear and it isn't that easy to get them again, because the Crafting Recipes are also changed. Instead of using Golden Ingots, you now need Golden Blocks.</p>
 <p>But this isn't every thing. Since you crafted the Golden Tools with Blocks they got very hard and are unbreakable now.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Crafting</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content spoiler_flex">
 		<div class="spoiler_image">
@@ -75,7 +75,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Abilities</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Abilities</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<table class="table usf_table dyn_table" id="threecoltable">
@@ -138,7 +138,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Settings</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>0: The Item is unbreakable and you lose it after death if you have it in your Inventory. (Default)<br>1: The Item is breakable and you don't lose it.<br>2: The Item is unbreakable and you don't lose it.<br>3: The Item is breakable and you lose it.</p>
@@ -147,7 +147,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Notes</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Notes</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>The Datapack won't work with Tools, which are crafted before the Datapack was installed.</p>
@@ -170,12 +170,16 @@
 
 	<table>
 		<tr>
-			<td class="version">1.15 - 1.15.2</td>
-			<td><a class="button disable_link" href="https://dl.orangedox.com/useful-golden-tools/1haZ3pfTeynWSzEJsTWrOFh9FvXRk0NDv?dl=1">Download Datapack</a></td>
+			<td class="version" id="newest"></td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/useful-golden-tools/13IGLsCraNsrGCAdF2ilqYVPOBc_mzJsa?dl=1">Download Datapack</a></td>
 		</tr>
 		<tr>
 			<td class="version">1.16.2 - 1.16.5</td>
 			<td><a class="button disable_link" href="https://dl.orangedox.com/useful-golden-tools/1OBg6RB2sSMZEsicgAu1IdX-f6DPZ8l26?dl=1">Download Datapack</a></td>
+		</tr>
+		<tr>
+			<td class="version">1.15 - 1.15.2</td>
+			<td><a class="button disable_link" href="https://dl.orangedox.com/useful-golden-tools/1haZ3pfTeynWSzEJsTWrOFh9FvXRk0NDv?dl=1">Download Datapack</a></td>
 		</tr>
 	</table>
 
@@ -185,9 +189,7 @@
 
 <!--Scripts-->
 <!--<script language="javascript" type="text/javascript" src="../elements/javascript/threecoltable.js"></script>-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

@@ -17,9 +17,9 @@
 
 <!--Navbar-->
 <nav>
-	<a class="nav_home disable_link nav_hover" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
-	<a class="nav_download disable_link nav_hover" onclick="openDownload()" href="javascript:void(0);" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></a>
-	<a class="nav_install disable_link nav_hover" href="../info/installation.html" id="download_button"><p>Installation</p></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button"><img src="../elements/nav/download.svg" alt="Download"><p>Download</p></div>
+	<a class="nav_button disable_link nav_install" href="../info/installation.html"><p>Installation</p></a>
 </nav>
 
 
@@ -46,7 +46,7 @@
 <p>Do you want to build a Jump and Run? So this is the right Datapack for you. With it you can make your own Jump and Run with Check Points and a Timer.</p>
 <p>To start the Game, you need to pass the Jump and Run Start Point. To leave it again you can drop the Barrier in your Inventory.<br>If you pass a Check Point, you will be teleported back to this Point, if you fall down.<br>If you pass the Jump and Run End Point you have finished the Game and the Timer stops.</p>
 
-<h3 class="spoiler_title" title="Open for more Informations">Setup</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content spoiler_flex">
 		<div class="spoiler_image">
@@ -63,7 +63,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" title="Open for more Informations">Parkour Blocks</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Parkour Blocks</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>For the Jump and Run you can only use the Blocks which are listed below. If the Player stands on an other Block, he will be teleported back to his latest Checkpoint. You also need to place these Blocks below the Start and End Point.</p>
@@ -130,9 +130,7 @@
 
 
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/image_gallery.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/download.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
 </body>

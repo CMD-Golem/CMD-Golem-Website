@@ -39,6 +39,85 @@ main {
 }
 
 /* ####################################################################### */
+/* Navbar */
+nav {
+	padding-right: 15%;
+	padding-left: 15%;
+	height: 60px;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	z-index: 2;
+	background-color: #222222;
+}
+
+@media (max-width: 1600px) {
+	nav {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+}
+
+@media (max-width: 1350px) {
+	nav {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+}
+
+/* Button */
+.nav_button {
+	float: right;
+	font-size: 17px;
+	padding: 15px 16px;
+	display: flex;
+	cursor: pointer;
+}
+
+.nav_button img {
+	height: 30px;
+}
+
+.nav_button p {
+	font-weight: bold;
+	font-size: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 0;
+	margin-top: 5px;
+	height: 25px;
+}
+
+/* Logo */
+.nav_home {
+	padding: 5px 16px 10px 16px;
+	float: left;
+}
+
+.nav_home h1 {
+	margin: 0;
+	font-size: 40px;
+	text-shadow: 4px 4px 5px rgba(0,0,0,0.65);
+}
+
+.nav_home h2 {
+	font-family: DragonForcE;
+	color: #A10000;
+	text-align: center;
+	font-weight: bold;
+	margin: 0;
+	font-size: 40px;
+	text-shadow: 4px 4px 5px rgba(0,0,0,0.65);
+}
+
+/* Hover */
+.nav_button:hover, .nav_button:focus {
+	background-color: #333333;
+	outline: none;
+	color: white;
+}
+
+/* ####################################################################### */
 /* Text */
 h1 {
 	font-family: DragonForcE;
@@ -60,7 +139,7 @@ code {
 }
 
 a:link, a:visited {
-	color: #A10000;
+	color: #ED0000;
 }
 
 a:hover, a:active, a:focus {
@@ -142,6 +221,120 @@ input:focus:hover, input:focus {
   background-color: #A10000;
 }
 
+/* Button */
+.button {
+	padding: 10px 20px;
+	background: #333333;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button:hover , .button:active, .button:focus{
+	background: #A10000;
+}
+
+/* Input elements */
+input[type=text], textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 9px;
+  padding: 12px 12px 12px 12px;
+  color: white;
+  background-color: #333333;
+}
+
+textarea {
+  resize: vertical;
+  height: 405px;
+
+}
+
+input[type=text]:focus:hover, input[type=text]:focus, input[type=text]:hover, textarea:focus:hover, textarea:focus, textarea:hover {
+  outline: none;
+  border-radius: 4px;
+}
+
+
+/* ####################################################################### */
+/* Spoiler */
+.spoiler_title {
+	cursor: pointer;
+	background-color: #333333;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 5px;
+	font-size: 20px;
+	width: 98%;
+}
+
+.spoiler_title:hover {
+	background-color: #222222;
+}
+
+.spoiler_show {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
+}
+
+.spoiler_content {
+	margin-left: 5px;
+	margin-bottom: 50px;
+	border-bottom: 5px solid #333333;
+	padding-bottom: 10px;
+}
+
+.spoiler_flex {
+	display: flex;
+}
+
+.spoiler_image {
+	width: 40%;
+	padding: 10px;
+}
+
+.spoiler_show img {
+	width: 100%;
+}
+
+.spoiler_text {
+	width: 59%;
+}
+
+.spoiler_settings p {
+	margin-bottom: 5px;
+}
+
+.spoiler_title:after {
+	content: "\002B";
+	color: white;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+	margin-right: 15px;
+}
+
+.spoiler_title.active:after {
+	content: "\2212";
+}
+
+
+@media screen and (max-width: 650px) {
+	.spoiler_flex {
+		flex-direction: column;
+	}
+	.spoiler_flex * {
+		width: 100%;
+	}
+	.spoiler_flex img {
+		max-width: 300px;
+	}
+}
+
+
 
 /* ####################################################################### */
 /* Footer */
@@ -208,4 +401,28 @@ footer img {
 	.footer_right a {
 		filter: contrast(100%);
 	}
+}
+
+/* ####################################################################### */
+/* Cookie Box */
+#cookie_box {
+	position: fixed;
+	width: 400px;
+	height: 200px;
+	bottom: 20px;
+	right: 20px;
+	padding: 0 15px;
+	border-radius: 10px;
+	background-color: #222222;
+	text-align: center;
+	z-index: 1;
+}
+
+.cookie_box_flex {
+	display: flex;
+	justify-content:space-around;
+}
+
+.accept_button {
+	border: 2px solid #A10000;
 }
