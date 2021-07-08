@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - NBT-Crafting</title>
+<meta class="description" content="Create a Recipe for the Crafting Table which has an Item with NBT Data as Result.">
+<meta rel="canonical" href="https://cmd-golem.netlify.app/help/nbt-crafting.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta class="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="stylesheet" type="text/css" href="elements/style/style.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div onclick="downloadCheck()" class="nav_button" title="Generate the Datapack and download it as a zip file."><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div onclick="addRecipe(this)" class="nav_button" title="Add new Recipe (Ctrl + Enter)"><img src="../elements/nav/add.svg" alt="Add new Recipe"><p class="nav_text">Add new Recipe</p></div>
+	<div style="display: none;" onclick="compactView()" id="compact_view" class="nav_button" title="Change to compact View (removes all unnecessary text)"><img src="../elements/nav/compress.svg" alt="Report a Bug"></div>
+	<a style="display: none;" href="" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<!--Content-->
+<main class="main_sidebar">
+<div>
+	<h1 style="letter-spacing: 3px;">NBt-Crafting</h1>
+
+	<div class="hide_compact">
+		<p>Create a Recipe for the Crafting Table which has an Item with NBT Data as Result.</p>
+		<p>You just need to create a normal Recipe (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>) for Datapacks and the result Item with NBT on it, paste it into the correct inputs and download the Datapack. The Count of your result Item is automatically defined from the Recipe.</p>
+		<p>The result Item can't be an Item which could be in the Inventory and has NBT on it, because one of it will be cleared after the player crafts the Item.<br>I recommend to use something like Barriers, Structure Voids or Knowledge Books (for non stackable Items).</p>
+		<br>
+	</div>
+	
+	<p>Datapack Name (needed)</p>
+	<input type="text" placeholder='datapack_name' class="datapack_name needed">
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="spoiler(this)">Advanced options</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<input type="checkbox" id="file_name" class="checkbox" onclick="changeFileName()"><label for="file_name">Enable Recipe Name field to generate the file names from it.</label>
+			<p style="margin-left: 24px; margin-top: 10px;">Use $ character in Folder Path Fields to let it replace with the Recipe Name.</p>
+			
+			<p>Scoreborad Name</p>
+			<input type="text" placeholder='nbt_craft' class="score">
+		</div>
+	</div>
+	<br><br><hr><br>
+</div>
+
+<article id="0">
+	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
+		<img src="../elements/nav/close.svg" alt="Close">
+	</div>
+
+	<p>Recipe (needed)</p>
+	<textarea id="el_recipe" class="recipe_text needed" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:knowledge_book",&#10;        "count": 1&#10;    }&#10;}'></textarea>
+	
+	<p>Result Item with NBT-Data (needed)</p>
+	<input type="text" placeholder='stick{Enchantments:[{id:"minecraft:knockback",lvl:5s}]}' class="nbt_item needed" onchange="resultItem(this)" >
+
+	<div class="file_name" style="display: none;">
+		<p>Recipe Name</p>
+		<input type="text" placeholder='nbt_craft' onchange="fileName(this)" class="auto_name">
+	</div>
+
+	<br><br><hr>
+	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" style="font-weight: normal; font-size: inherit;">Advanced options</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<table style="width: 100%">
+				<tr>
+					<td colspan="2"><br>Tag Name</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="text" placeholder='nbt_craft' class="tag"></td>
+				</tr>
+				<tr>
+					<td><br>Advancement Folder Path</td>
+					<td><br>Advancement File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='/' class="advancement_folder folder"></td>
+					<td><input type="text" placeholder='nbt_craft' class="advancement_name"></td>
+				</tr>
+				<tr>
+					<td><br>Recipe Folder Path</td>
+					<td><br>Recipe File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='/' class="recipe_folder folder"></td>
+					<td><input type="text" placeholder='nbt_craft' class="recipe_name"></td>
+				</tr>
+				<tr>
+					<td><br>Function Detect Folder Path</td>
+					<td><br>Function Detect File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='craft/' class="function_detect_folder folder"></td>
+					<td><input type="text" placeholder='detect_craft' class="function_detect_name"></td>
+				</tr>
+				<tr>
+					<td>Function Craft Folder Path</td>
+					<td>Function Craft File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='craft/' class="function_craft_folder folder"></td>
+					<td><input type="text" placeholder='craft' class="function_craft_name"></td>
+				</tr>
+				<tr>
+					<td>Function Mass Craft Folder Path</td>
+					<td>Function Mass Craft File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='craft/' class="function_mass_folder folder"></td>
+					<td><input type="text" placeholder='mass_craft' class="function_mass_name"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</article>
+
+</main>
+
+<aside>
+	<div class="sidebar_link" onclick="scrollToParent('0')" id="link_0">
+		<div class="dot"></div><span class="disable_link link_text">New</span><br>
+	</div>
+</aside>
+
+<!--Scripts-->
+<script language="javascript" type="text/javascript" src="../elements/javascript/cookies.js"></script>
+<script language="javascript" type="text/javascript" src="elements/javascript/app.js"></script>
+<script language="javascript" type="text/javascript" src="elements/javascript/save.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>

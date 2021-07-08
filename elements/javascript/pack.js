@@ -57,7 +57,7 @@ function openDownload () {
 //}
 
 // set newest version
-document.getElementById("newest").innerHTML = "1.17";
+document.getElementById("newest").innerHTML = "1.17 - 1.17.1";
 
 
 // #################################################################################################
