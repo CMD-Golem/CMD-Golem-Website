@@ -63,3 +63,15 @@ aside {
 .sidebar_link:hover .dot {
   background-color: #CCCCCC;
 }
+
+select {
+  padding: 10px;
+  border: 0px solid;
+  background: #333333;
+  border-radius: 5px;
+  color: inherit;
+}
+
+select:focus {
+  outline: none;
+}

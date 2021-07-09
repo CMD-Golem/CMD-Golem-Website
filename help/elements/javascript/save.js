@@ -11,6 +11,8 @@ function downloadCheck() {
   if (el_score.value == "") {score = el_score.placeholder;}
   else {score = el_score.value;}
 
+  version = document.getElementsByClassName("version")[0].value
+
   for (var i = 0; i < article.length; i++) {
     var auto_name = article[i].getElementsByClassName("auto_name")[0].value;
 
@@ -23,6 +25,7 @@ function downloadCheck() {
     el_recipe_name = article[i].getElementsByClassName("recipe_name")[0];
     if (el_recipe_name.value == "") {recipe_name = el_recipe_name.placeholder;}
     else {recipe_name = el_recipe_name.value;}
+    if (recipe_name.includes("$") == true) {recipe_name = recipe_name.replace(/\u0024/g, "");}
 
     // Advancement
     el_advancement_folder = article[i].getElementsByClassName("advancement_folder")[0];
@@ -33,6 +36,7 @@ function downloadCheck() {
     el_advancement_name = article[i].getElementsByClassName("advancement_name")[0];
     if (el_advancement_name.value == "") {advancement_name = el_advancement_name.placeholder;}
     else {advancement_name = el_advancement_name.value;}
+    if (advancement_name.includes("$") == true) {advancement_name = advancement_name.replace(/\u0024/g, "");}
 
     // Function Detect
     el_function_detect_folder = article[i].getElementsByClassName("function_detect_folder")[0];
@@ -43,6 +47,7 @@ function downloadCheck() {
     el_function_detect_name = article[i].getElementsByClassName("function_detect_name")[0];
     if (el_function_detect_name.value == "") {function_detect_name = el_function_detect_name.placeholder;}
     else {function_detect_name = el_function_detect_name.value;}
+    if (function_detect_name.includes("$") == true) {function_detect_name = function_detect_name.replace(/\u0024/g, "");}
 
     // Function Craft
     el_function_craft_folder = article[i].getElementsByClassName("function_craft_folder")[0];
@@ -53,6 +58,7 @@ function downloadCheck() {
     el_function_craft_name = article[i].getElementsByClassName("function_craft_name")[0];
     if (el_function_craft_name.value == "") {function_craft_name = el_function_craft_name.placeholder;}
     else {function_craft_name = el_function_craft_name.value;}
+    if (function_craft_name.includes("$") == true) {function_craft_name = function_craft_name.replace(/\u0024/g, "");}
 
     // Function Mass
     el_function_mass_folder = article[i].getElementsByClassName("function_mass_folder")[0];
@@ -63,6 +69,7 @@ function downloadCheck() {
     el_function_mass_name = article[i].getElementsByClassName("function_mass_name")[0];
     if (el_function_mass_name.value == "") {function_mass_name = el_function_mass_name.placeholder;}
     else {function_mass_name = el_function_mass_name.value;}
+    if (function_mass_name.includes("$") == true) {function_mass_name = function_mass_name.replace(/\u0024/g, "");}
 
     // Tag
     el_tag = article[i].getElementsByClassName("tag")[0];
@@ -104,7 +111,7 @@ function downloadCheck() {
   zip.file("data/minecraft/tags/functions/load.json", function_tag_load);
 
   // Minecraft pack.mcmeta
-  var pack_mcmeta = '{"pack": {"pack_format": 7,"description": "NBT-Crafting by CMD-Golem"}}';
+  var pack_mcmeta = '{"pack": {"pack_format": ' + version + ',"description": "Made with the NBT-Crafting Generator by CMD-Golem\ncmd-golem.netlify.app/help/nbt_crafting"}}';
   zip.file("pack.mcmeta", pack_mcmeta);
 
   //Download

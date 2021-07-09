@@ -1,6 +1,7 @@
 // Define Variables
 var datapack_name = "";
 var score = "nbt_craft";
+var version = "7";
 
 
 var placeholder = "";
@@ -14,22 +15,27 @@ var auto_name = "";
 var recipe_folder = "/";
 var recipe_name = "nbt_craft";
 var recipe_text = "";
+var recipe_counter
 
 // Advancement
 var advancement_folder = "/";
 var advancement_name = "nbt_craft";
+var advancement_counter
 
 // Function Detect
 var function_detect_folder = "craft/";
 var function_detect_name = "detect_craft";
+var function_detect_counter
 
 // Function Craft
 var function_craft_folder = "craft/";
 var function_craft_name = "craft";
+var function_craft_counter
 
 // Function Mass
 var function_mass_folder = "craft/";
 var function_mass_name = "mass_craft";
+var function_mass_counter
 
 
 // #####################################################################
@@ -43,9 +49,10 @@ function addRecipe(el) {
 
 	if (el != undefined) {el.blur()};
 
+	counter = counter + 1;
+
 	refreshVar(el_last_article);
 
-	counter = counter + 1;
 
 	var template_recipe = `
 	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
@@ -62,7 +69,7 @@ function addRecipe(el) {
 	</div>
 
 	<br><br><hr>
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="spoiler(this)">Advanced options</h3>
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
 			<table style="width: 100%;">
@@ -78,7 +85,7 @@ function addRecipe(el) {
 				</tr>
 				<tr>
 					<td><input type="text" placeholder='${advancement_folder}' class="advancement_folder folder"></td>
-					<td><input type="text" placeholder='${advancement_name}${counter}' class="advancement_name"></td>
+					<td><input type="text" placeholder='${advancement_name}${advancement_counter}' class="advancement_name"></td>
 				</tr>
 				<tr>
 					<td><br>Recipe Folder Path</td>
@@ -86,7 +93,7 @@ function addRecipe(el) {
 				</tr>
 				<tr>
 					<td><input type="text" placeholder='${recipe_folder}' class="recipe_folder folder"></td>
-					<td><input type="text" placeholder='${recipe_name}${counter}' class="recipe_name"></td>
+					<td><input type="text" placeholder='${recipe_name}${recipe_counter}' class="recipe_name"></td>
 				</tr>
 				<tr>
 					<td><br>Function Detect Folder Path</td>
@@ -94,7 +101,7 @@ function addRecipe(el) {
 				</tr>
 				<tr>
 					<td><input type="text" placeholder='${function_detect_folder}' class="function_detect_folder folder"></td>
-					<td><input type="text" placeholder='${function_detect_name}${counter}' class="function_detect_name"></td>
+					<td><input type="text" placeholder='${function_detect_name}${function_detect_counter}' class="function_detect_name"></td>
 				</tr>
 				<tr>
 					<td>Function Craft Folder Path</td>
@@ -102,7 +109,7 @@ function addRecipe(el) {
 				</tr>
 				<tr>
 					<td><input type="text" placeholder='${function_craft_folder}' class="function_craft_folder folder"></td>
-					<td><input type="text" placeholder='${function_craft_name}${counter}' class="function_craft_name"></td>
+					<td><input type="text" placeholder='${function_craft_name}${function_craft_counter}' class="function_craft_name"></td>
 				</tr>
 				<tr>
 					<td>Function Mass Craft Folder Path</td>
@@ -110,7 +117,7 @@ function addRecipe(el) {
 				</tr>
 				<tr>
 					<td><input type="text" placeholder='${function_mass_folder}' class="function_mass_folder folder"></td>
-					<td><input type="text" placeholder='${function_mass_name}${counter}' class="function_mass_name"></td>
+					<td><input type="text" placeholder='${function_mass_name}${function_mass_counter}' class="function_mass_name"></td>
 				</tr>
 			</table>
 		</div>
@@ -161,35 +168,47 @@ function refreshVar(last_article) {
 	var el_tag = last_article.getElementsByClassName("tag")[0].value;
 	if (el_tag != "") {tag = el_tag;}
 
+	// Preset Counter
+	recipe_counter = counter;
+	advancement_counter = counter;
+	function_detect_counter = counter;
+	function_craft_counter = counter;
+	function_mass_counter = counter;
+
 	// Recipe
 	var el_recipe_folder = last_article.getElementsByClassName("recipe_folder")[0].value;
 	if (el_recipe_folder != "") {recipe_folder = el_recipe_folder;}
-	var el_recipe_name = last_article.getElementsByClassName("recipe_name")[0].value;
-	if (el_recipe_name != "") {recipe_name = el_recipe_name;}
+	var el_recipe_name = last_article.getElementsByClassName("recipe_name")[0];
+	if (el_recipe_name.value != "") {recipe_name = el_recipe_name.value;}
+	if (el_recipe_name.value.includes("$") == true || el_recipe_name.placeholder.includes("$") == true) {recipe_counter = "";}
 
 	// Advancement
 	var el_advancement_folder = last_article.getElementsByClassName("advancement_folder")[0].value;
 	if (el_advancement_folder != "") {advancement_folder = el_advancement_folder;}
-	var el_advancement_name = last_article.getElementsByClassName("advancement_name")[0].value;
-	if (el_advancement_name != "") {advancement_name = el_advancement_name;}
+	var el_advancement_name = last_article.getElementsByClassName("advancement_name")[0];
+	if (el_advancement_name.value != "") {advancement_name = el_advancement_name.value;}
+	if (el_advancement_name.value.includes("$") == true || el_advancement_name.placeholder.includes("$") == true) {advancement_counter = "";}
 
 	// Function Detect
 	var el_function_detect_folder = last_article.getElementsByClassName("function_detect_folder")[0].value;
 	if (el_function_detect_folder != "") {function_detect_folder = el_function_detect_folder;}
-	var el_function_detect_name = last_article.getElementsByClassName("function_detect_name")[0].value;
-	if (el_function_detect_name != "") {function_detect_name = el_function_detect_name;}
+	var el_function_detect_name = last_article.getElementsByClassName("function_detect_name")[0];
+	if (el_function_detect_name.value != "") {function_detect_name = el_function_detect_name.value;}
+	if (el_function_detect_name.value.includes("$") == true || el_function_detect_name.placeholder.includes("$") == true) {function_detect_counter = "";}
 
 	// Function Craft
 	var el_function_craft_folder = last_article.getElementsByClassName("function_craft_folder")[0].value;
 	if (el_function_craft_folder != "") {function_craft_folder = el_function_craft_folder;}
-	var el_function_craft_name = last_article.getElementsByClassName("function_craft_name")[0].value;
-	if (el_function_craft_name != "") {function_craft_name = el_function_craft_name;}
+	var el_function_craft_name = last_article.getElementsByClassName("function_craft_name")[0];
+	if (el_function_craft_name.value != "") {function_craft_name = el_function_craft_name.value;}
+	if (el_function_craft_name.value.includes("$") == true || el_function_craft_name.placeholder.includes("$") == true) {function_craft_counter = "";}
 
 	// Function Mass
 	var el_function_mass_folder = last_article.getElementsByClassName("function_mass_folder")[0].value;
 	if (el_function_mass_folder != "") {function_mass_folder = el_function_mass_folder;}
-	var el_function_mass_name = last_article.getElementsByClassName("function_mass_name")[0].value;
-	if (el_function_mass_name != "") {function_mass_name = el_function_mass_name;}
+	var el_function_mass_name = last_article.getElementsByClassName("function_mass_name")[0];
+	if (el_function_mass_name.value != "") {function_mass_name = el_function_mass_name.value;}
+	if (el_function_mass_name.value.includes("$") == true || el_function_mass_name.placeholder.includes("$") == true) {function_mass_counter = "";}
 }
 
 // #####################################################################
@@ -221,8 +240,15 @@ function fileName(input) {
 	el_auto_name.getElementsByClassName("tag")[0].placeholder = input.value;
 	tag = input.value;
 
-	el_auto_name.getElementsByClassName("recipe_name")[0].placeholder = input.value;
-	recipe_name = input.value;
+
+	var pl_recipe_name = el_auto_name.getElementsByClassName("recipe_name")[0];
+	if (pl_recipe_name.placeholder.includes("$") == false) {
+		pl_recipe_name.placeholder = input.value;
+		recipe_name = input.value;
+	}
+
+	//el_auto_name.getElementsByClassName("recipe_name")[0].placeholder = input.value;
+	//recipe_name = input.value;
 
 	el_auto_name.getElementsByClassName("advancement_name")[0].placeholder = input.value;
 	advancement_name = input.value;
@@ -241,11 +267,13 @@ function fileName(input) {
 // Scroll from Sidebar
 var link_from_recipe_name;
 
-function scrollToParent(id) {
-	
+function scrollToParent(id) {	
 	var sel_element = document.getElementById(id)
 	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
 	sel_element.style.backgroundColor = "#A10000";
+
+	closeSpoiler(sel_element);
+
 	setTimeout(function(){ scrollToParentColor(sel_element) }, 500);
 }
 
@@ -279,37 +307,37 @@ document.addEventListener("keyup", e => {
 
 // #####################################################################
 // Compact View
-//var el_compact_view = document.getElementById("compact_view");
-//var compact_view;
+var el_compact_view = document.getElementById("compact_view");
+var compact_view;
 
-//if (localStorage.getItem("compact_view") == "true") {
-//	compact_view = "false";
-//	compactView();
-//}
+if (localStorage.getItem("compact_view") == "true") {
+	compact_view = "false";
+	compactView();
+}
 
-//function compactView() {
-//	var hide_compact = document.getElementsByClassName("hide_compact")
-//
-//	if (compact_view == "true") {
-//		if (cookies == true) {localStorage.setItem("compact_view", "false");}
-//		compact_view = "false";
-//
-//		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
-//		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
-//
-//		for (var i = 0; i < hide_compact.length; i++) {
-//			hide_compact[i].style.display = "block";
-//		}
-//	}
-//	else {
-//		if (cookies == true) {localStorage.setItem("compact_view", "true");}
-//		compact_view = "true";
-//
-//		el_compact_view.title = "Change to expanded View";
-//		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
-//
-//		for (var i = 0; i < hide_compact.length; i++) {
-//			hide_compact[i].style.display = "none";
-//		}
-//	}
-//}
+function compactView() {
+	var hide_compact = document.getElementsByClassName("hide_compact")
+
+	if (compact_view == "true") {
+		if (cookies == true) {localStorage.setItem("compact_view", "false");}
+		compact_view = "false";
+
+		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
+		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
+
+		for (var i = 0; i < hide_compact.length; i++) {
+			hide_compact[i].style.display = "block";
+		}
+	}
+	else {
+		if (cookies == true) {localStorage.setItem("compact_view", "true");}
+		compact_view = "true";
+
+		el_compact_view.title = "Change to expanded View";
+		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
+
+		for (var i = 0; i < hide_compact.length; i++) {
+			hide_compact[i].style.display = "none";
+		}
+	}
+}
