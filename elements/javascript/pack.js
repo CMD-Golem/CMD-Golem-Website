@@ -41,7 +41,7 @@ function openDownload() {
 	}
 
 	else {
-		window.history.back();
+		window.location.hash = "";
 	}
 }
 
