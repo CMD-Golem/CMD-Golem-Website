@@ -3,16 +3,26 @@
 	
 <head>
 <title>CMD-Golem - NBT-Crafting</title>
-<meta class="description" content="Create a Recipe for the Crafting Table which has an Item with NBT Data as Result.">
-<meta rel="canonical" href="https://cmd-golem.netlify.app/help/nbt-crafting.html">
+<meta class="description" content="Create a recipe for the crafting table that has an item with NBT data as result.">
+<meta rel="canonical" href="https://cmd-golem.netlify.app/help/nbt-crafting">
 <meta name="robots" content="index, follow, archive"/>
 <meta class="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
-<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
-<link rel="stylesheet" type="text/css" href="elements/style/style.css"/>
-<link rel="icon" href="../elements/nav/favicon.png">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
+<link rel="stylesheet" type="text/css" href="../style.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+
+<style type="text/css">
+	
+@media (max-width: 650px) {
+	.nav_text {
+		display: none;
+	}
+}
+
+</style>
 
 </head>
 <body>
@@ -20,10 +30,10 @@
 <!--Navbar-->
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
-	<div onclick="compactView()" id="compact_view" class="nav_button" title="Change to compact View (removes introduction text)"><img src="../elements/nav/compress.svg" alt="Report a Bug"></div>
-	<a href="" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
-	<div onclick="downloadCheck()" class="nav_button" title="Generate the Datapack and download it as a zip file."><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
-	<div onclick="addRecipe(this)" class="nav_button" title="Add new Recipe (Ctrl + Enter)"><img src="../elements/nav/add.svg" alt="Add new Recipe"><p class="nav_text">Add new Recipe</p></div>
+	<div onclick="downloadCheck()" class="nav_button" title="Generate the Datapack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div onclick="addRecipe(this)" class="nav_button" title="Add new Recipe (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Recipe"><p class="nav_text">Add new Recipe</p></div>
+	<div onclick="compactView()" id="compact_view" class="nav_button" title="Change to compact View (removes introduction text)"><img src="../../elements/nav/compress.svg" alt="Report a Bug"></div>
+	<a href="" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
 
@@ -33,12 +43,12 @@
 	<h1 style="letter-spacing: 3px;">NBt-Crafting</h1>
 
 	<div class="hide_compact">
-		<p>Create a Recipe for the Crafting Table which has an Item with NBT Data as Result.</p>
-		<p>You just need to create a normal Recipe in JSON format (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>), the Item with NBT which will be the output and define the Minecraft Version. The Count of your output Item will be automatically defined from the Recipe.</p>
-		<p>But be aware that the result Item can't be an Item which could be in the Inventory with NBT on it, because the defined count of it will be cleared after the player crafts the Item.<br>I recommend to use something like Barriers, Structure Voids or Knowledge Books (for non stackable Items).</p>
-		<p>To get the Datapack you just need to fill out all fields which are marked with needed. To add another Recipe you can use the Button in the Navbar or the shortcut Ctrl + Enter. The Sidebar on the left can be used to navigate between each Recipe by clicking on it.</p>
-		<p>Even more options can be found under the Advanced options Spoilers. The gray placeholder Text will be used in the final Pack if you don't overwrite it.<br> You can use the $ character in File Name Fields to keep the same Name in new Recipes. This will only work correctly if you change the Folder Path. If you use a $ character in Folder Path Fields it will be replaced with the Recipe Name. The Recipe Name can be defined if you open the first Advanced options Spoiler and check the checkbox in it. Afterwards you can change it for each Recipe individual.</p>
-		<p>Because a normal Recipe Unlocker Datapack would break this Crafting Methode, you should use <a href="../datapacks/recipe_unlocker.html" target="_blank">this one</a>.</p>
+		<p>Create a recipe for the crafting table that has an item with NBT data as result.</p>
+		<p>You just need to create a normal recipe in JSON format (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>) and the resulting item with NBT. The number of your resulting item will be defined automatically from the recipe.</p>
+		<p>But note that the result item is not an item with NBT, which could be in the inventory, because the defined count of it will be deleted after the player has crafted the item.<br>I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items).</p>
+		<p>To get the Data Pack, you just need to fill in all the fields marked with needed and download it using the shortcut Ctrl + S or the Download button in the navigation bar. There you will also find the button to add a new recipe. A new recipe can also be created by pressing Ctrl + Enter.<br>In the sidebar on the left you can navigate between the recipes by clicking on them.</p>
+		<p>Even more options can be found under the "Advanced Options" spoiler. If you do not overwrite the gray placeholder text, it will be used in the final pack.<br>You can use the $ character in File Name fields to keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.</p>
+		<p>Since a normal Recipe Unlocker Data Pack would break this crafting method, you should use <a href="../../datapacks/recipe_unlocker.html" target="_blank">this one</a>.</p>
 		<p style="text-align: right;"><a class="button disable_link" onclick="compactView()">Hide introduction Text</a></p>
 		<br>
 	</div>
@@ -48,13 +58,13 @@
 
 	<p>Select your Minecraft Version (needed)</p>
 	<select class="version" style="font-size: 20px; font-family: FiraSans;">
-		<option value="7">1.17 +</option>
+		<option value="7">1.17 and newer</option>
 		<option value="6">1.16.2 - 1.16.4</option>
 		<option value="5">1.15 - 1.16.1</option>
 		<option value="4">1.13 - 1.14</option>
 	</select>
 
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced options</h3>
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
 			<input type="checkbox" id="file_name" class="checkbox" onclick="changeFileName()"><label for="file_name">Enable Recipe Name field to generate the file names from it.</label>
@@ -69,7 +79,7 @@
 
 <article id="0">
 	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
-		<img src="../elements/nav/close.svg" alt="Close">
+		<img src="../../elements/nav/close.svg" alt="Close">
 	</div>
 
 	<p>Recipe (needed)</p>
@@ -84,7 +94,7 @@
 	</div>
 
 	<br><br><hr>
-	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" style="font-weight: normal; font-size: inherit;">Advanced options</h3>
+	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" style="font-weight: normal; font-size: inherit;">Advanced Options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
 			<table style="width: 100%">
@@ -144,16 +154,25 @@
 
 <aside>
 	<div class="sidebar_link" onclick="scrollToParent('0')" id="link_0">
-		<div class="dot"></div><span class="disable_link link_text">New</span><br>
+		<div class="dot"></div><span class="disable_link link_text">First Recipe</span><br>
 	</div>
 </aside>
 
+<div id="progress_bar" style="display: none;">
+	<div class="progress_bar_content">
+		<h3>Downloading</h3>
+		<div class="progress_bar">
+			<div id="bar"></div>
+		</div>
+	</div>
+</div>
+
 <!--Scripts-->
-<script language="javascript" type="text/javascript" src="../elements/javascript/cookies.js"></script>
-<script language="javascript" type="text/javascript" src="elements/javascript/app.js"></script>
-<script language="javascript" type="text/javascript" src="elements/javascript/save.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/spoiler.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/cookies.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="app.js"></script>
+<script language="javascript" type="text/javascript" src="save.js"></script>
 
 </body>
 </html>

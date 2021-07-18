@@ -1,27 +1,19 @@
 // Site Search
-function siteSearch() {
-	var input, filter, ul, article, filterwords, i;
-	input = document.getElementById("site_search");
-	filter = input.value.toUpperCase();
-	ul = document.getElementById("article-list");
-	article = ul.getElementsByClassName("filterme");
+var article = document.getElementById("article-list").getElementsByClassName("filterme");
 
-	for (i = 0; i < article.length; i++) {
-		filterwords = article[i].className;
+function siteSearch() {
+	var input = document.getElementById("site_search");
+	var filter = input.value.toUpperCase();
+
+	for (var i = 0; i < article.length; i++) {
+		var filterwords = article[i].className;
 		if (filterwords.toUpperCase().indexOf(filter) > -1) {
 			article[i].classList.remove("hide_search");
 		} else {
 			article[i].classList.add("hide_search");
 		}
 	}
-
-	if (article.length - document.getElementsByClassName("hide_search").length == 0) {
-		document.getElementById("not-found").style.display = "block";
-	}
-
-	else {
-		document.getElementById("not-found").style.display = "none";
-	};
+	notFound()
 };
 
 
@@ -29,10 +21,7 @@ function siteSearch() {
 // Add filter
 var hashfilter = window.location.hash.substr(1);
 
-if (document.getElementById(hashfilter) == null) {
-	console.log("Filter in Hash isn't a real Filter!");
-}
-else {
+if (document.getElementById(hashfilter) != null) {
 	document.getElementById(hashfilter).checked = true;
 }
 
@@ -52,6 +41,7 @@ $("#filters :checkbox").click(function () {
 	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
 	all.not(tgts).addClass("hide_filter");
 	tgts.removeClass("hide_filter");
+	notFound();
 });
 
 
@@ -69,7 +59,23 @@ function loadFilter() {
 	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
 	all.not(tgts).addClass("hide_filter");
 	tgts.removeClass("hide_filter");
+	notFound();
 };
+
+//#################################################################################################
+// Show not found when no results
+function notFound() {
+	var hide_search = document.getElementsByClassName("hide_search").length;
+	var hide_filter = document.getElementsByClassName("hide_filter").length;
+
+	if (article.length - hide_filter - hide_search <= 0) {
+		document.getElementById("not-found").style.display = "block";
+	}
+	else {
+		document.getElementById("not-found").style.display = "none";
+	};
+}
+
 
 
 //#################################################################################################

@@ -32,22 +32,47 @@ function bigImg(element) {
 // Download
 // add element if hash = download
 if (window.location.hash.substr(1) == "download") {
-	document.getElementsByTagName("section")[0].style.display = "block";
+	changeDownload();
 }
 
-function openDownload () {
-	var sectionload = document.getElementsByTagName("section")[0];
-	var download_button = document.getElementById("download_button");
-
-	if (sectionload.style.display == "none") {
-		sectionload.style.display = "block";
+function openDownload() {
+	if (document.getElementsByTagName("section")[0].style.display == "none") {
+		window.location.hash = "download";
 	}
 
 	else {
-		sectionload.style.display = "none";
+		window.history.back();
 	}
 }
 
+window.onhashchange = function() {
+	changeDownload();
+}
+
+function changeDownload() {
+	var section = document.getElementsByTagName("section")[0];
+	var main = document.getElementsByTagName("main")[0];
+	var download_button = document.getElementById("download_button");
+	var title = document.getElementsByTagName("title")[0];
+
+	if (section.style.display == "none") {
+		section.style.display = "block";
+		main.style.display = "none";
+		download_button.title = "Go back to Pack Page";
+
+		title.innerHTML = "CMD-Golem - " + document.getElementsByTagName("h1")[0].innerHTML + " Download";
+	}
+
+	else {
+		section.style.display = "none";
+		main.style.display = "block";
+		download_button.title = "";
+
+		title.innerHTML = "CMD-Golem - " + document.getElementsByTagName("h1")[0].innerHTML;
+	}
+}
+
+// Close Window on scroll
 //window.onscroll = function (e) {
 //	var sectionload = document.getElementsByTagName("section")[0];
 //	

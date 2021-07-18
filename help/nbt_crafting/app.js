@@ -56,7 +56,7 @@ function addRecipe(el) {
 
 	var template_recipe = `
 	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
-		<img src="../elements/nav/close.svg">
+		<img src="../../elements/nav/close.svg">
 	</div>
 
 	<p>Recipe (needed)</p>
@@ -69,7 +69,7 @@ function addRecipe(el) {
 	</div>
 
 	<br><br><hr>
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced options</h3>
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
 			<table style="width: 100%;">
@@ -298,10 +298,15 @@ function resultItem(input) {
 
 // #####################################################################
 // shortcuts
-document.addEventListener("keyup", e => {
+document.addEventListener("keydown", e => {
 	// Add new recipe crtl + enter
-	if (event.ctrlKey && (event.which == 13 || event.keyCode == 13) ) {
+	if (e.ctrlKey && (e.which == 13 || e.keyCode == 13) ) {
 		addRecipe();
+	}
+	// Save datapack ctrl + s
+	if (e.ctrlKey && (e.which == 83 || e.keyCode == 83) ) {
+		downloadCheck();
+		e.preventDefault();
 	}
 });
 

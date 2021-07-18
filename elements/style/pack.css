@@ -103,21 +103,8 @@ header p {
 /* ####################################################################### */
 /* Download */
 section {
-	z-index: 6;
-	margin-top: 60px;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
 	background-color: #292929;
 	text-align: center;
-	scrollbar-width: none;
-}
-
-section::-webkit-scrollbar {
-  display: none;
 }
 
 .download_close {
