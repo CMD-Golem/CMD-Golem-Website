@@ -3,7 +3,7 @@
 	
 <head>
 <title>CMD-Golem - Better Wandering Trader Addons</title>
-<meta name="description" content="Create your own Trades for the Better Wandering Trader Datapack.">
+<meta name="description" content="Create your own trades for the Better Wandering Trader Data Pack.">
 <meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/better_wandering_trader/create_addon.html">
 <meta name="robots" content="index, follow, archive"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,16 +31,16 @@
 <h1>Better Wandering Trader Addons</h1>
 
 
-<p>Create your own Trades for the Better Wandering Trader Datapack.</p>
+<p>Create your own Trades for the Better Wandering Trader Data Pack.</p>
 <ol>
-	<li>Create your Item in a summon command with a command generator like <a href="https://mcstacker.net/" target="_blank">MCStacker.net</a>.</li>
-	<li>Make shure that you just changed things in the Item part and not ones from the entity itself.</li>
-	<li>Paste the command into the Trade input box.</li>
-	<li>Select the correct rarity of your Item.</li>
+	<li>Create your item in a summon command with a command generator like <a href="https://mcstacker.net/" target="_blank">MCStacker.net</a>.</li>
+	<li>Make shure that you just changed things in the item part and not ones from the entity itself.</li>
+	<li>Paste the command into the trade input box.</li>
+	<li>Select the correct rarity of your item.</li>
 	<li>Repeat the first two steps for Buy one and Buy two and paste the command into the according box. If you don't want a Buy two you just leave the field blank.</li>
-	<li>If you want to have a setting to disable this Trade you can add the id of your item into the Trade ID input box.</li>
-	<li>Copy the commands from the output and save it in a mcfunction file in your datapack.</li>
-	<li>To link your trades with the main Datapack you need to create a usftrader named function tag under the minecraft folder of your Datapack, like the load named function tag which executes your function every time you reload the world. Make shure that replace isn't set or is false.</li>
+	<li>If you want to have a setting to disable this trade you can add the id of your item into the Trade ID input box.</li>
+	<li>Copy the commands from the output and save it in a mcfunction file in your Data Pack.</li>
+	<li>To link your trades with the main Data Pack you need to create a usftrader named function tag under the minecraft folder of your Data Pack, like the load named function tag which executes your function every time you reload the world. Make shure that replace isn't set or is set to false.</li>
 </ol>
 
 <br><br>
@@ -60,7 +60,7 @@
 <input type="text" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
 
 <br><br>
-<p>Trade ID (to disable the Trade)</p>
+<p>Trade ID (to disable the trade)</p>
 <input type="text" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
 
 <br><br>
