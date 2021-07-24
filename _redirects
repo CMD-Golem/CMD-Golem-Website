@@ -1,6 +1,8 @@
-/datapacks	/
-/datapacks.html	/
+/datapacks	/#Datapacks
+/datapacks.html	/#Datapacks
 /resource_packs	/#Resources
 /resource_packs.html	/#Resources
-/maps	/
-/maps.html	/
+/maps	/#Maps
+/maps.html	/#Maps
+
+# https://cmd-golem.netlify.app/* https://cmd-golem.com/:splat 301!
