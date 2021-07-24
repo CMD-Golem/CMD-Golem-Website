@@ -1,5 +1,5 @@
 // Site Search
-var article = document.getElementById("article-list").getElementsByClassName("filterme");
+var article = document.getElementById("article_list").getElementsByClassName("filterme");
 
 function siteSearch() {
 	var input = document.getElementById("site_search");
@@ -69,10 +69,10 @@ function notFound() {
 	var hide_filter = document.getElementsByClassName("hide_filter").length;
 
 	if (article.length - hide_filter - hide_search <= 0) {
-		document.getElementById("not-found").style.display = "block";
+		document.getElementById("not_found").style.display = "block";
 	}
 	else {
-		document.getElementById("not-found").style.display = "none";
+		document.getElementById("not_found").style.display = "none";
 	};
 }
 
