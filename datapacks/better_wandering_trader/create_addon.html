@@ -47,9 +47,9 @@
 <p>Trade (needed)</p>
 <input type="text" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
 
-<br><input type="checkbox" id="common" class="checkbox" onclick="onlyOne(this)" checked="true"><label for="common">Common</label>
-<br><input type="checkbox" id="rare" class="checkbox" onclick="onlyOne(this)"><label for="rare">Rare</label>
-<br><input type="checkbox" id="epic" class="checkbox" onclick="onlyOne(this)"><label for="epic">Epic</label>
+<br><input type="radio" name="trade" id="common" onclick="onlyOne(this)" checked="true"><label for="common">Common</label>
+<br><input type="radio" name="trade" id="rare" onclick="onlyOne(this)"><label for="rare">Rare</label>
+<br><input type="radio" name="trade" id="epic" onclick="onlyOne(this)"><label for="epic">Epic</label>
 
 <br><br>
 <p>Buy one (needed)</p>
@@ -65,7 +65,7 @@
 
 <br><br>
 <p>Output</p>
-<code id="trade_output" style="overflow-wrap: break-word; width: 100%;">Fill in your data...</code>
+<code id="trade_output" class="code_output">Fill in your data...</code>
 
 <a class="button disable_link" href="https://drive.google.com/uc?export=download&id=1sCFnsSQeVX2Vkqc_NwgNJtuephNVDFit" style="text-align: center; margin: 40px 0; display: block;" target="_blank">Example Pack with a One Hit Sword</a>
 

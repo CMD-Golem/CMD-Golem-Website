@@ -1,9 +1,15 @@
 var zip = new JSZip();
 
 
+
 function downloadCheck() {
   var article = document.getElementsByTagName("article");
   var execute = false;
+
+  var arr_recipe = [];
+  var arr_advancement = [];
+  var arr_function = [];
+  var arr_tag = [];
 
   datapack_name = document.getElementsByClassName("datapack_name")[0].value;
 
@@ -79,13 +85,14 @@ function downloadCheck() {
     // Item and Recipe
     nbt_item = article[i].getElementsByClassName("nbt_item")[0].value;
     recipe_text = article[i].getElementsByClassName("recipe_text")[0].value;
-
-    // Count and Placeholder
+    
     try {
+      // test json
       placeholder = JSON.parse(recipe_text).result.item;
       count = JSON.parse(recipe_text).result.count;
       execute = true;
 
+      // Fill in needed Fields
       if (nbt_item == "" || recipe_text == "" || datapack_name == "") {
         confirm("You need to fill out all Fields which are marked with (needed)!");
         return;
@@ -93,11 +100,36 @@ function downloadCheck() {
 
       folderPath();
 
+      // test that each namespaces exists only once 1.
+      arr_recipe.push(recipe_folder + recipe_name);
+      arr_advancement.push(advancement_folder + advancement_name);
+      arr_function.push(function_detect_folder + function_detect_name);
+      arr_function.push(function_craft_folder + function_craft_name);
+      arr_function.push(function_mass_folder + function_mass_name);
+      arr_tag.push(tag);
+
       generateFile();
     }
     catch (e) {
       confirm("Your Recipe isn't correct!");
     }
+  }
+
+  // test that each namespaces exists only once 2.
+  for (var j = 0; j < arr_tag.length; j++) {
+    if (arr_tag.includes(arr_tag[j], j + 1) == true) {nameDuplicateTag(arr_tag[j]);}
+  }
+
+  for (var j = 0; j < arr_recipe.length; j++) {
+    if (arr_recipe.includes(arr_recipe[j], j + 1) == true) {nameDuplicate(arr_recipe[j], "recipes/", ".json");}
+  }
+
+  for (var j = 0; j < arr_advancement.length; j++) {
+    if (arr_advancement.includes(arr_advancement[j], j + 1) == true) {nameDuplicate(arr_advancement[j], "advancements/", ".json");}
+  }
+
+  for (var j = 0; j < arr_function.length; j++) {
+    if (arr_function.includes(arr_function[j], j + 1) == true) {nameDuplicate(arr_function[j], "functions/", ".mcfunction");}
   }
 
   // Load Function
@@ -135,6 +167,17 @@ function downloadCheck() {
       addCounter();
     });
   }
+}
+
+
+// Stop generating file if dublicated name
+function nameDuplicate(duplicated_string, duplicated_array, duplicated_end) {
+  confirm("You have used the path " + duplicated_array + duplicated_string + duplicated_end + " more than once.");
+  return;
+}
+function nameDuplicateTag(duplicated_string) {
+  confirm("You have used the Tag " + duplicated_string + " more than once.");
+  return;
 }
 
 

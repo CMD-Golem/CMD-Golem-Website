@@ -180,36 +180,37 @@ function refreshVar(last_article) {
 	if (el_recipe_folder != "") {recipe_folder = el_recipe_folder;}
 	var el_recipe_name = last_article.getElementsByClassName("recipe_name")[0];
 	if (el_recipe_name.value != "") {recipe_name = el_recipe_name.value;}
-	if (el_recipe_name.value.includes("$") == true || el_recipe_name.placeholder.includes("$") == true) {recipe_counter = "";}
+	if (el_recipe_name.value.includes("$") == true || ( el_recipe_name.placeholder.includes("$") == true && el_recipe_name.value == "" )) {recipe_counter = "";}
 
 	// Advancement
 	var el_advancement_folder = last_article.getElementsByClassName("advancement_folder")[0].value;
 	if (el_advancement_folder != "") {advancement_folder = el_advancement_folder;}
 	var el_advancement_name = last_article.getElementsByClassName("advancement_name")[0];
 	if (el_advancement_name.value != "") {advancement_name = el_advancement_name.value;}
-	if (el_advancement_name.value.includes("$") == true || el_advancement_name.placeholder.includes("$") == true) {advancement_counter = "";}
+	if (el_advancement_name.value.includes("$") == true || ( el_advancement_name.placeholder.includes("$") == true && el_advancement_name.value == "" )) {advancement_counter = "";}
 
 	// Function Detect
 	var el_function_detect_folder = last_article.getElementsByClassName("function_detect_folder")[0].value;
 	if (el_function_detect_folder != "") {function_detect_folder = el_function_detect_folder;}
 	var el_function_detect_name = last_article.getElementsByClassName("function_detect_name")[0];
 	if (el_function_detect_name.value != "") {function_detect_name = el_function_detect_name.value;}
-	if (el_function_detect_name.value.includes("$") == true || el_function_detect_name.placeholder.includes("$") == true) {function_detect_counter = "";}
+	if (el_function_detect_name.value.includes("$") == true || ( el_function_detect_name.placeholder.includes("$") == true && el_function_detect_name.value == "" )) {function_detect_counter = "";}
 
 	// Function Craft
 	var el_function_craft_folder = last_article.getElementsByClassName("function_craft_folder")[0].value;
 	if (el_function_craft_folder != "") {function_craft_folder = el_function_craft_folder;}
 	var el_function_craft_name = last_article.getElementsByClassName("function_craft_name")[0];
 	if (el_function_craft_name.value != "") {function_craft_name = el_function_craft_name.value;}
-	if (el_function_craft_name.value.includes("$") == true || el_function_craft_name.placeholder.includes("$") == true) {function_craft_counter = "";}
+	if (el_function_craft_name.value.includes("$") == true || ( el_function_craft_name.placeholder.includes("$") == true && el_function_craft_name.value == "" )) {function_craft_counter = "";}
 
 	// Function Mass
 	var el_function_mass_folder = last_article.getElementsByClassName("function_mass_folder")[0].value;
 	if (el_function_mass_folder != "") {function_mass_folder = el_function_mass_folder;}
 	var el_function_mass_name = last_article.getElementsByClassName("function_mass_name")[0];
 	if (el_function_mass_name.value != "") {function_mass_name = el_function_mass_name.value;}
-	if (el_function_mass_name.value.includes("$") == true || el_function_mass_name.placeholder.includes("$") == true) {function_mass_counter = "";}
+	if (el_function_mass_name.value.includes("$") == true || ( el_function_mass_name.placeholder.includes("$") == true && el_function_mass_name.value == "" )) {function_mass_counter = "";}
 }
+
 
 // #####################################################################
 // Use Tag Name for all File Names
@@ -240,27 +241,40 @@ function fileName(input) {
 	el_auto_name.getElementsByClassName("tag")[0].placeholder = input.value;
 	tag = input.value;
 
-
+	// Recipe Name
 	var pl_recipe_name = el_auto_name.getElementsByClassName("recipe_name")[0];
 	if (pl_recipe_name.placeholder.includes("$") == false) {
 		pl_recipe_name.placeholder = input.value;
 		recipe_name = input.value;
 	}
 
-	//el_auto_name.getElementsByClassName("recipe_name")[0].placeholder = input.value;
-	//recipe_name = input.value;
+	// Advancement Name
+	var pl_advancement_name = el_auto_name.getElementsByClassName("advancement_name")[0];
+	if (pl_advancement_name.placeholder.includes("$") == false) {
+		pl_advancement_name.placeholder = input.value;
+		advancement_name = input.value;
+	}
 
-	el_auto_name.getElementsByClassName("advancement_name")[0].placeholder = input.value;
-	advancement_name = input.value;
+	// Function Mass Name
+	var pl_function_mass_name = el_auto_name.getElementsByClassName("function_mass_name")[0];
+	if (pl_function_mass_name.placeholder.includes("$") == false) {
+		pl_function_mass_name.placeholder = "mass_" + input.value;
+		function_mass_name = "mass_" + input.value;
+	}
 
-	el_auto_name.getElementsByClassName("function_mass_name")[0].placeholder = "mass_" + input.value;
-	function_mass_name = "mass_" + input.value;
+	// Function Craft Name
+	var pl_function_craft_name = el_auto_name.getElementsByClassName("function_craft_name")[0];
+	if (pl_function_craft_name.placeholder.includes("$") == false) {
+		pl_function_craft_name.placeholder = "craft_" + input.value;
+		function_craft_name = "craft_" + input.value;
+	}
 
-	el_auto_name.getElementsByClassName("function_craft_name")[0].placeholder = "craft_" + input.value;
-	function_craft_name = "craft_" + input.value;
-
-	el_auto_name.getElementsByClassName("function_detect_name")[0].placeholder = "detect_" + input.value;
-	function_detect_name = "detect_" + input.value;
+	// Function Detect Name
+	var pl_function_detect_name = el_auto_name.getElementsByClassName("function_detect_name")[0];
+	if (pl_function_detect_name.placeholder.includes("$") == false) {
+		pl_function_detect_name.placeholder = "detect_" + input.value;
+		function_detect_name = "detect_" + input.value;
+	}
 }
 
 // #####################################################################
@@ -328,7 +342,7 @@ function compactView() {
 		compact_view = "false";
 
 		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
+		el_compact_view.getElementsByTagName("img")[0].src = "../../elements/nav/compress.svg"
 
 		for (var i = 0; i < hide_compact.length; i++) {
 			hide_compact[i].style.display = "block";
@@ -339,7 +353,7 @@ function compactView() {
 		compact_view = "true";
 
 		el_compact_view.title = "Change to expanded View";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
+		el_compact_view.getElementsByTagName("img")[0].src = "../../elements/nav/expand.svg"
 
 		for (var i = 0; i < hide_compact.length; i++) {
 			hide_compact[i].style.display = "none";

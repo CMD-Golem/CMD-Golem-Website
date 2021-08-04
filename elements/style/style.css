@@ -27,12 +27,13 @@ body {
 
 /* Main */
 main {
-	padding: 50px 20px;
-	width: 1200px;
+	padding: 20px;
+	padding-bottom: 50px;
+	width: 800px;
 	margin: 0 auto;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 840px) {
 	main {
 		width: calc(100vw - 40px);
 	}
@@ -203,58 +204,83 @@ input:focus:hover, input:focus {
 
 
 /* ####################################################################### */
-/* Checkbox */
-.checkbox + label::before {
-  width: 15px;
-  height: 15px;
-  border-radius: 5px;
-  border: 2px solid #A10000;
-  background-color: transparent;
-  display: block;
-  content: "";
-  float: left;
-  margin-right: 5px;
+/* Input */
+input, textarea {
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	margin-bottom: 9px;
+	padding: 12px 12px 12px 12px;
+	color: white;
+	background-color: #333333;
 }
 
-.checkbox:checked + label::before {
-  box-shadow: inset 0px 0px 0px 2.5px #333333;
-  background-color: #A10000;
+textarea {
+	resize: vertical;
+	height: 405px;
+}
+
+textarea.autosize {
+	resize: none;
+	/*height: 27px; one line*/
+	margin-top: 20px;
+	padding: 0;
+}
+
+input:focus, input:focus:hover, textarea:focus, textarea:focus:hover {
+	outline: none;
+	border-radius: 4px;
+}
+
+/* Checkbox / Radio */
+input[type=checkbox], input[type=radio] {
+	appearance: none;
+	padding: 0;
+	margin: 0 5px 3px 0;
+	width: 19px;
+	height: 19px;
+	border: 2px solid #A10000;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: sub;
+}
+
+input[type=checkbox]:checked, input[type=radio]:checked {
+	box-shadow: inset 0px 0px 0px 2.5px #333333;
+	background-color: #A10000;
+}
+
+input[type=checkbox], input[type=checkbox]:focus, input[type=checkbox]:hover:focus, input[type=checkbox]:checked {
+	border-radius: 5px;
+}
+
+input[type=radio], input[type=radio]:focus, input[type=radio]:hover:focus, input[type=radio]:checked {
+	border-radius: 50%;
 }
 
 /* Button */
-.button {
+.button, button {
+	outline: none;
+	border: 0;
+	color: white;
 	padding: 10px 20px;
-	background: #333333;
+	background-color: #333333;
 	border-radius: 5px;
 	cursor: pointer;
 }
 
-.button:hover , .button:active, .button:focus{
+.button:hover , .button:active, .button:focus, button:hover , button:active, button:focus {
 	background: #A10000;
 }
 
-/* Input elements */
-input[type=text], textarea {
-  width: 100%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-bottom: 9px;
-  padding: 12px 12px 12px 12px;
-  color: white;
-  background-color: #333333;
-}
-
-textarea {
-  resize: vertical;
-  height: 405px;
-
-}
-
-input[type=text]:focus:hover, input[type=text]:focus, input[type=text]:hover, textarea:focus:hover, textarea:focus, textarea:hover {
-  outline: none;
-  border-radius: 4px;
+/* Code output */
+code.code_output {
+	overflow-wrap: break-word;
+	width: calc(100% - 24px);
+	padding: 12px;
+	font-size: 16px;
 }
 
 

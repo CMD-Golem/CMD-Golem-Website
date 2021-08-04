@@ -9,14 +9,13 @@
 <meta class="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
-<link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
 <link rel="stylesheet" type="text/css" href="../style.css"/>
 <link rel="icon" href="../../elements/nav/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 
 <style type="text/css">
 	
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 	.nav_text {
 		display: none;
 	}
@@ -33,7 +32,7 @@
 	<div onclick="downloadCheck()" class="nav_button" title="Generate the Datapack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<div onclick="addRecipe(this)" class="nav_button" title="Add new Recipe (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Recipe"><p class="nav_text">Add new Recipe</p></div>
 	<div onclick="compactView()" id="compact_view" class="nav_button" title="Change to compact View (removes introduction text)"><img src="../../elements/nav/compress.svg" alt="Report a Bug"></div>
-	<a href="" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+	<a href="https://www.planetminecraft.com/blog/nbt-crafting/" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
 
@@ -47,7 +46,7 @@
 		<p>You just need to create a normal recipe in JSON format (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>) and the resulting item with NBT. The number of your resulting item will be defined automatically from the recipe.</p>
 		<p>But note that the result item is not an item with NBT, which could be in the inventory, because the defined count of it will be deleted after the player has crafted the item.<br>I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items).</p>
 		<p>To get the Data Pack, you just need to fill in all the fields marked with needed and download it using the shortcut Ctrl + S or the Download button in the navigation bar. There you will also find the button to add a new recipe. A new recipe can also be created by pressing Ctrl + Enter.<br>In the sidebar on the left you can navigate between the recipes by clicking on them.</p>
-		<p>Even more options can be found under the "Advanced Options" spoiler. If you do not overwrite the gray placeholder text, it will be used in the final pack.<br>You can use the $ character in File Name fields to keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.</p>
+		<p>Even more options can be found under the "Advanced Options" spoiler. If you do not overwrite the gray placeholder text, it will be used in the final pack.<br>You can use the $ character in File Name fields as the first letter to keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.</p>
 		<p>Since a normal Recipe Unlocker Data Pack would break this crafting method, you should use <a href="../../datapacks/recipe_unlocker.html" target="_blank">this one</a>.</p>
 		<p style="text-align: right;"><a class="button disable_link" onclick="compactView()">Hide introduction Text</a></p>
 		<br>
@@ -94,7 +93,7 @@
 	</div>
 
 	<br><br><hr>
-	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" style="font-weight: normal; font-size: inherit;">Advanced Options</h3>
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
 			<table style="width: 100%">

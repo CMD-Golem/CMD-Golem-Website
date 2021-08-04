@@ -1,15 +1,3 @@
-// Only one Checkbox checked
-function onlyOne(checkbox) {
-	var checkboxes = document.getElementsByClassName('checkbox');
-	for (i = 0; i < checkboxes.length; i++) {
-		if (checkboxes[i] !== checkbox) {
-			checkboxes[i].checked = false
-		}
-	}
-	generate();
-}
-
-// Generate command
 function generate() {
 	//Get elements
 	var trade = document.getElementById("trade").value;
