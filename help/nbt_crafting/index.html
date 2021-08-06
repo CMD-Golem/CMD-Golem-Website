@@ -3,7 +3,7 @@
 	
 <head>
 <title>CMD-Golem - NBT-Crafting</title>
-<meta class="description" content="Create a recipe for the crafting table that has an item with NBT data as result.">
+<meta class="description" content="Create a recipe for the Crafting Table that has an item with NBT data as result.">
 <meta rel="canonical" href="https://cmd-golem.netlify.app/help/nbt-crafting">
 <meta name="robots" content="index, follow, archive"/>
 <meta class="viewport" content="width=device-width, initial-scale=1">
@@ -12,41 +12,36 @@
 <link rel="stylesheet" type="text/css" href="../style.css"/>
 <link rel="icon" href="../../elements/nav/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
-
 <style type="text/css">
-	
 @media (max-width: 700px) {
 	.nav_text {
 		display: none;
 	}
 }
-
 </style>
 
 </head>
 <body>
 
-<!--Navbar-->
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
 	<div onclick="downloadCheck()" class="nav_button" title="Generate the Datapack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<div onclick="addRecipe(this)" class="nav_button" title="Add new Recipe (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Recipe"><p class="nav_text">Add new Recipe</p></div>
 	<div onclick="compactView()" id="compact_view" class="nav_button" title="Change to compact View (removes introduction text)"><img src="../../elements/nav/compress.svg" alt="Report a Bug"></div>
-	<a href="https://www.planetminecraft.com/blog/nbt-crafting/" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+	<a href="../../info/contact.html#nbt_crafting" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
 
-<!--Content-->
 <main class="main_sidebar">
 <div>
 	<h1 style="letter-spacing: 3px;">NBt-Crafting</h1>
 
 	<div class="hide_compact">
-		<p>Create a recipe for the crafting table that has an item with NBT data as result.</p>
+		<p>Create a recipe for the Crafting Table that has an item with NBT data as result.</p>
 		<p>You just need to create a normal recipe in JSON format (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>) and the resulting item with NBT. The number of your resulting item will be defined automatically from the recipe.</p>
-		<p>But note that the result item is not an item with NBT, which could be in the inventory, because the defined count of it will be deleted after the player has crafted the item.<br>I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items).</p>
+		<p>But note that the result item of the JSON recipe isn't an item with NBT, which could be in the inventory, because the defined count of it will be deleted after the player has crafted the item.<br>I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items).</p>
 		<p>To get the Data Pack, you just need to fill in all the fields marked with needed and download it using the shortcut Ctrl + S or the Download button in the navigation bar. There you will also find the button to add a new recipe. A new recipe can also be created by pressing Ctrl + Enter.<br>In the sidebar on the left you can navigate between the recipes by clicking on them.</p>
-		<p>Even more options can be found under the "Advanced Options" spoiler. If you do not overwrite the gray placeholder text, it will be used in the final pack.<br>You can use the $ character in File Name fields as the first letter to keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.</p>
+		<p>Even more options can be found under the "Advanced Options" spoiler. If you don't overwrite the gray placeholder text, it will be used in the final pack.<br>If you write the $ character as the first letter in File Name fields it will keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.<br>All $ character will be removed in the downloaded Data Pack.</p>
 		<p>Since a normal Recipe Unlocker Data Pack would break this crafting method, you should use <a href="../../datapacks/recipe_unlocker.html" target="_blank">this one</a>.</p>
 		<p style="text-align: right;"><a class="button disable_link" onclick="compactView()">Hide introduction Text</a></p>
 		<br>
@@ -60,7 +55,7 @@
 		<option value="7">1.17 and newer</option>
 		<option value="6">1.16.2 - 1.16.4</option>
 		<option value="5">1.15 - 1.16.1</option>
-		<option value="4">1.13 - 1.14</option>
+		<option value="4">1.14 - 1.14.4</option>
 	</select>
 
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
@@ -77,12 +72,12 @@
 </div>
 
 <article id="0">
-	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
+	<div onclick="removeRecipe(this)" class="close" style="padding-right: 20px;" title="Remove Recipe">
 		<img src="../../elements/nav/close.svg" alt="Close">
 	</div>
 
 	<p>Recipe (needed)</p>
-	<textarea id="el_recipe" class="recipe_text needed" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:knowledge_book",&#10;        "count": 1&#10;    }&#10;}'></textarea>
+	<textarea id="el_recipe" class="recipe_text needed code" style="height: 405px;" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:knowledge_book",&#10;        "count": 1&#10;    }&#10;}'></textarea>
 	
 	<p>Result Item with NBT-Data (needed)</p>
 	<input type="text" placeholder='stick{Enchantments:[{id:"minecraft:knockback",lvl:5s}]}' class="nbt_item needed" onchange="resultItem(this)" >
@@ -166,7 +161,8 @@
 	</div>
 </div>
 
-<!--Scripts-->
+<footer></footer>
+
 <script language="javascript" type="text/javascript" src="../../elements/javascript/cookies.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>

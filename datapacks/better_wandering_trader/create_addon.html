@@ -12,20 +12,15 @@
 <link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
 <link rel="icon" href="../../elements/nav/favicon.png">
 
-
 </head>
 <body>
 
-<!--Navbar-->
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
-	<a class="nav_button disable_link" href="../better_wandering_trader.html"><p>Better Wandering Trader</p></a>
+	<a class="nav_button disable_link nav_text" href="../better_wandering_trader.html" title="Better Wandering Trader"><p>Better Wandering Trader</p></a>
 </nav>
 
 
-
-
-<!--Content-->
 <main>
 
 <h1>Better Wandering Trader Addons</h1>
@@ -45,7 +40,7 @@
 
 <br><br>
 <p>Trade (needed)</p>
-<input type="text" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
+<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
 
 <br><input type="radio" name="trade" id="common" onclick="onlyOne(this)" checked="true"><label for="common">Common</label>
 <br><input type="radio" name="trade" id="rare" onclick="onlyOne(this)"><label for="rare">Rare</label>
@@ -53,15 +48,15 @@
 
 <br><br>
 <p>Buy one (needed)</p>
-<input type="text" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:emerald",Count:2b}}' id="buy1" onkeyup="generate()">
+<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:emerald",Count:2b}}' id="buy1" onkeyup="generate()">
 
 <br>
 <p>Buy two</p>
-<input type="text" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
+<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
 
 <br><br>
 <p>Trade ID (to disable the trade)</p>
-<input type="text" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
+<input type="text" class="code" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
 
 <br><br>
 <p>Output</p>
@@ -71,7 +66,8 @@
 
 </main>
 
-<!--Scripts-->
+<footer></footer>
+
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/better_wandering_trader_addon.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 

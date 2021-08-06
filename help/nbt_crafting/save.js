@@ -173,10 +173,12 @@ function downloadCheck() {
 // Stop generating file if dublicated name
 function nameDuplicate(duplicated_string, duplicated_array, duplicated_end) {
   confirm("You have used the path " + duplicated_array + duplicated_string + duplicated_end + " more than once.");
+  execute == false;
   return;
 }
 function nameDuplicateTag(duplicated_string) {
   confirm("You have used the Tag " + duplicated_string + " more than once.");
+  execute == false;
   return;
 }
 
@@ -245,7 +247,7 @@ scoreboard players add @s ${score} 1
 tag @s add ${tag}
 
 
-schedule function ${datapack_name}:${function_craft_folder}${function_craft_name} 2t replace
+schedule function ${datapack_name}:${function_craft_folder}${function_craft_name} 2t
 `;
 
 zip.file(function_detect_path, function_detect_text);

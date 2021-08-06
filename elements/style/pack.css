@@ -1,6 +1,6 @@
 /* Navbar Installation */
-@media (max-width: 500px) {
-	.nav_install {
+@media (max-width: 600px) {
+	.nav_install, .nav_text {
 		display: none;
 	} 
 }

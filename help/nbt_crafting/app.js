@@ -55,12 +55,12 @@ function addRecipe(el) {
 
 
 	var template_recipe = `
-	<div onclick="removeRecipe(this)" class="download_close" style="padding-right: 20px;" title="Remove Recipe">
+	<div onclick="removeRecipe(this)" class="close" style="padding-right: 20px;" title="Remove Recipe">
 		<img src="../../elements/nav/close.svg">
 	</div>
 
 	<p>Recipe (needed)</p>
-	<textarea class="recipe_text needed" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:debug_stick",&#10;        "count": 1&#10;    }&#10;}'></textarea>
+	<textarea class="recipe_text needed code" style="height: 405px;" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:debug_stick",&#10;        "count": 1&#10;    }&#10;}'></textarea>
 	<p>Result Item with NBT-Data (needed)</p>
 	<input type="text" placeholder='stick{Enchantments:[{id:"minecraft:knockback",lvl:5s}]}' class="nbt_item needed" onchange="resultItem(this)">
 		<div class="file_name" style="display: none;">

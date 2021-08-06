@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Contact</title>
+<meta name="description" content="Report Bugs and give Feedback.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+</nav>
+
+
+<main>
+	
+	<h1>Report Bugs and give Feedback</h1>
+
+	<p style="text-align: center;">You can contact me on Planet Minecraft and with the contact form bellow.</p>
+
+	<div style="text-align: center; margin: 60px 0;">
+		<p><a class="button disable_link" id="link" href="https://planetminecraft.com/account/pms/new/cmd-golem/">Planet Minecraft</a></p>
+
+		<!--<table style="width: 100%; margin-top: 40px;">
+			<tr>
+				<td><a class="button disable_link" href="https://twitter.com/CmdGolem">Twitter</a></td>
+				<td><a class="button disable_link" href="https://www.youtube.com/channel/UCy8xWmgIga8nL1kPYJ8TD2g">Youtube</a></td>
+			</tr>	
+		</table>-->
+	</div>
+
+	
+
+	<hr>
+
+	<h2 style="text-align: center;">Contact form</h2>
+
+	<form name="Contact" netlify onsubmit="return validateForm()" action="/info/form_success.html">
+		<p>Your email address <small>(for response)</small></p>
+		<input type="email" name="Email" placeholder="Write your answer">
+
+		<input type="hidden" name="Pack" id="pack_type">
+
+		<p>Description <small>(Please also mention your Minecraft version and other installed Data Packs)</small></p>
+		<textarea type="text" name="Description" rows="2" class="autosize" id="description" placeholder="Write your answer"></textarea>
+
+
+
+		<div style="text-align: center; margin-top: 40px;">
+			<button type="submit">Senden</button>
+		</div>
+		
+	</form>
+	
+
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/special/forms.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>

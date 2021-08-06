@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Message sent</title>
+<meta name="description" content="Message sent.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+</nav>
+
+
+<main style="text-align: center;">
+	
+	<h1>Message sent</h1>
+
+	<p>Thank you for your message.</p>
+	<p>It was sent successfully.</p>
+
+	<div style="height:10vh;"></div>
+
+	<p><span class="button" style="padding-left: 50px; padding-right: 50px;" onclick="goBack()">Go to the last page</span></p>
+
+	<div style="height:10vh;"></div>
+
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script type="text/javascript">
+
+function goBack() {
+	var history_length = history.length;
+	if (history_length >= 3) {
+		window.history.go(-2);
+	}
+
+	else if (history_length == 2) {
+		window.history.go(-1);
+	}
+
+	else {
+		window.location.href = "https://cmd-golem.netlify.app/";
+	}
+}
+
+</script>
+
+</body>
+</html>

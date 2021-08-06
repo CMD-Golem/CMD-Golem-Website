@@ -133,10 +133,13 @@ code {
 	padding: 5px;
 	border-radius: 5px;
 	display: inline-block;
-	font-style: italic;
-	font-family: inherit;
+	font-family: monospace;
 	user-select: all;
 	margin-bottom: 10px;
+}
+
+.code {
+	font-family: monospace;
 }
 
 a:link, a:visited {
@@ -211,22 +214,19 @@ input, textarea {
 	border: none;
 	border-radius: 4px;
 	font-size: 16px;
+	font-family: inherit;
 	margin-bottom: 9px;
-	padding: 12px 12px 12px 12px;
+	padding: 12px;
 	color: white;
 	background-color: #333333;
-}
-
-textarea {
 	resize: vertical;
-	height: 405px;
 }
 
 textarea.autosize {
 	resize: none;
-	/*height: 27px; one line*/
-	margin-top: 20px;
-	padding: 0;
+	height: 62px;
+	padding: 12px;
+	padding-bottom: 0;
 }
 
 input:focus, input:focus:hover, textarea:focus, textarea:focus:hover {
@@ -269,6 +269,8 @@ input[type=radio], input[type=radio]:focus, input[type=radio]:hover:focus, input
 	background-color: #333333;
 	border-radius: 5px;
 	cursor: pointer;
+	font-size: inherit;
+	font-family: inherit;
 }
 
 .button:hover , .button:active, .button:focus, button:hover , button:active, button:focus {
