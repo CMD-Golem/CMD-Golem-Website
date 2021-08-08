@@ -4,38 +4,3 @@
 /resource_packs.html			/#Resources
 /maps							/#Maps
 /maps.html						/#Maps
-
-
-# https://cmd-golem.netlify.app/* 				https://cmd-golem.com/:splat 301!
-
-
-/packs-maps/									/
-/packs-maps/dark-theme/							/resource_packs/dark_theme.html
-/packs-maps/dark-theme/download/				/resource_packs/dark_theme.html
-/packs-maps/mini-game/							/maps/mini_game_map.html
-/packs-maps/mini-game/download/					/maps/mini_game_map.html
-
-/home/*											/
-/datapacks/install/								/
-
-/datapacks/murder/								/datapacks/murder.html
-/datapacks/petbag/								/datapacks/petbag.html
-/datapacks/fried-eggs/							/datapacks/fried_eggs.html
-/datapacks/fried-eggs/download/					/datapacks/fried_eggs.html
-/datapacks/jump-and-run/						/datapacks/jump_and_run.html
-/datapacks/jump-and-run/download/				/datapacks/jump_and_run.html
-/datapacks/more-arrows/							/datapacks/more_arrows.html
-/datapacks/more-arrows/download/				/datapacks/more_arrows.html	
-/datapacks/useful-golden-tools/					/datapacks/useful_golden_tools.html
-/datapacks/better-wandering-trader/				/datapacks/better_wandering_trader.html
-/datapacks/better-wandering-trader/download/	/datapacks/better_wandering_trader.html
-/datapacks/short-commands/						/datapacks/short_commands.html	
-/datapacks/wither-soldier/						/datapacks/wither_soldier.html
-/datapacks/wither-soldier/download/				/datapacks/wither_soldier.html
-/datapacks/invisible-item-frame/				/datapacks/invisible_item_frame.html
-/datapacks/key/									/datapacks/key.html
-/datapacks/key/download/						/datapacks/key.html
-/datapacks/redstone-dot/						/datapacks/redstone_dot.html
-/datapacks/powered-enchanting/					/datapacks/powered_enchanting.html
-/datapacks/gateway/								/datapacks/gateway.html
-/datapacks/gateway/download						/datapacks/gateway.html
