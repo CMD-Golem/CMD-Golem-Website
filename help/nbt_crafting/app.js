@@ -43,7 +43,7 @@ var function_mass_counter
 var counter = 0;
 
 function addRecipe(el) {
-	// Add Aricle with Recipe
+	// Add Article with Recipe
 	var el_last_article = document.getElementsByTagName("article");
 	var el_last_article = el_last_article[el_last_article.length - 1];
 
@@ -63,63 +63,63 @@ function addRecipe(el) {
 	<textarea class="recipe_text needed code" style="height: 405px;" placeholder='{&#10;    "type": "minecraft:crafting_shaped",&#10;    "pattern": [&#10;        "#",&#10;        "/",&#10;        "#"&#10;    ],&#10;    "key": {&#10;        "#": {&#10;            "item": "minecraft:amethyst_shard"&#10;        },&#10;        "/": {&#10;            "item": "minecraft:stick"&#10;        }&#10;    },&#10;    "result": {&#10;        "item": "minecraft:debug_stick",&#10;        "count": 1&#10;    }&#10;}'></textarea>
 	<p>Result Item with NBT-Data (needed)</p>
 	<input type="text" placeholder='stick{Enchantments:[{id:"minecraft:knockback",lvl:5s}]}' class="nbt_item needed" onchange="resultItem(this)">
-		<div class="file_name" style="display: none;">
+		<div class="file_name show_advanced_mode" style="display: none;">
 		<p>Recipe Name</p>
 		<input type="text" placeholder='${tag}${counter}' onchange="fileName(this)" class="auto_name">
-	</div>
 
-	<br><br><hr>
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
-			<table style="width: 100%;">
-				<tr>
-					<td colspan="2"><br>Tag Name</td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="text" placeholder='${tag}${counter}' class="tag"></td>
-				</tr>
-				<tr>
-					<td><br>Advancement Folder Path</td>
-					<td><br>Advancement File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='${advancement_folder}' class="advancement_folder folder"></td>
-					<td><input type="text" placeholder='${advancement_name}${advancement_counter}' class="advancement_name"></td>
-				</tr>
-				<tr>
-					<td><br>Recipe Folder Path</td>
-					<td><br>Recipe File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='${recipe_folder}' class="recipe_folder folder"></td>
-					<td><input type="text" placeholder='${recipe_name}${recipe_counter}' class="recipe_name"></td>
-				</tr>
-				<tr>
-					<td><br>Function Detect Folder Path</td>
-					<td><br>Function Detect File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='${function_detect_folder}' class="function_detect_folder folder"></td>
-					<td><input type="text" placeholder='${function_detect_name}${function_detect_counter}' class="function_detect_name"></td>
-				</tr>
-				<tr>
-					<td>Function Craft Folder Path</td>
-					<td>Function Craft File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='${function_craft_folder}' class="function_craft_folder folder"></td>
-					<td><input type="text" placeholder='${function_craft_name}${function_craft_counter}' class="function_craft_name"></td>
-				</tr>
-				<tr>
-					<td>Function Mass Craft Folder Path</td>
-					<td>Function Mass Craft File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='${function_mass_folder}' class="function_mass_folder folder"></td>
-					<td><input type="text" placeholder='${function_mass_name}${function_mass_counter}' class="function_mass_name"></td>
-				</tr>
-			</table>
+		<br><br><hr>
+		<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
+		<div class="spoiler_show">
+			<div class="spoiler_content">
+				<table style="width: 100%;">
+					<tr>
+						<td colspan="2"><br>Tag Name</td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="text" placeholder='${tag}${counter}' class="tag"></td>
+					</tr>
+					<tr>
+						<td><br>Advancement Folder Path</td>
+						<td><br>Advancement File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='${advancement_folder}' class="advancement_folder folder"></td>
+						<td><input type="text" placeholder='${advancement_name}${advancement_counter}' class="advancement_name"></td>
+					</tr>
+					<tr>
+						<td><br>Recipe Folder Path</td>
+						<td><br>Recipe File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='${recipe_folder}' class="recipe_folder folder"></td>
+						<td><input type="text" placeholder='${recipe_name}${recipe_counter}' class="recipe_name"></td>
+					</tr>
+					<tr>
+						<td><br>Function Detect Folder Path</td>
+						<td><br>Function Detect File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='${function_detect_folder}' class="function_detect_folder folder"></td>
+						<td><input type="text" placeholder='${function_detect_name}${function_detect_counter}' class="function_detect_name"></td>
+					</tr>
+					<tr>
+						<td>Function Craft Folder Path</td>
+						<td>Function Craft File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='${function_craft_folder}' class="function_craft_folder folder"></td>
+						<td><input type="text" placeholder='${function_craft_name}${function_craft_counter}' class="function_craft_name"></td>
+					</tr>
+					<tr>
+						<td>Function Mass Craft Folder Path</td>
+						<td>Function Mass Craft File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='${function_mass_folder}' class="function_mass_folder folder"></td>
+						<td><input type="text" placeholder='${function_mass_name}${function_mass_counter}' class="function_mass_name"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 	`;
@@ -216,20 +216,20 @@ function refreshVar(last_article) {
 // Use Tag Name for all File Names
 var checkbox = document.getElementById("file_name");
 
-if (localStorage.getItem("file_name") == "true") {
+if (localStorage.getItem("show_advanced_mode") == "true") {
 	checkbox.checked = true;
 	changeFileName();
 }
 
 function changeFileName() {
-	if (cookies == true) {localStorage.setItem("file_name", checkbox.checked);}
-	var input_file_name = document.getElementsByClassName("file_name");
-	for (var i = 0; i < input_file_name.length; i++) {
+	if (cookies == true) {localStorage.setItem("show_advanced_mode", checkbox.checked);}
+	var show_advanced_mode = document.getElementsByClassName("show_advanced_mode");
+	for (var i = 0; i < show_advanced_mode.length; i++) {
 		if (checkbox.checked == true) {
-			input_file_name[i].style.display = "block";
+			show_advanced_mode[i].style.display = "block";
 		}
 		else {
-			input_file_name[i].style.display = "none";
+			show_advanced_mode[i].style.display = "none";
 		}
 	}
 }
@@ -334,7 +334,7 @@ if (localStorage.getItem("compact_view") == "true") {
 	compactView();
 }
 
-function compactView() {
+function compactView(used_element) {
 	var hide_compact = document.getElementsByClassName("hide_compact")
 
 	if (compact_view == "true") {
@@ -359,4 +359,13 @@ function compactView() {
 			hide_compact[i].style.display = "none";
 		}
 	}
+
+	if (used_element == "button") {
+		el_compact_view.style.backgroundColor = "#A10000";
+		setTimeout(function(){ compactViewColor(el_compact_view) }, 500);
+	}
+}
+
+function compactViewColor(sel_element) {
+	sel_element.removeAttribute("style");;
 }

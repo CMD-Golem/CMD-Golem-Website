@@ -38,16 +38,43 @@
 
 	<div class="hide_compact">
 		<p>Create a recipe for the Crafting Table that has an item with NBT data as result.</p>
-		<p>You just need to create a normal recipe in JSON format (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">Generator</a>) and the resulting item with NBT. The number of your resulting item will be defined automatically from the recipe.</p>
-		<p>But note that the result item of the JSON recipe isn't an item with NBT, which could be in the inventory, because the defined count of it will be deleted after the player has crafted the item.<br>I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items).</p>
-		<p>To get the Data Pack, you just need to fill in all the fields marked with needed and download it using the shortcut Ctrl + S or the Download button in the navigation bar. There you will also find the button to add a new recipe. A new recipe can also be created by pressing Ctrl + Enter.<br>In the sidebar on the left you can navigate between the recipes by clicking on them.</p>
-		<p>Even more options can be found under the "Advanced Options" spoiler. If you don't overwrite the gray placeholder text, it will be used in the final pack.<br>If you write the $ character as the first letter in File Name fields it will keep the same name in new recipes. This will only work correctly if you change the folder path of each recipe.<br>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name. The Recipe Name can be defined by opening the first "Advanced Options" spoiler and checking the checkbox there. After that you can change it for each recipe individually.<br>All $ character will be removed in the downloaded Data Pack.</p>
+		<ol>
+			<li>First define the name of the Data Pack ID and select the Minecraft version you want to use for the Data Pack.</li>
+			<li>Go to the first dark gray section, which contains all text fields for the first recipe. Paste the JSON code for the recipe (<a href="https://crafting.thedestruc7i0n.ca/" target="_blank">generator</a>) and the result item with NBT in the according inputs.</li>
+			<ul>
+				<li>You can add a new Recipe by clicking on the according button in the navigation bar or by using the key combination Ctrl + Enter.</li>
+				<li>Navigate quickly between all recipes by using the buttons in the left sidebar.</li>
+				<li>Each file path can be changed in the spoiler "Advanced options". The grey placeholder text is the current path and will be used unless you overwrite it.</li>
+			</ul>
+			
+			<li>To download the finished Data Pack you can again use the button in the navigation bar or the key combination Ctrl + S.</li>
+		</ol>
+		
+		<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Create your Recipe</h3>
+		<div class="spoiler_show">
+			<div class="spoiler_content">
+				<p>The ingridients of your defined JSON recipe are used to craft the item with NBT. Also, the count of your result item will be adopted.</p>
+				<p>The only thing to note is that the result item, defined by the JSON recipe, will show up in the crafting table. But as soon as you take the item in your Inventory, it will be cleared and the item with NBT will be given to you.</p>
+				<p>Since the clear command clears the JSON result item, it can't be an item that could be in your inventory with NBT data on it. I recommend using items like Barriers, Structure Voids or Knowledge Books (for non-stackable items) instead.</p>
+			</div>
+		</div>
+
+		<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Automate file path generation for new recipes</h3>
+		<div class="spoiler_show">
+			<div class="spoiler_content">
+				<p>To make it easier to create multiple recipes, I have given the $ character a special use.</p>
+				<p>If you put it as first letter in File Name fields, the name will be copied into new recipes. Remember to adjust the folder path in order to prevent overlaps.</p>
+				<p>If you use the $ character in Folder Path fields, it will be replaced with the Recipe Name.</p>
+				<p>To define the Recipe Name, you have to activate the checkbox in the spoiler "Advanced Options" bellow the version selection. Afterwards, each recipe receives a new input field in which the recipe name can be entered.</p>
+			</div>
+		</div>
+
 		<p>Since a normal Recipe Unlocker Data Pack would break this crafting method, you should use <a href="../../datapacks/recipe_unlocker.html" target="_blank">this one</a>.</p>
-		<p style="text-align: right;"><a class="button disable_link" onclick="compactView()">Hide introduction Text</a></p>
-		<br>
+		<p style="text-align: right;"><a class="button disable_link" onclick="compactView('button')">Hide introduction Text</a></p>
+		<br><hr><br>
 	</div>
 	
-	<p>Datapack Name (needed)</p>
+	<p>Datapack ID Name (needed)</p>
 	<input type="text" placeholder='datapack_name' class="datapack_name needed">
 
 	<p>Select your Minecraft Version (needed)</p>
@@ -61,7 +88,7 @@
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
-			<input type="checkbox" id="file_name" class="checkbox" onclick="changeFileName()"><label for="file_name">Enable Recipe Name field to generate the file names from it.</label>
+			<input type="checkbox" id="file_name" class="checkbox" onclick="changeFileName()"><label for="file_name">Enable Advanced Mode</label>
 			<p>$ character in Folder Path Fields: Are replaced with Recipe Name.<br>$ character in File Name Fields: Keep Name for next Recipe</p>
 			
 			<p>Scoreborad Name</p>
@@ -82,63 +109,64 @@
 	<p>Result Item with NBT-Data (needed)</p>
 	<input type="text" placeholder='stick{Enchantments:[{id:"minecraft:knockback",lvl:5s}]}' class="nbt_item needed" onchange="resultItem(this)" >
 
-	<div class="file_name" style="display: none;">
+	<div class="file_name show_advanced_mode" style="display: none;">
 		<p>Recipe Name</p>
 		<input type="text" placeholder='nbt_craft' onchange="fileName(this)" class="auto_name">
-	</div>
 
-	<br><br><hr>
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
-			<table style="width: 100%">
-				<tr>
-					<td colspan="2"><br>Tag Name</td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="text" placeholder='nbt_craft' class="tag"></td>
-				</tr>
-				<tr>
-					<td><br>Advancement Folder Path</td>
-					<td><br>Advancement File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='/' class="advancement_folder folder"></td>
-					<td><input type="text" placeholder='nbt_craft' class="advancement_name"></td>
-				</tr>
-				<tr>
-					<td><br>Recipe Folder Path</td>
-					<td><br>Recipe File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='/' class="recipe_folder folder"></td>
-					<td><input type="text" placeholder='nbt_craft' class="recipe_name"></td>
-				</tr>
-				<tr>
-					<td><br>Function Detect Folder Path</td>
-					<td><br>Function Detect File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='craft/' class="function_detect_folder folder"></td>
-					<td><input type="text" placeholder='detect_craft' class="function_detect_name"></td>
-				</tr>
-				<tr>
-					<td>Function Craft Folder Path</td>
-					<td>Function Craft File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='craft/' class="function_craft_folder folder"></td>
-					<td><input type="text" placeholder='craft' class="function_craft_name"></td>
-				</tr>
-				<tr>
-					<td>Function Mass Craft Folder Path</td>
-					<td>Function Mass Craft File Name</td>
-				</tr>
-				<tr>
-					<td><input type="text" placeholder='craft/' class="function_mass_folder folder"></td>
-					<td><input type="text" placeholder='mass_craft' class="function_mass_name"></td>
-				</tr>
-			</table>
+
+		<br><br><hr>
+		<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
+		<div class="spoiler_show">
+			<div class="spoiler_content">
+				<table style="width: 100%">
+					<tr>
+						<td colspan="2"><br>Tag Name</td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="text" placeholder='nbt_craft' class="tag"></td>
+					</tr>
+					<tr>
+						<td><br>Advancement Folder Path</td>
+						<td><br>Advancement File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='/' class="advancement_folder folder"></td>
+						<td><input type="text" placeholder='nbt_craft' class="advancement_name"></td>
+					</tr>
+					<tr>
+						<td><br>Recipe Folder Path</td>
+						<td><br>Recipe File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='/' class="recipe_folder folder"></td>
+						<td><input type="text" placeholder='nbt_craft' class="recipe_name"></td>
+					</tr>
+					<tr>
+						<td><br>Function Detect Folder Path</td>
+						<td><br>Function Detect File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='craft/' class="function_detect_folder folder"></td>
+						<td><input type="text" placeholder='detect_craft' class="function_detect_name"></td>
+					</tr>
+					<tr>
+						<td>Function Craft Folder Path</td>
+						<td>Function Craft File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='craft/' class="function_craft_folder folder"></td>
+						<td><input type="text" placeholder='craft' class="function_craft_name"></td>
+					</tr>
+					<tr>
+						<td>Function Mass Craft Folder Path</td>
+						<td>Function Mass Craft File Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" placeholder='craft/' class="function_mass_folder folder"></td>
+						<td><input type="text" placeholder='mass_craft' class="function_mass_name"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 

@@ -176,7 +176,7 @@ input:focus:hover, input:focus {
 
 
 /* ####################################################################### */
-/* Table */
+/* Table and Lists*/
 .table {
 	border-collapse: collapse;
 }
@@ -205,6 +205,29 @@ input:focus:hover, input:focus {
 	}
 }
 
+li {
+	margin: 15px 0;
+}
+
+ul li {
+	list-style-type: disc;
+}
+/*
+ol {
+    counter-reset: item;
+}
+ol li {
+    display: block;
+    position: relative;
+}
+ol li:before {
+    content: counters(item, ".")".";
+    counter-increment: item;
+    position: absolute;
+    margin-right: 100%;
+    right: 10px;
+}
+*/
 
 /* ####################################################################### */
 /* Input */

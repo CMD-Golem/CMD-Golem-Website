@@ -17,13 +17,14 @@
 </nav>
 
 
-<main>
+<main style="text-align: center;">
 	
 	<h1>Report Bugs and give Feedback</h1>
 
-	<p style="text-align: center;">You can contact me on Planet Minecraft and with the contact form bellow.</p>
+	<p>You can contact me on Planet Minecraft and with the contact form bellow.</p>
+	<p>If you want to report a Bug, please also mention your Minecraft version and other installed Data Packs.</p>
 
-	<div style="text-align: center; margin: 60px 0;">
+	<div style="margin: 60px 0;">
 		<p><a class="button disable_link" id="link" href="https://planetminecraft.com/account/pms/new/cmd-golem/">Planet Minecraft</a></p>
 
 		<!--<table style="width: 100%; margin-top: 40px;">
@@ -38,15 +39,15 @@
 
 	<hr>
 
-	<h2 style="text-align: center;">Contact form</h2>
+	<h2>Contact form</h2>
 
-	<form name="Contact" netlify onsubmit="return validateForm()" action="/info/form_success.html">
+	<form name="Contact" netlify onsubmit="return validateForm()" action="/info/form_success.html" style="text-align: left;">
 		<p>Your email address <small>(for response)</small></p>
 		<input type="email" name="Email" placeholder="Write your answer">
 
 		<input type="hidden" name="Pack" id="pack_type">
 
-		<p>Description <small>(Please also mention your Minecraft version and other installed Data Packs)</small></p>
+		<p>Description</p>
 		<textarea type="text" name="Description" rows="2" class="autosize" id="description" placeholder="Write your answer"></textarea>
 
 

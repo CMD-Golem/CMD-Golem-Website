@@ -1,8 +1,9 @@
-var zip = new JSZip();
-
-
+var zip;
 
 function downloadCheck() {
+  zip = undefined;
+  zip = new JSZip();
+
   var article = document.getElementsByTagName("article");
   var execute = false;
 
