@@ -8,7 +8,7 @@ exports.handler = (event, context) => {
 	}) 
 	const data = JSON.parse(event.body)
 	const id = getId(event.path)
-	return client.query(q.Update(q.Ref(`classes/todos#${id}`), {data}))
+	return client.query(q.Update(q.Ref(`classes/todos?id=${id}`), {data}))
 		.then((response) => {
 			console.log('success', response)
 			return {

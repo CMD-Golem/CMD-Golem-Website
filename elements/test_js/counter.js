@@ -3,7 +3,7 @@ var pack_id = "306377119249728068";
 
 // update db
 const update = (pack_id, data) => {
-	return fetch(`/.netlify/functions/update#${pack_id}`, {
+	return fetch(`/.netlify/functions/update?id=${pack_id}`, {
 		body: JSON.stringify(data),
 		method: 'POST'
 	}).then(response => {
@@ -13,7 +13,7 @@ const update = (pack_id, data) => {
 
 // read db
 const read = (pack_id) => {
-	return fetch(`/.netlify/functions/read#${pack_id}`, {
+	return fetch(`/.netlify/functions/read?id=${pack_id}`, {
 		method: 'POST',
 	}).then(response => {
 		return response.json()
