@@ -15,9 +15,11 @@ catch (e) {
 
 // update counter
 function updateCounter() {
+	var json_counter = counter + 1;
+	var json_date = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds();
 	update(pack_id, {
-		count: counter + 1;
-		date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds();
+		count: json_counter,
+		date: json_date
 	});
 }
 
