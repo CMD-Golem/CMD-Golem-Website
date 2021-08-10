@@ -1,6 +1,25 @@
 // set Id of Pack
 var pack_id = "306377119249728068";
 
+// update db
+const update = (pack_id, data) => {
+	return fetch(`/.netlify/functions/update/${pack_id}`, {
+		body: JSON.stringify(data),
+		method: 'POST'
+	}).then(response => {
+		return response.json()
+	})
+}
+
+// read db
+const read = (pack_id) => {
+	return fetch(`/.netlify/functions/read/${pack_id}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
 // get counter from db
 var counter = read(pack_id).data.count;
 
@@ -21,25 +40,4 @@ function updateCounter() {
 		count: json_counter,
 		date: json_date
 	});
-}
-
-
-// update db
-const update = (pack_id, data) => {
-	return fetch(`/.netlify/functions/update/${pack_id}`, {
-		body: JSON.stringify(data),
-		method: 'POST'
-	}).then(response => {
-		return response.json()
-	})
-}
-
-
-// read db
-const read = (pack_id) => {
-	return fetch(`/.netlify/functions/read/${pack_id}`, {
-		method: 'POST',
-	}).then(response => {
-		return response.json()
-	})
 }
