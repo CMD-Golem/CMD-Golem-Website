@@ -7,7 +7,7 @@ exports.handler = (event, context) => {
 		secret: process.env.FAUNADB_SERVER_SECRET
 	}) 
 	const id = getId(event.path)
-	return client.query(q.Get(q.Ref(`classes/todos?id=${id}`)))
+	return client.query(q.Get(q.Ref(`classes/todos/${id}`)))
 		.then((response) => {
 			console.log('success', response)
 			return {
