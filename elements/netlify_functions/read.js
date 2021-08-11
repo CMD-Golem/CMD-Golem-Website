@@ -3,18 +3,10 @@ var q = faunadb.query;
 
 exports.handler = async (event, context) => {
 	// get FaunaDB secret key
-	try {
-		var client = new faunadb.Client({
-			secret: process.env.FAUNADB_SERVER_SECRET
-		});
-	}
-	catch (e) {
-		return {
-			statusCode: 200,
-			body: JSON.stringify("secret key can't be read")
-		}
-	}
-	
+	var client = new faunadb.Client({
+		secret: process.env.FAUNADB_SERVER_SECRET
+	});
+
 	// get counter id from url
 	var { id = "Anonymous" } = event.queryStringParameters;
 
