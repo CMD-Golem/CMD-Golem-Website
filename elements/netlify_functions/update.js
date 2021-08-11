@@ -1,14 +1,16 @@
-const faunadb = require('faunadb')
-const q = faunadb.query
+var faunadb = require('faunadb')
+var q = faunadb.query
+
 
 exports.handler = (event, context) => {
 	// get FaunaDB secret key
-	const client = new faunadb.Client({
+	var client = new faunadb.Client({
 		secret: process.env.FAUNADB_SERVER_SECRET
-	}) 
+	});
+
 	// get counter id and count from url
-	const data = JSON.parse(event.body)
-	const id = event.path.match(/([^\/]*)\/*$/)[0];
+	var data = JSON.parse(event.body);
+	var id = event.path.match(/([^\/]*)\/*$/)[0];
 
 	// update data from db
 	return client.query(q.Update(q.Ref(`classes/todos/${id}`), {data}))

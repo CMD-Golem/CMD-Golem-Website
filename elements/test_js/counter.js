@@ -1,5 +1,5 @@
 // update db
-const update = (pack_id, data) => {
+var update = (pack_id, data) => {
 	return fetch(`/.netlify/functions/update/${pack_id}`, {
 		body: JSON.stringify(data),
 		method: 'POST'
@@ -9,7 +9,7 @@ const update = (pack_id, data) => {
 }
 
 // read db
-const read = (pack_id) => {
+var read = (pack_id) => {
 	return fetch(`/.netlify/functions/read/${pack_id}`, {
 		method: 'POST',
 	}).then(response => {
@@ -18,11 +18,17 @@ const read = (pack_id) => {
 }
 
 
+// ###########################################################
+
 // set Id of Pack
 var pack_id = "306377119249728068";
 
 // get counter from db
-var counter = read(pack_id).data.count;
+var counter
+
+Promise.resolve( read(pack_id) ).then( function(value) {
+	counter = value.data.count;
+});
 
 // get element to show counter
 try {
