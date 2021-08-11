@@ -1,7 +1,9 @@
 exports.handler = async (event, context) => {
-  const { name = "Anonymous" } = event.queryStringParameters;
+  var { id = "Anonymous" } = event.queryStringParameters;
+
+
   return {
     statusCode: 200,
-    body: JSON.stringify(`Hello, ${name}`)
+    body: JSON.stringify(`Hello, ${id}`)
   };
 };
