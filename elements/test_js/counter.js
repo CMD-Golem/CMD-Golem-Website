@@ -28,15 +28,15 @@ var counter
 
 Promise.resolve( read(pack_id) ).then( function(value) {
 	counter = value.data.count;
-});
 
-// get element to show counter
-try {
-	document.getElementById("download_counter").innerHTML = counter;
-}
-catch (e) {
-	console.log("Counter isn't shown on page");
-}
+	// show counter in html
+	try {
+		document.getElementById("download_counter").innerHTML = counter;
+	}
+	catch (e) {
+		console.log("Counter isn't shown on page");
+	}
+});
 
 
 // update counter
