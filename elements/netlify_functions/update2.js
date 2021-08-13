@@ -9,11 +9,23 @@ exports.handler = (event, context) => {
 	});
 
 	// get counter id and count from url
-	var data = JSON.parse(event.body);
 	var id = event.path.match(/([^\/]*)\/*$/)[0];
 	var type = event.path.replace("/" + id, "").match(/([^\/]*)\/*$/)[0];
 
-	// update data from db
+	// get data from db
+	var current_data = client.query(q.Get(q.Ref(`classes/${type}/${id}`)));
+
+	var counter = current_data.json().data.count
+
+	// update counter
+	var data = {
+		count: counter + 1,
+		date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDay() + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds()
+	}
+	
+	data = JSON.parse(JSON.stringify(data));
+
+	// update data in db
 	return client.query(q.Update(q.Ref(`classes/${type}/${id}`), {data}))
 		.then((response) => {
 			return {

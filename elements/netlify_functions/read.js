@@ -10,9 +10,10 @@ exports.handler = (event, context) => {
 
 	// get counter id from url
 	var id = event.path.match(/([^\/]*)\/*$/)[0];
+	var type = event.path.replace("/" + id, "").match(/([^\/]*)\/*$/)[0];
 
 	// get data from db
-	return client.query(q.Get(q.Ref(`classes/todos/${id}`)))
+	return client.query(q.Get(q.Ref(`classes/${type}/${id}`)))
 		.then((response) => {
 			return {
 				statusCode: 200,
