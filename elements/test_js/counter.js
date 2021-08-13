@@ -71,17 +71,3 @@ function updateCounter() {
 		});
 	}
 }
-
-
-function updateCounter3() {
-	if (already_download != true) {
-		already_download = true;
-		
-		var json_counter = counter + 1;
-		var json_date = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDay() + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds();
-		update(pack_id, {
-			count: json_counter,
-			date: json_date
-		});
-	}
-}

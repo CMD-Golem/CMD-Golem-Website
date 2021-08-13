@@ -13,29 +13,34 @@ exports.handler = (event, context) => {
 	var type = event.path.replace("/" + id, "").match(/([^\/]*)\/*$/)[0];
 
 	// get data from db
-	var current_data = client.query(q.Get(q.Ref(`classes/${type}/${id}`)));
+	return client.query(q.Get(q.Ref(`classes/${type}/${id}`))).then((value) => {
+		
+		var current_data = JSON.parse(JSON.stringify(value));
 
-	var counter = current_data.json().data.count
+		var counter = current_data.data.count;
 
-	// update counter
-	var data = {
-		count: counter + 1,
-		date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDay() + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds()
-	}
+		// update counter
+		var data = {
+			count: counter + 1,
+			date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDay() + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds()
+		}
+		
+		data = JSON.parse(JSON.stringify(data));
+
+		// update data in db
+		return client.query(q.Update(q.Ref(`classes/${type}/${id}`), {data}))
+			.then((response) => {
+				return {
+					statusCode: 200,
+					body: JSON.stringify(response)
+				}
+			}).catch((error) => {
+				return {
+					statusCode: 400,
+					body: JSON.stringify(error)
+				}
+			})
+		});
+
 	
-	data = JSON.parse(JSON.stringify(data));
-
-	// update data in db
-	return client.query(q.Update(q.Ref(`classes/${type}/${id}`), {data}))
-		.then((response) => {
-			return {
-				statusCode: 200,
-				body: JSON.stringify(response)
-			}
-		}).catch((error) => {
-			return {
-				statusCode: 400,
-				body: JSON.stringify(error)
-			}
-		})
 }
