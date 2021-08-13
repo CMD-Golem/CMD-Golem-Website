@@ -56,7 +56,7 @@ var already_download = false;
 function updateCounter2() {
 	if (already_download != true) {
 		already_download = true;
-		update2(pack_id, pack_type);
+		update2(pack_id, pack_type).then((value) => { console.log(value); });
 	}
 	
 }
