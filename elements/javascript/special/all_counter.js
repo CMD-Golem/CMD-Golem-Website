@@ -1,6 +1,6 @@
 // read db
 var readAll = (index_type) => {
-	return fetch(`/.netlify/functions/read/${index_type}`, {
+	return fetch(`/.netlify/functions/read_all/${index_type}`, {
 		method: 'POST',
 	}).then(response => {
 		return response.json()
