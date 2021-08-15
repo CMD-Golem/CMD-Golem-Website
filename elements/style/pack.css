@@ -122,6 +122,7 @@ section h1 {
 }
 
 .section_header div {
+	display: none;
 	text-align: left;
 	filter: invert(50%);
 	flex: 1;
