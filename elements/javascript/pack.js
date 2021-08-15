@@ -86,7 +86,7 @@ document.getElementById("newest").innerHTML = "1.17 - 1.17.1";
 
 
 // #################################################################################################
-// Spoiler
+// Spoiler --> Has also his own file
 function spoiler(el) {
 	el.classList.toggle("active");
 	var panel = el.nextElementSibling;
@@ -95,4 +95,56 @@ function spoiler(el) {
 	} else {
 		panel.style.maxHeight = panel.scrollHeight + "px";
 	}
+}
+
+
+// ###########################################################
+// Counter --> Has also his own file
+
+// read db
+var read = (pack_id, pack_type) => {
+	return fetch(`/.netlify/functions/read/${pack_type}/${pack_id}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
+// update db
+var update = (pack_id, pack_type) => {
+	return fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
+
+// get id and type of pack
+var counter_el = document.getElementById("download_counter");
+var pack_id = counter_el.dataset.ref;
+var pack_type = counter_el.dataset.type;
+
+
+// show counter in html
+Promise.resolve( read(pack_id, pack_type) ).then( function(value) { counter_el.innerHTML = value.data.count; });
+
+
+// update counter
+var already_download = false;
+
+function updateCounter() {
+	if (already_download != true) {
+		already_download = true;
+		update(pack_id, pack_type)//.then((value) => { console.log(value); });
+	}
+	else {
+		console.log("Already downloaded");
+	}
+}
+
+// Detect Button click
+var buttons = document.getElementsByClassName("dl_counter");
+for (var i = 0; i < buttons.length; i++) {
+	buttons[i].addEventListener("click", updateCounter);
 }

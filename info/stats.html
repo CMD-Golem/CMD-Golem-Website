@@ -7,13 +7,6 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
 <link rel="icon" href="../elements/nav/favicon.png">
-<style type="text/css">
-
-.data {
-	text-align: right;
-}
-
-</style>
 
 </head>
 <body>
@@ -22,114 +15,13 @@
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
 </nav>
 
-<!--
-
-https://api.countapi.xyz/create?namespace=mc_cmdgolem&key=NAME&enable_reset=1
-
--->
-
 <main>
-	<table class="table" style="width: 50%; margin: 0 auto;">
-		<tr>
-			<td><p>NBT Crafting</p></td>
-			<td><p id="nbt_crafting" class="data"></p></td>
-		</tr>
-	</table>
-
-
-	<hr style="margin: 50px auto;">
-
-	<table class="table" style="width: 50%; margin: 0 auto;">
-		<tr>
-			<td><p>Fried Eggs</p></td>
-			<td><p id="fried-eggs" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Jump and Run</p></td>
-			<td><p id="jump-and-run" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>More Arrows</p></td>
-			<td><p id="more-arrows" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Murder</p></td>
-			<td><p id="murder" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>PetBag</p></td>
-			<td><p id="petbag" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Gateway</p></td>
-			<td><p id="gateway" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Useful Golden Tools</p></td>
-			<td><p id="useful-golden-tools" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Dark Theme</p></td>
-			<td><p id="dark-theme" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Mini Games</p></td>
-			<td><p id="mini-games" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Short Commands</p></td>
-			<td><p id="short-commands" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Wither Soldier</p></td>
-			<td><p id="wither-soldier" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Invisible Item Frame</p></td>
-			<td><p id="invisible-item-frame" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Better Wandering Trader</p></td>
-			<td><p id="better-trader" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Key</p></td>
-			<td><p id="key" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Redstone Dot</p></td>
-			<td><p id="redstone-dot" class="data"></p></td>
-		</tr>
-		<tr>
-			<td><p>Powered Enchanting</p></td>
-			<td><p id="powered-enchanting" class="data"></p></td>
-		</tr>
-	</table>
-
 </main>
 
 <footer></footer>
 
+<script language="javascript" type="text/javascript" src="../elements/javascript/special/all_counter.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
-<script type="text/javascript">
-var data = document.getElementsByClassName("data");
-
-async function getData() {
-	for (var i = 0; i < data.length; i++) {
-		var url = "https://api.countapi.xyz/get/mc_cmdgolem/" + data[i].id;
-		var json = await getJson(url);
-		data[i].innerHTML = json.value;
-	}
-}
-
-async function getJson(url) {
-	let response = await fetch(url);
-	let data = await response.json();
-	return data;
-}
-
-getData();
-</script>
 
 </body>
 </html>

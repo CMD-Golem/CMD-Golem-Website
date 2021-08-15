@@ -165,6 +165,7 @@ function downloadCheck() {
       link.href = "data:application/zip;base64," + content;
       link.click();
 
+      updateCounter();
       addCounter();
     });
   }

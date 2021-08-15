@@ -95,7 +95,7 @@ section {
 }
 
 .download_close {
-	padding-right: 15%;
+	margin-right: 15%;
 	right: 0;
 	cursor: pointer;
 	position: absolute;
@@ -114,17 +114,23 @@ section h1 {
 
 .section_header {
 	display: flex;
-	justify-content: center;
+	align-items: center;
 }
 
-.section_header h3{
-	padding: 0 20px;
+.section_header h3 {
+	flex: 1;
 }
-.section_header p {
-	display: none;
-	color: #8A8A8A;
-	padding: 0 20px;
-	padding-top: 5px;
+
+.section_header div {
+	text-align: left;
+	filter: invert(50%);
+	flex: 1;
+}
+
+.section_header img {
+	filter: invert(50%);
+	height: 22px;
+	vertical-align: sub;
 }
 
 
@@ -145,13 +151,13 @@ section td {
 
 @media (max-width: 1600px) {
 	.download_close {
-		padding-right: 10%;
+		margin-right: 10%;
 	}
 }
 
 @media (max-width: 1350px) {
 	.download_close {
-		padding-right: 12px;
+		margin-right: 12px;
 	}
 }
 
@@ -174,5 +180,9 @@ section td {
 
 	section td {
 		width: 100%;
+	}
+
+	.section_header div {
+		text-align: center;
 	}
 }
