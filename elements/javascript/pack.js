@@ -127,8 +127,12 @@ var pack_type = counter_el.dataset.type;
 
 
 // show counter in html
-Promise.resolve( read(pack_id, pack_type) ).then( function(value) { counter_el.innerHTML = value.data.count; });
-
+Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
+	counter_el.innerHTML = value.data.count;
+	var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
+	show_el[0].style.display = "block";
+	show_el[1].style.display = "block";
+});
 
 // update counter
 var already_download = false;
