@@ -8,7 +8,11 @@ exports.handler = (event, context) => {
 		secret: process.env.FAUNADB_SERVER_SECRET
 	});
 
-	return client.query(q.Paginate(q.Match(q.Ref('indexes/all_datapacks'))))
+	// get counter type from url
+	var type = event.path.match(/([^\/]*)\/*$/)[0];
+
+	// get data from db
+	return client.query(q.Paginate(q.Match(q.Ref(`indexes/${type}`))))
 		.then((response) => {
 			var todoRefs = response.data;
 			var getAllTodoDataQuery = todoRefs.map((ref) => {
