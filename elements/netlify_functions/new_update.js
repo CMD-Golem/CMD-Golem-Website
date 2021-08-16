@@ -37,7 +37,7 @@ exports.handler = (event, context) => {
 
 		// update counter
 		var data = {
-			count: current_data.data.count + 1,
+			count: current_data.count + 1,
 			count_yesterday: yesterday,
 			count_yyesterday: yyesterday,
 			count_last_month: last_month,
