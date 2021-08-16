@@ -15,10 +15,33 @@ exports.handler = (event, context) => {
 	// get data from db
 	return client.query(q.Get(q.Ref(`classes/${type}/${id}`))).then((current) => {
 
+		var current_data = JSON.parse(JSON.stringify(current)).data;
+
+		// set count yesterday / yyesterday
+		if (new Date(current_data.date).getDate() != new Date().getDate()) {
+			var yyesterday = current_data.count_yesterday;
+			var yesterday = current_data.count;
+		}
+		else {
+			var yyesterday = current_data.count_yyesterday;
+			var yesterday = current_data.count_yesterday;
+		}
+
+		// set count last month
+		if (new Date(current_data.date).getMonth() != new Date().getMonth()) {
+			var last_month = current_data.count;
+		}
+		else {
+			var last_month = current_data.count_last_month;
+		}
+
 		// update counter
 		var data = {
-			count: JSON.parse(JSON.stringify(current)).data.count + 1,
-			date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + "-" + new Date().getHours() + "-" + new Date().getMinutes() + "-" + new Date().getSeconds()
+			count: current_data.count + 1,
+			count_yesterday: yesterday,
+			count_yyesterday: yyesterday,
+			count_last_month: last_month,
+			date: new Date()
 		}
 		
 		data = JSON.parse(JSON.stringify(data));
