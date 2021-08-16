@@ -1,5 +1,7 @@
-const footer = `
-<div class="footer_left footer_block">©2019 - <script>document.write(new Date().getFullYear());</script> by CMD-Golem</div>
+var date = new Date().getFullYear()
+
+var footer = `
+<div class="footer_left footer_block">©2019 - ${date} by CMD-Golem</div>
 <div class="footer_center footer_block">
 	<a href="https://cmd-golem.netlify.app/info/disclaimer.html">Disclaimer</a>
 	<a href="https://cmd-golem.netlify.app/info/therms_of_use.html">Therms of use</a>
