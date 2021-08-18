@@ -1,0 +1,95 @@
+/* Selection Buttons */
+.button_container {
+	display: flex;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+.button_container div {
+	margin: 20px 10px;
+}
+
+/* ####################################################################### */
+/* Counter Table */
+table {
+	width: 100%;
+}
+
+table p, td {
+	text-align: center;
+	vertical-align: text-top;
+}
+
+td:nth-child(1), th:nth-child(1), td:nth-child(1) p, th:nth-child(1) p {
+	text-align: left;
+	padding-left: 10px;
+}
+
+td:nth-child(1) p, th:nth-child(1) p, td:nth-child(2) p, th:nth-child(2) p {
+	padding: 0;
+}
+
+
+/* Spoiler */
+.show_more_button {
+	cursor: pointer;
+}
+
+tr.active {
+	background-color: #222222;
+}
+
+.show_more_content {
+	display: none;
+	background-color: #222222;
+}
+
+.show_more_content td {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.tr_last td {
+	padding-bottom: 20px;
+}
+
+
+/* Mobile view */
+.mobile_date, .download_th img {
+	display: none;
+}
+
+@media (max-width: 600px) {
+	table {
+		font-size: 18px;
+	}
+	td:nth-child(3), th:nth-child(3), .download_th p {
+		display: none;
+	}
+
+	.mobile_date {
+		display: block;
+		font-size: 14px;
+		padding: 0;
+	}
+
+	.download_th img {
+		display: block;
+		margin: 0 auto;
+		height: 28px;
+	}
+}
+
+@media (max-width: 450px) {
+	td:nth-child(2), th:nth-child(2), td:nth-child(2) p, th:nth-child(2) p {
+		text-align: right;
+		padding-right: 10px;
+	}
+	td:nth-child(2) p, th:nth-child(2) p {
+		padding: 0;
+	}
+	.download_th img {
+		float: right;
+		padding-right: 0;
+	}
+}

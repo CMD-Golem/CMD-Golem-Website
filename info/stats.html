@@ -6,25 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/special/stats.css"/>
 <link rel="icon" href="../elements/nav/favicon.png">
-<style type="text/css">
-table {
-	width: 100%;
-}
-table p {
-	text-align: center;
-}
-th {
-	cursor: pointer;
-}
-.name {
-	text-align: left;
-}
-.date {
-	display: none;
-}
-
-</style>
 
 </head>
 <body>
@@ -34,20 +17,133 @@ th {
 </nav>
 
 <main>
+	<div class="button_container">
+		<div><a class="button disable_link" onclick="initDatabase('packs')">All Packs</a></div>
+		<div><a class="button disable_link" onclick="initDatabase('datapacks')">Data Packs</a></div>
+		<div><a class="button disable_link" onclick="initDatabase('resource_packs')">Resource Packs</a></div>
+		<div><a class="button disable_link" onclick="initDatabase('maps')">Maps</a></div>
+		<div><a class="button disable_link" onclick="initDatabase('help')">Help</a></div>
+		<div><a class="button disable_link" onclick="initDatabase('powered_enchanting')">Powered Enchanting</a></div>
+	</div>
+
+
 	<table class="table">
 		<tr>
-			<th><p>Date</p></th>
 			<th><p>Name</p></th>
-			<th><p>Downloads</p></th>
-			<th><p>Yesterday</p></th>
-			<th><p>YYesterday</p></th>
-			<th><p>Last month</p></th>
+			<th class="download_th"><p>Downloads</p><img src="../elements/nav/download.svg"></th>
+			<th><p>Date</p></th>
 		</tr>
+		<tr onclick="spoiler(this)" class="show_more_button" data-date="2021-08-17T09:50:11.675Z">
+			<td><p>Better Wandering Trader<span class="mobile_date">17.8.2021</span></p></td>
+			<td><p>20958</p></td>
+			<td><p>17.8.2021</p></td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads yesterday:</td>
+			<td>500</td>
+			<td>Trader</td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads dby:</td>
+			<td>400</td>
+			<td>Trader</td>
+		</tr>
+		<tr class="show_more_content tr_last">
+			<td>Downloads last month:</td>
+			<td>100</td>
+			<td>Trader</td>
+		</tr>
+
+		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-04-17T09:50:11.675Z">
+			<td><p>David Unlocker<span class="mobile_date">17.4.2021</span></p></td>
+			<td><p>100</p></td>
+			<td><p>17.4.2021</p></td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads yesterday:</td>
+			<td>500</td>
+			<td>David</td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads dby:</td>
+			<td>400</td>
+			<td>David</td>
+		</tr>
+		<tr class="show_more_content tr_last">
+			<td>Downloads last month:</td>
+			<td>100</td>
+			<td>David</td>
+		</tr>
+
+		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-07-17T09:50:11.675Z">
+			<td><p>Recipe Unlocker<span class="mobile_date">17.7.2021</span></p></td>
+			<td><p>100</p></td>
+			<td><p>17.7.2021</p></td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads yesterday:</td>
+			<td>500</td>
+			<td>Recipe</td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads dby:</td>
+			<td>400</td>
+			<td>Recipe</td>
+		</tr>
+		<tr class="show_more_content tr_last">
+			<td>Downloads last month:</td>
+			<td>100</td>
+			<td>Recipe</td>
+		</tr>
+
+		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-06-17T09:50:11.675Z">
+			<td><p>Max<span class="mobile_date">17.6.2021</span></p></td>
+			<td><p>1050</p></td>
+			<td><p>17.6.2021</p></td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads yesterday:</td>
+			<td>500</td>
+			<td>Max</td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads dby:</td>
+			<td>400</td>
+			<td>Max</td>
+		</tr>
+		<tr class="show_more_content tr_last">
+			<td>Downloads last month:</td>
+			<td>100</td>
+			<td>Max</td>
+		</tr>
+
+		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-08-17T09:55:11.675Z">
+			<td><p>Fried Eggs<span class="mobile_date">17.8.2021</span></p></td>
+			<td><p>15055</p></td>
+			<td><p>17.8.2021</p></td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads yesterday:</td>
+			<td>500</td>
+			<td>Fried Eggs</td>
+		</tr>
+		<tr class="show_more_content">
+			<td>Downloads dby:</td>
+			<td>400</td>
+			<td>Fried Eggs</td>
+		</tr>
+		<tr class="show_more_content tr_last">
+			<td>Downloads last month:</td>
+			<td>100</td>
+			<td>Fried Eggs</td>
+		</tr>
+
 	</table>
 </main>
 
 <footer></footer>
 
+<script language="javascript" type="text/javascript" src="../elements/javascript/special/test.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/special/all_counter.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 
