@@ -14,6 +14,11 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="refreshDatabase()" title="Refresh Database"><img src="../elements/nav/refresh.svg" alt="Refresh"></div>
+	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('search').value='';search()"></label>
+	<div class="nav_search">
+		<div class="nav_search_box"><input type="text" placeholder="Search" id="search" onkeyup="search()"></div>
+	</div>
 </nav>
 
 <main>
@@ -25,7 +30,6 @@
 		<div><a class="button disable_link" onclick="initDatabase('help')">Help</a></div>
 		<div><a class="button disable_link" onclick="initDatabase('powered_enchanting')">Powered Enchanting</a></div>
 	</div>
-
 
 	<table class="table">
 		<tr>
@@ -54,7 +58,7 @@
 			<td>Trader</td>
 		</tr>
 
-		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-04-17T09:50:11.675Z">
+		<tr onclick="spoiler(this)" class="show_more_button" data-date="2021-04-17T09:50:11.675Z">
 			<td><p>David Unlocker<span class="mobile_date">17.4.2021</span></p></td>
 			<td><p>100</p></td>
 			<td><p>17.4.2021</p></td>
@@ -75,7 +79,7 @@
 			<td>David</td>
 		</tr>
 
-		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-07-17T09:50:11.675Z">
+		<tr onclick="spoiler(this)" class="show_more_button" data-date="2021-07-17T09:50:11.675Z">
 			<td><p>Recipe Unlocker<span class="mobile_date">17.7.2021</span></p></td>
 			<td><p>100</p></td>
 			<td><p>17.7.2021</p></td>
@@ -96,7 +100,7 @@
 			<td>Recipe</td>
 		</tr>
 
-		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-06-17T09:50:11.675Z">
+		<tr onclick="spoiler(this)" class="show_more_button" data-date="2021-06-17T09:50:11.675Z">
 			<td><p>Max<span class="mobile_date">17.6.2021</span></p></td>
 			<td><p>1050</p></td>
 			<td><p>17.6.2021</p></td>
@@ -117,7 +121,7 @@
 			<td>Max</td>
 		</tr>
 
-		<tr onclick="spoiler(this)" class="show_more_button"data-date="2021-08-17T09:55:11.675Z">
+		<tr onclick="spoiler(this)" class="show_more_button" data-date="2021-08-17T09:55:11.675Z">
 			<td><p>Fried Eggs<span class="mobile_date">17.8.2021</span></p></td>
 			<td><p>15055</p></td>
 			<td><p>17.8.2021</p></td>
@@ -139,11 +143,11 @@
 		</tr>
 
 	</table>
+	<div id="not_found">No Results</div>
 </main>
 
 <footer></footer>
 
-<script language="javascript" type="text/javascript" src="../elements/javascript/special/test.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/special/all_counter.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 

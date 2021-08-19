@@ -1,3 +1,5 @@
+var table = document.getElementsByTagName("table")[0];
+
 // read db
 var readDatabase = (database) => {
 	var readAll = (index_type) => {
@@ -14,7 +16,9 @@ var readDatabase = (database) => {
 		})
 	}
 
-	return readAll(database).then((response) => {
+	console.log("fetch")
+
+	return readAllOffline(database).then((response) => {
 		return response.map(counter => `
 			<tr onclick="spoiler(this)" class="show_more_button" data-date="${counter.data.date}">
 				<td><p>${counter.data.name}<span class="mobile_date">${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</span></p></td>
@@ -40,37 +44,85 @@ var readDatabase = (database) => {
 	});
 }
 
+var datapacks, resource_packs, maps, help, powered_enchanting;
+var sel_db;
+
 function initDatabase(hash) {
 	if (hash == undefined) {
 		hash = window.location.hash.substr(1);
 	}
+	sel_db = hash;
 
 	if (hash == "packs" || hash == "") {
-		readDatabase("all_datapacks").then(response => {
-			var datapacks = response;
-			readDatabase("all_resource_packs").then(response => {
-				var resource_packs = response;
-				readDatabase("all_maps").then(response => {
-					var maps = response;
+		if (datapacks == undefined || resource_packs == undefined || maps == undefined) {
+			readDatabase("all_datapacks").then(response => {
+				datapacks = response;
+				readDatabase("all_resource_packs").then(response => {
+					resource_packs = response;
+					readDatabase("all_maps").then(response => {
+						maps = response;
 
-					printOut(datapacks.concat(resource_packs.concat(maps)))
+						printOut(datapacks.concat(resource_packs.concat(maps)));
+					});
 				});
 			});
-		});
+		}
+		else { printOut(datapacks.concat(resource_packs.concat(maps))); }
 	}
 
-	else if (hash == "datapacks") { readDatabase("all_datapacks").then(response => { printOut(response); }); }
-	else if (hash == "resource_packs") { readDatabase("all_resource_packs").then(response => { printOut(response); }); }
-	else if (hash == "maps") { readDatabase("all_maps").then(response => { printOut(response); }); }
+	else if (hash == "datapacks") {
+		if (datapacks == undefined) {
+			readDatabase("all_datapacks").then(response => {
+				datapacks = response;
+				printOut(response);
+			});
+		}
+		else { printOut(datapacks); }
+	}
 
-	else if (hash == "help") { readDatabase("all_help").then(response => { printOut(response); }); }
+	else if (hash == "resource_packs") {
+		if (datapacks == undefined) {
+			readDatabase("all_resource_packs").then(response => {
+				resource_packs = response;
+				printOut(response);
+			});
+		}
+		else { printOut(resource_packs); }
+	}
 
-	else if (hash == "powered_enchanting") { readDatabase("all_powered_enchanting").then(response => { printOut(response); }); }
+	else if (hash == "maps") {
+		if (maps == undefined) {
+			readDatabase("all_maps").then(response => {
+				maps = response;
+				printOut(response);
+			});
+		}
+		else { printOut(maps); }
+	}
+
+	else if (hash == "help") {
+		if (help == undefined) {
+			readDatabase("all_help").then(response => {
+				help = response;
+				printOut(response);
+			});
+		}
+		else { printOut(help); }
+	}
+
+	else if (hash == "powered_enchanting") {
+		if (powered_enchanting == undefined) {
+			readDatabase("all_powered_enchanting").then(response => {
+				powered_enchanting = response;
+				printOut(response);
+			});
+		}
+		else { printOut(powered_enchanting); }
+	}
 }
 
 
 function printOut(html) {
-	var table = document.getElementsByTagName("table")[0];
 	table.innerHTML = html;
 
 	var table_header = document.createElement("tr");
@@ -81,6 +133,16 @@ function printOut(html) {
 }
 
 initDatabase();
+
+function refreshDatabase() {
+	datapacks = undefined;
+	resource_packs = undefined;
+	maps = undefined;
+	help = undefined;
+	powered_enchanting = undefined;
+
+	initDatabase(sel_db);
+}
 
 // #################################################################################################
 // sort Table
@@ -129,5 +191,41 @@ function spoiler(el) {
 		panel.style.display = "table-row";
 		panel.nextElementSibling.style.display = "table-row";
 		panel.nextElementSibling.nextElementSibling.style.display = "table-row";
+	}
+}
+
+function closeSpoiler(el) {
+	el.classList.remove("active");
+	var panel = el.nextElementSibling;
+	panel.style.display = null;
+	panel.nextElementSibling.style.display = null;
+	panel.nextElementSibling.nextElementSibling.style.display = null;
+}
+
+
+// #################################################################################################
+// Search
+var packs = table.getElementsByClassName("show_more_button");
+var input = document.getElementById("search");
+var not_found = document.getElementById("not_found");
+
+function search() {
+	var filter = input.value.toUpperCase();
+
+	for (var i = 0; i < packs.length; i++) {
+		var filterwords = packs[i].firstElementChild.firstElementChild.innerHTML;
+		if (filterwords.toUpperCase().indexOf(filter) > -1) {
+			packs[i].classList.remove("hide_search");
+		} else {
+			closeSpoiler(packs[i]);
+			packs[i].classList.add("hide_search");
+		}
+	}
+
+	if (packs.length - document.getElementsByClassName("hide_search").length <= 0) {
+		not_found.style.display = "block";
+	}
+	else {
+		not_found.style.display = "none";
 	}
 }
