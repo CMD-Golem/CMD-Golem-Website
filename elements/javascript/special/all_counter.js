@@ -18,7 +18,7 @@ var readDatabase = (database) => {
 
 	console.log("fetch")
 
-	return readAllOffline(database).then((response) => {
+	return readAll(database).then((response) => {
 		return response.map(counter => `
 			<tr onclick="spoiler(this)" class="show_more_button" data-date="${counter.data.date}">
 				<td><p>${counter.data.name}<span class="mobile_date">${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</span></p></td>
