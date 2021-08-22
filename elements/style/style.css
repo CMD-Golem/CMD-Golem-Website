@@ -150,28 +150,17 @@ a:hover, a:active, a:focus {
 	color: #A10000;
 }
 
+.disable_link:link, .disable_link:visited, .disable_link:hover, .disable_link:active {
+	color: inherit;
+	text-decoration-line: none;
+}
+
 hr {
 	border-style: solid;
 	border-width: 2px;
 	border-color: #333333;
 	margin: 0 auto;
 	width: 80%;
-}
-
-/* ####################################################################### */
-/* Disable */
-input[type=checkbox] {
-	display: none;
-}
-
-.disable_link:link, .disable_link:visited, .disable_link:hover, .disable_link:active {
-	color: inherit;
-	text-decoration-line: none;
-}
-
-input:focus:hover, input:focus {
-	outline: none;
-	border-radius: unset;
 }
 
 

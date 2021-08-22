@@ -82,7 +82,11 @@ function changeDownload() {
 //}
 
 // set newest version
-document.getElementById("newest").innerHTML = "1.17 - 1.17.1";
+try {
+	document.getElementById("newest").innerHTML = "1.17 - 1.17.1";
+}
+catch (e) {}
+
 
 
 // #################################################################################################
