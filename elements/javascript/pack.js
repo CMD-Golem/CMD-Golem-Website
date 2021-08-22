@@ -83,7 +83,7 @@ function changeDownload() {
 
 // set newest version
 try {
-	document.getElementById("newest").innerHTML = "1.17 - 1.17.1";
+	document.getElementById("newest").innerHTML = "1.17.1";
 }
 catch (e) {}
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - FaunaDB Counter</title>
+<meta name="description" content="Create a counter with FaunaDB and Netlify.">
+<meta rel="canonical" href="https://cmd-golem.netlify.app/help">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h1>CMD-Golem</h1></a>
+</nav>
+
+
+<main>
+	<h1>FaunaDB Counter</h1>
+	<header>In this tutorial I will explain you how to create a counter with FaunaDB and Netlify. It can be used e.g. for counting downloads, page visits or likes.</header>
+	<p>For this tutorial you need to have your finished website published on Netlify.</p>
+	<p>Secret Key: fnAERPYSd6ACSb0JXijGRQ0-bcQMtzaJEds1Tz0u</p>
+	<h2>Set up FaunaDB</h2>
+	<ol>
+		<li><a href="https://dashboard.fauna.com/accounts/register" target="_blank">Create your FaunaDB account</a></li>
+		<li>Click on 'NEW DATABASE' to create a new database.</li>
+		<li>Enter a name for the database (e.g. the name of your website), select the region classic and click on 'CREATE'.</li>
+		<li>Click on 'NEW COLLECTION' and set the name of it to 'counter'. Leave the other fields on the default value. (You can use another name, but you will need to also change it in the code.)</li>
+		<li>Click on 'NEW DOCUMENT' and paste the following code into the input field.<br><code>{<br>&nbsp;&nbsp;name: "PL_NAME",<br>&nbsp;&nbsp;count: 0<br>}</code><br>Replace 'PL_NAME' with the name of your counter.</li>
+		<li>Click on the button 'Security' on the sidebar on the left an click on 'NEW KEY'.</li>
+		<li>Select your database name, if not already selected and click on 'SAVE'.</li>
+		<li>Copy your Secret Key.<br><img src="../elements/pictures/help/fauna_counter/picture_1.png"></li>
+	</ol>
+
+	<h2>Set up Netlify</h2>
+	<ol start="9">
+		<li>Go into the settings of your website on Netlify.</li>
+		<li>In the sidebar select 'Build & Deploy' and click on 'Environment'.</li>
+		<li>Under the 'Environment variables' click on 'Edit variables'<br><img src="../elements/pictures/help/fauna_counter/picture_2.png"></li>
+		<li>Enter <code>FAUNADB_SERVER_SECRET</code> in the 'Key' input field and your Secret Key from step 8. in the 'Value' input field.<br><img src="../elements/pictures/help/fauna_counter/picture_3.png"></li>
+		<li>
+			Go to the root directory of your website and create a new .json file named <code>package.json</code> and paste the following code in it:
+			<br><code>{<br>&nbsp;&nbsp;"name": "netlify-fauna",<br>&nbsp;&nbsp;"version": "0.1.0",<br>&nbsp;&nbsp;"private": true,<br>&nbsp;&nbsp;"dependencies": {<br>&nbsp;&nbsp;&nbsp;&nbsp;"faunadb": "^2.13.1"<br>&nbsp;&nbsp;}<br>}<br></code>
+		</li>
+	</ol>
+
+	<h2>Create Javascript</h2>
+	<ol start="14">
+		<li>Again in the root directory of your website: Create a folder named <code>netlify</code> and his subfolder named <code>functions</code>.</li>
+		<li>
+			Create a new .js file named <code>read.js</code> in the newly created subfolder and paste the following code in it:
+			<br><code>var faunadb = require('faunadb');<br>var q = faunadb.query;<br><br><br>exports.handler = (event, context) => {<br>&nbsp;&nbsp;// get FaunaDB secret key<br>&nbsp;&nbsp;var client = new faunadb.Client({<br>&nbsp;&nbsp;&nbsp;&nbsp;secret: process.env.FAUNADB_SERVER_SECRET<br>&nbsp;&nbsp;})<br><br>&nbsp;&nbsp;// get document id and collection name from url<br>&nbsp;&nbsp;var id = event.path.match(/([^\/]*)\/*$/)[0];<br>&nbsp;&nbsp;var collection = event.path.replace("/" + id, "").match(/([^\/]*)\/*$/)[0];<br><br>&nbsp;&nbsp;// get data from db<br>&nbsp;&nbsp;return client.query(q.Get(q.Ref(`classes/${collection}/${id}`)))<br>&nbsp;&nbsp;&nbsp;&nbsp;.then((response) => {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode: 200,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify(response)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}).catch((error) => {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode: 400,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify(error)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>}</code>
+			<br>This file is used to get the counter data from the Fauna database.
+		</li>
+	</ol>
+
+	<p class="spoiler_title active"onclick="spoiler(this)" title="Open for more Informations">Do counting in a save enviroment (Netlify Functions)</p>
+	<div class="spoiler_show" style="max-height: unset;">
+		<div class="spoiler_content">
+			<ol start="12">
+				<li>
+					Create a new .js file named <code>update.js</code> in the newly created subfolder and paste the following code in it:
+					<br><code>var faunadb = require('faunadb')<br>var q = faunadb.query<br><br><br>exports.handler = (event, context) => {<br>&nbsp;&nbsp;// get FaunaDB secret key<br>&nbsp;&nbsp;var client = new faunadb.Client({<br>&nbsp;&nbsp;&nbsp;&nbsp;secret: process.env.FAUNADB_SERVER_SECRET<br>&nbsp;&nbsp;});<br><br>&nbsp;&nbsp;// get document id and collection name from url<br>&nbsp;&nbsp;var id = event.path.match(/([^\/]*)\/*$/)[0];<br>&nbsp;&nbsp;var collection = event.path.replace("/" + id, "").match(/([^\/]*)\/*$/)[0];<br><br>&nbsp;&nbsp;// get data from db<br>&nbsp;&nbsp;return client.query(q.Get(q.Ref(`classes/${collection}/${id}`))).then((current) => {<br><br>&nbsp;&nbsp;&nbsp;&nbsp;// update counter<br>&nbsp;&nbsp;&nbsp;&nbsp;var data = {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count: JSON.parse(JSON.stringify(current)).data.count + 1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date: new Date()<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;data = JSON.parse(JSON.stringify(data));<br><br>&nbsp;&nbsp;&nbsp;&nbsp;// update data in db<br>&nbsp;&nbsp;&nbsp;&nbsp;return client.query(q.Update(q.Ref(`classes/${collection}/${id}`), {data}))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then((response) => {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode: 200,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify(response)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).catch((error) => {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statusCode: 400,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify(error)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>&nbsp;&nbsp;<br>}</code>
+					<br>This file is used to update the counter data. 
+				</li>
+			</ol>
+		</div>
+	</div>
+
+	<p class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Do counting in normal Javascript</p>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			
+		</div>
+	</div>
+
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/special/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+
+</body>
+</html>
