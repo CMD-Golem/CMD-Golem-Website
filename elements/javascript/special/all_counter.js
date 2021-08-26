@@ -141,6 +141,8 @@ function refreshDatabase() {
 	help = undefined;
 	powered_enchanting = undefined;
 
+	table.innerHTML = "";
+
 	initDatabase(sel_db);
 }
 
