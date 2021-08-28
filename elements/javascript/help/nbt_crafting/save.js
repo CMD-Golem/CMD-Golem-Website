@@ -21,13 +21,13 @@ function downloadCheck() {
   version = document.getElementsByClassName("version")[0].value
 
   for (var i = 0; i < article.length; i++) {
-    var auto_name = article[i].getElementsByClassName("auto_name")[0].value;
+    var recipe_id = article[i].getElementsByClassName("recipe_id")[0].value;
 
     // Recipe
     el_recipe_folder = article[i].getElementsByClassName("recipe_folder")[0];
     if (el_recipe_folder.value == "") {recipe_folder = el_recipe_folder.placeholder;}
     else {recipe_folder = el_recipe_folder.value;}
-    if (recipe_folder.includes("$") == true) {recipe_folder = recipe_folder.replace(/\u0024/g, auto_name);}
+    if (recipe_folder.includes("$") == true) {recipe_folder = recipe_folder.replace(/\u0024/g, recipe_id);}
 
     el_recipe_name = article[i].getElementsByClassName("recipe_name")[0];
     if (el_recipe_name.value == "") {recipe_name = el_recipe_name.placeholder;}
@@ -38,7 +38,7 @@ function downloadCheck() {
     el_advancement_folder = article[i].getElementsByClassName("advancement_folder")[0];
     if (el_advancement_folder.value == "") {advancement_folder = el_advancement_folder.placeholder;}
     else {advancement_folder = el_advancement_folder.value;}
-    if (advancement_folder.includes("$") == true) {advancement_folder = advancement_folder.replace(/\u0024/g, auto_name);}
+    if (advancement_folder.includes("$") == true) {advancement_folder = advancement_folder.replace(/\u0024/g, recipe_id);}
 
     el_advancement_name = article[i].getElementsByClassName("advancement_name")[0];
     if (el_advancement_name.value == "") {advancement_name = el_advancement_name.placeholder;}
@@ -49,7 +49,7 @@ function downloadCheck() {
     el_function_detect_folder = article[i].getElementsByClassName("function_detect_folder")[0];
     if (el_function_detect_folder.value == "") {function_detect_folder = el_function_detect_folder.placeholder;}
     else {function_detect_folder = el_function_detect_folder.value;}
-    if (function_detect_folder.includes("$") == true) {function_detect_folder = function_detect_folder.replace(/\u0024/g, auto_name);}
+    if (function_detect_folder.includes("$") == true) {function_detect_folder = function_detect_folder.replace(/\u0024/g, recipe_id);}
 
     el_function_detect_name = article[i].getElementsByClassName("function_detect_name")[0];
     if (el_function_detect_name.value == "") {function_detect_name = el_function_detect_name.placeholder;}
@@ -60,7 +60,7 @@ function downloadCheck() {
     el_function_craft_folder = article[i].getElementsByClassName("function_craft_folder")[0];
     if (el_function_craft_folder.value == "") {function_craft_folder = el_function_craft_folder.placeholder;}
     else {function_craft_folder = el_function_craft_folder.value;}
-    if (function_craft_folder.includes("$") == true) {function_craft_folder = function_craft_folder.replace(/\u0024/g, auto_name);}
+    if (function_craft_folder.includes("$") == true) {function_craft_folder = function_craft_folder.replace(/\u0024/g, recipe_id);}
 
     el_function_craft_name = article[i].getElementsByClassName("function_craft_name")[0];
     if (el_function_craft_name.value == "") {function_craft_name = el_function_craft_name.placeholder;}
@@ -71,7 +71,7 @@ function downloadCheck() {
     el_function_mass_folder = article[i].getElementsByClassName("function_mass_folder")[0];
     if (el_function_mass_folder.value == "") {function_mass_folder = el_function_mass_folder.placeholder;}
     else {function_mass_folder = el_function_mass_folder.value;}
-    if (function_mass_folder.includes("$") == true) {function_mass_folder = function_mass_folder.replace(/\u0024/g, auto_name);}
+    if (function_mass_folder.includes("$") == true) {function_mass_folder = function_mass_folder.replace(/\u0024/g, recipe_id);}
 
     el_function_mass_name = article[i].getElementsByClassName("function_mass_name")[0];
     if (el_function_mass_name.value == "") {function_mass_name = el_function_mass_name.placeholder;}

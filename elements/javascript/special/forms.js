@@ -33,6 +33,7 @@ for (var i = 0; i < el_input.length; i++) {
 // Read hash
 var hashfilter = window.location.hash.substr(1);
 var link = document.getElementById("link");
+var hide = document.getElementById("hide");
 document.getElementById("pack_type").value = hashfilter;
 
 if (hashfilter == "nbt_crafting") {link.href = "https://www.planetminecraft.com/blog/nbt-crafting/";}
@@ -53,3 +54,7 @@ else if (hashfilter == "better_wandering_trader") {link.href = "https://www.plan
 else if (hashfilter == "key") {link.href = "https://www.planetminecraft.com/data-pack/key-lock-chests/";}
 else if (hashfilter == "redstone_dot") {link.href = "https://www.planetminecraft.com/data-pack/restone-dut/";}
 else if (hashfilter == "recipe_unlocker") {link.href = "https://www.planetminecraft.com/data-pack/recipe-unlocker/";}
+
+
+// Not Minecraft
+else if (hashfilter == "fauna_counter") {hide.style.display = "none";}
