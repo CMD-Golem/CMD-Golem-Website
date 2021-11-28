@@ -1,8 +1,8 @@
 // Site Search
 var article = document.getElementById("article_list").getElementsByClassName("filterme");
+var input = document.getElementById("site_search");
 
 function siteSearch() {
-	var input = document.getElementById("site_search");
 	var filter = input.value.toUpperCase();
 
 	for (var i = 0; i < article.length; i++) {
@@ -18,61 +18,87 @@ function siteSearch() {
 
 
 //#################################################################################################
-// Add filter
-var hashfilter = window.location.hash.substr(1);
-
-if (document.getElementById(hashfilter) != null) {
-	document.getElementById(hashfilter).checked = true;
+// set filter from hash
+var hashfilter = document.getElementById(window.location.hash.substr(1));
+if (hashfilter != null) {
+	hashfilter.checked = true;
 }
 
-
-//#################################################################################################
-// Filter //https://stackoverflow.com/a/45146800
-var getFilter = function (category) {
-	var filter = $("#filters ." + category + ":checked").map(function () {
-		return '[class*="' + this.id + '"]';
-	}).get().join(",");
-	filter = (filter.length > 0) ? filter : "*";
-	return filter;
+// eventlistener
+var checkboxes = document.getElementById("filters").querySelectorAll("input[type=checkbox]");
+for (var i = 0; i < checkboxes.length; i++) {
+	checkboxes[i].addEventListener("click", siteFilter);
 }
 
-$("#filters :checkbox").click(function () {
-	var all = $(".filterme");
-	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
-	all.not(tgts).addClass("hide_filter");
-	tgts.removeClass("hide_filter");
-	notFound();
-});
+var filter_box = document.getElementById("filters");
 
-
-// Filter if return to page
-function loadFilter() {
-	var getFilter = function (category) {
-		var filter = $("#filters ." + category + ":checked").map(function () {
-			return '[class*="' + this.id + '"]';
-		}).get().join(",");
-		filter = (filter.length > 0) ? filter : "*";
-		return filter;
+function siteFilter() {
+	// Get filter words from all checkboxes and put it in a array
+	var getFilters = function (category) {
+		var keywords = [];
+		var filters = filter_box.querySelectorAll("." + category + ":checked");
+		for (var i = 0; i < filters.length; i++) {
+			keywords.push(filters[i].id);
+		}
+		return keywords;
 	}
 
-	var all = $(".filterme");
-	var tgts = all.filter(getFilter("version")).filter(getFilter("type")).filter(getFilter("pack"));
-	all.not(tgts).addClass("hide_filter");
-	tgts.removeClass("hide_filter");
-	notFound();
-};
+	var version = getFilters("version");
+	var type = getFilters("type");
+	var pack = getFilters("pack");
+
+	// loop trough all article
+	for (var i = 0; i < article.length; i++) {
+		var show_version = false;
+		var show_type = false;
+		var show_pack = false;
+
+		// check if group has checked checkbox and if filter word is in classlist
+		if (version.length == 0) {show_version = true;}
+		else {
+			for (var j = 0; j < version.length; j++) {
+				if (article[i].classList.contains(version[j])) {show_version = true;}
+			}
+		}
+
+		if (type.length == 0) {show_type = true;}
+		else {
+			for (var j = 0; j < type.length; j++) {
+				if (article[i].classList.contains(type[j])) {show_type = true;}
+			}
+		}
+
+		if (pack.length == 0) {show_pack = true;}
+		else {
+			for (var j = 0; j < pack.length; j++) {
+				if (article[i].classList.contains(pack[j])) {show_pack = true;}
+			}
+		}
+
+		// hide if filter word from one group wasn't in class list
+		if (show_version == false || show_pack == false || show_type == false) {
+			article[i].classList.add("hide_filter");
+		}
+		else {
+			article[i].classList.remove("hide_filter");
+		}
+	}
+	notFound()
+}
 
 //#################################################################################################
 // Show not found when no results
+var not_found = document.getElementById("not_found")
+
 function notFound() {
-	var hide_search = document.getElementsByClassName("hide_search").length;
+	var hide_search = document.querySelectorAll(".hide_search:not(.hide_filter)").length;
 	var hide_filter = document.getElementsByClassName("hide_filter").length;
 
 	if (article.length - hide_filter - hide_search <= 0) {
-		document.getElementById("not_found").style.display = "block";
+		not_found.style.display = "block";
 	}
 	else {
-		document.getElementById("not_found").style.display = "none";
+		not_found.style.display = "none";
 	};
 }
 
@@ -82,5 +108,5 @@ function notFound() {
 // Load Filter on reload
 window.onload = function onload() {
 	siteSearch();
-	loadFilter();
+	siteFilter();
 }
