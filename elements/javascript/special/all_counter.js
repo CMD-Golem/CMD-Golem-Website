@@ -48,7 +48,7 @@ var readVersions = (database) => {
 
 	return readAll(database).then((response) => {
 		return response.map(counter => `
-			<tr class="show_more_button" data-date="${counter.data.name}">
+			<tr class="show_more_button" data-name="${counter.data.name}">
 				<td><p>${counter.data.name}</p></td>
 				<td><p>${counter.data.downloads}</p></td>
 				<td></td>
