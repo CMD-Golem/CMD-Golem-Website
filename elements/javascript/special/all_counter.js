@@ -10,14 +10,6 @@ var readDatabase = (database) => {
 		 })
 	}
 
-	var readAllOffline = (index_type) => {
-		return fetch(`https://raw.githubusercontent.com/CMD-Golem/cmd-golem.github.io/master/${index_type}.json`).then(response => {
-			return response.json()
-		})
-	}
-
-	console.log("fetch")
-
 	return readAll(database).then((response) => {
 		return response.map(counter => `
 			<tr onclick="spoiler(this)" class="show_more_button" data-date="${counter.data.date}">
@@ -44,7 +36,31 @@ var readDatabase = (database) => {
 	});
 }
 
-var datapacks, resource_packs, maps, help, powered_enchanting;
+// read db for versions
+var readVersions = (database) => {
+	var readAll = (index_type) => {
+		return fetch(`/.netlify/functions/read_all/${index_type}`, {
+			method: 'POST',
+		}).then(response => {
+			return response.json()
+		 })
+	}
+
+	return readAll(database).then((response) => {
+		return response.map(counter => `
+			<tr class="show_more_button" data-date="${counter.data.name}">
+				<td><p>${counter.data.name}</p></td>
+				<td><p>${counter.data.downloads}</p></td>
+				<td></td>
+			</tr>
+			`).join('');
+	});
+}
+
+
+// #################################################################################################
+// prepare for loading data
+var datapacks, resource_packs, maps, help, powered_enchanting, versions;
 var sel_db;
 
 function initDatabase(hash) {
@@ -119,6 +135,16 @@ function initDatabase(hash) {
 		}
 		else { printOut(powered_enchanting); }
 	}
+
+	else if (hash == "versions") {
+		if (versions == undefined) {
+			readVersion("all_versions").then(response => {
+				versions = response;
+				printOut(response);
+			});
+		}
+		else { printOut(versions); }
+	}
 }
 
 
@@ -134,12 +160,15 @@ function printOut(html) {
 
 initDatabase();
 
+// #################################################################################################
+// refresh Table
 function refreshDatabase() {
 	datapacks = undefined;
 	resource_packs = undefined;
 	maps = undefined;
 	help = undefined;
 	powered_enchanting = undefined;
+	versions = undefined;
 
 	table.innerHTML = "";
 

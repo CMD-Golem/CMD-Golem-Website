@@ -157,8 +157,9 @@ function updateCounter() {
 
 		// version statistic
 		var pack_version = event.target.parentNode.parentNode.firstElementChild.id;
-		version(pack_version);
-		
+		if (pack_version != "") {
+			version(pack_version);
+		}
 	}
 	else {
 		console.log("Already downloaded");
