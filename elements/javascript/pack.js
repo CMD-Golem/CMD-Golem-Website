@@ -123,6 +123,15 @@ var update = (pack_id, pack_type) => {
 	})
 }
 
+// version statistic
+var version = (pack_version) => {
+	return fetch(`/.netlify/functions/version/${pack_version}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
 
 // get id and type of pack
 var counter_el = document.getElementById("download_counter");
@@ -145,6 +154,11 @@ function updateCounter() {
 	if (already_download != true) {
 		already_download = true;
 		update(pack_id, pack_type)//.then((value) => { console.log(value); });
+
+		// version statistic
+		var pack_version = event.target.parentNode.parentNode.firstElementChild.id;
+		version(pack_version);
+		
 	}
 	else {
 		console.log("Already downloaded");
