@@ -36,8 +36,8 @@ var readDatabase = (database) => {
 	});
 }
 
-// read db for versions
-var readVersions = (database) => {
+// read db without date
+var readDateless = (database) => {
 	var readAll = (index_type) => {
 		return fetch(`/.netlify/functions/read_all/${index_type}`, {
 			method: 'POST',
@@ -138,7 +138,7 @@ function initDatabase(hash) {
 
 	else if (hash == "versions") {
 		if (versions == undefined) {
-			readVersions("all_versions").then(response => {
+			readDateless("all_versions").then(response => {
 				versions = response;
 				printOut(response);
 			});
@@ -186,8 +186,13 @@ function sortTable(table) {
 
 		for (var i = 0; i < (rows.length - 1); i++) {
 			var should_switch = false;
+			var should_switch_dateless = false;
 			if (rows[i].dataset.date < rows[i + 1].dataset.date) {
 				should_switch = true;
+				break;
+			}
+			else if (rows[i].dataset.name < rows[i + 1].dataset.name) {
+				should_switch_dateless = true;
 				break;
 			}
 		}
@@ -202,6 +207,11 @@ function sortTable(table) {
 			rows[i].parentNode.insertBefore(yyesterday, rows[i + 1]);
 			rows[i].parentNode.insertBefore(last_month, rows[i + 1]);
 
+			switching = true;
+		}
+
+		if (should_switch_dateless == true) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 			switching = true;
 		}
 	}
