@@ -138,7 +138,7 @@ function initDatabase(hash) {
 
 	else if (hash == "versions") {
 		if (versions == undefined) {
-			readVersion("all_versions").then(response => {
+			readVersions("all_versions").then(response => {
 				versions = response;
 				printOut(response);
 			});
