@@ -1,0 +1,208 @@
+/* Article */
+article {
+	display: flex;
+	justify-content: space-between;
+	background-color: #333333;
+	margin-top: 20px;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+}
+
+article:hover {
+	background-color: #222222;
+}
+
+article h1 {
+	font-size: 23px;
+	font-family: FiraSans;
+	color: #0064FF;
+	text-shadow: unset;
+	margin-top: 0;
+}
+
+table {
+	width: 400px;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+tr {
+	border-bottom: unset;
+}
+
+td {
+	padding: 5px;
+	width: unset;
+	vertical-align: top;
+}
+
+article td:first-child {
+	width: 200px;
+}
+
+.incomp_ench {
+	display: none;
+}
+
+.show_incomp .incomp_ench {
+	display: table-row;
+}
+
+.content {
+	width: calc(100% - 400px - 20px);
+	margin-right: 20px;
+}
+
+.selected, .selected:hover {
+	background-color: seagreen;
+}
+
+.advanced_ench h1 {
+	color: #A10000;
+	position: relative;
+}
+
+/*.advanced_ench h1::after {
+	content: url(../../nav/help.svg);
+}
+
+.advanced_ench h1:hover::before {
+	content: 'Advanced Enchantment';
+	position: absolute;
+	background-color: #333333;
+	padding: 5px 10px;
+	border-radius: 10px;
+	top: 30px;
+} */
+
+@media (max-width: 700px) {
+	article {
+		flex-direction: column;
+		padding: 10px;
+	}
+	table {
+		width: unset;
+	}
+	article tr:first-child {
+		border-top: 2px solid #1C1C1C;
+	}
+	.content {
+		margin: 0 auto;
+		width: unset;
+	}
+}
+
+/* Settings */
+.settings_button {
+	position: absolute;
+	padding: 5px;
+	padding-bottom: 0;
+	border-radius: 3px;
+}
+
+.settings_button:hover {
+	background-color: #333333;
+}
+
+.settings_box {
+	background-color: #333333;
+	margin-top: 5px;
+	border-radius: 10px;
+	padding: 2px 20px;
+	padding-bottom: 20px;
+}
+
+.settings_table {
+	width: unset;
+	margin: 0 0;
+}
+
+/* ####################################################################### */
+/* Navbar Search */
+.nav_search {
+	display: flex;
+	justify-content: center;
+}
+
+.nav_search_box {
+	width: 500px;
+	margin-top: 9px;
+}
+
+.nav_search input {
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	background: #333333 url('../../nav/search.svg') 10px 7px/27px no-repeat;
+	padding: 12px 20px 12px 45px;
+	color: white;
+}
+
+.nav_search input:focus:hover, .nav_search input:focus, .nav_search input:hover {
+	outline: none;
+	border-radius: 4px;
+	background-color: #1C1C1C;
+}
+
+/* Search Mobile */
+.nav_search_button {
+	display: none;
+	height: 60px;
+	width: 60px;
+	padding: 0;
+	z-index: 4;
+	background: transparent url('../../nav/search.svg') center/30px no-repeat;
+}
+
+.nav_search_button + label::before {
+	display: none;
+}
+
+@media (max-width: 900px) {
+	.nav_search {
+		display: none;
+		width: 100%;
+		height: 60px;
+		position: fixed;
+		background: #222222;
+		z-index: 3;
+		padding: 0;
+	}
+	.nav_search_box {
+		width: calc(100% - 70px);
+		max-width: 500px;
+		margin-right: 70px;
+	}
+
+	.nav_search_button {
+		display: block;
+	}
+
+	#nav_search_button:checked ~ .nav_search {
+		display: flex;
+	}
+	.nav_button {
+		margin: 0;
+	}
+}
+
+#nav_search_button:checked ~ .nav_search_button {
+	position: fixed;
+	right: 0;
+	background: transparent url('../../nav/close.svg') center/30px no-repeat;
+}
+
+.hide_search {
+	display: none;
+}
+
+#not_found {
+	display: none;
+	text-align: center;
+	margin-top: 30px;
+}

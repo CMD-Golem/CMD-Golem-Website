@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Powered Enchanting Download</title>
+<meta name="description" content="Enchant your tools and armor with new Enchantments and create your own.">
+<!-- <meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/powered_enchanting/download.html"> -->
+<!-- <meta name="robots" content="index, follow, archive"/> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/special/powered_enchanting.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
+	<div class="nav_search">
+		<div class="nav_search_box"><input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()"></div>
+	</div>
+</nav>
+
+
+<main>
+	<h1>Powered Enchanting</h1>
+	<h2>Enchantment selector</h2>
+	<p></p>
+	<hr>
+	<div id="article_list">
+		<article id="0" class="show_incomp" onclick="select(this)">
+			<div class="settings_button" onclick="setting(this)"><img src="../../elements/nav/settings.svg"></div>
+			<div class="content">
+				<h1>3x3 Mining</h1>
+				<p>Mine a three by three area.</p>
+			</div>
+			<table>
+				<tbody><tr><td>Max Level:</td><td>I</td></tr>
+				<tr><td>Compatible Items:</td><td><img src="../../elements/pictures/datapacks/powered_enchanting/items/pickaxe.png"><img src="../../elements/pictures/datapacks/powered_enchanting/items/shovel.png"></td></tr>
+				<tr class="incomp_ench"><td>Incompatible:</td><td>Vein Miner</td></tr>
+			</tbody></table>
+		</article>
+		<div class="settings_box">
+			<p style="font-weight: bold;">Settings</p>
+			<table class="settings_table">
+				<tr><td>Enchanting chance</td><td><span>5</span>%</td></tr>
+				<tr><td>Advanced Enchantment</td><td><input type="checkbox" checked></td></tr>
+				<tr><td>Ignore incompatible Enchantments</td><td><input type="checkbox"></td></tr>
+			</table>
+		</div>
+		<article id="1" class="" onclick="select(this)">
+			<div class="settings_button" onclick="setting(this)"><img src="../../elements/nav/settings.svg"></div>
+			<div class="content">
+				<h1>Aqua Affinity</h1>
+				<p>Increases underwater mining speed.</p>
+			</div>
+			<table>
+				<tbody><tr><td>Max Level:</td><td>I</td></tr>
+				<tr><td>Compatible Items:</td><td><img src="../../elements/pictures/datapacks/powered_enchanting/items/helmet.png"></td></tr>
+				<tr class="incomp_ench"><td>Incompatible:</td><td>false</td></tr>
+			</tbody></table>
+		</article>
+	</div>
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/app.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/save.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+
+</body>
+</html>
