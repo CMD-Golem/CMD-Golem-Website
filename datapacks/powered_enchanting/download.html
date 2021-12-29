@@ -28,7 +28,7 @@
 </nav>
 
 
-<main>
+<main class="main_sidebar">
 	<h1>Powered Enchanting</h1>
 	<h2>Enchantment selector</h2>
 	<p></p>
@@ -39,6 +39,7 @@
 			<div class="content">
 				<h1>3x3 Mining</h1>
 				<p>Mine a three by three area.</p>
+				<div class="comp_items">pickaxe shovel </div>
 			</div>
 			<table>
 				<tbody><tr><td>Max Level:</td><td>I</td></tr>
@@ -46,19 +47,12 @@
 				<tr class="incomp_ench"><td>Incompatible:</td><td>Vein Miner</td></tr>
 			</tbody></table>
 		</article>
-		<div class="settings_box">
-			<p style="font-weight: bold;">Settings</p>
-			<table class="settings_table">
-				<tr><td>Enchanting chance</td><td><span>5</span>%</td></tr>
-				<tr><td>Advanced Enchantment</td><td><input type="checkbox" checked></td></tr>
-				<tr><td>Ignore incompatible Enchantments</td><td><input type="checkbox"></td></tr>
-			</table>
-		</div>
 		<article id="1" class="" onclick="select(this)">
 			<div class="settings_button" onclick="setting(this)"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h1>Aqua Affinity</h1>
 				<p>Increases underwater mining speed.</p>
+				<div class="comp_items">helmet </div>
 			</div>
 			<table>
 				<tbody><tr><td>Max Level:</td><td>I</td></tr>
@@ -68,6 +62,12 @@
 		</article>
 	</div>
 </main>
+
+<aside>
+	<h1>Selected Enchantments</h1>
+	<div class="link_bar"></div>
+	
+</aside>
 
 <footer></footer>
 
