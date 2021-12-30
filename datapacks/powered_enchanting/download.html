@@ -21,6 +21,7 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
 	<div class="nav_search">
 		<div class="nav_search_box"><input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()"></div>
@@ -30,15 +31,42 @@
 
 <main class="main_sidebar">
 	<h1>Powered Enchanting</h1>
-	<h2>Enchantment selector</h2>
-	<p></p>
+	<ol>
+		<li>Select the Minecraft Version you play in:
+			<select>
+				<option value="8">1.18 or newer</option>
+				<option value="7">1.17 - 1.17.1</option>
+			</select>
+		</li>
+		<li>Select a premade edition and/or select the enchantments you want in the list below.
+			<div class="edition_selection">
+				<option onclick="changeEdition('all')" title="Select all enchantments" >All</option>
+				<option onclick="changeEdition('golem')" title="Select the best enchantments" style="border: 2px solid #A10000;">CMD-Golem</option>
+				<option onclick="changeEdition('vanilla')" title="Select all enchantments which are already in Minecraft" >Vanilla</option>
+				<option onclick="changeEdition('none')" title="Preselect none or disselect all enchantments" >None</option>
+			</div>
+		</li>
+		<li>Download the Data Pack and enjoy your new enchantments.<br>
+		</li>
+	</ol>
+	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Options</h3>
+
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<input type="radio" name="hide" id="radio_hide" onclick="hideSelected('hide')"><label for="radio_hide">Hide selected enchantments</label><br>
+			<input type="radio" name="hide" id="radio_presel" onclick="hideSelected('hide_presel')"><label for="radio_presel">Hide preselected enchantments</label><br>
+			<input type="radio" name="hide" id="radio_show" onclick="hideSelected('show')" checked><label for="radio_show">Show all enchantments</label>
+		</div>
+	</div>
+	
+	<h2 style="margin-top: 80px;">Enchantment list</h2>
 	<hr>
 	<div id="article_list">
-		<article id="0" class="show_incomp" onclick="select(this)">
-			<div class="settings_button" onclick="setting(this)"><img src="../../elements/nav/settings.svg"></div>
+		<article id="0" class="golem show_incomp" onclick="select(this)" title="Select" data-chance="2" data-arrayid="0">
+			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h1>3x3 Mining</h1>
-				<p>Mine a three by three area.</p>
+				<p>Mines a three by three area.</p>
 				<div class="comp_items">pickaxe shovel </div>
 			</div>
 			<table>
@@ -47,8 +75,8 @@
 				<tr class="incomp_ench"><td>Incompatible:</td><td>Vein Miner</td></tr>
 			</tbody></table>
 		</article>
-		<article id="1" class="" onclick="select(this)">
-			<div class="settings_button" onclick="setting(this)"><img src="../../elements/nav/settings.svg"></div>
+		<article id="1" class="vanilla golem" onclick="select(this)" title="Select" data-chance="2" data-arrayid="1">
+			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h1>Aqua Affinity</h1>
 				<p>Increases underwater mining speed.</p>
@@ -66,6 +94,11 @@
 <aside>
 	<h1>Selected Enchantments</h1>
 	<div class="link_bar"></div>
+	<div class="link_buttons">
+		<div class="button text_button" title="Download Data Pack">Download</div>
+		<div class="button icon_button" title="Share Data Pack"><img src="../../elements/nav/share.svg"></div>
+	</div>
+	
 	
 </aside>
 
@@ -73,6 +106,7 @@
 
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/app.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/save.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
 </body>

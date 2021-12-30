@@ -1,0 +1,18 @@
+data
+	combining
+		items (detect)
+			helmet
+			chestplate
+			...
+		enchantments (enchant)
+			sharpness
+			auto_smelt
+			...
+		lore
+	enchanting
+		adv_enchanting
+		enchanting
+	enchantments
+		sharpness
+		auto_smelt
+		...

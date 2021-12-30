@@ -70,18 +70,6 @@ aside {
   background-color: #CCCCCC;
 }
 
-select {
-  padding: 10px;
-  border: 0px solid;
-  background: #333333;
-  border-radius: 5px;
-  color: inherit;
-}
-
-select:focus {
-  outline: none;
-}
-
 /* Progress Bar */
 #progress_bar {
   position: fixed;

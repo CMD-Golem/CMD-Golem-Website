@@ -304,6 +304,21 @@ code.code_output {
 	font-size: 16px;
 }
 
+/* Select */
+select {
+	padding: 10px;
+	border: 0px solid;
+	background: #333333;
+	border-radius: 5px;
+	color: inherit;
+	font-family: FiraSans;
+	font-size: 20px;
+}
+  
+select:focus {
+	outline: none;
+}
+
 
 /* ####################################################################### */
 /* Spoiler */
