@@ -33,7 +33,7 @@
 	<h1>Powered Enchanting</h1>
 	<ol>
 		<li>Select the Minecraft Version you play in:
-			<select>
+			<select id="version">
 				<option value="8">1.18 or newer</option>
 				<option value="7">1.17 - 1.17.1</option>
 			</select>
@@ -49,7 +49,7 @@
 		<li>Download the Data Pack and enjoy your new enchantments.<br>
 		</li>
 	</ol>
-	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Options</h3>
+	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">List options</h3>
 
 	<div class="spoiler_show">
 		<div class="spoiler_content">
@@ -95,12 +95,12 @@
 	<h1>Selected Enchantments</h1>
 	<div class="link_bar"></div>
 	<div class="link_buttons">
-		<div class="button text_button" title="Download Data Pack">Download</div>
+		<div class="button text_button" title="Download Data Pack" onclick="generate()">Download</div>
 		<div class="button icon_button" title="Share Data Pack"><img src="../../elements/nav/share.svg"></div>
 	</div>
-	
-	
 </aside>
+
+<button onclick="goTop()" id="scroll_top" title="Go to the top of the page">➤</button>
 
 <footer></footer>
 

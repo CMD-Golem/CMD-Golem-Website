@@ -10,8 +10,8 @@ data
 			...
 		lore
 	enchanting
-		adv_enchanting
-		enchanting
+		adv_enchantments
+		enchantments
 	enchantments
 		sharpness
 		auto_smelt

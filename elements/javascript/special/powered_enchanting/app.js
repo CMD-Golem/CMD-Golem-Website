@@ -1,8 +1,8 @@
 // load json
 var article_elements, not_found;
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
-	//var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
@@ -294,4 +294,22 @@ function incompEnch(input) {
 	else {
 		article.classList.remove("ignore_incomp");
 	}
+}
+
+
+//#################################################################################################
+//Scroll on top
+var scroll_top = document.getElementById("scroll_top");
+
+window.onscroll = () => {
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		scroll_top.style.display = "block";
+	} else {
+		scroll_top.style.display = "none";
+	}
+}
+
+function goTop() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
 }
