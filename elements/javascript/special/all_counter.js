@@ -14,22 +14,22 @@ var readDatabase = (database) => {
 		return response.map(counter => `
 			<tr onclick="spoiler(this)" class="show_more_button" data-date="${counter.data.date}">
 				<td><p>${counter.data.name}<span class="mobile_date">${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</span></p></td>
-				<td><p>${counter.data.count}</p></td>
+				<td><p>${counter.data.count.toLocaleString('de-CH')}</p></td>
 				<td><p>${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</p></td>
 			</tr>
 			<tr class="show_more_content">
 				<td>Downloads yesterday:</td>
-				<td>${counter.data.count_yesterday}</td>
+				<td>${counter.data.count_yesterday.toLocaleString('de-CH')}</td>
 				<td></td>
 			</tr>
 			<tr class="show_more_content">
 				<td>Downloads dby:</td>
-				<td>${counter.data.count_yyesterday}</td>
+				<td>${counter.data.count_yyesterday.toLocaleString('de-CH')}</td>
 				<td></td>
 			</tr>
 			<tr class="show_more_content tr_last">
 				<td>Downloads last month:</td>
-				<td>${counter.data.count_last_month}</td>
+				<td>${counter.data.count_last_month.toLocaleString('de-CH')}</td>
 				<td></td>
 			</tr>
 			`).join('');
@@ -50,7 +50,7 @@ var readDateless = (database) => {
 		return response.map(counter => `
 			<tr class="show_more_button" data-name="${counter.data.name}">
 				<td><p>${counter.data.name}</p></td>
-				<td><p>${counter.data.downloads}</p></td>
+				<td><p>${counter.data.downloads.toLocaleString('de-CH')}</p></td>
 				<td></td>
 			</tr>
 			`).join('');

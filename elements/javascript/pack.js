@@ -141,7 +141,7 @@ var pack_type = counter_el.dataset.type;
 
 // show counter in html
 Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
-	counter_el.innerHTML = value.data.count;
+	counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
 	var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
 	show_el[0].style.display = "block";
 	show_el[1].style.display = "block";
