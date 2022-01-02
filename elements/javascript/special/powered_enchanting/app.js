@@ -1,8 +1,8 @@
 // load json
-var article_elements, not_found;
+var article_elements, article_array, not_found;
 async function loadJson() {
-	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
-	var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
+	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
+	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
@@ -34,8 +34,8 @@ async function loadJson() {
 			</div>
 			<table>
 				<tr><td>Max Level:</td><td>${max_lvl}</td></tr>
-				<tr><td>Compatible Items:</td><td>${img_path}</td></tr>
-				<tr class="incomp_ench"><td>Incompatible:</td><td>${article.incomp_ench}</td></tr>
+				<tr title="Can be enchanted on the following tools"><td>Compatible Items:</td><td>${img_path}</td></tr>
+				<tr class="incomp_ench" title="Can't be enchantent on the same tool"><td>Incompatible:</td><td>${article.incomp_ench}</td></tr>
 			</table>
 		</article>
 
@@ -200,6 +200,7 @@ function hideSelected(option) {
 	try {
 		body.classList.remove("hide_selected");
 		body.classList.remove("hide_preselected");
+		body.classList.remove("hide_vanilla");
 	}
 	catch (e) {}
 
@@ -208,6 +209,9 @@ function hideSelected(option) {
 	}
 	else if (option == "hide_presel") {
 		body.classList.add("hide_preselected");
+	}
+	else if (option == "vanilla") {
+		body.classList.add("hide_vanilla");
 	}
 }
 
@@ -235,19 +239,16 @@ function setting(article) {
 		if (chance == "0") {chance0 = "selected";}
 
 
-		if (article.classList.contains("advanced_ench")) {
-			var adv_ench = "checked";
-		}
-		else {
-			var adv_ench = "";
-		}
+		if (article.classList.contains("advanced_ench")) { var adv_ench = "checked"; }
+		else { var adv_ench = ""; }
+
 
 		if (article.classList.contains("options")) {
-			var incomp_ench = '<tr><td>Ignore incompatible Enchantments</td><td><input type="checkbox" onclick="incompEnch(this)"></td></tr>';
+			if (article.classList.contains("ignore_incomp")) { var incomp_ench_checked = "checked"; }
+			else { var incomp_ench_checked = ""; }
+			var incomp_ench = '<tr><td>Ignore incompatible Enchantments</td><td><input type="checkbox" onclick="incompEnch(this)" ' + incomp_ench_checked + '></td></tr>';
 		}
-		else {
-			var incomp_ench = "";
-		}
+		else { var incomp_ench = ""; }
 		
 
 		article_setting_el.innerHTML = `
@@ -288,11 +289,24 @@ function advEnch(input) {
 
 function incompEnch(input) {
 	var article = input.closest(".settings_box").previousSibling;
+	var incomp_enches = article_array[article.getAttribute("data-arrayId")].ench;
+	var ench_id_array = article_array.map(a => a.ench[0]);
+
 	if (input.checked) {
 		article.classList.add("ignore_incomp");
+		for (var i = 0; i < incomp_enches.length; i++) {
+			if (i != 0) {
+				article_elements[ench_id_array.indexOf(incomp_enches[i])].classList.add("ignore_incomp");
+			}
+		}
 	}
 	else {
 		article.classList.remove("ignore_incomp");
+		for (var i = 0; i < incomp_enches.length; i++) {
+			if (i != 0) {
+				article_elements[ench_id_array.indexOf(incomp_enches[i])].classList.remove("ignore_incomp");
+			}
+		}
 	}
 }
 
@@ -302,7 +316,7 @@ function incompEnch(input) {
 var scroll_top = document.getElementById("scroll_top");
 
 window.onscroll = () => {
-	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
 		scroll_top.style.display = "block";
 	} else {
 		scroll_top.style.display = "none";

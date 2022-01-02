@@ -7,7 +7,7 @@ main {
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
-	margin-top: 10px;
+	margin: 10px 0;
 }
 
 .edition_selection option {
@@ -86,7 +86,7 @@ article td:first-child {
 	background-color: #16472b;
 }
 
-.hide_selected .selected, .hide_preselected .preselected {
+.hide_selected .selected, .hide_vanilla .vanilla, .hide_preselected .preselected {
 	display: none;
 }
 

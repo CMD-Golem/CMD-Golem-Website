@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
 
 </head>
-<body>
+<body class="hide_vanilla">
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
@@ -45,7 +45,9 @@
 				<option onclick="changeEdition('vanilla')" title="Select all enchantments which are already in Minecraft" >Vanilla</option>
 				<option onclick="changeEdition('none')" title="Preselect none or disselect all enchantments" >None</option>
 			</div>
+			<small>(If you don't select a vanilla enchantments, it will still be aviable trough trading or can be found in chests. They can also be combined on the Enchanting Table.)</small>
 		</li>
+		<li>Change values of each enchantment by clicking on the settings icon in the top-left corner.<br><button>Get more Informations about the values</button></li>
 		<li>Download the Data Pack and enjoy your new enchantments.<br>
 		</li>
 	</ol>
@@ -55,7 +57,8 @@
 		<div class="spoiler_content">
 			<input type="radio" name="hide" id="radio_hide" onclick="hideSelected('hide')"><label for="radio_hide">Hide selected enchantments</label><br>
 			<input type="radio" name="hide" id="radio_presel" onclick="hideSelected('hide_presel')"><label for="radio_presel">Hide preselected enchantments</label><br>
-			<input type="radio" name="hide" id="radio_show" onclick="hideSelected('show')" checked><label for="radio_show">Show all enchantments</label>
+			<input type="radio" name="hide" id="radio_vanilla" onclick="hideSelected('vanilla')" checked><label for="radio_vanilla">Hide all vanilla enchantments</label><br>
+			<input type="radio" name="hide" id="radio_show" onclick="hideSelected('show')"><label for="radio_show">Show all enchantments</label>
 		</div>
 	</div>
 	
