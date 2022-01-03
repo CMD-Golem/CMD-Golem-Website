@@ -64,10 +64,16 @@ function convertToRoman(num) {
 // ###########################################################
 // Site Search
 var site_search = document.getElementById("site_search");
+var site_search_mobile = document.getElementById("site_search_mobile");
+var scroll_point = document.getElementById("scroll_point")
 
 function siteSearch() {
 	var search_value = site_search.value;
 	var search_input = search_value.toUpperCase().split(" ");
+
+	if (search_value != "") {
+		scroll_point.scrollIntoView({behavior: 'smooth'});
+	}
 
 	// hide settings
 	try {
@@ -107,6 +113,11 @@ function siteSearch() {
 	else {
 		not_found.style.display = "none";
 	}
+}
+
+function siteSearchMobile() {
+	site_search.value = site_search_mobile.value;
+	siteSearch();
 }
 
 
@@ -169,8 +180,7 @@ function select(article, preselection) {
 
 function deselect(article) {
 	article.classList.remove("selected");
-	try { article.classList.remove("preselected"); }
-	catch (e) {}
+	article.classList.remove("preselected");
 
 	// remove sidebar link
 	var remove_link = document.getElementById("link_" + article.id);
@@ -196,23 +206,13 @@ function scrollToParent(id) {
 	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
 }
 
-function hideSelected(option) {
-	try {
-		body.classList.remove("hide_selected");
-		body.classList.remove("hide_preselected");
-		body.classList.remove("hide_vanilla");
-	}
-	catch (e) {}
+function hideEnch(option) {
+	body.classList.remove("hide_selected");
+	body.classList.remove("hide_preselected");
+	body.classList.remove("hide_vanilla");
+	body.classList.remove("show_all");
 
-	if (option == "hide") {
-		body.classList.add("hide_selected");
-	}
-	else if (option == "hide_presel") {
-		body.classList.add("hide_preselected");
-	}
-	else if (option == "vanilla") {
-		body.classList.add("hide_vanilla");
-	}
+	body.classList.add(option);
 }
 
 // ###########################################################
@@ -327,3 +327,76 @@ function goTop() {
 	document.body.scrollTop = 0;
 	document.documentElement.scrollTop = 0;
 }
+
+
+// ###########################################################
+// Modal Box
+var modal_box = document.getElementById("modal_box");
+
+function closeModal() {
+	modal_box.innerHTML = "";
+	modal_box.classList = "";
+}
+
+// Import from pack id
+function loadPackIdModal() {
+	var modal_text = document.createElement("div");
+	modal_text.classList.add("modal_text");
+	modal_text.innerHTML = '<div class="modal_padding_box"><input placeholder="Insert Pack Id..."></div><button onclick="importPackId()">Load</button><button onclick="closeModal()" style="margin-left:10px;">Close</button>';
+	modal_box.appendChild(modal_text);
+}
+
+function importPackId() {
+	var pack_id = modal_box.getElementsByTagName("input")[0].value;
+	var pack_id_input = modal_box.getElementsByTagName("input")[0];
+	var pack_id_length = (pack_id.length - 2) / 3;
+
+	// test for corruption
+	if (pack_id.substring(0,2) != "1-" || pack_id_length % 1 != 0) {
+		importPackIdFail(pack_id_input);
+		return;
+	}
+	// remove pack id version
+	pack_id = pack_id.substr(2);
+
+	// unselect all selected
+	var select_array = document.getElementsByTagName("article");
+	for (var i = 0; i < select_array.length; i++) {
+		if (select_array[i].classList.contains("selected")) { deselect(select_array[i]); }
+	}
+
+	for (var i = 0; i < pack_id_length; i++) {
+		var set_article = document.getElementById(pack_id.charAt());
+		var set_article_setting = pack_id.charAt(2);
+
+		// test for corruption
+		if (set_article == null || set_article_setting >= 4) {
+			importPackIdFail(pack_id_input);
+			return;
+		}
+
+		select(set_article, true);
+		set_article.setAttribute("data-chance", pack_id.charAt(1));
+
+		if (set_article_setting == 1 || set_article_setting == 3) {set_article.classList.add("advanced_ench");}
+		else {set_article.classList.remove("advanced_ench");}
+		if (set_article_setting >= 2 && set_article.classList.contains("options")) {set_article.classList.add("ignore_incomp");}
+		else {set_article.classList.remove("ignore_incomp");}
+
+		pack_id = pack_id.substr(3);
+	}
+	closeModal();
+}
+
+function importPackIdFail(pack_id_input) {
+	pack_id_input.placeholder = "Pack Id is corrupted!";
+	pack_id_input.style.backgroundColor = "#A10000";
+	pack_id_input.value = "";
+
+	setTimeout(function(){
+		pack_id_input.placeholder = "Insert Pack Id...";
+		pack_id_input.removeAttribute("style");
+	}, 2000);
+}
+
+

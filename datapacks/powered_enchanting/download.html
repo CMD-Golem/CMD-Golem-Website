@@ -21,9 +21,11 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
-	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download" onclick="generate()"></div>
+	<div class="nav_button" onclick="" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing" onclick="getPackId()"></div>
+	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
-	<div class="nav_search">
+	<div class="nav_search hide_mobile">
 		<div class="nav_search_box"><input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()"></div>
 	</div>
 </nav>
@@ -42,27 +44,32 @@
 			<div class="edition_selection">
 				<option onclick="changeEdition('all')" title="Select all enchantments" >All</option>
 				<option onclick="changeEdition('golem')" title="Select the best enchantments" style="border: 2px solid #A10000;">CMD-Golem</option>
+				<option onclick="loadPackIdModal()" title="Load enchantments from Pack Id" >Load Pack Id</option>
 				<option onclick="changeEdition('vanilla')" title="Select all enchantments which are already in Minecraft" >Vanilla</option>
 				<option onclick="changeEdition('none')" title="Preselect none or disselect all enchantments" >None</option>
 			</div>
-			<small>(If you don't select a vanilla enchantments, it will still be aviable trough trading or can be found in chests. They can also be combined on the Enchanting Table.)</small>
+			<small>(If you don't select a vanilla enchantment, it will still be aviable trough trading or can be found in chests. It is also possible to combined it on the Enchanting Table.)</small>
 		</li>
-		<li>Change values of each enchantment by clicking on the settings icon in the top-left corner.<br><button>Get more Informations about the values</button></li>
-		<li>Download the Data Pack and enjoy your new enchantments.<br>
+		<li>Change values of each enchantment by clicking on the settings icon in the top-left corner.
+			<div style="display: block;" class="center">
+				<button>Get more Informations about the values</button>
+			</div>
 		</li>
+		<li>Download the Data Pack and enjoy your new enchantments.<br>Use the Share button to share your create pack.</li>
 	</ol>
-	<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">List options</h3>
-
-	<div class="spoiler_show">
-		<div class="spoiler_content">
-			<input type="radio" name="hide" id="radio_hide" onclick="hideSelected('hide')"><label for="radio_hide">Hide selected enchantments</label><br>
-			<input type="radio" name="hide" id="radio_presel" onclick="hideSelected('hide_presel')"><label for="radio_presel">Hide preselected enchantments</label><br>
-			<input type="radio" name="hide" id="radio_vanilla" onclick="hideSelected('vanilla')" checked><label for="radio_vanilla">Hide all vanilla enchantments</label><br>
-			<input type="radio" name="hide" id="radio_show" onclick="hideSelected('show')"><label for="radio_show">Show all enchantments</label>
-		</div>
-	</div>
+	<hr id="scroll_point">
 	
-	<h2 style="margin-top: 80px;">Enchantment list</h2>
+	<h3 style="margin-top: 80px;">Enchantment list</h3>
+	<input type="text" placeholder="Search" id="site_search_mobile" class="site_search" onkeyup="siteSearchMobile()">
+	<p class="center">
+		<b>List options:</b>
+		<select id="list_options" onchange="hideEnch(this.value)" style="max-width: 100%;">
+			<option value="hide_selected">Hide selected enchantments</option>
+			<option value="hide_preselected">Hide preselected enchantments</option>
+			<option value="hide_vanilla" selected>Hide all vanilla enchantments</option>
+			<option value="show_all">Show all enchantments</option>
+		</select>
+	</p>
 	<hr>
 	<div id="article_list">
 		<article id="0" class="golem show_incomp" onclick="select(this)" title="Select" data-chance="2" data-arrayid="0">
@@ -99,11 +106,13 @@
 	<div class="link_bar"></div>
 	<div class="link_buttons">
 		<div class="button text_button" title="Download Data Pack" onclick="generate()">Download</div>
-		<div class="button icon_button" title="Share Data Pack"><img src="../../elements/nav/share.svg"></div>
+		<div class="button icon_button" title="Get Pack Id for sharing" onclick="getPackId()"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	</div>
 </aside>
 
 <button onclick="goTop()" id="scroll_top" title="Go to the top of the page">➤</button>
+
+<div id="modal_box"></div>
 
 <footer></footer>
 
