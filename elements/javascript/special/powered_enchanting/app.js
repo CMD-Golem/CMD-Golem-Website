@@ -34,7 +34,7 @@ async function loadJson() {
 			</div>
 			<table>
 				<tr><td>Max Level:</td><td>${max_lvl}</td></tr>
-				<tr title="Can be enchanted on the following tools"><td>Compatible Items:</td><td>${img_path}</td></tr>
+				<tr title="Can be enchanted on the following tools"><td>Compatible items:</td><td>${img_path}</td></tr>
 				<tr class="incomp_ench" title="Can't be enchantent on the same tool"><td>Incompatible:</td><td>${article.incomp_ench}</td></tr>
 			</table>
 		</article>
@@ -246,7 +246,7 @@ function setting(article) {
 		if (article.classList.contains("options")) {
 			if (article.classList.contains("ignore_incomp")) { var incomp_ench_checked = "checked"; }
 			else { var incomp_ench_checked = ""; }
-			var incomp_ench = '<tr><td>Ignore incompatible Enchantments</td><td><input type="checkbox" onclick="incompEnch(this)" ' + incomp_ench_checked + '></td></tr>';
+			var incomp_ench = '<tr><td>Ignore incompatible enchantments</td><td><input type="checkbox" onclick="incompEnch(this)" ' + incomp_ench_checked + '></td></tr>';
 		}
 		else { var incomp_ench = ""; }
 		
@@ -342,6 +342,7 @@ function closeModal() {
 function loadPackIdModal() {
 	var modal_text = document.createElement("div");
 	modal_text.classList.add("modal_text");
+	modal_text.classList.add("center");
 	modal_text.innerHTML = '<div class="modal_padding_box"><input placeholder="Insert Pack Id..."></div><button onclick="importPackId()">Load</button><button onclick="closeModal()" style="margin-left:10px;">Close</button>';
 	modal_box.appendChild(modal_text);
 }
@@ -400,3 +401,32 @@ function importPackIdFail(pack_id_input) {
 }
 
 
+// #################################################################################################
+// More settingsinfo
+var section = document.getElementsByTagName("section")[0];
+var main = document.getElementsByTagName("main")[0];
+var title = document.getElementsByTagName("title")[0];
+
+// function toggleInfo() {
+// 	if (document.getElementsByTagName("section")[0].style.display == "none") { window.location.hash = "info"; }
+// 	else { window.location.hash = ""; }
+// }
+
+function changeInfo() {
+	if (section.style.display == "none") {
+		section.style.display = "block";
+		main.style.display = "none";
+
+		title.innerHTML = "CMD-Golem - Powered Enchanting Download Information";
+	}
+
+	else {
+		section.style.display = "none";
+		main.style.display = "block";
+
+		title.innerHTML = "CMD-Golem - Powered Enchanting Download Information";
+	}
+}
+
+if (window.location.hash.substr(1) == "info") { changeInfo() }
+window.onhashchange = function() { changeInfo() }

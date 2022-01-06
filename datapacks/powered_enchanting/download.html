@@ -48,11 +48,11 @@
 				<option onclick="changeEdition('vanilla')" title="Select all enchantments which are already in Minecraft" >Vanilla</option>
 				<option onclick="changeEdition('none')" title="Preselect none or disselect all enchantments" >None</option>
 			</div>
-			<small>(If you don't select a vanilla enchantment, it will still be aviable trough trading or can be found in chests. It is also possible to combined it on the Enchanting Table.)</small>
+			<small>(If you don't select a vanilla enchantment, it will still be aviable trough trading or can be found in chests. It is also possible to combine it on the Enchanting Table.)</small>
 		</li>
 		<li>Change values of each enchantment by clicking on the settings icon in the top-left corner.
 			<div style="display: block;" class="center">
-				<button>Get more Informations about the values</button>
+				<button onclick="window.location.hash='info';">Get more Informations about the values</button>
 			</div>
 		</li>
 		<li>Download the Data Pack and enjoy your new enchantments.<br>Use the Share button to share your create pack.</li>
@@ -113,6 +113,19 @@
 <button onclick="goTop()" id="scroll_top" title="Go to the top of the page">➤</button>
 
 <div id="modal_box"></div>
+
+<section>
+	<h3>Value Informations</h3>
+	<p>Enchantments with red name are <a href="#advanced_enchanting">Advanced Enchantments</a><br>Enchantments with green name change the behaviour of other enchantments</p>
+
+	<p><b>Max Level:</b><br><span>The maximum level of the enchantment.</span></p>
+	<p><b>Compatible Items:</b></br><span>Tools, the enchantment can be enchanted on.</span></p>
+	<p><b>Incompatible:</b></br><span>Can't be enchanted on the tool if one of these enchantments is on it.</span></p>
+	<p><b>Enchanting chance:</b><br><span>The chance that the enchantment gets in the first selection for the enchanting. To select the final one, one random (all with same chance) of the first selection will be choosen.<br>The enchantment in the braket is an example of an enchantment with this chance.</span></p>
+	<p><b>Advanced Enchantment:</b><br><span>Should the enchantment only be obtainable through <a href="#advanced_enchanting">Advanced Enchanting</a>.</span></p>
+	<p><b>Ignore incompatible Enchantments:</b><br><span>Ignore incompatible Enchantments (can't be used for all)</span></p>
+
+</section>
 
 <footer></footer>
 
