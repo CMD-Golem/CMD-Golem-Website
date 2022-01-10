@@ -4,6 +4,8 @@ var pack_version = "3"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
 var pack_id;
 
+// {"id":"L", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":["chestplate"], "comp_itemsId":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
+
 // all 0
 // helmet 1, chestplate 2, leggings 3, boots 4
 // sword 5, pickaxe 6, axe 7, shovel 8, hoe 9
@@ -15,10 +17,13 @@ var comb_detect_items = ["all", "helmet", "chestplate", "leggings", "boots", "sw
 // Generate
 async function generate() {
 	var sel_article = document.querySelectorAll(".selected,.vanilla");
+	if (show_info == true) { openInfo() }
 
 	var comb_lore = "";
 	var enchanting = "";
 	var adv_enchanting = "";
+	var tick_function = "";
+	var load_function = "";
 	var comb_detect = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 	pack_id = pack_id_load;
@@ -27,131 +32,146 @@ async function generate() {
 	var zip = new JSZip();
 	// Set folderpaths
 	var pack_folder = zip.folder("data/" + datapack_name);
-	var tags_folder = zip.folder("data/minecraft/tags/functions/powerench");
 
 	// load main pack
-	JSZipUtils.getBinaryContent("../../elements/files/powered_enchanting/main_pack.zip", function(err, data) {
-		if (err) { throw err; }
-		zip.loadAsync(data).then(function (zip) {
+	ench_pack = await fetch("../../elements/files/powered_enchanting/main_pack.zip");
+	await zip.loadAsync(ench_pack.blob());
 
-			// ###########################################################
-			// load dynamic content
-			for (var i = 0; i < sel_article.length; i++) {
-				var ench = sel_article[i];
-				var ench_array = article_array[ench.getAttribute("data-arrayId")];
-				var is_vanilla = ench.classList.contains("vanilla");
-				var is_selected = ench.classList.contains("selected");
+	// ###########################################################
+	// load dynamic content
+	for (var i = 0; i < sel_article.length; i++) {
+		var ench = sel_article[i];
+		var ench_array = article_array[ench.getAttribute("data-arrayId")];
+		var is_vanilla = ench.classList.contains("vanilla");
+		var is_selected = ench.classList.contains("selected");
 
-				// generate pack id
-				if (is_selected) { packId(ench); }
+		// generate pack id
+		if (is_selected) { packId(ench); }
 
-				// load files
-				// if (!is_vanilla) {
-				// 	JSZipUtils.getBinaryContent("../../elements/files/powered_enchanting/" + ench_array.ench[0] + ".zip", function(err, data) {
-				// 		if (err) { throw err; }
-				// 		pack_folder.loadAsync(data);
-				// 	});
-				// }
+		if (!is_vanilla) {
+			// load files
+			if (!ench.classList.contains("no_files")) {
+				ench_pack = await fetch("../../elements/files/powered_enchanting/" + ench_array.ench[0] + ".zip");
+				await pack_folder.loadAsync(ench_pack.blob());
+			}
 
-				if (!ench.classList.contains("nooptions")) {
-					// ENCHANTING (all ench and all adv ench in one file) !#! vanilla:0b notwendig?
-					if (is_selected) {
-						var ench_chance = ench.getAttribute("data-chance")
-						var ench_ench = `execute if predicate powerench:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Item:{id:"minecraft:enchanted_book",Count:1b,tag:{powerench_ench:1b,vanilla:0b,display:{Name:'{"text":"${ench_array.title}","italic":false,"color":"aqua"}',Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']},powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`;
+			// FUNCTIONS: tick and load (all ench in one file)
+			if (ench_array.tick != undefined) {
+				tick_function = tick_function + ench_array.tick + "\n";
+			}
+			if (ench_array.load != undefined) {
+				load_function = load_function + ench_array.load + "\n";
+			}
+		}
 
-						if (ench.classList.contains("advanced_ench")) {
-							adv_enchanting = adv_enchanting + ench_ench;
-						}
-						else {
-							enchanting = enchanting + ench_ench;
-						}
-					}
+		if (!ench.classList.contains("nooptions")) {
+			// ENCHANTING (all ench and all adv ench in one file) !#! set vanilla:0b Achutng bei mending
+			if (is_selected) {
+				var ench_chance = ench.getAttribute("data-chance")
+				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_quartz_select"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:0b,display:{Name:'{"text":"${ench_array.title}","italic":false,"color":"aqua"}',Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']},powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`;
 
-					// COMBINING: Detect Items (same tools)
-					if (!ench.classList.contains("ignore_incomp")) {
-						var incompatible = "";
-						for (var j = 0; j < ench_array.ench.length; j++) {
-							if (j != 0) {
-								incompatible = incompatible + ' if entity @s[nbt=!{Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}]';
-							} 
-						}
-					}
+				if (ench.classList.contains("advanced_ench")) {
+					adv_enchanting = adv_enchanting + ench_ench;
+				}
+				else {
+					enchanting = enchanting + ench_ench;
+				}
+			}
 
-					for (var j = 0; j < ench_array.comp_itemsId.length; j++) {
-						var pos_id = ench_array.comp_itemsId[j];
-						comb_detect[pos_id] = comb_detect[pos_id] + `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}]${incompatible} run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
-					}
+			// COMBINING: Detect Items (same tools)
+			if (!ench.classList.contains("ignore_incomp")) {
+				var incompatible = "";
+				for (var j = 0; j < ench_array.ench.length; j++) {
+					if (j != 0) {
+						incompatible = incompatible + ' if entity @s[nbt=!{Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}]';
+					} 
+				}
+			}
 
-					if (is_vanilla) {
-						// COMBINING: Enchant
-						pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get level and max level of book\nexecute as @e[sort=nearest,limit=1] store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#get level of tool\nexecute store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#test of both have the same ench level and add one level\nexecute if score @e[sort=nearest,limit=1] powerench = @s powerench run tag @s add powerench_combine_same\nexecute if score @e[sort=nearest,limit=1] powerench = @s powerench run scoreboard players add @s powerench 1\n#test if ench level of book is higher than ench level of tool and set ench level of tool to the of book\nexecute if entity @s[tag=!powerench_combine_same] if score @e[sort=nearest,limit=1] powerench > @s powerench run scoreboard players operation @s powerench = @e[sort=nearest,limit=1] powerench\n#test if max ench level is smaller than ench level of tool and set ench level of tool to max level\nexecute if score @e[sort=nearest,limit=1] powerench >= #${ench_array.ench[0]} powerench run scoreboard players operation @s powerench = #${ench_array.ench[0]} powerench\n#test if tool hasn't ench and add ench\nexecute unless entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run data modify entity @s Item.tag.Enchantments append from entity @e[limit=1,sort=nearest] Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}] \n#set ench level\nexecute store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get @s powerench\n#finish book\ntag @e[sort=nearest,limit=1] add powerench_combine_remove`);
-					}
-					else {
-						pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get level and max level of book\nexecute as @e[sort=nearest,limit=1] store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#get level of tool\nexecute store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#test of both have the same ench level and add one level\nexecute if score @e[sort=nearest,limit=1] powerench = @s powerench run tag @s add powerench_combine_same\nexecute if score @e[sort=nearest,limit=1] powerench = @s powerench run scoreboard players add @s powerench 1\n#test if ench level of book is higher than ench level of tool and set ench level of tool to the of book\nexecute if entity @s[tag=!powerench_combine_same] if score @e[sort=nearest,limit=1] powerench > @s powerench run scoreboard players operation @s powerench = @e[sort=nearest,limit=1] powerench\n#test if max ench level is smaller than ench level of tool and set ench level of tool to max level\nexecute if score @e[sort=nearest,limit=1] powerench matches ${ench_array.max_lvl}.. run scoreboard players set @s powerench ${ench_array.max_lvl}\n#test if tool hasn't ench and add ench\nexecute unless entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run data modify entity @s Item.tag.Enchantments append from entity @e[limit=1,sort=nearest] Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}] \n#set ench level\nexecute store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get @s powerench\n#finish book\ntag @e[sort=nearest,limit=1] add powerench_combine_remove`);
-						
-						// COMBINING: Lore (all ench in one file)
-						var max_lvl = parseInt(ench_array.max_lvl);
-						if (max_lvl == 1) {
-							comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
-						}
-						else {
-							for (var j = 0; j < max_lvl; j++) {
-								var lvl = convertToRoman(j + 1); // in app.js
-								comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
-								if (j == max_lvl - 1) {
-									comb_lore = comb_lore + "\n";
-								}
-							}
+			for (var j = 0; j < ench_array.comp_itemsId.length; j++) {
+				var pos_id = ench_array.comp_itemsId[j];
+				comb_detect[pos_id] = comb_detect[pos_id] + `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}]${incompatible} run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
+			}
+
+			if (is_vanilla) {
+				// COMBINING: Enchant
+				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get level and max level of book\nexecute as @e[tag=powerench_combine_second,distance=..1,limit=1] store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#get level of tool\nexecute store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#test of both have the same ench level and add one level\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench = @s powerench run tag @s add powerench_combine_same\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench = @s powerench run scoreboard players add @s powerench 1\n#test if ench level of book is higher than ench level of tool and set ench level of tool to the of book\nexecute if entity @s[tag=!powerench_combine_same] if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench > @s powerench run scoreboard players operation @s powerench = @e[tag=powerench_combine_second,distance=..1,limit=1] powerench\n#test if max ench level is smaller than ench level of tool and set ench level of tool to max level\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench >= #${ench_array.ench[0]} powerench run scoreboard players operation @s powerench = #${ench_array.ench[0]} powerench\n#test if tool hasn't ench and add ench\nexecute unless entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run data modify entity @s Item.tag.Enchantments append from entity @e[tag=powerench_combine_second,distance=..1,limit=1] Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}] \n#set ench level\nexecute store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get @s powerench\n#finish book\ntag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
+			}
+			else {
+				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get level and max level of book\nexecute as @e[tag=powerench_combine_second,distance=..1,limit=1] store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#get level of tool\nexecute store result score @s powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n#test of both have the same ench level and add one level\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench = @s powerench run tag @s add powerench_combine_same\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench = @s powerench run scoreboard players add @s powerench 1\n#test if ench level of book is higher than ench level of tool and set ench level of tool to the of book\nexecute if entity @s[tag=!powerench_combine_same] if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench > @s powerench run scoreboard players operation @s powerench = @e[tag=powerench_combine_second,distance=..1,limit=1] powerench\n#test if max ench level is smaller than ench level of tool and set ench level of tool to max level\nexecute if score @e[tag=powerench_combine_second,distance=..1,limit=1] powerench matches ${ench_array.max_lvl}.. run scoreboard players set @s powerench ${ench_array.max_lvl}\n#test if tool hasn't ench and add ench\nexecute unless entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run data modify entity @s Item.tag.Enchantments append from entity @e[tag=powerench_combine_second,distance=..1,limit=1] Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}] \n#set ench level\nexecute store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get @s powerench\n#finish book\ntag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
+
+				// COMBINING: Lore (all ench in one file)
+				var max_lvl = parseInt(ench_array.max_lvl);
+				if (max_lvl == 1) {
+					comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
+				}
+				else {
+					for (var j = 0; j < max_lvl; j++) {
+						var lvl = convertToRoman(j + 1); // in app.js
+						comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
+						if (j == max_lvl - 1) {
+							comb_lore = comb_lore + "\n";
 						}
 					}
 				}
 			}
+		}
+	}
 
-			//#################################################################################################
-			// enchanting files
-			if (adv_enchanting != "") {
-				tags_folder.file("enchanting/adv_enchanting.json", '{"values": ["#minecraft:powerench/enchanting/enchanting", "' + datapack_name + ':enchanting/adv_enchantments"]}');
-				pack_folder.file("functions/enchanting/adv_enchantments.mcfunction", adv_enchanting);
-			}
-			if (enchanting != "") {
-				tags_folder.file("enchanting/enchanting.json", '{"values": ["' + datapack_name + ':enchanting/enchantments"]}');
-				pack_folder.file("functions/enchanting/enchantments.mcfunction", enchanting);
-			}
+	//#################################################################################################
+	// enchanting files
+	if (adv_enchanting != "") {
+		pack_folder.file("tags/functions/enchanting/adv_enchanting.json", '{"values": ["#powerench:enchanting/enchanting", "' + datapack_name + ':enchanting/adv_enchantments"]}');
+		pack_folder.file("functions/enchanting/adv_enchantments.mcfunction", adv_enchanting);
+	}
+	if (enchanting != "") {
+		pack_folder.file("tags/functions/enchanting/enchanting.json", '{"values": ["' + datapack_name + ':enchanting/enchantments"]}');
+		pack_folder.file("functions/enchanting/enchantments.mcfunction", enchanting);
+	}
 
-			// COMBINING: Lore
-			tags_folder.file("lore.json", '{"values": ["' + datapack_name + ':combining/lore"]}');
-			pack_folder.file("functions/combining/lore.mcfunction", comb_lore);
+	// functions
+	if (tick_function != "") {
+		pack_folder.file("tags/functions/tick.json", '{"values": ["' + datapack_name + ':tick"]}');
+		pack_folder.file("functions/tick.mcfunction", tick_function);
+	}
+	if (load_function != "") {
+		pack_folder.file("tags/functions/load.json", '{"values": ["' + datapack_name + ':load"]}');
+		pack_folder.file("functions/load.mcfunction", load_function);
+	}
 
-			// COMBINING: Detect Items !#! tags aren't combined
-			for (var i = 0; i < comb_detect.length; i++) {
-				var comb_detect_tag = "";
-				if (comb_detect[i] != "") {
-					comb_detect_tag = ',{"id":"' + datapack_name + ':combining/items/' + comb_detect_items[i] + '", "required":false}'
-					pack_folder.file("functions/combining/items/"+ comb_detect_items[i] + ".mcfunction", comb_detect[i]);
-				}
-				if (i != 0) {
-					tags_folder.file("items/" + comb_detect_items[i] + ".json", '{"values": [{"id":"#minecraft:powerench/items/all", "required":false}' + comb_detect_tag + ']}');
-				}
-				else if (comb_detect[i] != "" && i == 0) {
-					tags_folder.file("items/" + comb_detect_items[i] + ".json", '{"values": ["' + datapack_name + ':combining/items/all"]}');
-				}
-			}
+	// COMBINING: Lore
+	pack_folder.file("tags/functions/lore.json", '{"values": ["' + datapack_name + ':combining/lore"]}');
+	pack_folder.file("functions/combining/lore.mcfunction", comb_lore);
 
-			// pack.mcmeta
-			var version = document.getElementById("version").value;
+	// COMBINING: Detect Items
+	pack_folder.file("tags/functions/items/book.json", '{"values": [{"id":"#powerench:items/boots", "required":false},{"id":"#powerench:items/leggings", "required":false},{"id":"#powerench:items/chestplate", "required":false},{"id":"#powerench:items/helmet", "required":false},{"id":"#powerench:items/bow", "required":false},{"id":"#powerench:items/carrot_on_a_stick", "required":false},{"id":"#powerench:items/crossbow", "required":false},{"id":"#powerench:items/elytra", "required":false},{"id":"#powerench:items/flint_and_steal", "required":false},{"id":"#powerench:items/shears", "required":false},{"id":"#powerench:items/shield", "required":false},{"id":"#powerench:items/trident", "required":false},{"id":"#powerench:items/fishing_rod", "required":false},{"id":"#powerench:items/axe", "required":false},{"id":"#powerench:items/sword", "required":false},{"id":"#powerench:items/hoe", "required":false},{"id":"#powerench:items/pickaxe", "required":false},{"id":"#powerench:items/shovel", "required":false}]}');
+	for (var i = 0; i < comb_detect.length; i++) {
+		var comb_detect_tag = "";
+		if (comb_detect[i] != "") {
+			comb_detect_tag = ',{"id":"' + datapack_name + ':combining/items/' + comb_detect_items[i] + '", "required":false}'
+			pack_folder.file("functions/combining/items/"+ comb_detect_items[i] + ".mcfunction", comb_detect[i]);
+		}
+		if (i != 0) {
+			pack_folder.file("tags/functions/items/" + comb_detect_items[i] + ".json", '{"values": [{"id":"#powerench:items/all", "required":false}' + comb_detect_tag + ']}');
+		}
+		else if (comb_detect[i] != "" && i == 0) {
+			pack_folder.file("tags/functions/items/" + comb_detect_items[i] + ".json", '{"values": ["' + datapack_name + ':combining/items/all"]}');
+		}
+	}
 
-			zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Datapack by CMD-Golem"}}');
-			zip.file("Pack ID.txt", pack_id);
-			
-			// generate zip file
-			zip.generateAsync({type:"base64"}).then(function (content) {
-				// copy Load bar from nbt crafting
-				var link = document.createElement('a');
-				link.download = "[1.1" + version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
-				link.href = "data:application/zip;base64," + content;
-				link.click();
-			});
-		});
+	// pack.mcmeta
+	var version = document.getElementById("version").value;
+
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Datapack by CMD-Golem"}}');
+	zip.file("Pack ID.txt", pack_id);
+
+	// generate zip file
+	zip.generateAsync({type:"base64"}).then(function (content) {
+		// copy Load bar from nbt crafting
+		var link = document.createElement('a');
+		link.download = "[1.1" + version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
+		link.href = "data:application/zip;base64," + content;
+		link.click();
 	});
 }
 
@@ -193,7 +213,7 @@ function packId(ench) {
 }
 
 // get pack id
-function getPackId() {
+function getPackId(button) {
 	pack_id = pack_id_load;
 	var sel_article = document.getElementsByClassName("selected");
 	for (var i = 0; i < sel_article.length; i++) {
@@ -208,6 +228,11 @@ function getPackId() {
 	copy.select();
 	document.execCommand("copy");
 	copy.remove();
+
+	button.style.backgroundColor = "#16472B";
+	setTimeout(function(){ button.removeAttribute("style"); }, 800);
+
+	if (show_info == true) { openInfo() }
 }
 
 // #####################################################################

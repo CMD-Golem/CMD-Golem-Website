@@ -22,7 +22,7 @@
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
 	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download" onclick="generate()"></div>
-	<div class="nav_button" onclick="" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing" onclick="getPackId()"></div>
+	<div class="nav_button" onclick="getPackId(this)" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
 	<div class="nav_search hide_mobile">
@@ -39,6 +39,7 @@
 				<option value="8">1.18 or newer</option>
 				<option value="7">1.17 - 1.17.1</option>
 			</select>
+			<br><a onclick="loadOldVerionsModal()" href="javascript:void(0);">Get older Versions</a>
 		</li>
 		<li>Select a premade edition and/or select the enchantments you want in the list below.
 			<div class="edition_selection">
@@ -57,6 +58,7 @@
 		</li>
 		<li>Download the Data Pack and enjoy your new enchantments.<br>Use the Share button to share your create pack.</li>
 	</ol>
+	<div class="center" style="margin-bottom: 20px;"><button>Create your own Enchantment</button></div>
 	<hr id="scroll_point">
 	
 	<h3 style="margin-top: 80px;">Enchantment list</h3>
@@ -71,34 +73,7 @@
 		</select>
 	</p>
 	<hr>
-	<div id="article_list">
-		<article id="0" class="golem show_incomp" onclick="select(this)" title="Select" data-chance="2" data-arrayid="0">
-			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
-			<div class="content">
-				<h1>3x3 Mining</h1>
-				<p>Mines a three by three area.</p>
-				<div class="comp_items">pickaxe shovel </div>
-			</div>
-			<table>
-				<tbody><tr><td>Max Level:</td><td>I</td></tr>
-				<tr><td>Compatible Items:</td><td><img src="../../elements/pictures/datapacks/powered_enchanting/items/pickaxe.png"><img src="../../elements/pictures/datapacks/powered_enchanting/items/shovel.png"></td></tr>
-				<tr class="incomp_ench"><td>Incompatible:</td><td>Vein Miner</td></tr>
-			</tbody></table>
-		</article>
-		<article id="1" class="vanilla golem" onclick="select(this)" title="Select" data-chance="2" data-arrayid="1">
-			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
-			<div class="content">
-				<h1>Aqua Affinity</h1>
-				<p>Increases underwater mining speed.</p>
-				<div class="comp_items">helmet </div>
-			</div>
-			<table>
-				<tbody><tr><td>Max Level:</td><td>I</td></tr>
-				<tr><td>Compatible Items:</td><td><img src="../../elements/pictures/datapacks/powered_enchanting/items/helmet.png"></td></tr>
-				<tr class="incomp_ench"><td>Incompatible:</td><td>false</td></tr>
-			</tbody></table>
-		</article>
-	</div>
+	<div id="article_list"></div>
 </main>
 
 <aside>
@@ -106,7 +81,7 @@
 	<div class="link_bar"></div>
 	<div class="link_buttons">
 		<div class="button text_button" title="Download Data Pack" onclick="generate()">Download</div>
-		<div class="button icon_button" title="Get Pack Id for sharing" onclick="getPackId()"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
+		<div class="button icon_button" title="Get Pack Id for sharing" onclick="getPackId(this)"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	</div>
 </aside>
 
@@ -117,7 +92,7 @@
 <section>
 	<h3>Value Informations</h3>
 	<p>Enchantments with red name are <a href="#advanced_enchanting">Advanced Enchantments</a><br>Enchantments with green name change the behaviour of other enchantments</p>
-
+	<p><b>Pack Id:</b><br><span>Can be used to share your selected enchantments with others. It can also be found in the zip file of your Data Pack.</span></p>
 	<p><b>Max Level:</b><br><span>The maximum level of the enchantment.</span></p>
 	<p><b>Compatible Items:</b></br><span>Tools, the enchantment can be enchanted on.</span></p>
 	<p><b>Incompatible:</b></br><span>Can't be enchanted on the tool if one of these enchantments is on it.</span></p>

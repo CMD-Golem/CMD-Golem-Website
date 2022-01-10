@@ -31,6 +31,7 @@ h3 {
 	background-color: #A10000;
 }
 
+/* ####################################################################### */
 /* Article */
 #article_list {
 	min-height: 60vh;
@@ -130,7 +131,7 @@ article td:first-child {
 	top: 30px;
 } */
 
-
+/* ####################################################################### */
 /* Settings */
 .settings_button {
 	position: absolute;
@@ -313,68 +314,6 @@ aside {
 	right: 0;
 }
 
-@media screen and (max-width: 1400px) {
-	.sidebar_show main {
-		padding-right: 290px;
-	}
-}
-
-@media (max-width: 1110px) {
-	.sidebar_show main {
-		width: calc(100vw - 310px);
-	}
-}
-
-@media (max-width: 970px) {
-	.sidebar_show article {
-		flex-direction: column;
-		padding: 10px;
-	}
-	.sidebar_show table {
-		width: unset;
-	}
-	.sidebar_show article tr:first-child {
-		border-top: 2px solid #1C1C1C;
-	}
-	.sidebar_show .content {
-		margin: 0 auto;
-		width: unset;
-	}
-}
-
-@media (max-width: 800px) {
-	.sidebar_show aside {
-		right: -300px;
-	}
-	.sidebar_show main {
-		padding-right: 20px;
-	}
-	.sidebar_show main {
-		width: calc(100vw - 40px);
-	}
-}
-
-@media (max-width: 700px) {
-	main {
-		width: calc(100vw - 40px);
-	}
-	article {
-		flex-direction: column;
-		padding: 10px;
-	}
-	table {
-		width: unset;
-	}
-	article tr:first-child {
-		border-top: 2px solid #1C1C1C;
-	}
-	.content {
-		margin: 0 auto;
-		width: unset;
-	}
-}
-
-
 aside h1 {
 	font-size: 22px;
 	font-family: FiraSans;
@@ -435,6 +374,71 @@ aside .button {
 	background-color: #292929;
 }
 
+/* Smaller Screens */
+
+@media screen and (max-width: 1400px) {
+	.sidebar_show main {
+		padding-right: 290px;
+	}
+}
+
+@media (max-width: 1110px) {
+	.sidebar_show main {
+		width: calc(100vw - 310px);
+	}
+}
+
+@media (max-width: 970px) {
+	.sidebar_show article {
+		flex-direction: column;
+		padding: 10px;
+	}
+	.sidebar_show table {
+		width: unset;
+	}
+	.sidebar_show article tr:first-child {
+		border-top: 2px solid #1C1C1C;
+	}
+	.sidebar_show .content {
+		margin: 0 auto;
+		width: unset;
+	}
+}
+
+@media (max-width: 800px) {
+	.sidebar_show aside {
+		right: -300px;
+	}
+	.sidebar_show main {
+		padding-right: 20px;
+	}
+	.sidebar_show main {
+		width: calc(100vw - 40px);
+	}
+	.edition_selection {
+		justify-content: flex-start;
+	}
+}
+
+@media (max-width: 700px) {
+	main {
+		width: calc(100vw - 40px);
+	}
+	article {
+		flex-direction: column;
+		padding: 10px;
+	}
+	table {
+		width: unset;
+	}
+	article tr:first-child {
+		border-top: 2px solid #1C1C1C;
+	}
+	.content {
+		margin: 0 auto;
+		width: unset;
+	}
+}
 
 /* ####################################################################### */
 /* Modal box */
@@ -473,5 +477,20 @@ aside .button {
 @media (max-width: 1000px) {
 	.modal_text {
 		width: calc(100vw - 60px);
+	}
+}
+
+
+section {
+	padding: 20px;
+	padding-bottom: 50px;
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+@media screen and (max-width: 840px) {
+	section {
+		width: calc(100vw - 40px);
 	}
 }

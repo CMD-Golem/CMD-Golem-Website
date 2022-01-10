@@ -1,8 +1,8 @@
 // load json
 var article_elements, article_array, not_found;
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
-	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
@@ -70,6 +70,7 @@ var scroll_point = document.getElementById("scroll_point")
 function siteSearch() {
 	var search_value = site_search.value;
 	var search_input = search_value.toUpperCase().split(" ");
+	if (show_info == true) { openInfo() }
 
 	if (search_value != "") {
 		scroll_point.scrollIntoView({behavior: 'smooth'});
@@ -401,21 +402,28 @@ function importPackIdFail(pack_id_input) {
 }
 
 
+// Download older versions
+function loadOldVerionsModal() {
+	var modal_text = document.createElement("div");
+	modal_text.classList.add("modal_text");
+	modal_text.classList.add("center");
+	modal_text.innerHTML = `<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;">1.16 CMD-Golem Edition</a><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;">1.16 Vanilla Edition</a><br><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;">1.15 CMD-Golem Edition</a><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;">1.15 Vanilla Edition</a><br><button onclick="closeModal()">Close</button></div>`;
+	modal_box.appendChild(modal_text);
+}
+
+
 // #################################################################################################
 // More settingsinfo
 var section = document.getElementsByTagName("section")[0];
 var main = document.getElementsByTagName("main")[0];
 var title = document.getElementsByTagName("title")[0];
-
-// function toggleInfo() {
-// 	if (document.getElementsByTagName("section")[0].style.display == "none") { window.location.hash = "info"; }
-// 	else { window.location.hash = ""; }
-// }
+var show_info = false;
 
 function changeInfo() {
-	if (section.style.display == "none") {
+	if (show_info == false && window.location.hash.substr(1) == "info") {
 		section.style.display = "block";
 		main.style.display = "none";
+		show_info = true;
 
 		title.innerHTML = "CMD-Golem - Powered Enchanting Download Information";
 	}
@@ -423,10 +431,16 @@ function changeInfo() {
 	else {
 		section.style.display = "none";
 		main.style.display = "block";
+		show_info = false;
 
-		title.innerHTML = "CMD-Golem - Powered Enchanting Download Information";
+		title.innerHTML = "CMD-Golem - Powered Enchanting Download";
 	}
 }
 
-if (window.location.hash.substr(1) == "info") { changeInfo() }
+changeInfo();
 window.onhashchange = function() { changeInfo() }
+
+function openInfo() {
+	if (show_info == false) { window.location.hash = "info"; }
+	else { window.location.hash = ""; }
+}
