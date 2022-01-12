@@ -1,8 +1,8 @@
 // load json
 var article_elements, article_array, not_found;
 async function loadJson() {
-	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
-	var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
+	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
+	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
