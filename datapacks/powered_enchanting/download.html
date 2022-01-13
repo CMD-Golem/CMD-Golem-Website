@@ -4,8 +4,8 @@
 <head>
 <title>CMD-Golem - Powered Enchanting Download</title>
 <meta name="description" content="Enchant your tools and armor with new Enchantments and create your own.">
-<!-- <meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/powered_enchanting/download.html"> -->
-<!-- <meta name="robots" content="index, follow, archive"/> -->
+<meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/powered_enchanting/download.html">
+<meta name="robots" content="index, follow, archive"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
@@ -19,10 +19,10 @@
 <body class="hide_vanilla">
 
 <nav>
-	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/" target="_blank"><h2>CMD-Golem</h2></a>
 	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download" onclick="generate()"></div>
 	<div class="nav_button" onclick="getPackId(this)" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
-	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug" target="_blank"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
 	<div class="nav_search hide_mobile">
 		<div class="nav_search_box"><input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()"></div>
@@ -57,7 +57,7 @@
 		</li>
 		<li>Download the Data Pack and enjoy your new enchantments.<br>Use the Share button to share your create pack.</li>
 	</ol>
-	<div class="center" style="margin-bottom: 20px;"><button>Create your own Enchantment</button></div>
+	<div class="center" style="margin-bottom: 20px;"><a class="button disable_link" href="powered_enchanting/create_addon.html">Create your own Enchantments</a></div>
 	<hr id="scroll_point">
 	
 	<h3 style="margin-top: 80px;">Enchantment list</h3>
@@ -77,7 +77,7 @@
 
 <aside>
 	<h1>Selected Enchantments</h1>
-	<div class="link_bar"></div>
+	<div id="link_bar"></div>
 	<div class="link_buttons">
 		<div class="button text_button" title="Download Data Pack" onclick="generate()">Download</div>
 		<div class="button icon_button" title="Get Pack Id for sharing" onclick="getPackId(this)"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
@@ -90,13 +90,13 @@
 
 <section>
 	<h3>Value Informations</h3>
-	<p>Enchantments with red name are <a href="#advanced_enchanting">Advanced Enchantments</a><br>Enchantments with green name change the behaviour of other enchantments</p>
+	<p>Enchantments with red name are <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantments</a><br>Enchantments with green name change the behaviour of other enchantments</p>
 	<p><b>Pack Id:</b><br><span>Can be used to share your selected enchantments with others. It can also be found in the zip file of your Data Pack.</span></p>
 	<p><b>Max Level:</b><br><span>The maximum level of the enchantment.</span></p>
 	<p><b>Compatible Items:</b></br><span>Tools, the enchantment can be enchanted on.</span></p>
 	<p><b>Incompatible:</b></br><span>Can't be enchanted on the tool if one of these enchantments is on it.</span></p>
 	<p><b>Enchanting chance:</b><br><span>The chance that the enchantment gets in the first selection for the enchanting. To select the final one, one random (all with same chance) of the first selection will be choosen.<br>The enchantment in the braket is an example of an enchantment with this chance.</span></p>
-	<p><b>Advanced Enchantment:</b><br><span>Should the enchantment only be obtainable through <a href="#advanced_enchanting">Advanced Enchanting</a>.</span></p>
+	<p><b>Advanced Enchantment:</b><br><span>Should the enchantment only be obtainable through <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchanting</a>.</span></p>
 	<p><b>Ignore incompatible Enchantments:</b><br><span>Ignore incompatible Enchantments (can't be used for all)</span></p>
 
 </section>
@@ -105,7 +105,6 @@
 
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/app.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/powered_enchanting/save.js"></script>
-<script language="javascript" type="text/javascript" src="../../elements/javascript/special/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
 </body>

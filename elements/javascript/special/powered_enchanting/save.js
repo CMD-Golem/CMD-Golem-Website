@@ -16,6 +16,9 @@ var comb_detect_items = ["all", "helmet", "chestplate", "leggings", "boots", "sw
 // ###########################################################
 // Generate
 async function generate() {
+	var check_selected = checkSelected(document.getElementsByClassName("selected"));
+	if (!check_selected) {return}
+
 	var sel_article = document.querySelectorAll(".selected,.vanilla");
 	if (show_info == true) { openInfo() }
 
@@ -28,6 +31,14 @@ async function generate() {
 
 	pack_id = pack_id_load;
 
+	// user display
+	loadProgressModal();
+	disableScroll();
+	var progress_bar = document.getElementById("bar");
+	var article_length = sel_article.length;
+	var progress_width_per_ench = document.getElementById("progress_bar").offsetWidth / article_length;
+	var progress_width = 0;
+
 	//zip
 	var zip = new JSZip();
 	// Set folderpaths
@@ -39,11 +50,15 @@ async function generate() {
 
 	// ###########################################################
 	// load dynamic content
-	for (var i = 0; i < sel_article.length; i++) {
+	for (var i = 0; i < article_length; i++) {
 		var ench = sel_article[i];
 		var ench_array = article_array[ench.getAttribute("data-arrayId")];
 		var is_vanilla = ench.classList.contains("vanilla");
 		var is_selected = ench.classList.contains("selected");
+
+		// user display
+		progress_width += progress_width_per_ench;
+		progress_bar.style.width = progress_width + "px";
 
 		// generate pack id
 		if (is_selected) { packId(ench); }
@@ -71,10 +86,10 @@ async function generate() {
 				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_quartz_select"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:0b,display:{Name:'{"text":"${ench_array.title}","italic":false,"color":"aqua"}',Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']},powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`;
 
 				if (ench.classList.contains("advanced_ench")) {
-					adv_enchanting = adv_enchanting + ench_ench;
+					adv_enchanting += ench_ench;
 				}
 				else {
-					enchanting = enchanting + ench_ench;
+					enchanting += ench_ench;
 				}
 			}
 
@@ -83,14 +98,14 @@ async function generate() {
 				var incompatible = "";
 				for (var j = 0; j < ench_array.ench.length; j++) {
 					if (j != 0) {
-						incompatible = incompatible + ' if entity @s[nbt=!{Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}]';
+						incompatible += ' if entity @s[nbt=!{Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}]';
 					} 
 				}
 			}
 
 			for (var j = 0; j < ench_array.comp_itemsId.length; j++) {
 				var pos_id = ench_array.comp_itemsId[j];
-				comb_detect[pos_id] = comb_detect[pos_id] + `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}]${incompatible} run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
+				comb_detect[pos_id] += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}]${incompatible} run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
 			}
 
 			if (is_vanilla) {
@@ -103,14 +118,14 @@ async function generate() {
 				// COMBINING: Lore (all ench in one file)
 				var max_lvl = parseInt(ench_array.max_lvl);
 				if (max_lvl == 1) {
-					comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
+					comb_lore += `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
 				}
 				else {
 					for (var j = 0; j < max_lvl; j++) {
 						var lvl = convertToRoman(j + 1); // in app.js
-						comb_lore = comb_lore + `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
+						comb_lore += `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
 						if (j == max_lvl - 1) {
-							comb_lore = comb_lore + "\n";
+							comb_lore += "\n";
 						}
 					}
 				}
@@ -165,37 +180,31 @@ async function generate() {
 	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Datapack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
-	// generate zip file
-	zip.generateAsync({type:"base64"}).then(function (content) {
-		// copy Load bar from nbt crafting
+	document.getElementById("progress_action").innerHTML = "Creating ZIP file"
+	zip.generateAsync({type:"base64"}, function updateCallback(metadata) {
+		progress_bar.style.width = metadata.percent + "%";
+	}).then(function (content) {
+		closeModal();
+		enableScroll();
+
 		var link = document.createElement('a');
 		link.download = "[1.1" + version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
+
+		// Counter
+		mc_version = "1.1" + version;
+		updateCounter();
 	});
 }
 
-
-// var progress_bar = document.getElementById("progress_bar");
-// progress_bar.style.display = "block";
-// disableScroll();
-
-// zip.generateAsync({type:"base64"}, function updateCallback(metadata) {
-// document.getElementById("bar").style.width = metadata.percent + "%";
-// })
-// .then(function (content) {
-// progress_bar.style.display = "none";
-// enableScroll()
-
-// var link = document.createElement('a');
-// link.download = "NBT-Crafting";
-// link.href = "data:application/zip;base64," + content;
-// link.click();
-
-// // Counter
-// });
-
-
+function loadProgressModal() {
+	var modal_text = document.createElement("div");
+	modal_text.classList.add("modal_text");
+	modal_text.classList.add("center");
+	modal_text.innerHTML = '<h3 id="progress_action">Downloading Files</h3><div id="progress_bar"><div id="bar"></div></div>';
+	modal_box.appendChild(modal_text);
+}
 
 //#################################################################################################
 // generate pack id
@@ -213,9 +222,12 @@ function packId(ench) {
 }
 
 // get pack id
-function getPackId(button) {
-	pack_id = pack_id_load;
+function getPackId(button) {	
 	var sel_article = document.getElementsByClassName("selected");
+	pack_id = pack_id_load;
+	var check_selected = checkSelected(sel_article);
+	if (!check_selected) {return}
+
 	for (var i = 0; i < sel_article.length; i++) {
 		packId(sel_article[i]);
 	}
@@ -236,42 +248,110 @@ function getPackId(button) {
 }
 
 // #####################################################################
+// Download/ pack id check
+function checkSelected(sel_article) {
+	if (sel_article.length == 0) {
+		alert("Please select your enchantments first!");
+		return false;
+	}
+	else if (sel_article.length <= 5) {
+		var confirm_msg = confirm("Please select at least 5 enchantments.\nPress OK to continue anyway.");
+		if (confirm_msg == true) {
+			return true;
+		}
+		if (confirm_msg == false) {
+			return false;
+		}
+	}
+	else {
+		return true;
+	}
+}
+
+// #####################################################################
+// Download counter
+// update db
+var update = (pack_id, pack_type) => {
+	return fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
+// version statistic
+var version = (mc_version) => {
+	return fetch(`/.netlify/functions/version/${mc_version}`, {
+		method: 'POST',
+	}).then(response => {
+		return response.json()
+	})
+}
+
+// update counter
+var already_download = false;
+var selected_edition = "none";
+var mc_version;
+
+function updateCounter() {
+	if (already_download != true) {
+		already_download = true;
+
+		update("320699416718606924", "datapacks"); // normal counter
+		version(mc_version); // version statistic
+
+		// edition counter
+		if (selected_edition == "golem") {var edition = "320699550069162572"}
+		else if (selected_edition == "all") {var edition = "320699603872645708"}
+		else if (selected_edition == "vanilla") {var edition = "320699566604157516"}
+		else if (selected_edition == "pack_id") {var edition = "320699587095429708"}
+		else {var edition = "320699649726874188"}
+		update(edition, "powered_enchanting");
+
+	}
+	else {
+		console.log("Already downloaded");
+	}
+}
+
+
+// #####################################################################
 // Prevent Scrolling (https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily)
 function preventDefault(e) {
 	e.preventDefault();
-  }
+}
   
-  function preventDefaultForScrollKeys(e) {
+function preventDefaultForScrollKeys(e) {
 	var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 	if (keys[e.keyCode]) {
-	  preventDefault(e);
-	  return false;
+		preventDefault(e);
+		return false;
 	}
-  }
+}
   
-  // modern Chrome requires { passive: false } when adding event
-  var supportsPassive = false;
-  try {
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
 	window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-	  get: function () { supportsPassive = true; } 
+		get: function () { supportsPassive = true; } 
 	}));
-  } catch(e) {}
+} catch(e) {}
   
-  var wheelOpt = supportsPassive ? { passive: false } : false;
-  var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
   
-  // call this to Disable
-  function disableScroll() {
+// call this to Disable
+function disableScroll() {
 	window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
 	window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
 	window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
 	window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-  }
+}
   
-  // call this to Enable
-  function enableScroll() {
+// call this to Enable
+function enableScroll() {
 	window.removeEventListener('DOMMouseScroll', preventDefault, false);
 	window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
 	window.removeEventListener('touchmove', preventDefault, wheelOpt);
 	window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
-  }
+}

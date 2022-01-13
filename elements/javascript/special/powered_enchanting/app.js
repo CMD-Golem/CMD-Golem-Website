@@ -49,86 +49,15 @@ async function loadJson() {
 loadJson();
 
 
-function convertToRoman(num) {
-	var roman = {M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
-	var str = '';
-  
-	for (var i of Object.keys(roman)) {
-		var q = Math.floor(num / roman[i]);
-		num -= q * roman[i];
-		str += i.repeat(q);
-	}
-	return str;
-}
-
-// ###########################################################
-// Site Search
-var site_search = document.getElementById("site_search");
-var site_search_mobile = document.getElementById("site_search_mobile");
-var scroll_point = document.getElementById("scroll_point")
-
-function siteSearch() {
-	var search_value = site_search.value;
-	var search_input = search_value.toUpperCase().split(" ");
-	if (show_info == true) { openInfo() }
-
-	if (search_value != "") {
-		scroll_point.scrollIntoView({behavior: 'smooth'});
-	}
-
-	// hide settings
-	try {
-		document.getElementsByClassName("settings_box")[0].remove();
-	}
-	catch (e) {}
-
-	for (var i = 0; i < article_elements.length; i++) {
-		var filter_data = article_elements[i].getElementsByClassName("comp_items")[0].innerHTML + article_elements[i].getElementsByTagName("h1")[0].innerHTML;
-		var search_data = filter_data.toUpperCase().split(" ");
-
-		var hide = false;
-
-		// Search: loop trough array from input
-		for (var j = 0; j < search_input.length; j++) {
-			var prehide = true;
-
-			// Check if keywords are in input
-			for (var k = 0; k < search_data.length; k++) {
-				if (search_data[k].startsWith(search_input[j])) { var prehide = false; }
-			}
-			if (prehide == false && hide != true) { var hide = false; }
-				else { var hide = true; }
-		}
-		if (hide) {
-			article_elements[i].classList.add("hide_search");
-		}
-		else {
-			article_elements[i].classList.remove("hide_search");
-		}
-	}
-	var hide_search = document.getElementsByClassName("hide_search").length;
-
-	if (article_elements.length - hide_search <= 0) {
-		not_found.style.display = "block";
-	}
-	else {
-		not_found.style.display = "none";
-	}
-}
-
-function siteSearchMobile() {
-	site_search.value = site_search_mobile.value;
-	siteSearch();
-}
-
-
 // ###########################################################
 // Select and Sidebar
 var body = document.getElementsByTagName("body")[0];
-var link_bar = document.getElementsByClassName("link_bar")[0];
+var link_bar = document.getElementById("link_bar");
 var sidebar_hidden = true;
 
+// edition preselection
 function changeEdition(edition) {
+	selected_edition = edition;
 	if (edition == "all") {
 		var select_array = document.getElementsByTagName("article");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i]); }
@@ -149,12 +78,20 @@ function changeEdition(edition) {
 	}
 }
 
+// click on enchantment in list
 function selectToggle(article) {
 	if (article.classList.contains("selected")) { deselect(article) }
 	else { select(article, false) }
 }
 
+// dissselect enchantment on sidebar
+function removeEnch(id) {
+	event.stopPropagation();
+	var article = document.getElementById(id);
+	deselect(article);
+}
 
+// select enchantment and add to sidebar
 function select(article, preselection) {
 	if (article.classList.contains("selected") == false) {
 		article.classList.add("selected");
@@ -171,6 +108,8 @@ function select(article, preselection) {
 		new_link.setAttribute("onclick", "scrollToParent('" + article.id + "')");
 		link_bar.appendChild(new_link);
 
+		sortSidebar();
+
 		// show sidebar
 		if (sidebar_hidden) {
 			body.classList.add("sidebar_show");
@@ -179,6 +118,7 @@ function select(article, preselection) {
 	}
 }
 
+// disselect enchantment and remove from sidebar
 function deselect(article) {
 	article.classList.remove("selected");
 	article.classList.remove("preselected");
@@ -194,11 +134,27 @@ function deselect(article) {
 	}
 }
 
+// Sort selected items
+function sortSidebar() {
+	var switching = true;
 
-function removeEnch(id) {
-	event.stopPropagation();
-	var article = document.getElementById(id);
-	deselect(article);
+	while (switching == true) {
+		switching = false;
+		var items = link_bar.getElementsByClassName("sidebar_link");
+
+		for (var i = 0; i < (items.length - 1); i++) {
+			var should_switch = false;
+			if (items[i].getElementsByTagName("span")[0].innerHTML > items[i + 1].getElementsByTagName("span")[0].innerHTML) {
+				should_switch = true;
+				break;
+			}
+		}
+
+		if (should_switch == true) {
+			items[i].parentNode.insertBefore(items[i + 1], items[i]);
+			switching = true;
+		}
+	}
 }
 
 // Scroll in view
@@ -273,6 +229,7 @@ function setting(article) {
 	}
 }
 
+// execute changes
 function changeChance(input) {
 	var article = input.closest(".settings_box").previousSibling;
 	article.setAttribute("data-chance", input.value);
@@ -312,24 +269,6 @@ function incompEnch(input) {
 }
 
 
-//#################################################################################################
-//Scroll on top
-var scroll_top = document.getElementById("scroll_top");
-
-window.onscroll = () => {
-	if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-		scroll_top.style.display = "block";
-	} else {
-		scroll_top.style.display = "none";
-	}
-}
-
-function goTop() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
-
-
 // ###########################################################
 // Modal Box
 var modal_box = document.getElementById("modal_box");
@@ -339,6 +278,7 @@ function closeModal() {
 	modal_box.classList = "";
 }
 
+// ###########################################################
 // Import from pack id
 function loadPackIdModal() {
 	var modal_text = document.createElement("div");
@@ -387,6 +327,7 @@ function importPackId() {
 
 		pack_id = pack_id.substr(3);
 	}
+	selected_edition = "pack_id";
 	closeModal();
 }
 
@@ -401,14 +342,27 @@ function importPackIdFail(pack_id_input) {
 	}, 2000);
 }
 
-
+// ###########################################################
 // Download older versions
 function loadOldVerionsModal() {
 	var modal_text = document.createElement("div");
 	modal_text.classList.add("modal_text");
 	modal_text.classList.add("center");
-	modal_text.innerHTML = `<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;">1.16 CMD-Golem Edition</a><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;">1.16 Vanilla Edition</a><br><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;">1.15 CMD-Golem Edition</a><a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;">1.15 Vanilla Edition</a><br><button onclick="closeModal()">Close</button></div>`;
+	modal_text.innerHTML = `
+	<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.16')">1.16 CMD-Golem Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.16')">1.16 Vanilla Edition</a><br>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.15')">1.15 CMD-Golem Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.15')">1.15 Vanilla Edition</a><br>
+		<button onclick="closeModal()">Close</button>
+	</div>`;
 	modal_box.appendChild(modal_text);
+}
+
+function downloadOld(edition, version) {
+	selected_edition = edition;
+	mc_version = version;
+	updateCounter(); //save.js
 }
 
 
@@ -416,6 +370,7 @@ function loadOldVerionsModal() {
 // More settingsinfo
 var section = document.getElementsByTagName("section")[0];
 var main = document.getElementsByTagName("main")[0];
+var sidebar = document.getElementsByTagName("aside")[0];
 var title = document.getElementsByTagName("title")[0];
 var show_info = false;
 
@@ -423,6 +378,7 @@ function changeInfo() {
 	if (show_info == false && window.location.hash.substr(1) == "info") {
 		section.style.display = "block";
 		main.style.display = "none";
+		sidebar.style.display = "none";
 		show_info = true;
 
 		title.innerHTML = "CMD-Golem - Powered Enchanting Download Information";
@@ -431,6 +387,7 @@ function changeInfo() {
 	else {
 		section.style.display = "none";
 		main.style.display = "block";
+		sidebar.removeAttribute("style");
 		show_info = false;
 
 		title.innerHTML = "CMD-Golem - Powered Enchanting Download";
@@ -443,4 +400,96 @@ window.onhashchange = function() { changeInfo() }
 function openInfo() {
 	if (show_info == false) { window.location.hash = "info"; }
 	else { window.location.hash = ""; }
+}
+
+
+//#################################################################################################
+//Scroll on top
+var scroll_top = document.getElementById("scroll_top");
+
+window.onscroll = () => {
+	if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+		scroll_top.style.display = "block";
+	} else {
+		scroll_top.style.display = "none";
+	}
+}
+
+function goTop() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+}
+
+// ###########################################################
+// convert to roman number
+function convertToRoman(num) {
+	var roman = {M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1};
+	var str = '';
+  
+	for (var i of Object.keys(roman)) {
+		var q = Math.floor(num / roman[i]);
+		num -= q * roman[i];
+		str += i.repeat(q);
+	}
+	return str;
+}
+
+// ###########################################################
+// Site Search
+var site_search = document.getElementById("site_search");
+var site_search_mobile = document.getElementById("site_search_mobile");
+var scroll_point = document.getElementById("scroll_point")
+
+function siteSearch() {
+	var search_value = site_search.value;
+	var search_input = search_value.toUpperCase().split(" ");
+	if (show_info == true) { openInfo() }
+
+	if (search_value != "") {
+		scroll_point.scrollIntoView({behavior: 'smooth'});
+	}
+
+	// hide settings
+	try {
+		document.getElementsByClassName("settings_box")[0].remove();
+	}
+	catch (e) {}
+
+	for (var i = 0; i < article_elements.length; i++) {
+		var filter_data = article_elements[i].getElementsByClassName("comp_items")[0].innerHTML + article_elements[i].getElementsByTagName("h1")[0].innerHTML;
+		var search_data = filter_data.toUpperCase().split(" ");
+
+		var hide = false;
+
+		// Search: loop trough array from input
+		for (var j = 0; j < search_input.length; j++) {
+			var prehide = true;
+
+			// Check if keywords are in input
+			for (var k = 0; k < search_data.length; k++) {
+				if (search_data[k].startsWith(search_input[j])) { var prehide = false; }
+			}
+			if (prehide == false && hide != true) { var hide = false; }
+				else { var hide = true; }
+		}
+		if (hide) {
+			article_elements[i].classList.add("hide_search");
+		}
+		else {
+			article_elements[i].classList.remove("hide_search");
+		}
+	}
+	var hide_search = document.getElementsByClassName("hide_search").length;
+
+	if (article_elements.length - hide_search <= 0) {
+		not_found.style.display = "block";
+	}
+	else {
+		not_found.style.display = "none";
+	}
+}
+
+function siteSearchMobile() {
+	site_search.value = site_search_mobile.value;
+	siteSearch();
 }

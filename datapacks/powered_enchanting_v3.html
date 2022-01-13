@@ -17,29 +17,20 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
-	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" title="Download" href="powered_enchanting/download.html"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></a>
 	<a class="nav_button disable_link nav_install" href="../info/installation.html" title="Installation"><p>Installation</p></a>
 	<a class="nav_button disable_link" href="../info/contact.html#powered_enchanting" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
 
 <main>
-<div class="slideshow-container">
-
-	<!-- <div class="slideshow"><img src="../elements/pictures/datapacks/powered_enchanting/logo_2.png" alt="Powered Enchanting Data Pack Logo"></div> -->
-	<div class="slideshow"><iframe src="https://www.youtube-nocookie.com/embed/vb0V2AVyQ1U?wmode=transparent&amp;vq=hd1080" frameborder="0" allowfullscreen="true" width="800px" height="450px"></iframe></div>
-	<div class="slideshow"><img src="../elements/pictures/datapacks/powered_enchanting/picture_1.png" alt="Build Enchanting Circle"></div>
-	<div class="slideshow"><img src="../elements/pictures/datapacks/powered_enchanting/picture_2.png" alt="Select Enchantment"></div>
-
-	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
-	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
-</div>
+<div class="slideshow-container"><div class="slideshow" style="display: block;"><iframe src="https://www.youtube-nocookie.com/embed/vb0V2AVyQ1U?wmode=transparent&amp;vq=hd1080" frameborder="0" allowfullscreen="true" width="800px" height="450px"></iframe></div></div>
 
 
 
 <header>
 	<h1>Powered Enchanting</h1>
-	<p>1.15 +</p>
+	<p>1.17 +</p>
 </header>
 
 <p>This Data Pack changes the entire enchanting system of Minecraft. In addition, there are a bunch of add-ons with more custom Enchantments, which you can put together according to your needs.</p>
@@ -91,7 +82,7 @@
 	</div>
 </div>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Enchanting</h3>
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" id="advanced_enchanting">Enchanting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>To start enchanting, you need to drop a book on the Enchanting Table. After that, four books appear near the Enchanting Table and move towards the Quartz Blocks. After they reach the blocks, each book gets an enchantment, which is displayed as a floating text above the book. Now you can choose one of the enchantments by placing the Lapis Lazuli Slice on the Quartz Block below it.</p>
@@ -114,8 +105,15 @@
 
 <footer></footer>
 
-<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/special/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script>
+if (window.location.hash.substr(1) == "advanced_enchanting") {
+	var spoiler_el = document.getElementById("advanced_enchanting");
+	spoiler(spoiler_el);
+	spoiler_el.scrollIntoView({block: 'center', behavior: 'smooth'});
+}
+</script>
 
 </body>
 </html>
