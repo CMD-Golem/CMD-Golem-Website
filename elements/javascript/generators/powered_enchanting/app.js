@@ -63,11 +63,11 @@ function changeEdition(edition) {
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i]); }
 	}
 	else if (edition == "golem") {
-		var select_array = document.getElementsByClassName("golem");
+		var select_array = document.getElementsByClassName("e_golem");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
 	}
 	else if (edition == "vanilla") {
-		var select_array = document.getElementsByClassName("vanilla");
+		var select_array = document.getElementsByClassName("e_vanilla");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
 	}
 	else {
