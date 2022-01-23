@@ -20,7 +20,7 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/" target="_blank"><h2>CMD-Golem</h2></a>
-	<div class="nav_button" onclick="" title="Download"><img src="../../elements/nav/download.svg" alt="Download" onclick="generate()"></div>
+	<div class="nav_button" onclick="loadDownloadModal()" title="Download"><img src="../../elements/nav/download.svg" alt="Download"></div>
 	<div class="nav_button" onclick="getPackId(this)" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug" target="_blank"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
@@ -57,10 +57,10 @@
 		</li>
 		<li>Download the Data Pack and enjoy your new enchantments.<br>Use the Share button to share your create pack.</li>
 	</ol>
-	<div class="center" style="margin-bottom: 20px;"><a class="button disable_link" href="powered_enchanting/create_addon.html">Create your own Enchantments</a></div>
+	<div class="center" style="margin-bottom: 20px;"><a class="button disable_link" href="create_addon.html" style="display: inline-block;">Create your own Enchantments</a></div>
 	<hr id="scroll_point">
 	
-	<h3 style="margin-top: 80px;">Enchantment list</h3>
+	<h2 style="margin-top: 80px;">Enchantment list</h2>
 	<input type="text" placeholder="Search" id="site_search_mobile" class="site_search" onkeyup="siteSearchMobile()">
 	<p class="center">
 		<b>List options:</b>
@@ -76,10 +76,10 @@
 </main>
 
 <aside>
-	<h1>Selected Enchantments</h1>
+	<h2>Selected Enchantments</h2>
 	<div id="link_bar"></div>
 	<div class="link_buttons">
-		<div class="button text_button" title="Download Data Pack" onclick="generate()">Download</div>
+		<div class="button text_button" title="Download Data Pack" onclick="loadDownloadModal()">Download</div>
 		<div class="button icon_button" title="Get Pack Id for sharing" onclick="getPackId(this)"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	</div>
 </aside>
@@ -89,7 +89,7 @@
 <div id="modal_box"></div>
 
 <section>
-	<h3>Value Informations</h3>
+	<h2>Value Informations</h2>
 	<p>Enchantments with red name are <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantments</a><br>Enchantments with green name change the behaviour of other enchantments</p>
 	<p><b>Pack Id:</b><br><span>Can be used to share your selected enchantments with others. It can also be found in the zip file of your Data Pack.</span></p>
 	<p><b>Max Level:</b><br><span>The maximum level of the enchantment.</span></p>

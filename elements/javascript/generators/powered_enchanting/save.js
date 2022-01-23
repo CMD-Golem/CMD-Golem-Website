@@ -5,17 +5,14 @@ var pack_id_load = "1-"; // define version of pack id
 var pack_id;
 
 // Missing Enchantments
-// {"id":"xx", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":["chestplate"], "comp_itemsId":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
+// {"id":"xx", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
 // Chopping
-
-
-var comb_detect_items = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steal", "shears", "shield", "trident"];
 
 // ###########################################################
 // Generate
 async function generate() {
-	var check_selected = checkSelected(document.getElementsByClassName("selected"));
-	if (!check_selected) {return}
+	// var check_selected = checkSelected(document.getElementsByClassName("selected"));
+	// if (!check_selected) {return}
 
 	var sel_article = document.querySelectorAll(".selected,.vanilla");
 	if (show_info == true) { openInfo() }
@@ -31,8 +28,9 @@ async function generate() {
 	pack_id = pack_id_load;
 
 	// user display
+	closeModal();
 	loadProgressModal();
-	disableScroll();
+	// disableScroll();
 	var progress_bar = document.getElementById("bar");
 	var article_length = sel_article.length;
 	var progress_width_per_ench = document.getElementById("progress_bar").offsetWidth / article_length;
@@ -90,7 +88,7 @@ async function generate() {
 				if (is_vanilla) {var ench_is_vanilla = 1;}
 
 				// var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_quartz_select"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:0b,display:{Name:'{"text":"${ench_array.title}","italic":false,"color":"aqua"}',Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']},powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`;
-				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}`
+				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`
 
 				if (is_advanced) {
 					adv_enchanting += ench_ench;
@@ -110,8 +108,8 @@ async function generate() {
 				}
 			}
 
-			for (var j = 0; j < ench_array.comp_itemsId.length; j++) {
-				var pos_id = ench_array.comp_itemsId[j];
+			for (var j = 0; j < ench_array.comp_items.length; j++) {
+				var pos_id = ench_array.comp_items[j];
 				comb_detect[pos_id] += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}]${incompatible} run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
 			}
 
@@ -168,24 +166,25 @@ async function generate() {
 	pack_folder.file("functions/combining/lore.mcfunction", comb_lore);
 
 	// COMBINING: Detect Items
-	pack_folder.file("tags/functions/items/book.json", '{"values": [' + datapack_name + ':combining/items/book]}');
+	pack_folder.file("tags/functions/items/book.json", '{"values": ["' + datapack_name + ':combining/items/book"]}');
 	pack_folder.file("functions/combining/items/book.mcfunction", comb_book);
 	for (var i = 0; i < comb_detect.length; i++) {
 		var comb_detect_tag = "";
 		if (comb_detect[i] != "") {
-			comb_detect_tag = ',{"id":"' + datapack_name + ':combining/items/' + comb_detect_items[i] + '", "required":false}'
-			pack_folder.file("functions/combining/items/"+ comb_detect_items[i] + ".mcfunction", comb_detect[i]);
+			comb_detect_tag = ',{"id":"' + datapack_name + ':combining/items/' + comp_items_key[i] + '", "required":false}'
+			pack_folder.file("functions/combining/items/"+ comp_items_key[i] + ".mcfunction", comb_detect[i]);
 		}
 		if (i != 0) {
-			pack_folder.file("tags/functions/items/" + comb_detect_items[i] + ".json", '{"values": [{"id":"#powerench:items/all", "required":false}' + comb_detect_tag + ']}');
+			pack_folder.file("tags/functions/items/" + comp_items_key[i] + ".json", '{"values": [{"id":"#powerench:items/all", "required":false}' + comb_detect_tag + ']}');
 		}
 		else if (comb_detect[i] != "" && i == 0) {
-			pack_folder.file("tags/functions/items/" + comb_detect_items[i] + ".json", '{"values": ["' + datapack_name + ':combining/items/all"]}');
+			pack_folder.file("tags/functions/items/" + comp_items_key[i] + ".json", '{"values": ["' + datapack_name + ':combining/items/all"]}');
 		}
 	}
 
 	// pack.mcmeta
 	var version = document.getElementById("version").value;
+	mc_version = "1.1" + version;
 
 	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Datapack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
@@ -198,12 +197,11 @@ async function generate() {
 		enableScroll();
 
 		var link = document.createElement('a');
-		link.download = "[1.1" + version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
+		link.download = "[" + mc_version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 
 		// Counter
-		mc_version = "1.1" + version;
 		updateCounter();
 	});
 }
@@ -214,6 +212,47 @@ function loadProgressModal() {
 	modal_text.classList.add("center");
 	modal_text.innerHTML = '<h3 id="progress_action">Downloading Files</h3><div id="progress_bar"><div id="bar"></div></div>';
 	modal_box.appendChild(modal_text);
+}
+
+// ###########################################################
+// Download Modal
+function loadDownloadModal() {
+	var sel_article = document.getElementsByClassName("selected");
+	var check_selected = checkSelected(sel_article);
+	if (!check_selected) {return}
+
+	// generatePackId(sel_article);
+
+	var modal_text = document.createElement("div");
+	modal_text.classList.add("modal_text");
+	modal_text.classList.add("center");
+	modal_text.innerHTML = `
+	<div class="modal_padding_box">
+		<h2>Download</h2>
+		<hr>
+		<p>It's highly recommended to use the Resource Pack, but not necessary.</p>
+		<button onclick="generate()" style="margin-right:10px; border: 2px solid #A10000;">Download Data Pack</button><button onclick="downloadRessourcePack()">Download Ressource Pack</button><br>
+		<button onclick="closeModal()" style="margin-top:50px;">Close</button>
+	</div>`;
+	modal_box.appendChild(modal_text);
+
+	disableScroll();
+}
+
+// check pack id
+function generatePackId(sel_article) {	
+	pack_id = pack_id_load;
+
+	for (var i = 0; i < sel_article.length; i++) {
+		packId(sel_article[i]);
+	}
+}
+
+function downloadRessourcePack() {
+	var version = document.getElementById("version").value;
+
+	if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
+	else if (version == "7") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
 }
 
 //#################################################################################################

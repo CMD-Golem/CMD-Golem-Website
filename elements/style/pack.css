@@ -30,7 +30,7 @@
 	width: auto;
 	padding: 16px;
 	margin-top: -22px;
-	color: white;
+	color: #CCCCCC;
 	font-weight: bold;
 	font-size: 18px;
 	transition: 0.6s ease;
@@ -101,7 +101,7 @@ section {
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	color: white;
+	color: #CCCCCC;
 }
 
 .download_close:hover {

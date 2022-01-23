@@ -2,7 +2,7 @@ main {
 	transition: padding-right 0.2s ease-in;
 }
 
-h3 {
+h2 {
 	font-size: 30px;
 	text-align: center;
 	font-weight: bold;
@@ -53,7 +53,7 @@ article:hover {
 	background-color: #222222;
 }
 
-article h1 {
+article h3 {
 	font-size: 23px;
 	font-family: FiraSans;
 	color: #0064FF;
@@ -105,12 +105,12 @@ article td:first-child {
 	display: none;
 }
 
-.advanced_ench h1 {
+.advanced_ench h3 {
 	color: #A10000;
 	/* position: relative; */
 }
 
-.nooptions h1 {
+.nooptions h3 {
 	color: #008611;
 }
 
@@ -193,7 +193,7 @@ article td:first-child {
 	font-size: 16px;
 	background: #333333 url('../../nav/search.svg') 10px 7px/27px no-repeat;
 	padding: 12px 20px 12px 45px;
-	color: white;
+	color: #CCCCCC;
 }
 
 .nav_search input:focus:hover, .nav_search input:focus, .nav_search input:hover {
@@ -283,7 +283,7 @@ article td:first-child {
 	border: none;
 	outline: none;
 	background-color: #ED0000;
-	color: white;
+	color: #CCCCCC;
 	cursor: pointer;
 	padding: 12px 15px;
 	border-radius: 10px;
@@ -314,7 +314,7 @@ aside {
 	right: 0;
 }
 
-aside h1 {
+aside h2 {
 	font-size: 22px;
 	font-family: FiraSans;
 	color: #CCCCCC;
@@ -478,6 +478,21 @@ aside .button {
 	height: 40px;
 	background-color: #A10000;
 	border-radius: 10px 0 0 10px;
+}
+
+.pack_id {
+	user-select: all;
+	overflow: auto;
+	white-space: nowrap;
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	font-family: inherit;
+	margin-bottom: 9px;
+	padding: 12px;
+	background-color: #333333;
 }
 
 @media (max-width: 1500px) {

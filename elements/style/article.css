@@ -39,7 +39,7 @@ h2 {
 	font-size: 16px;
 	background: #333333 url('../nav/search.svg') 10px 7px/27px no-repeat;
 	padding: 12px 20px 12px 45px;
-	color: white;
+	color: #CCCCCC;
 }
 
 .nav_search input:focus:hover, .nav_search input:focus, .nav_search input:hover {

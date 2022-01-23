@@ -1,23 +1,28 @@
 // load json
 var article_elements, article_array, not_found;
+var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steal", "shears", "shield", "trident"];
+
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/special/powered_enchanting/enchantments.json");
-	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/special/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
 		var article = article_array[i];
+
 		// set path
 		var items = article.comp_items;
 		var img_path = "";
 		var comp_items = "";
 		for (var j = 0; j < items.length; j++) {
-			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${items[j]}.png">`
-			comp_items = comp_items + items[j] + " ";
+			var item = comp_items_key[items[j]];
+			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`
+			comp_items = comp_items + item + " ";
 		}
-		if (comp_items == "all_items ") {
-			comp_items = "axe boots bow chestplate crossbow elytra fishing rod helmet hoe leggings pickaxe shovel sword trident "
+
+		if (comp_items == "all ") {
+			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident"
 		}
 		if (article.incomp_ench != "false") {
 			article.style = article.style + " show_incomp"
@@ -28,7 +33,7 @@ async function loadJson() {
 		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
-				<h1>${article.title}</h1>
+				<h3>${article.title}</h3>
 				<p>${article.description}</p>
 				<div class="comp_items">${comp_items}</div>
 			</div>
@@ -101,7 +106,7 @@ function select(article, preselection) {
 
 		// Add sidebar link
 		var new_link = document.createElement("div");
-		new_link.innerHTML = `<div class="dot" title="Remove from list" onclick="removeEnch('${article.id}')"></div><span class="disable_link link_text">${article.getElementsByTagName("h1")[0].innerHTML}</span><br>`;
+		new_link.innerHTML = `<div class="dot" title="Remove from list" onclick="removeEnch('${article.id}')"></div><span class="disable_link link_text">${article.getElementsByTagName("h3")[0].innerHTML}</span><br>`;
 		new_link.classList.add("sidebar_link");
 		new_link.id = "link_" + article.id;
 		new_link.title = "Click to go to enchantment"
@@ -276,6 +281,8 @@ var modal_box = document.getElementById("modal_box");
 function closeModal() {
 	modal_box.innerHTML = "";
 	modal_box.classList = "";
+
+	enableScroll(); //save.js
 }
 
 // ###########################################################
@@ -286,6 +293,8 @@ function loadPackIdModal() {
 	modal_text.classList.add("center");
 	modal_text.innerHTML = '<div class="modal_padding_box"><input placeholder="Insert Pack Id..."></div><button onclick="importPackId()">Load</button><button onclick="closeModal()" style="margin-left:10px;">Close</button>';
 	modal_box.appendChild(modal_text);
+
+	disableScroll();
 }
 
 function importPackId() {
@@ -357,6 +366,8 @@ function loadOldVerionsModal() {
 		<button onclick="closeModal()">Close</button>
 	</div>`;
 	modal_box.appendChild(modal_text);
+
+	disableScroll();
 }
 
 function downloadOld(edition, version) {
@@ -456,7 +467,7 @@ function siteSearch() {
 	catch (e) {}
 
 	for (var i = 0; i < article_elements.length; i++) {
-		var filter_data = article_elements[i].getElementsByClassName("comp_items")[0].innerHTML + article_elements[i].getElementsByTagName("h1")[0].innerHTML;
+		var filter_data = article_elements[i].getElementsByClassName("comp_items")[0].innerHTML + article_elements[i].getElementsByTagName("h3")[0].innerHTML;
 		var search_data = filter_data.toUpperCase().split(" ");
 
 		var hide = false;

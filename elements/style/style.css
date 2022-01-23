@@ -115,7 +115,7 @@ nav {
 .nav_button:hover, .nav_button:focus {
 	background-color: #333333;
 	outline: none;
-	color: white;
+	color: #CCCCCC;
 }
 
 /* ####################################################################### */
@@ -240,7 +240,7 @@ input, textarea {
 	font-family: inherit;
 	margin-bottom: 9px;
 	padding: 12px;
-	color: white;
+	color: #CCCCCC;
 	background-color: #333333;
 	resize: vertical;
 }
@@ -287,7 +287,7 @@ input[type=radio], input[type=radio]:focus, input[type=radio]:hover:focus, input
 .button, button {
 	outline: none;
 	border: 0;
-	color: white;
+	color: #CCCCCC;
 	padding: 10px 20px;
 	background-color: #333333;
 	border-radius: 5px;
@@ -376,7 +376,7 @@ select:focus {
 
 .spoiler_title:after {
 	content: "\002B";
-	color: white;
+	color: #CCCCCC;
 	font-weight: bold;
 	float: right;
 	margin-left: 5px;
