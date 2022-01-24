@@ -360,6 +360,7 @@ select:focus {
 .spoiler_image {
 	width: 40%;
 	padding: 10px;
+	margin: 0 auto;
 }
 
 .spoiler_show img {
