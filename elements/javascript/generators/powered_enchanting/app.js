@@ -1,6 +1,6 @@
 // load json
 var article_elements, article_array, not_found;
-var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steal", "shears", "shield", "trident"];
+var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 
 async function loadJson() {
 	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
@@ -353,28 +353,28 @@ function importPackIdFail(pack_id_input) {
 
 // ###########################################################
 // Download older versions
-function loadOldVerionsModal() {
-	var modal_text = document.createElement("div");
-	modal_text.classList.add("modal_text");
-	modal_text.classList.add("center");
-	modal_text.innerHTML = `
-	<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br>
-		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.16')">1.16 CMD-Golem Edition</a>
-		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.16')">1.16 Vanilla Edition</a><br>
-		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.15')">1.15 CMD-Golem Edition</a>
-		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.15')">1.15 Vanilla Edition</a><br>
-		<button onclick="closeModal()">Close</button>
-	</div>`;
-	modal_box.appendChild(modal_text);
+// function loadOldVerionsModal() {
+// 	var modal_text = document.createElement("div");
+// 	modal_text.classList.add("modal_text");
+// 	modal_text.classList.add("center");
+// 	modal_text.innerHTML = `
+// 	<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br>
+// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.16')">1.16 CMD-Golem Edition</a>
+// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.16')">1.16 Vanilla Edition</a><br>
+// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.15')">1.15 CMD-Golem Edition</a>
+// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.15')">1.15 Vanilla Edition</a><br>
+// 		<button onclick="closeModal()">Close</button>
+// 	</div>`;
+// 	modal_box.appendChild(modal_text);
 
-	disableScroll();
-}
+// 	disableScroll();
+// }
 
-function downloadOld(edition, version) {
-	selected_edition = edition;
-	mc_version = version;
-	updateCounter(); //save.js
-}
+// function downloadOld(edition, version) {
+// 	selected_edition = edition;
+// 	mc_version = version;
+// 	updateCounter(); //download_counter.js
+// }
 
 
 // #################################################################################################

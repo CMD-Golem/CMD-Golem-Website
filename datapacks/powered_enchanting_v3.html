@@ -24,7 +24,8 @@
 
 
 <main>
-<div class="slideshow-container"><div class="slideshow" style="display: block;"><iframe src="https://www.youtube-nocookie.com/embed/vb0V2AVyQ1U?wmode=transparent&amp;vq=hd1080" frameborder="0" allowfullscreen="true" width="800px" height="450px"></iframe></div></div>
+<!-- <div class="slideshow-container"><div class="slideshow" style="display: block;"><iframe src="https://www.youtube-nocookie.com/embed/vb0V2AVyQ1U?wmode=transparent&amp;vq=hd1080" frameborder="0" allowfullscreen="true" width="800px" height="450px"></iframe></div></div> -->
+<div class="slideshow-container"><div class="slideshow" style="display: block;"><img src="../elements/pictures/datapacks/powered_enchanting/logo_2.png" alt="Powered Enchanting Data Pack Logo"></div></div>
 
 
 
@@ -65,6 +66,8 @@
 	</div>
 </div>
 
+<br>
+
 <h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Build the Enchanting Table</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
@@ -86,9 +89,11 @@
 <h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" id="advanced_enchanting">Enchanting</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
-		<p>To start enchanting, you need to drop a book on the Enchanting Table. After that, four books appear near the Enchanting Table and move towards the Quartz Blocks. After they reach the blocks, each book gets an enchantment, which is displayed as a floating text above the book. Now you can choose one of the enchantments by placing the Lapis Lazuli Slice on the Quartz Block below it.</p>
+		<p>To start enchanting, you need to drop a book on the Enchanting Table. After that, four books appear near the Enchanting Table and move towards the Quartz Blocks. After they reach the blocks, each book gets an enchantment, which is displayed as a floating text above the book. The chance to get a higher leveled enchantments is 20% for each level. Now you can choose one of the enchantments by placing the Lapis Lazuli Slice on the Quartz Block below it.</p>
 		<p>Enchanting books requires 30 experience levels, two of which are consumed.</p>
-		<p><b>Advanced Enchanting</b><br>To get rarer enchantments like Mending, you need to replace the four Quartz Blocks with Obsidian and place an End Crystal on each of them. Everything else works the same as normal enchanting.<br>Advanced enchanting of books requires 50 experience levels, eight of which are consumed. Also, the End Crystal placed on the selected pillar will explode.</p>
+		<p><b>Advanced Enchanting</b><br>To get rarer enchantments like Mending, you need to charge the Enchanting Table. To do this, you need to drop an End Crystal on top of the table. The state of charging can be seen from the End Crystals floating above the lapis lazuli pillars. You can charge the table with a maximum of four End Crystals, but for the enchanting it doesn't matter how much the table is charged.</p>
+		<p>The enchanting works the same way as the normal enchanting: You drop a book on the table and each quartz pillar gets an enchantment, from which you can choose one. The difference is that you can, of course, get Advanced Enchantments, which are indicated with a red name. In addition, the overall chance of getting higher level enchantments is 30% instead of 20%.</p>
+		<p>Advanced Enchanting of books requires 50 experience levels. If you choose an Advanced Enchantment, eight levels and one of the charged End Crystals will be consumed. If you choose a normal enchantment, only two levels and one of the charged End Crystals are consumed.</p>
 	</div>
 </div>
 
@@ -96,17 +101,45 @@
 <div class="spoiler_show">
 	<div class="spoiler_content">
 		<p>To get an enchantment on a tool or armor, you need to drop it on an Enchanting Table along with the Enchanted Book. You can also combine the enchantments of two different items. If you do that, the first item you dropped will be preserved and gets the enchantments of the second one.</p>
-		<p>Each time you enchant the item, the experience cost of it increases.<br>The formula for the calculation is: ( times of enchanting + 1 )<sup>2</sup><br>Warning: The combination in the Anvil will no longer work.</p>
+		<p>Each time you enchant the item, the experience cost doubles.<br>Warning: The combination in the Anvil will no longer work.</p>
 	</div>
 </div>
 
+<br>
+
 <a class="button disable_link center" href="powered_enchanting/create_addon.html" style="margin: 40px 0; display: block;">Create your own Enchantments</a>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>Remove custom enchantments and lore from selected item. (for deinstallation)</p>
+		<code>/item modify entity @s weapon.mainhand powerench_main:remove_powerench</code>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Get older versions</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>Please note that the older versions of this pack don't support all features of the newer versions:</p>
+		<ul>
+			<li>You can only get level one enchantments from enchanting. To get higher leveled enchantments, you need to combine books.</li>
+			<li>For Advanced Enchanting you need to replace the Chiseled Quartz Blocks with Obsidian Blocks an place a End Crystal on each one.</li>
+		</ul>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.16')">1.16 CMD-Golem Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.16')">1.16 Vanilla Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1oRSvzFJ6ZZG7hV8EMguYf-VBhXSAyANY" style="margin:10px; display:inline-block;">1.16 Ressource Pack</a><br>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.15')">1.15 CMD-Golem Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.15')">1.15 Vanilla Edition</a>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1oRSvzFJ6ZZG7hV8EMguYf-VBhXSAyANY" style="margin:10px; display:inline-block;">1.15 Ressource Pack</a><br><br>
+	</div>
+</div>
 
 </main>
 
 <footer></footer>
 
 <script language="javascript" type="text/javascript" src="../elements/javascript/special/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/generators/powered_enchanting/download_counter.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 <script>
 if (window.location.hash.substr(1) == "advanced_enchanting") {
