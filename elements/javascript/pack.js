@@ -1,7 +1,14 @@
+// Add class to html to:
+//		disable download page: no_download
+//		disable show counter on page: no_counter
+//		disable slides: no_slides
+var html = document.getElementsByTagName("body")[0];
+
 // Gallery
 var slides = document.getElementsByClassName("slideshow");
 var slideIndex = 1;
-showSlides(slideIndex);
+if (!html.classList.contains("no_slides")) {showSlides(slideIndex);}
+
 
 function showSlides(n) {
 	if (n > slides.length) {slideIndex = 1}    
@@ -48,8 +55,11 @@ function changeDownload() {
 	}
 }
 
-changeDownload();
-window.onhashchange = function() { changeDownload(); }
+if (!html.classList.contains("no_download")) {
+	changeDownload();
+	window.onhashchange = function() { changeDownload(); }
+}
+
 
 function openDownload() {
 	if (show_download == false) { window.location.hash = "download"; }
@@ -124,12 +134,14 @@ var pack_type = counter_el.dataset.type;
 
 
 // show counter in html
-Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
-	counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
-	var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
-	show_el[0].style.display = "block";
-	show_el[1].style.display = "block";
-});
+if (!html.classList.contains("no_counter")) {
+	Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
+		counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
+		var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
+		show_el[0].style.display = "block";
+		show_el[1].style.display = "block";
+	});
+}
 
 // update counter
 var already_download = false;

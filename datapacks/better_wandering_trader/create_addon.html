@@ -39,27 +39,26 @@
 
 <br><br>
 <p>Trade (needed)</p>
-<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
 
-<br><input type="radio" name="trade" id="common" checked="true"><label for="common">Common</label>
-<br><input type="radio" name="trade" id="rare"><label for="rare">Rare</label>
-<br><input type="radio" name="trade" id="epic"><label for="epic">Epic</label>
-
-<br><br>
-<p>Buy one (needed)</p>
-<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:emerald",Count:2b}}' id="buy1" onkeyup="generate()">
+<input type="radio" name="trade" id="common" checked="true"><label for="common">Common</label><br>
+<input type="radio" name="trade" id="rare"><label for="rare">Rare</label><br>
+<input type="radio" name="trade" id="epic"><label for="epic">Epic</label><br>
 
 <br>
+<p>Buy one (needed)</p>
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:emerald",Count:2b}}' id="buy1" onkeyup="generate()">
+
 <p>Buy two</p>
-<input type="text" class="code" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
 
-<br><br>
+<br>
 <p>Trade ID (to disable the trade)</p>
-<input type="text" class="code" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
+<input type="text" class="code fullwidth" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
 
-<br><br>
+<br>
 <p>Output</p>
-<code id="trade_output" class="code_output copy_counter">Fill in your data...</code>
+<code id="trade_output" class="fullwidth copy_counter" style="overflow-wrap: break-word;">Fill in your data...</code>
 
 <a class="button disable_link center" href="https://drive.google.com/uc?export=download&id=1sCFnsSQeVX2Vkqc_NwgNJtuephNVDFit" style="margin: 40px 0; display: block;" target="_blank">Example Pack with a One Hit Sword</a>
 
