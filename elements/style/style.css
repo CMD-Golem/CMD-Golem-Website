@@ -173,6 +173,10 @@ hr {
 	text-align: left;
 }
 
+.table p {
+	margin: 10px 0;
+}
+
 @media (max-width: 850px) {
 	.dyn_table, .dyn_table thead, .dyn_table tbody, .dyn_table th, .dyn_table td, .dyn_table tr {
 		display: block;
@@ -355,7 +359,7 @@ select:focus {
 	padding-bottom: 10px;
 }
 
-.spoiler_content p:first-child {
+.spoiler_content > *:first-child {
 	margin-top: 0;
 }
 

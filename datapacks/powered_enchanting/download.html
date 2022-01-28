@@ -19,13 +19,13 @@
 <body class="hide_vanilla">
 
 <nav>
-	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/" target="_blank"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
 	<div class="nav_button" onclick="loadDownloadModal()" title="Download"><img src="../../elements/nav/download.svg" alt="Download"></div>
 	<div class="nav_button" onclick="getPackId(this)" title="Get Pack Id for sharing"><img src="../../elements/nav/share.svg" alt="Get Pack Id for sharing"></div>
 	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#powered_enchanting" title="Report a Bug" target="_blank"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 	<input type="checkbox" id="nav_search_button" style="display: none;"><label for="nav_search_button" class="nav_button nav_search_button" onclick="document.getElementById('site_search').value='';siteSearch()"></label>
 	<div class="nav_search hide_mobile">
-		<div class="nav_search_box"><input type="text" placeholder="Search" id="site_search" onkeyup="siteSearch()"></div>
+		<div class="nav_search_box"><input type="text" placeholder="Search for enchantments, tools or armor" id="site_search" onkeyup="siteSearch()"></div>
 	</div>
 </nav>
 
@@ -38,7 +38,6 @@
 				<option value="8">1.18 or newer</option>
 				<option value="7">1.17 - 1.17.1</option>
 			</select>
-			<!-- <br><a onclick="loadOldVerionsModal()" href="javascript:void(0);">Get older Versions</a> -->
 		</li>
 		<li>Select a premade edition and/or select the enchantments you want in the list below.
 			<div class="edition_selection">
@@ -59,7 +58,7 @@
 	<hr id="scroll_point">
 	
 	<h2 style="margin-top: 80px;">Enchantment list</h2>
-	<input type="text" placeholder="Search" id="site_search_mobile" class="site_search" onkeyup="siteSearchMobile()">
+	<input type="text" placeholder="Search for enchantments or tools" id="site_search_mobile" class="site_search" onkeyup="siteSearchMobile()">
 	<p class="center">
 		<b>List options:</b>
 		<select id="list_options" onchange="hideEnch(this.value)" style="max-width: 100%;">
