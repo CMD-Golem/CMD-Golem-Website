@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Powered Enchanting Addons</title>
+<meta name="description" content="Enchant your tools and armor with new Enchantments and create your own.">
+<meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/powered_enchanting/create_addon.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/special/help.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+
+<style type="text/css">
+@media (max-width: 700px) {
+	.nav_text {
+		display: none;
+	}
+}
+/* https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+</style>
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
+	<div onclick="" class="nav_button" title="Generate the Data Pack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div onclick="addEnch(this)" class="nav_button" title="Add new Enchantment (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Enchantment"><p class="nav_text">Add new Enchantment</p></div>
+	<a href="../../info/contact.html#powered_enchanting" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+
+
+<article id="0">
+	<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
+		<img src="../../elements/nav/close.svg" alt="Close">
+	</div>
+
+	<p>Name of the Enchantment</p>
+	<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
+
+	<p>Id of the Enchantment</p>
+	<input type="text" placeholder='vein_miner' class="ench_id">
+	
+	<p>Max Level of the Enchantment</p>
+	<input type="text" placeholder='3' class="ench_maxlvl">
+
+	<p><input type="checkbox" class="ench_adv"> Is Enchantment an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></p>
+	
+	<p>Tools or Armor, the enchantment can be enchanted on.</p>
+	<input type="text" placeholder='pickaxe' class="ench_items" onkeyup="filterItems(this)">
+
+	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
+	<select class="ench_chance">
+		<option value="1">10% (e.g. Infinity)</option>
+		<option value="2" selected>20% (e.g. Looting)</option>
+		<option value="5">50% (e.g. Knockback)</option>
+		<option value="0">100% (e.g. Sharpness)</option>
+	</select>
+
+	<p>Short description of the Enchantment</p>
+	<textarea class="ench_descr" placeholder='Breaks connected Ores'></textarea>
+
+</article>
+
+</main>
+
+<aside>
+	<div class="sidebar_link" onclick="scrollToParent('0')" id="link_0">
+		<div class="dot"></div><span class="disable_link link_text">First Recipe</span><br>
+	</div>
+</aside>
+
+<div id="progress_bar" style="display: none;">
+	<div class="progress_bar_content">
+		<h3>Downloading</h3>
+		<div class="progress_bar">
+			<div id="bar"></div>
+		</div>
+	</div>
+</div>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_app.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+
+</body>
+</html>

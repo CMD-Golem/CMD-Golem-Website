@@ -18,11 +18,11 @@ async function loadJson() {
 		for (var j = 0; j < items.length; j++) {
 			var item = comp_items_key[items[j]];
 			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`
-			comp_items = comp_items + item + " ";
+			comp_items = comp_items + item.replaceAll("_", " ") + " ";
 		}
 
 		if (comp_items == "all ") {
-			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident"
+			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident "
 		}
 		if (article.incomp_ench != "false") {
 			article.style = article.style + " show_incomp"
