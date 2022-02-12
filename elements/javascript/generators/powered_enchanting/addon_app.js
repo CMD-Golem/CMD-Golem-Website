@@ -101,9 +101,9 @@ function enchName(input) {
 function scrollToParent(id) {	
 	var sel_element = document.getElementById(id)
 	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
-	sel_element.style.backgroundColor = "#A10000";
+	// sel_element.style.backgroundColor = "#A10000";
 
-	setTimeout(function(){ sel_element.style.backgroundColor = "#1C1C1C"; }, 500);
+	// setTimeout(function(){ sel_element.style.backgroundColor = "#1C1C1C"; }, 500);
 }
 
 // #####################################################################
@@ -140,27 +140,18 @@ function filterItems(input) {
 		if (filter_items[i].toUpperCase().indexOf(input_text) > -1) {
 			html += "<div>" + filter_items[i] + "</div>";
 		}
-			
 	}
-	if (html != "") {
+	var filter_list = document.getElementsByClassName("filter_list");
+	if (filter_list.length != 0) {
+		filter_list[0].remove();
+	}
+	if (html != "" && input_text != "") {
 		var filtered = document.createElement("div");
 		filtered.innerHTML = html;
 		filtered.classList.add("filter_list");
 		input.parentNode.insertBefore(filtered, input.nextSibling);
 	}
-	else {
-		document.getElementsByClassName("filter_list").remove();
-	}
 };
-
-
-//Open first child if user press enter
-function enter() {
-	if (event.key == "Enter") {
-		window.location.href = matchList.getElementsByClassName("link")[0].href;
-	}
-}
-
 
 
 // #####################################################################
