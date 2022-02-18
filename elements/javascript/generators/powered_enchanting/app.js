@@ -3,13 +3,16 @@ var article_elements, article_array, not_found;
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
-	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
 		var article = article_array[i];
+
+		// remove curses from list
+		// if (article.style.includes("curse")) { break; }
 
 		// set path
 		var items = article.comp_items;
@@ -483,7 +486,7 @@ function siteSearch() {
 			if (prehide == false && hide != true) { var hide = false; }
 				else { var hide = true; }
 		}
-		if (hide) {
+		if (hide || article_elements[i].classList.contains("curse")) {
 			article_elements[i].classList.add("hide_search");
 		}
 		else {

@@ -22,6 +22,7 @@ async function generate() {
 	var adv_enchanting = "";
 	var tick_function = "";
 	var load_function = "";
+	var maxlvl_load = "";
 	var comb_book = "";
 	var comb_detect = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
@@ -118,6 +119,9 @@ async function generate() {
 			comb_book += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
 
 			if (is_vanilla) {
+				// COMBINING: load vanilla max level (all ench in one file)
+				maxlvl_load += "scoreboard players set #" + ench_array.ench[0] + " powerench " + ench_array.max_lvl + "\n"
+
 				// COMBINING: Enchant
 				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get levels\nexecute store result score #first_combine powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\nexecute store result score #second_combine powerench as @e[tag=powerench_combine_second,distance=..1,limit=1] run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n\n#set level\nexecute if score #first_combine powerench <= #second_combine powerench run scoreboard players operation #final_combine powerench = #second_combine powerench\nexecute if score #first_combine powerench = #second_combine powerench run scoreboard players add #final_combine powerench 1\nexecute if score #first_combine powerench > #second_combine powerench run scoreboard players set #final_combine powerench -1\nexecute if score #first_combine powerench >= #${ench_array.ench[0]} powerench run scoreboard players set #final_combine powerench -1\nfunction #powerench:combining/${ench_array.ench[0]}\n\n#set ench level and finish\nexecute if score #final_combine powerench matches 1.. store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get #final_combine powerench\nexecute if score #final_combine powerench matches 1.. run tag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
 			}
@@ -162,6 +166,9 @@ async function generate() {
 		pack_folder.file("tags/functions/load.json", '{"values": ["' + datapack_name + ':load"]}');
 		pack_folder.file("functions/load.mcfunction", load_function);
 	}
+
+	// COMBINING: Vanilla max Level
+	pack_folder.file("functions/combining/max_lvl.mcfunction", maxlvl_load);
 
 	// COMBINING: Lore
 	pack_folder.file("tags/functions/lore.json", '{"values": ["' + datapack_name + ':combining/lore"]}');
@@ -233,7 +240,7 @@ function loadDownloadModal() {
 		<h2>Download</h2>
 		<hr>
 		<p>It's highly recommended to use the Resource Pack, but not necessary.</p>
-		<button onclick="generate()" style="margin-right:10px; border: 2px solid #A10000;">Download Data Pack</button><button onclick="downloadRessourcePack()">Download Ressource Pack</button><br>
+		<button onclick="generate()" style="margin-right:10px; border: 2px solid #A10000;">Download Data Pack</button><button onclick="downloadResourcePack()">Download Resource Pack</button><br>
 		<button onclick="closeModal()" style="margin-top:50px;">Close</button>
 	</div>`;
 	modal_box.appendChild(modal_text);
@@ -250,7 +257,7 @@ function generatePackId(sel_article) {
 	}
 }
 
-function downloadRessourcePack() {
+function downloadResourcePack() {
 	var version = document.getElementById("version").value;
 
 	if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}

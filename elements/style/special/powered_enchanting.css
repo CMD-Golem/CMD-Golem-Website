@@ -118,6 +118,10 @@ article td:first-child {
 	text-decoration-line: line-through;
 }
 
+.curse {
+	display: none;
+}
+
 /*.advanced_ench h1::after {
 	content: url(../../nav/help.svg);
 }
