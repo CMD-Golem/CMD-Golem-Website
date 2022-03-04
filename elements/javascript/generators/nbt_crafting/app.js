@@ -353,9 +353,11 @@ function toggleAdvMode() {
 var el_compact_view = document.getElementById("compact_view");
 var compact_view;
 
-if (localStorage.getItem("compact_view") == "true") {
-	compact_view = "false";
-	compactView();
+window.onload = function() {
+	if (localStorage.getItem("compact_view") == "true") {
+		compact_view = "false";
+		compactView();
+	}
 }
 
 function compactView(used_element) {

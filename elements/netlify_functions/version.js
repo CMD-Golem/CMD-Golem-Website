@@ -11,7 +11,10 @@ exports.handler = (event, context) => {
 	// get counter id and type from url
 	var version = event.path.match(/([^\/]*)\/*$/)[0];
 
-	if (version == "1.18") {
+	if (version == "1.19") {
+		var id = "325220181196407372";
+	}
+	else if (version == "1.18") {
 		var id = "316609019004322377";
 	}
 	else if (version == "1.17") {
