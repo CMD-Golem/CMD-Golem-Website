@@ -63,20 +63,24 @@ function addEnch(el) {
 	scrollToParent(counter);
 }
 
-// #####################################################################
-// Remove Ench
-function removeEnch(el) {
-	var el_article = document.getElementsByTagName("article");
-	if (el_article.length > 1) {
-		var confirm_msg = confirm("You will delete your Input irreversible!");
-		if (confirm_msg == true) {
-			var remove_id = el.parentNode.id;
-			var remove_link = document.getElementById("link_" + remove_id);
-			remove_link.remove();
-			el.parentNode.remove();
-		}
-	}
+// scroll to ench
+function scrollToParent(id) {	
+	var sel_element = document.getElementById(id)
+	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
 }
+
+// shortcuts
+document.addEventListener("keydown", e => {
+	// Add new ench crtl + enter
+	if (e.ctrlKey && (e.which == 13 || e.keyCode == 13) ) {
+		addEnch();
+	}
+	// Save datapack ctrl + s
+	if (e.ctrlKey && (e.which == 83 || e.keyCode == 83) ) {
+		downloadCheck();
+		e.preventDefault();
+	}
+});
 
 // #####################################################################
 // Refresh name from ench id
@@ -97,28 +101,57 @@ function enchName(input) {
 }
 
 // #####################################################################
-// Onclick function in sidebar
-function scrollToParent(id) {	
-	var sel_element = document.getElementById(id)
-	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
-	// sel_element.style.backgroundColor = "#A10000";
+// set tools, weapons and armor
+function setTagged(input_el) {
+	if (input_el.value.includes(" ") || input_el.value.includes(",")) {
+		var item_el = document.createElement("span");
+		item_el.innerHTML = input_el.value.replace(/[^a-zA-Z_]/g, "");
+		item_el.classList.add("tagged_item");
+		item_el.addEventListener("click", removeTagged);
 
-	// setTimeout(function(){ sel_element.style.backgroundColor = "#1C1C1C"; }, 500);
+		input_el.parentNode.insertBefore(item_el, input_el);
+
+		input_el.value = "";
+		input_el.blur();
+		input_el.focus();
+	}
 }
 
+function removeTagged(remove_tag) {
+	remove_tag.target.remove();
+}
+
+// get enchantments from json
+var input_comp_el = document.getElementById("input_comp");
+
+async function loadJson() {
+	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	article_array = await res.json();
+	var list = "";
+
+	for (var i = 0; i < article_array.length; i++) {
+		list += '<option value="' + article_array[i].ench[0] + '"></option>';
+	}
+
+	input_comp_el.innerHTML = list;
+}
+loadJson();
+
+
 // #####################################################################
-// shortcuts
-document.addEventListener("keydown", e => {
-	// Add new ench crtl + enter
-	if (e.ctrlKey && (e.which == 13 || e.keyCode == 13) ) {
-		addEnch();
+// Remove Ench
+function removeEnch(el) {
+	var el_article = document.getElementsByTagName("article");
+	if (el_article.length > 1) {
+		var confirm_msg = confirm("You will delete your Input irreversible!");
+		if (confirm_msg == true) {
+			var remove_id = el.parentNode.id;
+			var remove_link = document.getElementById("link_" + remove_id);
+			remove_link.remove();
+			el.parentNode.remove();
+		}
 	}
-	// Save datapack ctrl + s
-	if (e.ctrlKey && (e.which == 83 || e.keyCode == 83) ) {
-		downloadCheck();
-		e.preventDefault();
-	}
-});
+}
 
 // #####################################################################
 // Select items
@@ -156,42 +189,78 @@ function filterItems(input) {
 
 // #####################################################################
 // Compact View
-var el_compact_view = document.getElementById("compact_view");
-var compact_view;
+// var el_compact_view = document.getElementById("compact_view");
+// var compact_view;
 
-if (localStorage.getItem("compact_view") == "true") {
-	compact_view = "false";
-	compactView();
+// if (localStorage.getItem("compact_view") == "true") {
+// 	compact_view = "false";
+// 	compactView();
+// }
+
+// function compactView(used_element) {
+// 	var hide_compact = document.getElementsByClassName("hide_compact")
+
+// 	if (compact_view == "true") {
+// 		if (cookies == true) {localStorage.setItem("compact_view", "false");}
+// 		compact_view = "false";
+
+// 		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
+// 		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
+
+// 		for (var i = 0; i < hide_compact.length; i++) {
+// 			hide_compact[i].style.display = "block";
+// 		}
+// 	}
+// 	else {
+// 		if (cookies == true) {localStorage.setItem("compact_view", "true");}
+// 		compact_view = "true";
+
+// 		el_compact_view.title = "Change to expanded View";
+// 		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
+
+// 		for (var i = 0; i < hide_compact.length; i++) {
+// 			hide_compact[i].style.display = "none";
+// 		}
+// 	}
+
+// 	if (used_element == "button") {
+// 		el_compact_view.style.backgroundColor = "#A10000";
+// 		setTimeout(function(){ sel_element.removeAttribute("style"); }, 500);
+// 	}
+// }
+
+// #################################################################################################
+// More settingsinfo
+var section = document.getElementsByTagName("section")[0];
+var main = document.getElementsByTagName("main")[0];
+var sidebar = document.getElementsByTagName("aside")[0];
+var title = document.getElementsByTagName("title")[0];
+var show_info = false;
+
+function changeInfo() {
+	if (show_info == false && window.location.hash.substr(1) == "info") {
+		section.style.display = "block";
+		main.style.display = "none";
+		sidebar.style.display = "none";
+		show_info = true;
+
+		title.innerHTML = "CMD-Golem - Powered Enchanting Addons Information";
+	}
+
+	else {
+		section.style.display = "none";
+		main.style.display = "block";
+		sidebar.removeAttribute("style");
+		show_info = false;
+
+		title.innerHTML = "CMD-Golem - Powered Enchanting Addons";
+	}
 }
 
-function compactView(used_element) {
-	var hide_compact = document.getElementsByClassName("hide_compact")
+changeInfo();
+window.onhashchange = function() { changeInfo() }
 
-	if (compact_view == "true") {
-		if (cookies == true) {localStorage.setItem("compact_view", "false");}
-		compact_view = "false";
-
-		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
-
-		for (var i = 0; i < hide_compact.length; i++) {
-			hide_compact[i].style.display = "block";
-		}
-	}
-	else {
-		if (cookies == true) {localStorage.setItem("compact_view", "true");}
-		compact_view = "true";
-
-		el_compact_view.title = "Change to expanded View";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
-
-		for (var i = 0; i < hide_compact.length; i++) {
-			hide_compact[i].style.display = "none";
-		}
-	}
-
-	if (used_element == "button") {
-		el_compact_view.style.backgroundColor = "#A10000";
-		setTimeout(function(){ sel_element.removeAttribute("style"); }, 500);
-	}
+function openInfo() {
+	if (show_info == false) { window.location.hash = "info"; }
+	else { window.location.hash = ""; }
 }

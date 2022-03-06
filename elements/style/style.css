@@ -250,7 +250,7 @@ input:focus, input:focus:hover, textarea:focus, textarea:focus:hover {
 /* Code output */
 .code, code {
 	background-color: #333333;
-	font-family: monospace;
+	font-family: inherit;
 	border-radius: 5px;
 	display: inline-block;
 	margin-bottom: 10px;
@@ -289,6 +289,14 @@ input[type=checkbox], input[type=checkbox]:focus, input[type=checkbox]:hover:foc
 
 input[type=radio], input[type=radio]:focus, input[type=radio]:hover:focus, input[type=radio]:checked {
 	border-radius: 50%;
+}
+
+input.key_input {
+	background-color: transparent;
+	display: inline-block;
+	width: unset;
+	margin: 0;
+	padding: 0;
 }
 
 /* Button */

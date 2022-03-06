@@ -3,7 +3,7 @@
 	
 <head>
 <title>CMD-Golem - Powered Enchanting Addons</title>
-<meta name="description" content="Enchant your tools and armor with new Enchantments and create your own.">
+<meta name="description" content="Create custom Enchantments for the Powered Enchanting Data Pack.">
 <meta rel="canonical" href="https://cmd-golem.netlify.app/datapacks/powered_enchanting/create_addon.html">
 <meta name="robots" content="index, follow, archive"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,15 +15,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 
 <style type="text/css">
-.list_link {
-	right: 40px;
-	position: absolute;
-	text-decoration: underline;
-	color: #ED0000;
+article code.fullwidth {
+	user-select: auto;
+	padding: 7px;
+	padding-top: 2px;
+}
+
+.tagged_item {
+	background-color: #222222;
+	display: inline-block;
+	padding: 2px 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	border-radius: 2px;
 	cursor: pointer;
 }
-.list_link:hover, .list_link:active, .list_link:focus {
-	color: #A10000;
+
+.tagged_item:hover {
+	background-color: #A10000;
+}
+
+input.key_input {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+section {
+	padding: 20px;
+	padding-bottom: 50px;
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+	z-index: 1;
+}
+
+@media screen and (max-width: 840px) {
+	section {
+		width: calc(100vw - 40px);
+	}
 }
 
 @media (max-width: 700px) {
@@ -45,13 +74,46 @@
 
 
 <main>
+<div>
+	<h1 >Create custom Enchantments</h1>
+	<p style="display: none;" id="download_counter" data-ref="306824373484913163" data-type="help"></p>
 
+	<div class="hide_compact">
+		<p>Create custom Enchantments for the Powered Enchanting Data Pack.</p>
+		<ol>
+			<li>Define the name of the Data Pack ID and select the Minecraft version you want to use for the Data Pack.</li>
+			<li>Go to the first dark gray section, which contains all text fields for the first Enchantment, and fill them in.</li>
+			<ul>
+				<li>If you want to add more then one Enchantment, you can add one by clicking on the according button in the navigation bar or by using the key combination Ctrl + Enter.</li>
+				<li>Navigate quickly between all Enchantments by using the buttons in the left sidebar.</li>
+			</ul>
+			<li>To download the finished Data Pack you can, again, use the button in the navigation bar or the key combination Ctrl + S.</li>
+			<li>Create the remaining Commands and functions to execute the Enchantment on the tool, weapon or armor.
+				<p class="center"><a class="button disable_link" href="#info">Get some additional tips</a></p>
+			</li>
+		</ol>
+
+		<br><hr><br>
+	</div>
+
+	<p>Data Pack ID Name</p>
+	<input type="text" placeholder='datapack_name' class="datapack_name needed">
+
+	<p>Select your Minecraft version</p>
+	<select class="version">
+		<option value="9">1.18.2 and newer</option>
+		<option value="8">1.18 - 1.18.1</option>
+		<option value="7">1.17 - 1.17.1</option>
+	</select>
+
+	<br><br><hr><br>
+</div>
 
 <article id="0">
 	<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
 		<img src="../../elements/nav/close.svg" alt="Close">
 	</div>
-
+	
 	<p>Name of the Enchantment</p>
 	<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
 
@@ -62,14 +124,16 @@
 
 	<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
 	
-	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small> <a class="list_link" title="Get a list of all possible options from the standard pack">List</a></p>
-	<input type="text" placeholder='pickaxe' class="ench_items">
-	<!-- <input type="text" placeholder='pickaxe' class="ench_items" onkeyup="filterItems(this)" style="margin-bottom: 0;"> -->
-	<!-- https://stackoverflow.com/questions/45746863/predictive-text-search-box -->
-
+	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
+	<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this)">
+	</code>
+	
 	<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
-	<input type="text" placeholder='silk_touch' class="ench_items">
-
+	<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this)">
+	</code>
+	
 	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
 	<select class="ench_chance">
 		<option value="1">10% (e.g. Infinity)</option>
@@ -78,9 +142,8 @@
 		<option value="0">100% (e.g. Sharpness)</option>
 	</select>
 
-	<p>Short description of the Enchantment</p>
-	<textarea class="ench_descr" placeholder='Breaks connected Ores'></textarea>
-
+	<!-- <p>Short description of the Enchantment</p>
+	<textarea class="ench_descr" placeholder='Breaks connected Ores'></textarea> -->
 </article>
 
 </main>
@@ -100,9 +163,70 @@
 	</div>
 </div>
 
+<section>
+	<h2>Additional tips</h2>
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>The main pack of Powered Enchanting contains four predicates which check for the usage of tools:</p>
+			<ul>
+				<li>With <code>powerench_main:tools/pickaxe</code> you can detect the usage of all Pickaxes</li>
+				<li>With <code>powerench_main:tools/axe</code> you can detect the usage of all Axes</li>
+				<li>With <code>powerench_main:tools/shovel</code> you can detect the usage of all Shovels</li>
+				<li>With <code>powerench_main:tools/seeds</code> you can detect the mining of seeds</li>
+			</ul>
+		</div>
+	</div>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Drain multiple durability points</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>When the following function is executed, it drains a durability point from the tool selected item in the hotbar:</p>
+			<code>function powerench_main:durability</code>
+		</div>
+	</div>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Change max level of vanilla Enchantment</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>Execute this command in the function which is loaded on reload:</p>
+			<code>scoreboard players set #protection powerench 5</code>
+		</div>
+	</div>
+
+</section>
+
 <footer></footer>
 
+<datalist id="input_items">
+	<option value="all_items">
+	<option value="axe"></option>
+	<option value="boots"></option>
+	<option value="bow"></option>
+	<option value="carrot_on_a_stick"></option>
+	<option value="chestplate"></option>
+	<option value="crossbow"></option>
+	<option value="elytra"></option>
+	<option value="fishing_rod"></option>
+	<option value="flint_and_steel"></option>
+	<option value="helmet"></option>
+	<option value="hoe"></option>
+	<option value="leggings"></option>
+	<option value="pickaxe"></option>
+	<option value="shears"></option>
+	<option value="shield"></option>
+	<option value="shovel"></option>
+	<option value="sword"></option>
+	<option value="trident"></option>	
+</datalist>
+
+<datalist id="input_comp">
+	<option value="Loading...">
+</datalist>
+
+<!-- <script language="javascript" type="text/javascript" src="../../elements/javascript/cookies.js"></script> -->
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_app.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
 </body>
