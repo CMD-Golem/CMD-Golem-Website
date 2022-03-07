@@ -165,6 +165,7 @@ section {
 
 <section>
 	<h2>Additional tips</h2>
+	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack.</p>
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
@@ -181,7 +182,7 @@ section {
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Drain multiple durability points</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
-			<p>When the following function is executed, it drains a durability point from the tool selected item in the hotbar:</p>
+			<p>When the following function is executed, it drains a durability point from the selected item in the hotbar:</p>
 			<code>function powerench_main:durability</code>
 		</div>
 	</div>
@@ -189,8 +190,9 @@ section {
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Change max level of vanilla Enchantment</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
-			<p>Execute this command in the function which is loaded on reload:</p>
+			<p>Execute this command in the function which will be executed on reload:</p>
 			<code>scoreboard players set #protection powerench 5</code>
+			<p>The ID after the # is the ID of the Enchantment and the number at the end defines the new max level.</p>
 		</div>
 	</div>
 

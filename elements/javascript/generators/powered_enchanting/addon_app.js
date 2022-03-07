@@ -14,19 +14,27 @@ function addEnch(el) {
 	<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
 		<img src="../../elements/nav/close.svg" alt="Close">
 	</div>
-
+	
 	<p>Name of the Enchantment</p>
 	<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
 
 	<p>Id of the Enchantment</p>
 	<input type="text" placeholder='vein_miner' class="ench_id">
 	
-	<p>Description of the Enchantment</p>
-	<textarea class="ench_descr code" placeholder='Breaks connected Ores'></textarea>
-	
-	<p>Max Level of the Enchantment</p>
-	<input type="text" placeholder='vein_miner' class="ench_maxlvl">
+	<p>Max Level of the Enchantment: <input type="text" placeholder='3' class="ench_maxlvl" style="display: inline-block; width: 43px; padding: 8px;"><br>
 
+	<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
+	
+	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
+	<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this)">
+	</code>
+	
+	<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
+	<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this)">
+	</code>
+	
 	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
 	<select class="ench_chance">
 		<option value="1">10% (e.g. Infinity)</option>
@@ -34,11 +42,6 @@ function addEnch(el) {
 		<option value="5">50% (e.g. Knockback)</option>
 		<option value="0">100% (e.g. Sharpness)</option>
 	</select>
-
-	<p>Tools or Armor, the enchantment can be enchanted on.</p>
-
-	<p>Is Enchantment an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></p>
-	<input type="checkbox" class="ench_adv">
 	`;
 
 	// Add Article
