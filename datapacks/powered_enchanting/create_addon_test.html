@@ -67,7 +67,7 @@ section {
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.netlify.app/"><h2>CMD-Golem</h2></a>
-	<div onclick="" class="nav_button" title="Generate the Data Pack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div onclick="generate()" class="nav_button" title="Generate the Data Pack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<div onclick="addEnch(this)" class="nav_button" title="Add new Enchantment (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Enchantment"><p class="nav_text">Add new Enchantment</p></div>
 	<a href="../../info/contact.html#powered_enchanting" target="_blank" class="nav_button disable_link" title="Report a Bug"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
@@ -80,6 +80,7 @@ section {
 
 	<div class="hide_compact">
 		<p>Create custom Enchantments for the Powered Enchanting Data Pack.</p>
+		<p>Note that you need to know the commands and functions to use the generator. If you just want to submit an idea for a new Enchantment, follow this <a href="../../info/contact.html#powered_enchanting">link</a>.</p>
 		<ol>
 			<li>Define the name of the Data Pack ID and select the Minecraft version you want to use for the Data Pack.</li>
 			<li>Go to the first dark gray section, which contains all text fields for the first Enchantment, and fill them in.</li>
@@ -100,8 +101,9 @@ section {
 	<input type="text" placeholder='datapack_name' class="datapack_name needed">
 
 	<p>Select your Minecraft version</p>
-	<select class="version">
-		<option value="9">1.18.2 and newer</option>
+	<select class="version" id="version">
+		<option value="10">1.19 and newer</option>
+		<option value="9">1.18.2</option>
 		<option value="8">1.18 - 1.18.1</option>
 		<option value="7">1.17 - 1.17.1</option>
 	</select>
@@ -150,7 +152,7 @@ section {
 
 <aside>
 	<div class="sidebar_link" onclick="scrollToParent('0')" id="link_0">
-		<div class="dot"></div><span class="disable_link link_text">First Recipe</span><br>
+		<div class="dot"></div><span class="disable_link link_text">First Enchantment</span><br>
 	</div>
 </aside>
 
@@ -165,7 +167,7 @@ section {
 
 <section>
 	<h2>Additional tips</h2>
-	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack.</p>
+	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack and you don't need to create them again.</p>
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
@@ -201,7 +203,7 @@ section {
 <footer></footer>
 
 <datalist id="input_items">
-	<option value="all_items">
+	<option value="all_items"></option>
 	<option value="axe"></option>
 	<option value="boots"></option>
 	<option value="bow"></option>
@@ -226,9 +228,11 @@ section {
 	<option value="Loading...">
 </datalist>
 
-<!-- <script language="javascript" type="text/javascript" src="../../elements/javascript/cookies.js"></script> -->
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_app.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_save.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/special/spoiler.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/counter.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/special/scroll_contol.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
 </body>

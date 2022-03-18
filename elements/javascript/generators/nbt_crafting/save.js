@@ -166,7 +166,6 @@ function downloadCheck() {
       link.click();
 
       updateCounter();
-      addCounter();
     });
   }
 }
@@ -199,16 +198,6 @@ function folderPath() {
   if (function_detect_folder.charAt(0) == "/") {function_detect_folder = function_detect_folder.substring(1);}
   if (function_craft_folder.charAt(0) == "/") {function_craft_folder = function_craft_folder.substring(1);}
   if (function_mass_folder.charAt(0) == "/") {function_mass_folder = function_mass_folder.substring(1);}
-}
-
-
-// Counter
-var counter_stop;
-
-async function addCounter() {
-  if (counter_stop != true) {
-    let response = await fetch("https://api.countapi.xyz/hit/mc_cmdgolem/nbt_crafting");
-  }
 }
 
 
