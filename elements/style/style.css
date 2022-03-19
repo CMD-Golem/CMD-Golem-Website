@@ -46,10 +46,10 @@ nav {
 	padding-left: 15%;
 	height: 60px;
 	position: sticky;
-	position: -webkit-sticky;
 	top: 0;
 	z-index: 2;
 	background-color: #222222;
+	overflow: hidden;
 }
 
 @media (max-width: 1600px) {
@@ -131,6 +131,14 @@ h1 {
 
 .center {
 	text-align: center;
+}
+
+h1 a:link, h1 a:visited {
+	color: #A10000;
+}
+
+h1 a:hover, h1 a:active, h1 a:focus {
+	color: #7a0303;
 }
 
 a:link, a:visited {

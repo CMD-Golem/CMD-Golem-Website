@@ -6,6 +6,11 @@ function generate() {
 	var datapack_name = document.getElementsByClassName("datapack_name")[0].value;
 	var version = document.getElementsByClassName("version")[0].value;
 
+	if (datapack_name.length == 0) {
+		inputError(0);
+		return;
+	}
+
 	var comb_lore = "";
 	var enchanting = "";
 	var adv_enchanting = "";
@@ -33,6 +38,12 @@ function generate() {
 		var ench_name = ench.getElementsByClassName("ench_name")[0].value; // ench_array.title
 		var ench_id = ench.getElementsByClassName("ench_id")[0].value; // ench_array.ench[0]
 
+		if (ench_id.length == 0 || ench_name.length == 0 || ench_maxlvl.length == 0) {
+			inputError(1);
+			return;
+		}
+
+		var ench_is_adv = 0;
 		if (is_advanced) {var ench_is_adv = 1;}
 
 		var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_maxlvl}b,name:"${ench_name}",powerench:[{id:"minecraft:${ench_id}",lvl:1s}]}}}\n`
@@ -45,19 +56,10 @@ function generate() {
 		}
 			
 		// COMBINING: incompatible enchantments !!!!!! Not same as in save.js of download !!!!!!!
-		var ench_incomp = ench.getElementsByClassName("ench_comp")[0].getElementsByClassName("tagged_item");
+		var ench_incomp_el = ench.getElementsByClassName("ench_comp")[0];
+		setTagged(ench_incomp_el.getElementsByTagName("input")[0], false); // addon_app.js
+		var ench_incomp = ench_incomp_el.getElementsByClassName("tagged_item");
 		if (ench_incomp.length != 0) {
-			// var incompatible = "";
-			// for (var j = 0; j < ench_incomp.length; j++) {
-			// 	ench_array.ench[j] = ench_incomp[j].innerHTML;
-				
-			// 	incompatible += 'execute unless score #final_combine powerench matches -1 if entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}] run scoreboard players set #final_combine powerench -1\n';
-			// }
-			// pack_folder.file("functions/combining/incompatible/" + ench_id + ".mcfunction", incompatible);
-			// powerench_folder.file("tags/functions/combining/" + ench_id + ".json", '{"values": ["' + datapack_name + ':combining/incompatible/' + ench_id + '"]}');
-			
-			
-			// ###########################################################
 			// add new enchantment to incompatible array
 			if (incomp_id.indexOf(ench_id) == -1) {
 				var pos_new_id = incomp_id.push(ench_id) - 1;
@@ -86,7 +88,15 @@ function generate() {
 		}
 
 		// COMBINING: Detect Items (same tools)
-		var ench_items_raw = ench.getElementsByClassName("ench_items")[0].getElementsByClassName("tagged_item");
+		var ench_items_el = ench.getElementsByClassName("ench_items")[0];
+		setTagged(ench_items_el.getElementsByTagName("input")[0], false); // addon_app.js
+		var ench_items_raw = ench_items_el.getElementsByClassName("tagged_item");
+
+		if (ench_items_raw.length == 0) {
+			inputError(2);
+			return;
+		}
+
 		for (var j = 0; j < ench_items_raw.length; j++) {
 			if (comb_id.indexOf(ench_items_raw[j]) == -1) {
 				var pos_id = comb_id.push(ench_items_raw[j].innerHTML) - 1;
@@ -175,7 +185,7 @@ function generate() {
 		link.click();
 
 		// Counter
-		updateCounter(); //download_counter.js
+		updateCounter(); //special/counter.js
 	});
 }
 
@@ -190,4 +200,17 @@ function convertToRoman(num) {
 		str += i.repeat(q);
 	}
 	return str;
+}
+
+// show error if inputs empty
+function inputError(error_num) {
+	if (error_num == 0) {
+		alert("Please enter a Data Pack Id");
+	}
+	else if (error_num == 1) {
+		alert("Please fill in all input fields!\nOnly the Incompatible Enchantment Ids input can be left empty.");
+	}
+	else if (error_num == 2) {
+		alert("Please select at least one Tool or Armor, where your Enchantments can be enchanted on.");
+	}
 }

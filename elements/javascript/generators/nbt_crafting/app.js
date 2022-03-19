@@ -351,47 +351,34 @@ function toggleAdvMode() {
 // #####################################################################
 // Compact View
 var el_compact_view = document.getElementById("compact_view");
-var compact_view;
 
-window.onload = function() {
-	if (localStorage.getItem("compact_view") == "true") {
-		compact_view = "false";
-		compactView();
-	}
+if (localStorage.getItem("compact_view") == "true") {
+	var compact_view = "false";
+	compactView();
 }
 
 function compactView(used_element) {
-	var hide_compact = document.getElementsByClassName("hide_compact")
-
 	if (compact_view == "true") {
 		if (cookies == true) {localStorage.setItem("compact_view", "false");}
 		compact_view = "false";
 
 		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
+		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg";
 
-		for (var i = 0; i < hide_compact.length; i++) {
-			hide_compact[i].style.display = "block";
-		}
+		document.documentElement.style.setProperty("--hide_compact", "block");
 	}
 	else {
 		if (cookies == true) {localStorage.setItem("compact_view", "true");}
 		compact_view = "true";
 
 		el_compact_view.title = "Change to expanded View";
-		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
+		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg";
 
-		for (var i = 0; i < hide_compact.length; i++) {
-			hide_compact[i].style.display = "none";
-		}
+		document.documentElement.style.setProperty("--hide_compact", "none");
 	}
 
 	if (used_element == "button") {
 		el_compact_view.style.backgroundColor = "#A10000";
-		setTimeout(function(){ compactViewColor(el_compact_view) }, 500);
+		setTimeout(function(){ el_compact_view.removeAttribute("style"); }, 500);
 	}
-}
-
-function compactViewColor(sel_element) {
-	sel_element.removeAttribute("style");;
 }

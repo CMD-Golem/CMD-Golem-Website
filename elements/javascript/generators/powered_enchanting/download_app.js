@@ -1,5 +1,6 @@
 // load json
-var article_elements, article_array, not_found;
+var article_elements, article_array, not_found, list_options;
+var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 
 async function loadJson() {
@@ -20,12 +21,13 @@ async function loadJson() {
 		var comp_items = "";
 		for (var j = 0; j < items.length; j++) {
 			var item = comp_items_key[items[j]];
-			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`
+			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`;
 			comp_items = comp_items + item.replaceAll("_", " ") + " ";
 		}
 
 		if (comp_items == "all ") {
-			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident "
+			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident ";
+			img_path = "all tools";
 		}
 		if (article.incomp_ench != "false") {
 			article.style = article.style + " show_incomp"
@@ -52,6 +54,7 @@ async function loadJson() {
 	article_list.innerHTML = html;
 	article_elements = article_list.getElementsByTagName("article");
 	not_found = document.getElementById("not_found");
+	list_options = body.classList[0];
 	siteSearch();
 }
 loadJson();
@@ -59,7 +62,6 @@ loadJson();
 
 // ###########################################################
 // Select and Sidebar
-var body = document.getElementsByTagName("body")[0];
 var link_bar = document.getElementById("link_bar");
 var sidebar_hidden = true;
 
@@ -354,32 +356,6 @@ function importPackIdFail(pack_id_input) {
 	}, 2000);
 }
 
-// ###########################################################
-// Download older versions
-// function loadOldVerionsModal() {
-// 	var modal_text = document.createElement("div");
-// 	modal_text.classList.add("modal_text");
-// 	modal_text.classList.add("center");
-// 	modal_text.innerHTML = `
-// 	<div class="modal_padding_box">These Versions don't support all functions from the new Pack.<br>
-// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1gAzwM7zLzSuPm6Wbxwh3uUvPBzUwl54e" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.16')">1.16 CMD-Golem Edition</a>
-// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1f8DwFicAWHD8ldJ8_NhYTTU8VCi2XPcI" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.16')">1.16 Vanilla Edition</a><br>
-// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1foON8BPIUkX8Bp6qj4k5GbxLbJZZA1Pl" style="margin:10px; display:inline-block;" onclick="downloadOld('golem', '1.15')">1.15 CMD-Golem Edition</a>
-// 		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('vanilla', '1.15')">1.15 Vanilla Edition</a><br>
-// 		<button onclick="closeModal()">Close</button>
-// 	</div>`;
-// 	modal_box.appendChild(modal_text);
-
-// 	disableScroll();
-// }
-
-// function downloadOld(edition, version) {
-// 	selected_edition = edition;
-// 	mc_version = version;
-// 	updateCounter(); //download_counter.js
-// }
-
-
 // #################################################################################################
 // More settingsinfo
 var section = document.getElementsByTagName("section")[0];
@@ -429,10 +405,8 @@ window.onscroll = () => {
 	}
 }
 
-function goTop() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
+var scroll_point = document.getElementById("scroll_point");
+function goTop() { scroll_point.scrollIntoView(); }
 
 // ###########################################################
 // convert to roman number
@@ -452,15 +426,20 @@ function convertToRoman(num) {
 // Site Search
 var site_search = document.getElementById("site_search");
 var site_search_mobile = document.getElementById("site_search_mobile");
-var scroll_point = document.getElementById("scroll_point")
+var list_options_el = document.getElementById("list_options");
 
 function siteSearch() {
 	var search_value = site_search.value;
 	var search_input = search_value.toUpperCase().split(" ");
 	if (show_info == true) { openInfo() }
 
-	if (search_value != "") {
-		scroll_point.scrollIntoView({behavior: 'smooth'});
+	if (search_value.length == 1) {
+		scroll_point.scrollIntoView();
+		list_options = list_options_el.value;
+		hideEnch("show_all");
+	}
+	else if (search_value.length == 0) {
+		hideEnch(list_options);
 	}
 
 	// hide settings

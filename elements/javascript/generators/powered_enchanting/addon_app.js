@@ -27,12 +27,12 @@ function addEnch(el) {
 	
 	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
 	<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
-		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this)">
+		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this, true)">
 	</code>
 	
 	<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
 	<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
-		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this)">
+		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this, true)">
 	</code>
 	
 	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
@@ -105,8 +105,10 @@ function enchName(input) {
 
 // #####################################################################
 // set tools, weapons and armor
-function setTagged(input_el) {
-	if (input_el.value.includes(" ") || input_el.value.includes(",")) {
+function setTagged(input_el, input_check) {
+	if ((input_el.value.includes(" ") || input_el.value.includes(",") || input_check == false) && input_el.value != "") {
+		console.log(input_el.value)
+		document.getElementById("test").innerHTML = input_el.value;
 		var item_el = document.createElement("span");
 		item_el.innerHTML = input_el.value.replace(/[^a-zA-Z_]/g, "");
 		item_el.classList.add("tagged_item");
@@ -155,82 +157,6 @@ function removeEnch(el) {
 		}
 	}
 }
-
-// #####################################################################
-// Select items
-// https://www.w3schools.com/howto/howto_js_autocomplete.asp
-var filter_items = ["Chestplate", "Leggings", "Boots", "Helmet"];
-var filter_items_id = ["chestplate", "leggings", "boots", "helmet"];
-
-const search = document.getElementById('search');
-const matchList = document.getElementById('match-list');
-const explore = document.getElementById('explore');
-const not_found = document.getElementById('not_found');
-
-
-// Search search.json and filter it
-function filterItems(input) {
-	var input_text = input.value.toUpperCase();
-	var html = "";
-	for (var i = 0; i < filter_items.length; i++) {
-		if (filter_items[i].toUpperCase().indexOf(input_text) > -1) {
-			html += "<div>" + filter_items[i] + "</div>";
-		}
-	}
-	var filter_list = document.getElementsByClassName("filter_list");
-	if (filter_list.length != 0) {
-		filter_list[0].remove();
-	}
-	if (html != "" && input_text != "") {
-		var filtered = document.createElement("div");
-		filtered.innerHTML = html;
-		filtered.classList.add("filter_list");
-		input.parentNode.insertBefore(filtered, input.nextSibling);
-	}
-};
-
-
-// #####################################################################
-// Compact View
-// var el_compact_view = document.getElementById("compact_view");
-// var compact_view;
-
-// if (localStorage.getItem("compact_view") == "true") {
-// 	compact_view = "false";
-// 	compactView();
-// }
-
-// function compactView(used_element) {
-// 	var hide_compact = document.getElementsByClassName("hide_compact")
-
-// 	if (compact_view == "true") {
-// 		if (cookies == true) {localStorage.setItem("compact_view", "false");}
-// 		compact_view = "false";
-
-// 		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
-// 		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/compress.svg"
-
-// 		for (var i = 0; i < hide_compact.length; i++) {
-// 			hide_compact[i].style.display = "block";
-// 		}
-// 	}
-// 	else {
-// 		if (cookies == true) {localStorage.setItem("compact_view", "true");}
-// 		compact_view = "true";
-
-// 		el_compact_view.title = "Change to expanded View";
-// 		el_compact_view.getElementsByTagName("img")[0].src = "../elements/nav/expand.svg"
-
-// 		for (var i = 0; i < hide_compact.length; i++) {
-// 			hide_compact[i].style.display = "none";
-// 		}
-// 	}
-
-// 	if (used_element == "button") {
-// 		el_compact_view.style.backgroundColor = "#A10000";
-// 		setTimeout(function(){ sel_element.removeAttribute("style"); }, 500);
-// 	}
-// }
 
 // #################################################################################################
 // More settingsinfo

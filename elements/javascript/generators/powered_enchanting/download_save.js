@@ -192,9 +192,9 @@ async function generate() {
 
 	// pack.mcmeta
 	var version = document.getElementById("version").value;
-	mc_version = "1.1" + version;
+	mc_version = version.options[version.selectedIndex].text.slice(0,4)
 
-	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version.value + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
 	document.getElementById("progress_action").innerHTML = "Creating ZIP file"
