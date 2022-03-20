@@ -427,19 +427,22 @@ function convertToRoman(num) {
 var site_search = document.getElementById("site_search");
 var site_search_mobile = document.getElementById("site_search_mobile");
 var list_options_el = document.getElementById("list_options");
+var searched = false;
 
 function siteSearch() {
 	var search_value = site_search.value;
 	var search_input = search_value.toUpperCase().split(" ");
 	if (show_info == true) { openInfo() }
 
-	if (search_value.length == 1) {
+	if (searched == false && search_value.length >= 1) {
 		scroll_point.scrollIntoView();
 		list_options = list_options_el.value;
 		hideEnch("show_all");
+		searched = true;
 	}
 	else if (search_value.length == 0) {
 		hideEnch(list_options);
+		searched = false;
 	}
 
 	// hide settings
