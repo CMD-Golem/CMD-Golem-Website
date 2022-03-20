@@ -191,7 +191,7 @@ async function generate() {
 	}
 
 	// pack.mcmeta
-	var version = document.getElementById("version").value;
+	var version = document.getElementById("version");
 	mc_version = version.options[version.selectedIndex].text.slice(0,4)
 
 	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version.value + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
