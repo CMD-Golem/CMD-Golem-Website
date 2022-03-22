@@ -19,7 +19,7 @@ var update = (pack_id, pack_type) => {
 
 // ###########################################################
 
-var counter_el = document.getElementById("download_counter")
+var counter_el = document.getElementById("download_counter");
 
 // get id and type of pack
 var pack_id = counter_el.dataset.ref;
@@ -27,12 +27,12 @@ var pack_type = counter_el.dataset.type;
 
 
 // show counter in html
-Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
-	counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
-	var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
-	show_el[0].style.display = "block";
-	show_el[1].style.display = "block";
-});
+// Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
+// 	counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
+// 	var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
+// 	show_el[0].style.display = "block";
+// 	show_el[1].style.display = "block";
+// });
 
 
 // update counter
