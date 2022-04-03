@@ -4,10 +4,10 @@ var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
-	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
-	var html = "<p id='not_found'>No Results</p>";
+	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
 		var article = article_array[i];
@@ -35,7 +35,7 @@ async function loadJson() {
 		var max_lvl = convertToRoman(article.max_lvl);
 
 		html = html + `
-		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}">
+		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.version}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h3>${article.title}</h3>
@@ -55,6 +55,7 @@ async function loadJson() {
 	article_elements = article_list.getElementsByTagName("article");
 	not_found = document.getElementById("not_found");
 	list_options = body.classList[0];
+	hideIncomp();
 	siteSearch();
 }
 loadJson();
@@ -69,19 +70,19 @@ var sidebar_hidden = true;
 function changeEdition(edition) {
 	selected_edition = edition;
 	if (edition == "all") {
-		var select_array = document.getElementsByTagName("article");
+		var select_array = document.querySelectorAll("article:not(.incomp_version)");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i]); }
 	}
 	else if (edition == "golem") {
-		var select_array = document.getElementsByClassName("e_golem");
+		var select_array = document.querySelectorAll(".e_golem:not(.incomp_version)");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
 	}
 	else if (edition == "vanilla") {
-		var select_array = document.getElementsByClassName("e_vanilla");
+		var select_array = document.querySelectorAll(".e_vanilla:not(.incomp_version)");
 		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
 	}
 	else {
-		var select_array = document.getElementsByTagName("article");
+		var select_array = document.querySelectorAll("article:not(.incomp_version)");
 		for (var i = 0; i < select_array.length; i++) {
 			if (select_array[i].classList.contains("selected")) { deselect(select_array[i]); }
 		}
@@ -173,6 +174,7 @@ function scrollToParent(id) {
 	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
 }
 
+// Selection
 function hideEnch(option) {
 	body.classList.remove("hide_selected");
 	body.classList.remove("hide_preselected");
@@ -181,6 +183,22 @@ function hideEnch(option) {
 
 	body.classList.add(option);
 }
+
+// Only show compatible Enchantments
+var incomp_packs = 0;
+function hideIncomp() {
+	var version = document.getElementById("version").value;
+	for (var i = 0; i < article_elements.length; i++) {
+		if (parseInt(article_elements[i].getAttribute("data-version")) > version) {
+			article_elements[i].classList.add("incomp_version");
+		}
+		else {
+			article_elements[i].classList.remove("incomp_version");
+		}
+	}
+	incomp_packs = document.getElementsByClassName("incomp_version").length;
+}
+
 
 // ###########################################################
 // Settings
@@ -477,7 +495,7 @@ function siteSearch() {
 	}
 	var hide_search = document.getElementsByClassName("hide_search").length;
 
-	if (article_elements.length - hide_search <= 0) {
+	if (article_elements.length - hide_search - incomp_packs <= 0) {
 		not_found.style.display = "block";
 	}
 	else {

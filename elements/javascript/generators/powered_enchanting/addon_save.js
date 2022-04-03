@@ -15,6 +15,7 @@ function generate() {
 	var enchanting = "";
 	var adv_enchanting = "";
 	var comb_book = "";
+	var give_function = "";
 	var comb_id = []; // comp_items_key
 	var comb_detect = [];
 	var incomp_id = [];
@@ -42,6 +43,9 @@ function generate() {
 			inputError(1);
 			return;
 		}
+
+		// GIVE function for custom enchantments
+		give_function += `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_id}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_id}",lvl:1s}],display:{Lore:['{"text":"${ench_name}","color":"gray","italic":false}']}}`
 
 		var ench_is_adv = 0;
 		if (is_advanced) {var ench_is_adv = 1;}
@@ -166,6 +170,10 @@ function generate() {
 			powerench_folder.file("tags/functions/items/" + comb_id[i] + ".json", '{"values": [{"id":"' + datapack_name + ':combining/items/' + comb_id[i] + '", "required":false}]}');
 		}
 	}
+
+	// GIVE custom enchantments
+	pack_folder.file("functions/give.mcfunction", give_function);
+	powerench_folder.file("tags/functions/give.json", '{"values": ["' + datapack_name + ':give"]}');
 
 	// pack.mcmeta
 	var version = document.getElementById("version").value;

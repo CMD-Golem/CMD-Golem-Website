@@ -2,6 +2,9 @@
 var datapack_name = "powerench"; // define data pack namespace
 var pack_version = "3"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
+var main_files = ["pack7", "pack7", "pack7", "pack10"]; // which file needs to be downloaded
+var comp_versions_id = ["7", "8", "9", "10"]; // pack id
+var comp_versions_name = ["1.17", "1.18", "1.18.2", "1.19"]; // file names according to versions
 var pack_id;
 
 // Missing Enchantments
@@ -24,6 +27,7 @@ async function generate() {
 	var load_function = "";
 	var maxlvl_load = "";
 	var comb_book = "";
+	var give_function = "function #powerench:give\n"
 	var comb_detect = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 	pack_id = pack_id_load;
@@ -37,13 +41,16 @@ async function generate() {
 	var progress_width_per_ench = document.getElementById("progress_bar").offsetWidth / article_length;
 	var progress_width = 0;
 
+	// get pos in file array from version
+	var version = document.getElementById("version").value;
+
 	//zip
 	var zip = new JSZip();
 	// Set folderpaths
 	var pack_folder = zip.folder("data/" + datapack_name);
 
 	// load main pack
-	ench_pack = await fetch("../../elements/files/powered_enchanting/main_pack.zip");
+	ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/" + main_files[version] + ".zip");
 	await zip.loadAsync(ench_pack.blob());
 
 	// ###########################################################
@@ -65,8 +72,19 @@ async function generate() {
 		if (!is_vanilla) {
 			// load files
 			if (!ench.classList.contains("no_files")) {
-				ench_pack = await fetch("../../elements/files/powered_enchanting/" + ench_array.ench[0] + ".zip");
+				var files = ench_array.files;
+				var sel_version = files[version];
+
+				if (sel_version == undefined) {
+					sel_version = files[files.length - 1];
+				}
+
+				ench_pack = await fetch("../../elements/files/powered_enchanting/" + sel_version + ".zip");
 				await pack_folder.loadAsync(ench_pack.blob());
+
+				// GIVE function for custom enchantments
+				give_function += `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
+
 			}
 
 			// FUNCTIONS: tick and load (all ench in one file)
@@ -190,11 +208,11 @@ async function generate() {
 		}
 	}
 
-	// pack.mcmeta
-	var version = document.getElementById("version");
-	mc_version = version.options[version.selectedIndex].text.slice(0,4)
+	// GIVE custom enchantments
+	pack_folder.file("functions/.give.mcfunction", give_function);
 
-	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version.value + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
+	// pack.mcmeta
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + comp_versions_id[version] + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
 	document.getElementById("progress_action").innerHTML = "Creating ZIP file"
@@ -205,7 +223,7 @@ async function generate() {
 		enableScroll();
 
 		var link = document.createElement('a');
-		link.download = "[" + mc_version + "] Powered Enchanting Datapack v" + pack_version + ".zip";
+		link.download = "[" + comp_versions_name[version] + "] Powered Enchanting Datapack v" + pack_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 

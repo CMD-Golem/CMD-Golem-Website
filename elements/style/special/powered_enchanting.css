@@ -101,7 +101,7 @@ article td:first-child {
 	background-color: #16472b;
 }
 
-.hide_selected .selected, .hide_vanilla .vanilla, .hide_preselected .preselected {
+.hide_selected .selected, .hide_vanilla .vanilla, .hide_preselected .preselected, .incomp_version {
 	display: none;
 }
 
