@@ -1,6 +1,6 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_version = "3"; // define version of data pack
+var pack_version = "3.1"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
 var main_files = ["pack7", "pack7", "pack7", "pack10"]; // which file needs to be downloaded
 var comp_versions_id = ["7", "8", "9", "10"]; // pack id
@@ -10,6 +10,16 @@ var pack_id;
 // Missing Enchantments
 // {"id":"xx", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
 // Chopping
+
+// Download Resource Pack
+function downloadResourcePack() {
+	var version = document.getElementById("version").value;
+
+	if (version == "3") {window.open("https://drive.google.com/uc?export=download&id=1OwcK2ViAQqzcm1YiUVLmxxDZrTCnAoPH");}
+	else if (version == "2") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
+	else if (version == "1") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
+	else if (version == "0") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
+}
 
 // ###########################################################
 // Generate
@@ -272,13 +282,6 @@ function generatePackId(sel_article) {
 	for (var i = 0; i < sel_article.length; i++) {
 		packId(sel_article[i]);
 	}
-}
-
-function downloadResourcePack() {
-	var version = document.getElementById("version").value;
-
-	if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
-	else if (version == "7") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
 }
 
 //#################################################################################################
