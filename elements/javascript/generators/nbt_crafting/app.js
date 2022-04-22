@@ -1,42 +1,10 @@
 // Define Variables
-var datapack_name = "";
-var score = "nbt_craft";
-var version = "7";
-
-
-var placeholder = "";
-var nbt_item = "";
-var count = "";
-
 var tag = "nbt_craft";
-var recipe_id = "";
-
-// Recipe
-var recipe_folder = "/";
-var recipe_name = "nbt_craft";
-var recipe_text = "";
-var recipe_counter
-
-// Advancement
-var advancement_folder = "/";
-var advancement_name = "nbt_craft";
-var advancement_counter
-
-// Function Detect
-var function_detect_folder = "craft/$/";
-var function_detect_name = "detect_craft";
-var function_detect_counter
-
-// Function Craft
-var function_craft_folder = "craft/$/";
-var function_craft_name = "craft";
-var function_craft_counter
-
-// Function Mass
-var function_mass_folder = "craft/$/";
-var function_mass_name = "mass_craft";
-var function_mass_counter
-
+var recipe = ["/", "nbt_craft", "nbt_craft"];
+var advancement = ["/", "nbt_craft", "nbt_craft"];
+var function_detect = ["craft/$/", "detect_craft", "detect_craft"];
+var function_craft = ["craft/$/", "craft", "craft"];
+var function_mass = ["craft/$/", "mass_craft", "mass_craft"];
 
 // #####################################################################
 // Add new Recipe
@@ -47,12 +15,19 @@ function addRecipe(el) {
 	var el_last_article = document.getElementsByTagName("article");
 	var el_last_article = el_last_article[el_last_article.length - 1];
 
-	if (el != undefined) {el.blur()};
+	if (el != undefined) { el.blur() };
 
 	counter = counter + 1;
 
-	refreshVar(el_last_article);
+	// Refresh Var
+	recipe = refreshVar("recipe", el_last_article, recipe[2]);
+	advancement = refreshVar("advancement", el_last_article, advancement[2]);
+	function_detect = refreshVar("function_detect", el_last_article, function_detect[2]);
+	function_craft = refreshVar("function_craft", el_last_article, function_craft[2]);
+	function_mass = refreshVar("function_mass", el_last_article, function_mass[2]);
 
+	var el_tag = el_last_article.getElementsByClassName("tag")[0].value;
+	if (el_tag != "") { tag = el_tag; }
 
 	var template_recipe = `
 	<div onclick="removeRecipe(this)" class="close" style="padding-right: 20px;" title="Remove Recipe">
@@ -83,40 +58,40 @@ function addRecipe(el) {
 						<td><br>Advancement File Name</td>
 					</tr>
 					<tr>
-						<td><input type="text" placeholder='${advancement_folder}' class="advancement_folder folder"></td>
-						<td><input type="text" placeholder='${advancement_name}${advancement_counter}' class="advancement_name"></td>
+						<td><input type="text" placeholder='${advancement[0]}' class="advancement_folder folder"></td>
+						<td><input type="text" placeholder='${advancement[1]}' class="advancement_name"></td>
 					</tr>
 					<tr>
 						<td><br>Recipe Folder Path</td>
 						<td><br>Recipe File Name</td>
 					</tr>
 					<tr>
-						<td><input type="text" placeholder='${recipe_folder}' class="recipe_folder folder"></td>
-						<td><input type="text" placeholder='${recipe_name}${recipe_counter}' class="recipe_name"></td>
+						<td><input type="text" placeholder='${recipe[0]}' class="recipe_folder folder"></td>
+						<td><input type="text" placeholder='${recipe[1]}' class="recipe_name"></td>
 					</tr>
 					<tr>
 						<td><br>Function Detect Folder Path</td>
 						<td><br>Function Detect File Name</td>
 					</tr>
 					<tr>
-						<td><input type="text" placeholder='${function_detect_folder}' class="function_detect_folder folder"></td>
-						<td><input type="text" placeholder='${function_detect_name}${function_detect_counter}' class="function_detect_name"></td>
+						<td><input type="text" placeholder='${function_detect[0]}' class="function_detect_folder folder"></td>
+						<td><input type="text" placeholder='${function_detect[1]}' class="function_detect_name"></td>
 					</tr>
 					<tr>
 						<td>Function Craft Folder Path</td>
 						<td>Function Craft File Name</td>
 					</tr>
 					<tr>
-						<td><input type="text" placeholder='${function_craft_folder}' class="function_craft_folder folder"></td>
-						<td><input type="text" placeholder='${function_craft_name}${function_craft_counter}' class="function_craft_name"></td>
+						<td><input type="text" placeholder='${function_craft[0]}' class="function_craft_folder folder"></td>
+						<td><input type="text" placeholder='${function_craft[1]}' class="function_craft_name"></td>
 					</tr>
 					<tr>
 						<td>Function Mass Craft Folder Path</td>
 						<td>Function Mass Craft File Name</td>
 					</tr>
 					<tr>
-						<td><input type="text" placeholder='${function_mass_folder}' class="function_mass_folder folder"></td>
-						<td><input type="text" placeholder='${function_mass_name}${function_mass_counter}' class="function_mass_name"></td>
+						<td><input type="text" placeholder='${function_mass[0]}' class="function_mass_folder folder"></td>
+						<td><input type="text" placeholder='${function_mass[1]}' class="function_mass_name"></td>
 					</tr>
 				</table>
 			</div>
@@ -130,6 +105,8 @@ function addRecipe(el) {
 	new_recipe.id = counter;
 	el_last_article.parentNode.insertBefore(new_recipe, el_last_article.nextSibling);
 
+	scrollToParent(counter);
+
 	// Add Sidebar Link
 	var el_last_link = document.getElementsByClassName("sidebar_link");
 	var el_last_link = el_last_link[el_last_link.length - 1];
@@ -140,77 +117,139 @@ function addRecipe(el) {
 	new_link.id = "link_" + counter;
 	new_link.setAttribute("onclick", "scrollToParent('" + counter + "')");
 	el_last_link.parentNode.insertBefore(new_link, el_last_link.nextSibling);
-
-
-	// Finishing up
-	scrollToParent(counter);
 }
 
-// #####################################################################
+
 // Create variables for new recipe
-function refreshVar(last_article) {
-	var el_tag = last_article.getElementsByClassName("tag")[0].value;
-	if (el_tag != "") {tag = el_tag;}
+function refreshVar(path_class, last_article, last_value) {
+	var el_folder = last_article.getElementsByClassName(path_class + "_folder")[0];
+	var el_file_name = last_article.getElementsByClassName(path_class + "_name")[0];
 
-	// Preset Counter
-	recipe_counter = counter;
-	advancement_counter = counter;
-	function_detect_counter = counter;
-	function_craft_counter = counter;
-	function_mass_counter = counter;
+	// Get folder path
+	if (el_folder.value != "") {
+		var folder = el_folder.value;
+	}
+	else {
+		var folder = el_folder.placeholder
+	}
 
-	// Recipe
-	var el_recipe_folder = last_article.getElementsByClassName("recipe_folder")[0];
-	if (el_recipe_folder.value != "") {recipe_folder = el_recipe_folder.value;}
-	else {el_recipe_folder = recipe_folder.placeholder}
+	// Get File Name or use old value
+	if (el_file_name.value != "") {
+		var file_name = el_file_name.value;
+	}
+	else {
+		var file_name = last_value;
+	}
 
-	var el_recipe_name = last_article.getElementsByClassName("recipe_name")[0];
-	if (el_recipe_name.value != "") {recipe_name = el_recipe_name.value;}
-	if (recipe_folder.includes("$") == true) {recipe_counter = "";}
+	// Set Number if path isn't relativ
+	if (!folder.includes("$")) {
+		file_name_counter = file_name + counter;
+	}
+	else {
+		file_name_counter = file_name;
+	}
 
-	// Advancement
-	var el_advancement_folder = last_article.getElementsByClassName("advancement_folder")[0];
-	if (el_advancement_folder.value != "") {advancement_folder = el_advancement_folder.value;}
-	else {el_advancement_folder = advancement_folder.placeholder}
-
-	var el_advancement_name = last_article.getElementsByClassName("advancement_name")[0];
-	if (el_advancement_name.value != "") {advancement_name = el_advancement_name.value;}
-	if (advancement_folder.includes("$") == true) {advancement_counter = "";}
-
-	// Function Detect
-	var el_function_detect_folder = last_article.getElementsByClassName("function_detect_folder")[0];
-	if (el_function_detect_folder.value != "") {function_detect_folder = el_function_detect_folder.value;}
-	else {el_function_detect_folder = function_detect_folder.placeholder}
-
-	var el_function_detect_name = last_article.getElementsByClassName("function_detect_name")[0];
-	if (el_function_detect_name.value != "") {function_detect_name = el_function_detect_name.value;}
-	if (function_detect_folder.includes("$") == true) {function_detect_counter = "";}
-
-	// Function Craft
-	var el_function_craft_folder = last_article.getElementsByClassName("function_craft_folder")[0];
-	if (el_function_craft_folder.value != "") {function_craft_folder = el_function_craft_folder.value;}
-	else {el_function_craft_folder = function_craft_folder.placeholder}
-
-	var el_function_craft_name = last_article.getElementsByClassName("function_craft_name")[0];
-	if (el_function_craft_name.value != "") {function_craft_name = el_function_craft_name.value;}
-	if (function_craft_folder.includes("$") == true) {function_craft_counter = "";}
-
-	// Function Mass
-	var el_function_mass_folder = last_article.getElementsByClassName("function_mass_folder")[0];
-	if (el_function_mass_folder.value != "") {function_mass_folder = el_function_mass_folder.value;}
-	else {el_function_mass_folder = function_mass_folder.placeholder}
-
-	var el_function_mass_name = last_article.getElementsByClassName("function_mass_name")[0];
-	if (el_function_mass_name.value != "") {function_mass_name = el_function_mass_name.value;}
-	if (function_mass_folder.includes("$") == true) {function_mass_counter = "";}
+	return [folder, file_name_counter, file_name];
 }
 
+
 // #####################################################################
+// refresh placeholders with Recipe id
+function recipeId(input) {
+	var el_article = input.parentNode.parentNode;
+	var input_text = input.value;
+	var el_sidebar = document.getElementById("link_" + el_article.id).getElementsByClassName("link_text")[0];
+
+	if (input_text == "") {
+		var input_text = input.placeholder;
+	}
+
+	// Refresh variables and placeholders
+	recipe[2] = refreshVarLive("recipe", el_article, input_text, recipe[2]);
+	advancement[2] = refreshVarLive("advancement", el_article, input_text, advancement[2]);
+	function_detect[2] = refreshVarLive("function_detect", el_article, input_text, function_detect[2]);
+	function_craft[2] = refreshVarLive("function_craft", el_article, input_text, function_craft[2]);
+	function_mass[2] = refreshVarLive("function_mass", el_article, input_text, function_mass[2]);
+
+	el_article.getElementsByClassName("tag")[0].placeholder = input_text;
+	tag = input_text;
+
+	// Refresh sidebar
+	el_sidebar.innerHTML = input_text;
+	el_sidebar.classList.add("has_recipe_id");
+}
+
+
+
+function refreshVarLive(path_class, el_article, input_text, last_value) {
+	var el_folder = el_article.getElementsByClassName(path_class + "_folder")[0];
+
+	if (el_folder.value != "") {
+		var folder = el_folder.value;
+	}
+	else {
+		var folder = el_folder.placeholder;
+	}
+
+	if (!folder.includes("$")) {
+		if (path_class == "function_detect") {
+			var text = "detect_" + input_text;
+		}
+		else if (path_class == "function_craft") {
+			var text = "craft_" + input_text;
+		}
+		else if (path_class == "function_mass") {
+			var text = "mass_" + input_text;
+		}
+		else {
+			var text = input_text;
+		}
+
+		el_article.getElementsByClassName(path_class + "_name")[0].placeholder = text;
+		return text;
+	}
+	else {
+		return last_value;
+	}
+}
+
+// Refresh sidebar from result item
+function resultItem(input) {
+	var el_article = input.parentNode;
+	var input_text = input.value;
+	var el_sidebar = document.getElementById("link_" + el_article.id).getElementsByClassName("link_text")[0];
+
+	if (!el_sidebar.classList.contains("has_recipe_id")) {
+		if (input_text == "") {
+			el_sidebar.innerHTML = "Recipe " + el_article.id;
+		}
+		else {
+			var input_text = cleanGive(el_article) // save.js
+			input_text = input_text.replace("minecraft:", "").split("{")[0];
+			el_sidebar.innerHTML = input_text;
+		}
+	}
+}
+
+
+// #####################################################################
+// Onclick function in sidebar
+function scrollToParent(id) {	
+	var sel_element = document.getElementById(id)
+	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
+	sel_element.style.backgroundColor = "#A10000";
+
+	closeSpoiler(sel_element);
+
+	setTimeout(function(){ sel_element.style.backgroundColor = "#1C1C1C"; }, 500);
+}
+
+
 // Remove Recipe
 function removeRecipe(el) {
 	var el_article = document.getElementsByTagName("article");
 	if (el_article.length > 1) {
-		var confirm_msg = confirm("You will delete your Input irreversible!");
+		var confirm_msg = confirm("You will delete your input irreversible!");
 		if (confirm_msg == true) {
 			var remove_id = el.parentNode.id;
 			var remove_link = document.getElementById("link_" + remove_id);
@@ -220,111 +259,18 @@ function removeRecipe(el) {
 	}
 }
 
-// #####################################################################
-// refresh placeholders with Recipe id
-function recipeId(input) {
-	var el_recipe_id = input.parentNode.parentNode;
-	refreshSidebarLink(el_recipe_id, input);
 
-	el_recipe_id.getElementsByClassName("tag")[0].placeholder = input.value;
-	tag = input.value;
-
-	// Recipe Name
-	var el_recipe_folder = el_recipe_id.getElementsByClassName("recipe_folder")[0];
-	if (el_recipe_folder.value != "") {el_recipe_folder = el_recipe_folder.value}
-	else {el_recipe_folder = el_recipe_folder.placeholder}
-	if (el_recipe_folder.includes("$") == false) {
-		el_recipe_id.getElementsByClassName("recipe_name")[0].placeholder = input.value;
-		recipe_name = input.value;
-	}
-
-	// Advancement Name
-	var el_advancement_folder = el_recipe_id.getElementsByClassName("advancement_folder")[0];
-	if (el_advancement_folder.value != "") {el_advancement_folder = el_advancement_folder.value}
-	else {el_advancement_folder = el_advancement_folder.placeholder}
-	if (el_advancement_folder.includes("$") == false) {
-		el_recipe_id.getElementsByClassName("advancement_name")[0].placeholder = input.value;
-		advancement_name = input.value;
-	}
-
-	// Function Mass Name
-	var el_function_mass_folder = el_recipe_id.getElementsByClassName("function_mass_folder")[0];
-	if (el_function_mass_folder.value != "") {el_function_mass_folder = el_function_mass_folder.value}
-	else {el_function_mass_folder = el_function_mass_folder.placeholder}
-	if (el_function_mass_folder.includes("$") == false) {
-		el_recipe_id.getElementsByClassName("function_mass_name")[0].placeholder = "mass_" + input.value;
-		function_mass_name = "mass_" + input.value;
-	}
-
-	// Function Craft Name
-	var el_function_craft_folder = el_recipe_id.getElementsByClassName("function_craft_folder")[0];
-	if (el_function_craft_folder.value != "") {el_function_craft_folder = el_function_craft_folder.value}
-	else {el_function_craft_folder = el_function_craft_folder.placeholder}
-	if (el_function_craft_folder.includes("$") == false) {
-		el_recipe_id.getElementsByClassName("function_craft_name")[0].placeholder = "craft_" + input.value;
-		function_craft_name = "craft_" + input.value;
-	}
-
-	// Function Detect Name
-	var el_function_detect_folder = el_recipe_id.getElementsByClassName("function_detect_folder")[0];
-	if (el_function_detect_folder.value != "") {el_function_detect_folder = el_function_detect_folder.value}
-	else {el_function_detect_folder = el_function_detect_folder.placeholder}
-	if (el_function_detect_folder.includes("$") == false) {
-		el_recipe_id.getElementsByClassName("function_detect_name")[0].placeholder = "detect_" + input.value;
-		function_detect_name = "detect_" + input.value;
-	}
-}
-
-// #####################################################################
-// Scroll from Sidebar
-var link_from_recipe_name;
-
-// Onclick function in sidebar
-function scrollToParent(id) {	
-	var sel_element = document.getElementById(id)
-	sel_element.scrollIntoView({block: 'center', behavior: 'smooth'});
-	sel_element.style.backgroundColor = "#A10000";
-
-	closeSpoiler(sel_element);
-
-	setTimeout(function(){ scrollToParentColor(sel_element) }, 500);
-}
-
-// Timer
-function scrollToParentColor(sel_element) {
-	sel_element.style.backgroundColor = "#1C1C1C";
-}
-
-// Refresh name from recipe id
-function refreshSidebarLink(parent, input) {
-	var input_text = input.value;
-	if (input_text == "") {input_text = "Recipe " + parent.id};
-	document.getElementById("link_" + parent.id).getElementsByClassName("link_text")[0].innerHTML = input_text;
-}
-
-// Refresh name from result item
-function resultItem(input) {
-	if (checkbox.checked == false) {
-		var input_text = input.value;
-		input_text = input_text.replace("minecraft:", "").split("{")[0];
-		if (input_text == "") {input_text = "Recipe " + input.parentNode.id};
-		document.getElementById("link_" + input.parentNode.id).getElementsByClassName("link_text")[0].innerHTML = input_text;
-	}
-}
-
-// #####################################################################
 // shortcuts
 document.addEventListener("keydown", e => {
 	// Add new recipe crtl + enter
-	if (e.ctrlKey && (e.which == 13 || e.keyCode == 13) ) {
-		addRecipe();
-	}
+	if (e.ctrlKey && (e.which == 13 || e.keyCode == 13) ) { addRecipe(); }
 	// Save datapack ctrl + s
 	if (e.ctrlKey && (e.which == 83 || e.keyCode == 83) ) {
 		downloadCheck();
 		e.preventDefault();
 	}
 });
+
 
 // #####################################################################
 // Toggle Advanced Mode
@@ -340,15 +286,13 @@ function toggleAdvMode() {
 	
 	if (checkbox.checked == true) {
 		document.documentElement.style.setProperty("--show_advanced_mode", "block");
-		//show_advanced_mode[i].style.display = "block";
 	}
 	else {
 		document.documentElement.style.setProperty("--show_advanced_mode", "none");
-		//show_advanced_mode[i].style.display = "none";
 	}
 }
 
-// #####################################################################
+
 // Compact View
 var el_compact_view = document.getElementById("compact_view");
 
