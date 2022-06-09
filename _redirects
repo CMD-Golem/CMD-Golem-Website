@@ -6,5 +6,7 @@
 /maps.html						/#Maps
 
 
-https://craft.cmd-golem.com/ https://cmd-golem.netlify.app/help/nbt_crafting.html 200!
-http://craft.cmd-golem.com/ https://cmd-golem.netlify.app/help/nbt_crafting.html 200!
+https://craft.cmd-golem.com/ https://cmd-golem.com/help/nbt_crafting.html 200!
+http://craft.cmd-golem.com/ https://cmd-golem.com/help/nbt_crafting.html 200!
+
+https://cmd-golem.netlify.app/* https://cmd-golem.com/:splat 301!

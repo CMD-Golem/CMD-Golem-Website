@@ -77,7 +77,7 @@ function openDownload() {
 
 // set newest version
 try {
-	document.getElementById("newest").innerHTML = "1.18.2";
+	document.getElementById("newest").innerHTML = "1.19";
 }
 catch (e) {}
 

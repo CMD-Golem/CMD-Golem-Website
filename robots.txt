@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /info/
 Disallow: /404.html
 
-Sitemap: https://cmd-golem.netlify.app/sitemap.xml
+Sitemap: https://cmd-golem.com/sitemap.xml
