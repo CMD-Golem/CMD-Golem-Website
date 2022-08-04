@@ -13,7 +13,7 @@ function compare(a, b) {
 }
 
 // Handler
-exports.handler = (event, context) => {
+exports.handler = async function(event, context) {
 	// get counter id from url
 	//cmd-golem.netlify.app/.netlify/functions/pack_updater/windows/0.1.0
 	var current_str = event.path.match(/([^\/]*)\/*$/)[0];
@@ -26,6 +26,13 @@ exports.handler = (event, context) => {
 	
 	var update_needed = compare(current_str, newest_str)
 
+	if (current_str == "5.0.0") {
+		return {
+			statusCode: 200,
+			body: JSON.stringify({ message: "Hello World" }),
+		};
+	}
+
 	if (update_needed) {
 		json_body = {
 			url: "https://raw.githubusercontent.com/CMD-Golem/Pack-Updater/main/release_bundle/datapack_updater_0.1.1_x64_en-US.msi.zip",
@@ -35,7 +42,7 @@ exports.handler = (event, context) => {
 			signature: process.env.PACK_UPDATER_SECRET
 		}
 
-		console.log(json_body)
+		console.log(JSON.stringify(json_body))
 
 		// return aviable update
 		return {
