@@ -19,19 +19,11 @@ exports.handler = async function(event, context) {
 	var current_str = event.path.match(/([^\/]*)\/*$/)[0];
 	var target = event.path.replace("/" + current_str, "").match(/([^\/]*)\/*$/)[0];
 
-	console.log(target);
 	console.log(current_str);
 
 	var newest_str = "0.1.1";
 	
 	var update_needed = compare(current_str, newest_str)
-
-	if (current_str == "5.0.0") {
-		return {
-			statusCode: 200,
-			body: JSON.stringify({ message: "Hello World" }),
-		};
-	}
 
 	if (update_needed) {
 		json_body = {
@@ -42,8 +34,6 @@ exports.handler = async function(event, context) {
 			signature: process.env.PACK_UPDATER_SECRET
 		}
 
-		console.log(JSON.stringify(json_body))
-
 		// return aviable update
 		return {
 			statusCode: 200,
@@ -51,10 +41,9 @@ exports.handler = async function(event, context) {
 		}
 	}
 	else {
-		console.log("204")
 		// return no update aviable
 		return {
-			statusCode: 204,
+			statusCode: 204
 		}
 	}
 }
