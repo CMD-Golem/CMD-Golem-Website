@@ -447,12 +447,12 @@ footer {
 }
 
 .footer_block a {
+	text-decoration: none;
 	margin: 0 20px;
 }
 
 .footer_block a:hover, .footer_block a:focus {
 	outline: none;
-	filter: contrast(100%);
 }
 
 .footer_left {
@@ -468,12 +468,20 @@ footer {
 	text-align: right;
 }
 
-.footer_right a {
-	filter: contrast(0%);
+footer svg {
+	height: 30px;
 }
 
-footer img {
-	height: 30px;
+#water, #land {
+	shape-rendering: crispEdges;
+}
+
+footer a:not(a:hover):not(a:focus) svg path {
+	fill: #CCCCCC;
+}
+
+footer a:not(a:hover):not(a:focus) svg rect {
+	fill: transparent;
 }
 
 /* Transformation */
