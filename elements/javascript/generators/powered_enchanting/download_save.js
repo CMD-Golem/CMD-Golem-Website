@@ -1,10 +1,13 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_version = "3.1"; // define version of data pack
+var pack_version = "3.2"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
-var main_files = ["pack7", "pack7", "pack7", "pack10"]; // which file needs to be downloaded
-var comp_versions_id = ["7", "8", "9", "10"]; // pack id
-var comp_versions_name = ["1.17", "1.18", "1.18.2", "1.19"]; // file names according to versions
+var version_names = [ // define version name and main pack for selected pack format
+	{version: 7, name: "1.17", main: 7},
+	{version: 8, name: "1.18", main: 7},
+	{version: 9, name: "1.18.2", main: 7},
+	{version: 10, name: "1.19", main: 10}
+];
 var pack_id;
 
 // Missing Enchantments
@@ -15,10 +18,10 @@ var pack_id;
 function downloadResourcePack() {
 	var version = document.getElementById("version").value;
 
-	if (version == "3") {window.open("https://drive.google.com/uc?export=download&id=1OwcK2ViAQqzcm1YiUVLmxxDZrTCnAoPH");}
-	else if (version == "2") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
-	else if (version == "1") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
-	else if (version == "0") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
+	if (version == "10") {window.open("https://drive.google.com/uc?export=download&id=1OwcK2ViAQqzcm1YiUVLmxxDZrTCnAoPH");}
+	else if (version == "9") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
+	else if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
+	else if (version == "7") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
 }
 
 // ###########################################################
@@ -37,15 +40,15 @@ async function generate() {
 	var load_function = "";
 	var maxlvl_load = "";
 	var comb_book = "";
-	var give_function = "function #powerench:give\n"
-	var comb_detect = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+	var giveall_function = "function #powerench:give\n"
+	var comb_detect = Array(comp_items_key.length).fill("");
 
 	pack_id = pack_id_load;
 
 	// user display
 	closeModal();
 	loadProgressModal();
-	// disableScroll();
+
 	var progress_bar = document.getElementById("bar");
 	var article_length = sel_article.length;
 	var progress_width_per_ench = document.getElementById("progress_bar").offsetWidth / article_length;
@@ -53,6 +56,7 @@ async function generate() {
 
 	// get pos in file array from version
 	var version = document.getElementById("version").value;
+	var version_obj = version_names.find(x => x.version == version);
 
 	//zip
 	var zip = new JSZip();
@@ -60,7 +64,7 @@ async function generate() {
 	var pack_folder = zip.folder("data/" + datapack_name);
 
 	// load main pack
-	ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/" + main_files[version] + ".zip");
+	ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/pack" + version_obj.main + ".zip");
 	await zip.loadAsync(ench_pack.blob());
 
 	// ###########################################################
@@ -82,18 +86,33 @@ async function generate() {
 		if (!is_vanilla) {
 			// load files
 			if (!ench.classList.contains("no_files")) {
-				var files = ench_array.files;
-				var sel_version = files[version];
+				var file_index = -1;
+				var search_version = version;
 
-				if (sel_version == undefined) {
-					sel_version = files[files.length - 1];
+				while (file_index == -1 && search_version != -1) {
+					file_index = ench_array.versions.indexOf(search_version);
+					search_version--;
 				}
 
-				ench_pack = await fetch("../../elements/files/powered_enchanting/" + sel_version + ".zip");
+				if (search_version == -1) {
+					console.error("Cound't find files of " + ench_array.title);
+					continue;
+				}
+
+				if (ench_array.versions.length == 1) {
+					var file_path = ench_array.ench[0];
+				}
+				else {
+					var file_path = ench_array.ench[0] + "/pack" + ench_array.versions[file_index];
+				}
+
+				ench_pack = await fetch("../../elements/files/powered_enchanting/" + file_path + ".zip");
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
-				give_function += `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
+				var give_function = `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
+				giveall_function += give_function;
+				pack_folder.file("functions/give/" + ench_array.ench[0] + ".mcfunction", give_function);
 
 			}
 
@@ -219,10 +238,10 @@ async function generate() {
 	}
 
 	// GIVE custom enchantments
-	pack_folder.file("functions/.give.mcfunction", give_function);
+	pack_folder.file("functions/give/all.mcfunction", giveall_function);
 
 	// pack.mcmeta
-	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + comp_versions_id[version] + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
 	document.getElementById("progress_action").innerHTML = "Creating ZIP file"
@@ -230,10 +249,10 @@ async function generate() {
 		progress_bar.style.width = metadata.percent + "%";
 	}).then(function (content) {
 		closeModal();
-		enableScroll();
+		preventScroll(false); // footer.js
 
 		var link = document.createElement('a');
-		link.download = "[" + comp_versions_name[version] + "] Powered Enchanting Datapack v" + pack_version + ".zip";
+		link.download = "[" + version_obj.name + "] Powered Enchanting Datapack v" + pack_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 
@@ -272,7 +291,7 @@ function loadDownloadModal() {
 	</div>`;
 	modal_box.appendChild(modal_text);
 
-	disableScroll();
+	preventScroll(true); // footer.js
 }
 
 // check pack id
@@ -344,45 +363,4 @@ function checkSelected(sel_article) {
 	else {
 		return true;
 	}
-}
-
-// #####################################################################
-// Prevent Scrolling (https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily)
-function preventDefault(e) {
-	e.preventDefault();
-}
-  
-function preventDefaultForScrollKeys(e) {
-	var keys = {37: 1, 38: 1, 39: 1, 40: 1};
-	if (keys[e.keyCode]) {
-		preventDefault(e);
-		return false;
-	}
-}
-  
-// modern Chrome requires { passive: false } when adding event
-var supportsPassive = false;
-try {
-	window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-		get: function () { supportsPassive = true; } 
-	}));
-} catch(e) {}
-  
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-  
-// call this to Disable
-function disableScroll() {
-	window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-	window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-	window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-	window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-}
-  
-// call this to Enable
-function enableScroll() {
-	window.removeEventListener('DOMMouseScroll', preventDefault, false);
-	window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
-	window.removeEventListener('touchmove', preventDefault, wheelOpt);
-	window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }

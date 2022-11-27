@@ -44,6 +44,7 @@
 			<tr><td><p>3x3 Mining</p></td><td><p>Mines a three by three area</p></td></tr>
 			<tr><td><p>Auto Smelt</p></td><td><p>Smelts blocks you mine</p></td></tr>
 			<tr><td><p>Freeze</p></td><td><p>Slows target</p></td></tr>
+			<tr><td><p>Health Upgrade</p></td><td><p>Get more health points</p></td></tr>
 			<tr><td><p>Hot Touch</p></td><td><p>Cooks harvested Potatoes</p></td></tr>
 			<tr><td><p>Leaping</p></td><td><p>Increases jump strength</p></td></tr>
 			<tr><td><p>Life Steal</p></td><td><p>Chance to get absorption hearts of critical hits</p></td></tr>
@@ -52,7 +53,9 @@
 			<tr><td><p>Nutrition</p></td><td><p>Feeds you automatically</p></td></tr>
 			<tr><td><p>Perish</p></td><td><p>Gives target the wither effect</p></td></tr>
 			<tr><td><p>Protection V</p></td><td><p>Increases level of Protection Enchantments</p></td></tr>
+			<tr><td><p>Quick Hit</p></td><td><p>Hit faster</p></td></tr>
 			<tr><td><p>Reaping</p></td><td><p>Replants seeds automatically</p></td></tr>
+			<tr><td><p>Sneak Healer</p></td><td><p>Heal yourself while sneaking</p></td></tr>
 			<tr><td><p>Soft Falling</p></td><td><p>No fall damage</p></td></tr>
 			<tr><td><p>Soulbound</p></td><td><p>Get item back after death</p></td></tr>
 			<tr><td><p>Swiftness</p></td><td><p>Increases walking speed</p></td></tr>
@@ -113,8 +116,8 @@
 <h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
 <div class="spoiler_show">
 	<div class="spoiler_content">
-		<p>Give yourself all custom Enchantments</p>
-		<code>/function powerench:.give</code>
+		<p>Give yourself custom Enchantments (Replace &#60;enchantment_id&#62; with the Id of the Enchantment or with all to get all Enchantments)</p>
+		<code>/function powerench:give/&#60;enchantment_id&#62;</code>
 		<p>Remove custom Enchantments and lore from selected item. (for deinstallation)</p>
 		<code>/item modify entity @s weapon.mainhand powerench_main:remove_powerench</code>
 	</div>
@@ -141,7 +144,6 @@
 
 <footer></footer>
 
-<script language="javascript" type="text/javascript" src="../elements/javascript/special/spoiler.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/generators/powered_enchanting/download_counter.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
 <script>

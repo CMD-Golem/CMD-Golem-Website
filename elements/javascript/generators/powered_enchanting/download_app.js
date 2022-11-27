@@ -4,8 +4,8 @@ var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
-	// var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
+	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
@@ -35,7 +35,7 @@ async function loadJson() {
 		var max_lvl = convertToRoman(article.max_lvl);
 
 		html = html + `
-		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.version}">
+		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.version[0]}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h3>${article.title}</h3>
