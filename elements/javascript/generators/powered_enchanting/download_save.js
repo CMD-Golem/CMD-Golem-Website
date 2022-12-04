@@ -8,7 +8,7 @@ var version_names = [ // define version name and main pack for selected pack for
 	{version: 9, name: "1.18.2", counter_name: "1.18", main: 7},
 	{version: 10, name: "1.19", counter_name: "1.19", main: 10}
 ];
-var pack_id;
+var pack_id, already_download;
 
 // Missing Enchantments
 // {"id":"xx", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
