@@ -257,9 +257,6 @@ async function generate() {
 		link.click();
 
 		// Counter
-		mc_version = version_obj.counter_name;
-		updateCounter(); //download_counter.js
-
 		if (already_download != true) {
 			already_download = true;
 	
