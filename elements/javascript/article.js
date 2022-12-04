@@ -111,6 +111,10 @@ window.onload = function onload() {
 }
 
 // Counter
-if (already_counted == false) {
+async function indexCounter() {
 	fetch(`/.netlify/functions/update/help/350149262119535177`);
+}
+
+if (already_counted == false) {
+	indexCounter();
 }

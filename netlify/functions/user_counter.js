@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
 	});
 
 	// get contry of user
-	var country_response = await fetch("/get-country");
+	var country_response = await fetch("https://638d0df6d73048000764af28--cmd-golem.netlify.app/get-country");
 	var geo_data = await country_response.json();
 	var current_country = geo_data.geo.geo.country.name;
 

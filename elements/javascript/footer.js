@@ -118,10 +118,14 @@ var current_day = date.getFullYear + "." + date.getMonth + "." + date.getDay;
 var user_role = window.localStorage.getItem("user_role") != "hidden";
 var was_counted = window.localStorage.getItem("user_counter");
 
-if (was_counted != current_day && user_role != "hidden") {
-	window.localStorage.setItem("user_counter", current_day);
-	fetch(`/.netlify/functions/user_counter`);
+async function userCounter() {
+	if (was_counted != current_day && user_role != "hidden") {
+		window.localStorage.setItem("user_counter", current_day);
+		fetch(`/.netlify/functions/user_counter`);
+	}
+	else {
+		already_counted = true;
+	}
 }
-else {
-	already_counted = true;
-}
+
+userCounter();

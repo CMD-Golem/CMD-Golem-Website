@@ -84,7 +84,7 @@ var pack_type = counter_el.dataset.type;
 
 
 // show counter in html
-if (counter_el != null) {
+async function showCounter() {
 	var res = await fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`);
 	var counter = await res.json();
 
@@ -94,10 +94,14 @@ if (counter_el != null) {
 	show_el[1].style.display = "block";
 }
 
+if (counter_el != null) {
+	showCounter();
+}
+
 // update counter
 var already_download = false;
 
-function updateCounter() {
+async function updateCounter() {
 	if (already_download != true) {
 		already_download = true;
 		fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`);
