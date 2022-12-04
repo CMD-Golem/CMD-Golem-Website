@@ -506,7 +506,7 @@ footer a:not(a:hover):not(a:focus) svg rect {
 
 /* ####################################################################### */
 /* Cookie Box */
-#cookie_box {
+/* #cookie_box {
 	position: fixed;
 	width: 400px;
 	height: 200px;
@@ -526,4 +526,4 @@ footer a:not(a:hover):not(a:focus) svg rect {
 
 .accept_button {
 	border: 2px solid #A10000;
-}
+} */

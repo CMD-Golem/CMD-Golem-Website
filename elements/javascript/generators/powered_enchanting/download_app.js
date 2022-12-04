@@ -2,10 +2,10 @@
 var article_elements, article_array, not_found, list_options;
 var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
+var selected_edition_db = "320699649726874188";
 
 async function loadJson() {
-	// var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
-	var res = await fetch("http://127.0.0.1:5500/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
@@ -35,7 +35,7 @@ async function loadJson() {
 		var max_lvl = convertToRoman(article.max_lvl);
 
 		html = html + `
-		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.version[0]}">
+		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.versions[0]}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h3>${article.title}</h3>
@@ -68,24 +68,35 @@ var sidebar_hidden = true;
 
 // edition preselection
 function changeEdition(edition) {
-	selected_edition = edition;
+	var deselect_array = document.getElementsByClassName("selected");
+	for (var i = 0; i < deselect_array.length; i++) {
+		deselect(deselect_array[i]);
+	}
+
 	if (edition == "all") {
-		var select_array = document.querySelectorAll("article:not(.incomp_version)");
-		for (var i = 0; i < select_array.length; i++) { select(select_array[i]); }
+		var selector = "article:not(.incomp_version)";
+		var preselection = false;
+		selected_edition_db = "320699603872645708";
 	}
 	else if (edition == "golem") {
-		var select_array = document.querySelectorAll(".e_golem:not(.incomp_version)");
-		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
+		var selector = ".e_golem:not(.incomp_version)";
+		var preselection = true;
+		selected_edition_db = "320699550069162572";
 	}
 	else if (edition == "vanilla") {
-		var select_array = document.querySelectorAll(".e_vanilla:not(.incomp_version)");
-		for (var i = 0; i < select_array.length; i++) { select(select_array[i], true); }
+		var selector = ".e_vanilla:not(.incomp_version)";
+		var preselection = true;
+		selected_edition_db = "320699566604157516";
 	}
 	else {
-		var select_array = document.querySelectorAll("article:not(.incomp_version)");
-		for (var i = 0; i < select_array.length; i++) {
-			if (select_array[i].classList.contains("selected")) { deselect(select_array[i]); }
-		}
+		selected_edition_db = "320699649726874188";
+		return;
+	}
+
+	var select_array = document.querySelectorAll(selector);
+
+	for (var i = 0; i < select_array.length; i++) {
+		select(select_array[i], preselection);
 	}
 }
 
@@ -305,7 +316,7 @@ function closeModal() {
 	modal_box.innerHTML = "";
 	modal_box.classList = "";
 
-	enableScroll(); //save.js
+	preventScroll(false); //footer.js
 }
 
 // ###########################################################
@@ -317,7 +328,7 @@ function loadPackIdModal() {
 	modal_text.innerHTML = '<div class="modal_padding_box"><input placeholder="Insert Pack Id..."></div><button onclick="importPackId()">Load</button><button onclick="closeModal()" style="margin-left:10px;">Close</button>';
 	modal_box.appendChild(modal_text);
 
-	disableScroll();
+	preventScroll(true) //footer.js
 }
 
 function importPackId() {
@@ -359,7 +370,7 @@ function importPackId() {
 
 		pack_id = pack_id.substr(3);
 	}
-	selected_edition = "pack_id";
+	selected_edition_db = "320699587095429708";
 	closeModal();
 }
 

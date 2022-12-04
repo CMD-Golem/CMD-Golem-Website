@@ -1,6 +1,5 @@
 // Add class to html to:
 //		disable download page: no_download
-//		disable show counter on page: no_counter
 //		disable slides: no_slides
 var html = document.getElementsByTagName("body")[0];
 
@@ -75,58 +74,24 @@ function openDownload() {
 //	}
 //}
 
-// set newest version
-try {
-	document.getElementById("newest").innerHTML = "1.19.2";
-}
-catch (e) {}
-
 
 // ###########################################################
-// Counter --> Has also his own file
-
-// read db
-var read = (pack_id, pack_type) => {
-	return fetch(`/.netlify/functions/read/${pack_type}/${pack_id}`, {
-		method: 'POST',
-	}).then(response => {
-		return response.json()
-	})
-}
-
-// update db
-var update = (pack_id, pack_type) => {
-	return fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`, {
-		method: 'POST',
-	}).then(response => {
-		return response.json()
-	})
-}
-
-// version statistic
-var version = (pack_version) => {
-	return fetch(`/.netlify/functions/version/${pack_version}`, {
-		method: 'POST',
-	}).then(response => {
-		return response.json()
-	})
-}
-
-
 // get id and type of pack
 var counter_el = document.getElementById("download_counter");
+var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
 var pack_id = counter_el.dataset.ref;
 var pack_type = counter_el.dataset.type;
 
 
 // show counter in html
-if (!html.classList.contains("no_counter")) {
-	Promise.resolve( read(pack_id, pack_type) ).then( function(value) {
-		counter_el.innerHTML = value.data.count.toLocaleString('de-CH');
-		var show_el = counter_el.parentNode.parentNode.getElementsByTagName("div");
-		show_el[0].style.display = "block";
-		show_el[1].style.display = "block";
-	});
+if (counter_el != null) {
+	var res = await fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`);
+	var counter = await res.json();
+
+	counter_el.innerHTML = counter.data.count.toLocaleString('de-CH');
+
+	show_el[0].style.display = "block";
+	show_el[1].style.display = "block";
 }
 
 // update counter
@@ -135,12 +100,12 @@ var already_download = false;
 function updateCounter() {
 	if (already_download != true) {
 		already_download = true;
-		update(pack_id, pack_type)//.then((value) => { console.log(value); });
+		fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`);
 
 		// version statistic
 		var pack_version = event.target.parentNode.parentNode.firstElementChild.id;
 		if (pack_version != "") {
-			version(pack_version);
+			fetch(`/.netlify/functions/version/${pack_version}`);
 		}
 	}
 	else {

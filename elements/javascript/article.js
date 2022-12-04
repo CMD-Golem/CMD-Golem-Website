@@ -103,10 +103,14 @@ function notFound() {
 }
 
 
-
 //#################################################################################################
 // Load Filter on reload
 window.onload = function onload() {
 	siteSearch();
 	siteFilter();
+}
+
+// Counter
+if (already_counted == false) {
+	fetch(`/.netlify/functions/update/help/350149262119535177`);
 }

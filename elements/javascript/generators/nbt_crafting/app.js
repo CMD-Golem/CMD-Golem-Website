@@ -282,7 +282,7 @@ if (localStorage.getItem("advanced_mode") == "true") {
 }
 
 function toggleAdvMode() {
-	if (cookies == true) {localStorage.setItem("advanced_mode", checkbox.checked);}
+	localStorage.setItem("advanced_mode", checkbox.checked);
 	
 	if (checkbox.checked == true) {
 		document.documentElement.style.setProperty("--show_advanced_mode", "block");
@@ -303,7 +303,7 @@ if (localStorage.getItem("compact_view") == "true") {
 
 function compactView(used_element) {
 	if (compact_view == "true") {
-		if (cookies == true) {localStorage.setItem("compact_view", "false");}
+		localStorage.setItem("compact_view", "false");
 		compact_view = "false";
 
 		el_compact_view.title = "Change to compact View (removes all unnecessary text)";
@@ -312,7 +312,7 @@ function compactView(used_element) {
 		document.documentElement.style.setProperty("--hide_compact", "block");
 	}
 	else {
-		if (cookies == true) {localStorage.setItem("compact_view", "true");}
+		localStorage.setItem("compact_view", "true");
 		compact_view = "true";
 
 		el_compact_view.title = "Change to expanded View";

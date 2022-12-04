@@ -128,7 +128,7 @@ function removeTagged(remove_tag) {
 var input_comp_el = document.getElementById("input_comp");
 
 async function loadJson() {
-	var res = await fetch("https://raw.githubusercontent.com/CMD-Golem/CMD-Golem/master/elements/javascript/generators/powered_enchanting/enchantments.json");
+	var res = await fetch("/elements/javascript/generators/powered_enchanting/enchantments.json");
 	article_array = await res.json();
 	var list = "";
 

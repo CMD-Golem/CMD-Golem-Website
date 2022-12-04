@@ -1,3 +1,14 @@
+// #####################################################################
+// Newest Version
+var latest_version_el = document.getElementsByClassName("insertLatestVersion");
+for (var i = 0; i < latest_version_el.length; i++) {
+	latest_version_el[i].innerHTML = "1.19.3";
+}
+
+
+
+// #####################################################################
+// Footer
 var date = new Date().getFullYear()
 
 var footer = `
@@ -97,4 +108,20 @@ function closeSpoiler(el) {
 			panel.style.maxHeight = panel.scrollHeight + "px";
 		}
 	}
+}
+
+// #####################################################################
+// User counter
+var already_counted = false;
+var date = new Date();
+var current_day = date.getFullYear + "." + date.getMonth + "." + date.getDay;
+var user_role = window.localStorage.getItem("user_role") != "hidden";
+var was_counted = window.localStorage.getItem("user_counter");
+
+if (was_counted != current_day && user_role != "hidden") {
+	window.localStorage.setItem("user_counter", current_day);
+	fetch(`/.netlify/functions/user_counter`);
+}
+else {
+	already_counted = true;
 }
