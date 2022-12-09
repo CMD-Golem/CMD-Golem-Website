@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 
 	// get counter ids
 	var db_ids = [];
-	var response = await client.query(q.Paginate(q.Match(q.Ref("indexes/get_cmd-golem"))));
+	var response = await client.query(q.Paginate(q.Match(q.Ref("indexes/get_countries"))));
 
 	for (var i = 0; i < response.data.length; i++) {
 		db_ids.push(response.data[i].value.id);
@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
 	// get data of existing countries or create new doc for country
 	for (var i = 0; i < db_ids.length; i++) {
 		var db_id = db_ids[i];
-		var counter_db = await client.query(q.Get(q.Ref(`classes/cmd-golem/${db_id}`)));
+		var counter_db = await client.query(q.Get(q.Ref(`classes/countries/${db_id}`)));
 
 		if (counter_db.data.country == current_country) {
 			var data = counter_db.data;
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
 		}
 		else if (db_ids.length == i + 1) {
 			var data = {country:current_country, counter:0};
-			var new_doc = await client.query(q.Create(q.Collection("cmd-golem"), {data:data}));
+			var new_doc = await client.query(q.Create(q.Collection("countries"), {data:data}));
 			var new_id = new_doc.ref.value.id;
 		}
 	}
@@ -40,5 +40,5 @@ exports.handler = async (event, context) => {
 
 	data = JSON.parse(JSON.stringify(data));
 
-	await client.query(q.Update(q.Ref(`classes/cmd-golem/${new_id}`), {data:data}));
+	await client.query(q.Update(q.Ref(`classes/countries/${new_id}`), {data:data}));
 }

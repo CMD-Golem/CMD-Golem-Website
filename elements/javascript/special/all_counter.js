@@ -31,11 +31,11 @@ async function initDatabase(hash) {
 	}
 	else if (hash == "versions") {
 		versions = versions ?? await readDatabase("all_versions");
-		printOut(versions);
+		printOut(versions, "no_date");
 	}
 	else if (hash == "countries") {
 		countries = countries ?? await readDatabase("all_countries");
-		printOut(countries, "no_date");
+		printOut(countries, "countries");
 	}
 }
 
