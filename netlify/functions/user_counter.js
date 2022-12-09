@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 
 	// get counter ids
 	var db_ids = [];
-	var response = await client.query(q.Paginate(q.Match(q.Ref("indexes/get_countries"))));
+	var response = await client.query(q.Paginate(q.Match(q.Ref("indexes/all_countries"))));
 
 	for (var i = 0; i < response.data.length; i++) {
 		db_ids.push(response.data[i].value.id);
