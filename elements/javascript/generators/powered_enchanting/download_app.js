@@ -69,8 +69,8 @@ var sidebar_hidden = true;
 // edition preselection
 function changeEdition(edition) {
 	var deselect_array = document.getElementsByClassName("selected");
-	for (var i = 0; i < deselect_array.length; i++) {
-		deselect(deselect_array[i]);
+	while (deselect_array.length > 0) {
+		deselect(deselect_array[0]);
 	}
 
 	if (edition == "all") {

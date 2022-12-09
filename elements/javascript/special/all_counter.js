@@ -1,18 +1,88 @@
 var table = document.getElementsByTagName("table")[0];
+var datapacks, resource_packs, maps, help, powered_enchanting, versions, countries, sel_db;
 
-// read db
-var readDatabase = (database) => {
-	var readAll = (index_type) => {
-		return fetch(`/.netlify/functions/read_all/${index_type}`, {
-			method: 'POST',
-		}).then(response => {
-			return response.json()
-		 })
+// determan what data should be loaded
+async function initDatabase(hash) {
+	// if (hash == undefined) {
+	// 	hash = window.location.hash.substr(1);
+	// }
+	sel_db = hash;
+
+	if (hash == "packs") {
+		datapacks = datapacks ?? await readDatabase("all_datapacks");
+		resource_packs = resource_packs ?? await readDatabase("all_resource_packs");
+
+		printOut(datapacks.concat(resource_packs));
 	}
+	else if (hash == "datapacks") { printOut(datapacks) }
+	else if (hash == "resource_packs") { printOut(resource_packs); }
+	
+	else if (hash == "maps") {
+		maps = maps ?? await readDatabase("all_maps");
+		printOut(maps);
+	}
+	else if (hash == "help") {
+		help = help ?? await readDatabase("all_help");
+		printOut(help);
+	}
+	else if (hash == "powered_enchanting") {
+		powered_enchanting = powered_enchanting ?? await readDatabase("all_powered_enchanting");
+		printOut(powered_enchanting);
+	}
+	else if (hash == "versions") {
+		versions = versions ?? await readDatabase("all_versions");
+		printOut(versions);
+	}
+	else if (hash == "countries") {
+		countries = countries ?? await readDatabase("all_countries");
+		printOut(countries, "no_date");
+	}
+}
 
-	return readAll(database).then((response) => {
-		return response.map(counter => `
-			<tr onclick="spoiler(this)" class="show_more_button" data-date="${counter.data.date}">
+initDatabase("packs");
+
+// refresh Table
+function refreshDatabase() {
+	datapacks = undefined;
+	resource_packs = undefined;
+	maps = undefined;
+	help = undefined;
+	powered_enchanting = undefined;
+	versions = undefined;
+	countries = undefined;
+
+	table.innerHTML = "";
+
+	initDatabase(sel_db);
+}
+
+// #################################################################################################
+// get data from db
+async function readDatabase(hash, special) {
+	var response = await fetch(`/.netlify/functions/read_all/${hash}`);
+	var db_data = await response.json();
+
+	if (special == "no_date") {
+		return db_data.map(counter => `
+			<tr class="show_more_button" data-name="${counter.data.name}">
+				<td><p>${counter.data.name}</p></td>
+				<td><p>${counter.data.downloads.toLocaleString('de-CH')}</p></td>
+				<td></td>
+			</tr>
+			`).join('');
+	}
+	else if (special == "countries") {
+		return db_data.map(counter => `
+			<tr class="show_more_button" data-name="${counter.data.country}">
+				<td><p>${counter.data.country}</p></td>
+				<td><p>${counter.data.counter.toLocaleString('de-CH')}</p></td>
+				<td></td>
+			</tr>
+			`).join('');
+	}
+	else {
+		return db_data.map(counter => `
+			<tr onclick="spoilerTable(this)" class="show_more_button" data-date="${counter.data.date}">
 				<td><p>${counter.data.name}<span class="mobile_date">${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</span></p></td>
 				<td><p>${counter.data.count.toLocaleString('de-CH')}</p></td>
 				<td><p>${new Date(counter.data.date).getDate()}.${new Date(counter.data.date).getMonth() + 1}.${new Date(counter.data.date).getFullYear()}</p></td>
@@ -33,121 +103,11 @@ var readDatabase = (database) => {
 				<td></td>
 			</tr>
 			`).join('');
-	});
-}
-
-// read db without date
-var readDateless = (database) => {
-	var readAll = (index_type) => {
-		return fetch(`/.netlify/functions/read_all/${index_type}`, {
-			method: 'POST',
-		}).then(response => {
-			return response.json()
-		 })
 	}
-
-	return readAll(database).then((response) => {
-		return response.map(counter => `
-			<tr class="show_more_button" data-name="${counter.data.name}">
-				<td><p>${counter.data.name}</p></td>
-				<td><p>${counter.data.downloads.toLocaleString('de-CH')}</p></td>
-				<td></td>
-			</tr>
-			`).join('');
-	});
 }
-
 
 // #################################################################################################
-// prepare for loading data
-var datapacks, resource_packs, maps, help, powered_enchanting, versions;
-var sel_db;
-
-function initDatabase(hash) {
-	if (hash == undefined) {
-		hash = window.location.hash.substr(1);
-	}
-	sel_db = hash;
-
-	if (hash == "packs" || hash == "") {
-		if (datapacks == undefined || resource_packs == undefined || maps == undefined) {
-			readDatabase("all_datapacks").then(response => {
-				datapacks = response;
-				readDatabase("all_resource_packs").then(response => {
-					resource_packs = response;
-					readDatabase("all_maps").then(response => {
-						maps = response;
-
-						printOut(datapacks.concat(resource_packs.concat(maps)));
-					});
-				});
-			});
-		}
-		else { printOut(datapacks.concat(resource_packs.concat(maps))); }
-	}
-
-	else if (hash == "datapacks") {
-		if (datapacks == undefined) {
-			readDatabase("all_datapacks").then(response => {
-				datapacks = response;
-				printOut(response);
-			});
-		}
-		else { printOut(datapacks); }
-	}
-
-	else if (hash == "resource_packs") {
-		if (datapacks == undefined) {
-			readDatabase("all_resource_packs").then(response => {
-				resource_packs = response;
-				printOut(response);
-			});
-		}
-		else { printOut(resource_packs); }
-	}
-
-	else if (hash == "maps") {
-		if (maps == undefined) {
-			readDatabase("all_maps").then(response => {
-				maps = response;
-				printOut(response);
-			});
-		}
-		else { printOut(maps); }
-	}
-
-	else if (hash == "help") {
-		if (help == undefined) {
-			readDatabase("all_help").then(response => {
-				help = response;
-				printOut(response);
-			});
-		}
-		else { printOut(help); }
-	}
-
-	else if (hash == "powered_enchanting") {
-		if (powered_enchanting == undefined) {
-			readDatabase("all_powered_enchanting").then(response => {
-				powered_enchanting = response;
-				printOut(response);
-			});
-		}
-		else { printOut(powered_enchanting); }
-	}
-
-	else if (hash == "versions") {
-		if (versions == undefined) {
-			readDateless("all_versions").then(response => {
-				versions = response;
-				printOut(response);
-			});
-		}
-		else { printOut(versions); }
-	}
-}
-
-
+// fill html
 function printOut(html) {
 	table.innerHTML = html;
 
@@ -158,69 +118,9 @@ function printOut(html) {
 	sortTable(table);
 }
 
-initDatabase();
 
-// #################################################################################################
-// refresh Table
-function refreshDatabase() {
-	datapacks = undefined;
-	resource_packs = undefined;
-	maps = undefined;
-	help = undefined;
-	powered_enchanting = undefined;
-	versions = undefined;
-
-	table.innerHTML = "";
-
-	initDatabase(sel_db);
-}
-
-// #################################################################################################
-// sort Table
-function sortTable(table) {
-	var switching = true;
-
-	while (switching == true) {
-		switching = false;
-		var rows = table.getElementsByClassName("show_more_button");
-
-		for (var i = 0; i < (rows.length - 1); i++) {
-			var should_switch = false;
-			var should_switch_dateless = false;
-			if (rows[i].dataset.date < rows[i + 1].dataset.date) {
-				should_switch = true;
-				break;
-			}
-			else if (rows[i].dataset.name < rows[i + 1].dataset.name) {
-				should_switch_dateless = true;
-				break;
-			}
-		}
-
-		if (should_switch == true) {
-			var yesterday = rows[i + 1].nextElementSibling;
-			var yyesterday = rows[i + 1].nextElementSibling.nextElementSibling;
-			var last_month = rows[i + 1].nextElementSibling.nextElementSibling.nextElementSibling;
-
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			rows[i].parentNode.insertBefore(yesterday, rows[i + 1]);
-			rows[i].parentNode.insertBefore(yyesterday, rows[i + 1]);
-			rows[i].parentNode.insertBefore(last_month, rows[i + 1]);
-
-			switching = true;
-		}
-
-		if (should_switch_dateless == true) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
-		}
-	}
-}
-
-
-// #################################################################################################
 // Spoiler
-function spoiler(el) {
+function spoilerTable(el) {
 	el.classList.toggle("active");
 	var panel = el.nextElementSibling;
 	if (panel.style.display) {
@@ -268,5 +168,46 @@ function search() {
 	}
 	else {
 		not_found.style.display = "none";
+	}
+}
+
+// sort Table
+function sortTable(table) {
+	var switching = true;
+
+	while (switching == true) {
+		switching = false;
+		var rows = table.getElementsByClassName("show_more_button");
+
+		for (var i = 0; i < (rows.length - 1); i++) {
+			var should_switch = false;
+			var should_switch_dateless = false;
+			if (rows[i].dataset.date < rows[i + 1].dataset.date) {
+				should_switch = true;
+				break;
+			}
+			else if (rows[i].dataset.name < rows[i + 1].dataset.name) {
+				should_switch_dateless = true;
+				break;
+			}
+		}
+
+		if (should_switch == true) {
+			var yesterday = rows[i + 1].nextElementSibling;
+			var yyesterday = rows[i + 1].nextElementSibling.nextElementSibling;
+			var last_month = rows[i + 1].nextElementSibling.nextElementSibling.nextElementSibling;
+
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			rows[i].parentNode.insertBefore(yesterday, rows[i + 1]);
+			rows[i].parentNode.insertBefore(yyesterday, rows[i + 1]);
+			rows[i].parentNode.insertBefore(last_month, rows[i + 1]);
+
+			switching = true;
+		}
+
+		if (should_switch_dateless == true) {
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+		}
 	}
 }

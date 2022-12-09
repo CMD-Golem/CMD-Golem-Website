@@ -6,6 +6,9 @@ for (var i = 0; i < latest_version_el.length; i++) {
 }
 
 
+var local_date = new Date();
+
+
 
 // #####################################################################
 // Footer
@@ -113,15 +116,18 @@ function closeSpoiler(el) {
 // #####################################################################
 // User counter
 var already_counted = false;
-var date = new Date();
-var current_day = date.getFullYear + "." + date.getMonth + "." + date.getDay;
-var user_role = window.localStorage.getItem("user_role") != "hidden";
-var was_counted = window.localStorage.getItem("user_counter");
+var user_role = window.localStorage.getItem("user_role");
 
 async function userCounter() {
+	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
+	var was_counted = window.localStorage.getItem("user_counter");
+
 	if (was_counted != current_day && user_role != "hidden") {
 		window.localStorage.setItem("user_counter", current_day);
-		fetch(`/.netlify/functions/user_counter`);
+
+		var country_response = await fetch("https://cmd-golem.com/get-country");
+		var geo_data = await country_response.json();
+		fetch(`/.netlify/functions/user_counter/` + geo_data.geo.geo.country.name);
 	}
 	else {
 		already_counted = true;

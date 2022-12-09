@@ -111,10 +111,19 @@ window.onload = function onload() {
 }
 
 // Counter
+var index_counted = false;
+
 async function indexCounter() {
-	fetch(`/.netlify/functions/update/help/350149262119535177`);
+	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
+	var was_counted = window.localStorage.getItem("index_counter");
+
+	if (was_counted != current_day && user_role != "hidden") {
+		window.localStorage.setItem("index_counter", current_day);
+		fetch(`/.netlify/functions/update/help/350149262119535177`);
+	}
+	else {
+		index_counted = true;
+	}
 }
 
-if (already_counted == false) {
-	indexCounter();
-}
+indexCounter();

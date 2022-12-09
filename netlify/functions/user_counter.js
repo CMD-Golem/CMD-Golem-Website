@@ -1,4 +1,3 @@
-var fetch = require("node-fetch");
 var faunadb = require("faunadb");
 var q = faunadb.query;
 
@@ -9,9 +8,7 @@ exports.handler = async (event, context) => {
 	});
 
 	// get contry of user
-	var country_response = await fetch("https://cmd-golem.com/get-country");
-	var geo_data = await country_response.json();
-	var current_country = geo_data.geo.geo.country.name;
+	var current_country = event.path.match(/([^\/]*)\/*$/)[0];
 
 	// get counter ids
 	var db_ids = [];
