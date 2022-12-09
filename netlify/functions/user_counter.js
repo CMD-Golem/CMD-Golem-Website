@@ -41,4 +41,6 @@ exports.handler = async (event, context) => {
 	data = JSON.parse(JSON.stringify(data));
 
 	await client.query(q.Update(q.Ref(`classes/countries/${new_id}`), {data:data}));
+
+	return 200;
 }
