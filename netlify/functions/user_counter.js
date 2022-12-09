@@ -42,5 +42,5 @@ exports.handler = async (event, context) => {
 
 	await client.query(q.Update(q.Ref(`classes/countries/${new_id}`), {data:data}));
 
-	return 200;
+	return { statusCode: 200 };
 }
