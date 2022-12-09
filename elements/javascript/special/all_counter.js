@@ -30,12 +30,12 @@ async function initDatabase(hash) {
 		printOut(powered_enchanting);
 	}
 	else if (hash == "versions") {
-		versions = versions ?? await readDatabase("all_versions");
-		printOut(versions, "no_date");
+		versions = versions ?? await readDatabase("all_versions", "no_date");
+		printOut(versions);
 	}
 	else if (hash == "countries") {
-		countries = countries ?? await readDatabase("all_countries");
-		printOut(countries, "countries");
+		countries = countries ?? await readDatabase("all_countries", "countries");
+		printOut(countries);
 	}
 }
 
