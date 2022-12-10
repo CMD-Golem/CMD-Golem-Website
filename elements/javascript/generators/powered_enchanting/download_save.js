@@ -18,7 +18,7 @@ var pack_id, already_download;
 function downloadResourcePack() {
 	var version = document.getElementById("version").value;
 
-	if (version == "10") {window.open("https://drive.google.com/uc?export=download&id=1OwcK2ViAQqzcm1YiUVLmxxDZrTCnAoPH");}
+	if (version == "10") {window.open("https://drive.google.com/uc?export=download&id=1CCfhkyOjYI2yTGUAXTxzNMCgT8Xa5vn5");}
 	else if (version == "9") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
 	else if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
 	else if (version == "7") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}

@@ -116,7 +116,7 @@ function closeSpoiler(el) {
 // #####################################################################
 // User counter
 var already_counted = false;
-var user_role = window.localStorage.getItem("user_role");
+var user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
 
 async function userCounter() {
 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
