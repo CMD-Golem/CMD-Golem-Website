@@ -293,6 +293,7 @@ function loadDownloadModal() {
 		<hr>
 		<p>It's highly recommended to use the Resource Pack, but not necessary.</p>
 		<button onclick="generate()" style="margin-right:10px; border: 2px solid #A10000;">Download Data Pack</button><button onclick="downloadResourcePack()">Download Resource Pack</button><br>
+		<button onclick="loadUpdateInfo()">Click here if you want to update the pack</button><br>
 		<button onclick="closeModal()" style="margin-top:50px;">Close</button>
 	</div>`;
 	modal_box.appendChild(modal_text);
@@ -307,6 +308,28 @@ function generatePackId(sel_article) {
 	for (var i = 0; i < sel_article.length; i++) {
 		packId(sel_article[i]);
 	}
+}
+
+// update info
+function loadUpdateInfo() {
+	closeModal();
+
+	var modal_text = document.createElement("div");
+	modal_text.classList.add("modal_text");
+	modal_text.classList.add("center");
+	modal_text.innerHTML = `
+	<div class="modal_padding_box">
+		<h2>Update Info</h2>
+		<hr>
+		<p>If you are currently using an old version of the Data Pack and want to update to the new one, you need to install the Compatibility Data Pack.<br>
+		This data pack updates all your tools to be compatible with the new system.</p>
+		<p>The update of the tool is done when it is in the inventory of a player. When you are sure that all items with custom enchantments have been updated, you can remove the pack.</p>
+		<a class="button disable_link" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1Zc9NPfF6Eh4SEGdwrU5XA335R3kQQa-w">Download Updater Data Pack</a><br>
+		<button onclick="closeModal(); loadDownloadModal();" style="margin-top:50px;">Back</button>
+	</div>`;
+	modal_box.appendChild(modal_text);
+
+	preventScroll(true); // footer.js
 }
 
 //#################################################################################################
