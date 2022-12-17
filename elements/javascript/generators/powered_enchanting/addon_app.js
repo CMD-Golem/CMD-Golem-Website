@@ -127,9 +127,7 @@ function removeTagged(remove_tag) {
 // get enchantments from json
 var input_comp_el = document.getElementById("input_comp");
 
-async function loadJson() {
-	var res = await fetch("/elements/javascript/generators/powered_enchanting/enchantments.json");
-	article_array = await res.json();
+async function loadEnch() {
 	var list = "";
 
 	for (var i = 0; i < article_array.length; i++) {
@@ -138,7 +136,7 @@ async function loadJson() {
 
 	input_comp_el.innerHTML = list;
 }
-loadJson();
+loadEnch();
 
 
 // #####################################################################

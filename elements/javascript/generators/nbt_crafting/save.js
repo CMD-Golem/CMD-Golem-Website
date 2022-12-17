@@ -1,4 +1,6 @@
-function downloadCheck() {
+var already_download = false;
+
+async function downloadCheck() {
 	var zip = undefined;
 	zip = new JSZip();
 
@@ -124,10 +126,16 @@ function downloadCheck() {
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 
-		updateCounter(); // counter.js
+		// Count download
+		if (already_download != true) {
+			already_download = true;
+			fetch(`/.netlify/functions/update/help/306824373484913163`);
+		}
+		else {
+			console.log("Already downloaded");
+		}
 	});
 }
-
 
 // #####################################################################################
 // Stop generating file if dublicated name

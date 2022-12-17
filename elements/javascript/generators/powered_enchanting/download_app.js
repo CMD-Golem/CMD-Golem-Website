@@ -4,9 +4,7 @@ var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 var selected_edition_db = "320699649726874188";
 
-async function loadJson() {
-	var res = await fetch("/elements/javascript/generators/powered_enchanting/enchantments.json");
-	article_array = await res.json();
+async function loadEnch() {
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
@@ -58,7 +56,7 @@ async function loadJson() {
 	hideIncomp();
 	siteSearch();
 }
-loadJson();
+loadEnch();
 
 
 // ###########################################################

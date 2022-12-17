@@ -1,7 +1,8 @@
 var ench_is_vanilla = 0;
+var already_download = false;
 var progress_bar = document.getElementById("progress_bar");
 
-function generate() {
+async function generate() {
 	var article = document.getElementsByTagName("article");
 	var datapack_name = document.getElementsByClassName("datapack_name")[0].value;
 	var version = document.getElementsByClassName("version")[0].value;
@@ -194,8 +195,14 @@ function generate() {
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 
-		// Counter
-		updateCounter(); //special/counter.js
+		// Count download
+		if (already_download != true) {
+			already_download = true;
+			fetch(`/.netlify/functions/update/help/326586158931771977`);
+		}
+		else {
+			console.log("Already downloaded");
+		}
 	});
 }
 

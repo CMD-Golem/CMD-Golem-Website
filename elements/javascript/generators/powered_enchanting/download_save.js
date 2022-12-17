@@ -1,6 +1,6 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_version = "3.2"; // define version of data pack
+var pack_version = "4"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
 var version_names = [ // define version name and main pack for selected pack format
 	{version: 7, name: "1.17", counter_name: "1.17", main: 7},
@@ -110,7 +110,7 @@ async function generate() {
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
-				var give_function = `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
+				var give_function = `\ngive @s minecraft:enchanted_book{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
 				giveall_function += give_function;
 				pack_folder.file("functions/give/" + ench_array.ench[0] + ".mcfunction", give_function);
 
@@ -149,7 +149,7 @@ async function generate() {
 			var incompatible = "";
 			if (!ench.classList.contains("ignore_incomp") && ench_array.ench.length >= 2) {
 				for (var j = 1; j < ench_array.ench.length; j++) {
-					incompatible += 'execute unless score #final_combine powerench matches -1 if entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}] run scoreboard players set #final_combine powerench -1\n';
+					incompatible += 'execute unless score #final_combine powerench matches -1 if entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:' + ench_array.ench[j] + '"}]}}}] run scoreboard players set #final_combine powerench -1\n';
 
 				}
 				pack_folder.file("functions/combining/incompatible/" + ench_array.ench[0] + ".mcfunction", incompatible);
@@ -159,30 +159,30 @@ async function generate() {
 			// COMBINING: Detect Items (same tools)
 			for (var j = 0; j < ench_array.comp_items.length; j++) {
 				var pos_id = ench_array.comp_items[j];
-				comb_detect[pos_id] += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
+				comb_detect[pos_id] += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
 			}
 
-			comb_book += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
+			comb_book += `execute if entity @e[distance=..1,tag=powerench_combine_second,nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] run function ${datapack_name}:combining/enchantments/${ench_array.ench[0]}\n`;
 
 			if (is_vanilla) {
 				// COMBINING: load vanilla max level (all ench in one file)
 				maxlvl_load += "scoreboard players set #" + ench_array.ench[0] + " powerench " + ench_array.max_lvl + "\n"
 
 				// COMBINING: Enchant
-				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get levels\nexecute store result score #first_combine powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\nexecute store result score #second_combine powerench as @e[tag=powerench_combine_second,distance=..1,limit=1] run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n\n#set level\nexecute if score #first_combine powerench <= #second_combine powerench run scoreboard players operation #final_combine powerench = #second_combine powerench\nexecute if score #first_combine powerench = #second_combine powerench run scoreboard players add #final_combine powerench 1\nexecute if score #first_combine powerench > #second_combine powerench run scoreboard players set #final_combine powerench -1\nexecute if score #first_combine powerench >= #${ench_array.ench[0]} powerench run scoreboard players set #final_combine powerench -1\nfunction #powerench:combining/${ench_array.ench[0]}\n\n#set ench level and finish\nexecute if score #final_combine powerench matches 1.. store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get #final_combine powerench\nexecute if score #final_combine powerench matches 1.. run tag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
+				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get levels\nexecute store result score #first_combine powerench run data get entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\nexecute store result score #second_combine powerench as @e[tag=powerench_combine_second,distance=..1,limit=1] run data get entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n\n#set level\nexecute if score #first_combine powerench <= #second_combine powerench run scoreboard players operation #final_combine powerench = #second_combine powerench\nexecute if score #first_combine powerench = #second_combine powerench run scoreboard players add #final_combine powerench 1\nexecute if score #first_combine powerench > #second_combine powerench run scoreboard players set #final_combine powerench -1\nexecute if score #first_combine powerench >= #${ench_array.ench[0]} powerench run scoreboard players set #final_combine powerench -1\nfunction #powerench:combining/${ench_array.ench[0]}\n\n#set ench level and finish\nexecute if score #final_combine powerench matches 1.. store result entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get #final_combine powerench\nexecute if score #final_combine powerench matches 1.. run tag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
 			}
 			else {
-				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get levels\nexecute store result score #first_combine powerench run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\nexecute store result score #second_combine powerench as @e[tag=powerench_combine_second,distance=..1,limit=1] run data get entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n\n#set level\nexecute if score #first_combine powerench <= #second_combine powerench run scoreboard players operation #final_combine powerench = #second_combine powerench\nexecute if score #first_combine powerench = #second_combine powerench run scoreboard players add #final_combine powerench 1\nexecute if score #first_combine powerench > #second_combine powerench run scoreboard players set #final_combine powerench -1\nexecute if score #first_combine powerench matches ${ench_array.max_lvl}.. run scoreboard players set #final_combine powerench -1\nfunction #powerench:combining/${ench_array.ench[0]}\n\n#set ench level and finish\nexecute if score #final_combine powerench matches 1.. store result entity @s Item.tag.Enchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get #final_combine powerench\nexecute if score #final_combine powerench matches 1.. run tag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
+				pack_folder.file("functions/combining/enchantments/" + ench_array.ench[0] + ".mcfunction", `#get levels\nexecute store result score #first_combine powerench run data get entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\nexecute store result score #second_combine powerench as @e[tag=powerench_combine_second,distance=..1,limit=1] run data get entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl\n\n#set level\nexecute if score #first_combine powerench <= #second_combine powerench run scoreboard players operation #final_combine powerench = #second_combine powerench\nexecute if score #first_combine powerench = #second_combine powerench run scoreboard players add #final_combine powerench 1\nexecute if score #first_combine powerench > #second_combine powerench run scoreboard players set #final_combine powerench -1\nexecute if score #first_combine powerench matches ${ench_array.max_lvl}.. run scoreboard players set #final_combine powerench -1\nfunction #powerench:combining/${ench_array.ench[0]}\n\n#set ench level and finish\nexecute if score #final_combine powerench matches 1.. store result entity @s Item.tag.PoweredEnchantments[{id:"minecraft:${ench_array.ench[0]}"}].lvl short 1 run scoreboard players get #final_combine powerench\nexecute if score #final_combine powerench matches 1.. run tag @e[tag=powerench_combine_second,distance=..1,limit=1] add powerench_combine_remove`);
 
 				// COMBINING: Lore (all ench in one file)
 				var max_lvl = parseInt(ench_array.max_lvl);
 				if (max_lvl == 1) {
-					comb_lore += `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
+					comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
 				}
 				else {
 					for (var j = 0; j < max_lvl; j++) {
 						var lvl = convertToRoman(j + 1); // in app.js
-						comb_lore += `data modify entity @s[nbt={Item:{tag:{Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
+						comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
 						if (j == max_lvl - 1) {
 							comb_lore += "\n";
 						}

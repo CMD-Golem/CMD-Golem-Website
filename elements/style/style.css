@@ -503,27 +503,3 @@ footer a:not(a:hover):not(a:focus) svg rect {
 		filter: contrast(100%);
 	}
 }
-
-/* ####################################################################### */
-/* Cookie Box */
-/* #cookie_box {
-	position: fixed;
-	width: 400px;
-	height: 200px;
-	bottom: 20px;
-	right: 20px;
-	padding: 0 15px;
-	border-radius: 10px;
-	background-color: #222222;
-	text-align: center;
-	z-index: 1;
-}
-
-.cookie_box_flex {
-	display: flex;
-	justify-content:space-around;
-}
-
-.accept_button {
-	border: 2px solid #A10000;
-} */

@@ -1,8 +1,8 @@
 id				String			Id of the Enchantment (New system for new enchentments needed)
 title			String			Titel of the Enchantment
 description		String			Description of the Enchantment
-max_lvl			String			Max Level of the Enchantment
-chance			String			Chance of the Enchantment: 1 = 10%, 2 = 20%, 5 = 50%, 0 = 100%
+max_lvl			Int				Max Level of the Enchantment
+chance			Int				Chance of the Enchantment: 1 = 10%, 2 = 20%, 5 = 50%, 0 = 100%
 version			Array[Int]		List of pack files according to pack format
 comp_items		Array[Int]		Compatible Items 0 = all, 1 = helmet, 2 = chestplate, 3 = leggings, 4 = boots
 								5 = sword, 6 = pickaxe, 7 = axe, 8 = shovel, 9 = hoe
@@ -17,6 +17,7 @@ style			String			e_golem: Is part of CMD-Golem Edition
 								no_files: Has no files (vanilla Enchantments are excluded automatically)
 								vanilla: Is a Vanilla Enchantment (Needs to be installed even if not selected)
 								curse: Is a curse (Can't be selected)
+translation		Array[String]	[DE, KO]
 tick			String			Commands which need to be executed every tick (doesn't need to be defined)
 load			String			Commands which need to be executed every on load (doesn't need to be defined)
 

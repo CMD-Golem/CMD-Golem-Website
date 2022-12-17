@@ -15,6 +15,27 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 
+<style>
+.create_box {
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.create_box a {
+	display: block;
+	margin: 5px;
+}
+
+@media (max-width: 570px) {
+	.create_box {
+		flex-direction: column;
+	}
+}
+</style>
+
 </head>
 <body class="hide_vanilla">
 
@@ -56,7 +77,10 @@
 		</li>
 		<li>Download the Data Pack and install it like any other by saving the zip file in the datapack folder of the world. If you want to use a Recipe Unlocker use <a href="../recipe_unlocker.html">this one.</a><p>Use the Share button to share your created pack.</p></li>
 	</ol>
-	<div class="center" style="margin-bottom: 20px;"><a class="button disable_link" href="create_addon.html" target="_blank">Create your own Enchantments</a></div>
+	<div class="create_box">
+		<a class="button disable_link" href="create_addon.html" target="_blank">Create your own Enchantments</a>
+		<!-- <a class="button disable_link" href="translate.html" target="_blank">Help translating</a> -->
+	</div>
 	<hr id="scroll_point">
 	
 	<h2 style="margin-top: 80px;">Enchantment list</h2>
@@ -102,6 +126,7 @@
 
 <footer></footer>
 
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/enchantments.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/download_app.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/download_save.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
