@@ -46,7 +46,7 @@ async function generate() {
 		}
 
 		// GIVE function for custom enchantments
-		give_function += `\ngive @s minecraft:enchanted_book{Powerench:[{id:"minecraft:${ench_id}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_id}",lvl:1s}],display:{Lore:['{"text":"${ench_name}","color":"gray","italic":false}']}}`
+		give_function += `\ngive @s minecraft:enchanted_book{PoweredEnchanting:[{id:"minecraft:${ench_id}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_id}",lvl:1s}],display:{Lore:['{"text":"${ench_name}","color":"gray","italic":false}']}}`
 
 		var ench_is_adv = 0;
 		if (is_advanced) {var ench_is_adv = 1;}

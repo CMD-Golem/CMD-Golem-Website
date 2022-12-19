@@ -168,6 +168,19 @@ section {
 <section>
 	<h2>Additional tips</h2>
 	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack and you don't need to create them again.</p>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect if item has Enchantment</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>After the Item has been enchanted, it will have the Enchantment ID saved in the NBT data.<br>You can either use a predicate to detect it:<br>
+			<code>{<br>&nbsp;&nbsp;"condition": "minecraft:entity_properties",<br>&nbsp;&nbsp;"entity": "this",<br>&nbsp;&nbsp;"predicate": {<br>&nbsp;&nbsp;&nbsp;&nbsp;"equipment": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mainhand": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nbt": "{PoweredEnchantments:[{id:\"minecraft:ENCHANTMENT\"}]}"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;}<br>}</code></p>
+			<p>Or a command:<br>
+			<code>execute if entity @s[nbt={SelectedItem:{tag:{PoweredEnchantments:[{id:"minecraft:ENCHANTMENT"}]}}}]</code></p>
+			<p>The Level of the enchantment is stored like vanilla items:<br>
+			<code>{id:"minecraft:ENCHANTMENT", lvl:5s}</code></p>
+		</div>
+	</div>
+
 	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
 	<div class="spoiler_show">
 		<div class="spoiler_content">
