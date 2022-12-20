@@ -1,6 +1,6 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_version = "4"; // define version of data pack
+var pack_version = "4.1"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
 var version_names = [ // define version name and main pack for selected pack format
 	{version: 7, name: "1.17", counter_name: "1.17", main: 7},
@@ -80,7 +80,7 @@ async function generate() {
 		var tr_transform = await zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction").async("string");
 		var tr_enchanting = await zip.file("data/powerench_main/functions/enchanting/error.mcfunction").async("string");
 
-		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level);
+		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"#enchanting_cost","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level);
 		tr_table = tr_table.replace("Enchanting Tables need 20 blocks space to each other.", translation_array[tr_array].table_dis);
 		tr_charge = tr_charge.replace("The Enchanting Table is fully charged", translation_array[tr_array].full_charge);
 		tr_craft = tr_craft.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
