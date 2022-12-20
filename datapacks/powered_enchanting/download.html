@@ -62,6 +62,13 @@
 				<option value="7">1.17 - 1.17.1</option>
 			</select>
 		</li>
+		<li>Change language:
+			<select id="lang" onchange="changeEdition('none');loadEnch(this.value);">
+				<option value="0" selected>English</option>
+				<option value="1">Deutsch</option>
+				<option value="2">한국인</option>
+			</select>
+		</li>
 		<li>Select a premade edition and/or select the Enchantments you want in the list below.
 			<div class="edition_selection">
 				<option onclick="changeEdition('all')" title="Select all enchantments" >All</option>
@@ -79,7 +86,7 @@
 	</ol>
 	<div class="create_box">
 		<a class="button disable_link" href="create_addon.html" target="_blank">Create your own Enchantments</a>
-		<!-- <a class="button disable_link" href="translate.html" target="_blank">Help translating</a> -->
+		<a class="button disable_link" href="translate.html" target="_blank">Help translating</a>
 	</div>
 	<hr id="scroll_point">
 	

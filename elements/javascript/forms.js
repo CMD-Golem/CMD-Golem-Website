@@ -43,7 +43,6 @@ else if (hashfilter == "short_commands") {link.href = "https://www.planetminecra
 else if (hashfilter == "fried_eggs") {link.href = "https://www.planetminecraft.com/data-pack/fried-eggs/";}
 else if (hashfilter == "dark_theme") {link.href = "https://www.planetminecraft.com/texture-pack/dark-theme-4405476/";}
 else if (hashfilter == "murder") {link.href = "https://www.planetminecraft.com/data-pack/murder-mini-game/";}
-else if (hashfilter == "powered_enchanting") {link.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";}
 else if (hashfilter == "jump_and_run") {link.href = "https://www.planetminecraft.com/data-pack/jump-and-run-1-13-x-1-14-x/";}
 else if (hashfilter == "more_arrows") {link.href = "https://www.planetminecraft.com/data-pack/more-arrows/";}
 else if (hashfilter == "gateway") {link.href = "https://www.planetminecraft.com/data-pack/tp-base/";}
@@ -54,6 +53,10 @@ else if (hashfilter == "better_wandering_trader") {link.href = "https://www.plan
 else if (hashfilter == "key") {link.href = "https://www.planetminecraft.com/data-pack/key-lock-chests/";}
 else if (hashfilter == "redstone_dot") {link.href = "https://www.planetminecraft.com/data-pack/restone-dut/";}
 else if (hashfilter == "recipe_unlocker") {link.href = "https://www.planetminecraft.com/data-pack/recipe-unlocker/";}
+
+else if (hashfilter == "powered_enchanting") {link.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";}
+else if (hashfilter == "powered_enchanting_addon") {link.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";}
+else if (hashfilter == "powered_enchanting_translate") {link.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";}
 
 
 // Not Minecraft

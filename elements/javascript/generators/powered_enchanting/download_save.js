@@ -60,12 +60,44 @@ async function generate() {
 
 	//zip
 	var zip = new JSZip();
-	// Set folderpaths
 	var pack_folder = zip.folder("data/" + datapack_name);
 
 	// load main pack
 	ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/pack" + version_obj.main + ".zip");
 	await zip.loadAsync(ench_pack.blob());
+
+	// translation of main pack 0 = EN, 1 = DE, 2 = KO
+	var tr_code = document.getElementById("lang").value;
+
+	if (tr_code != 0) {
+		var tr_array = tr_code - 1;
+
+		var tr_combining = await zip.file("data/powerench_main/functions/combining/fail.mcfunction").async("string");
+		var tr_table = await zip.file("data/powerench_main/functions/table/enchanting/set_false.mcfunction").async("string");
+		var tr_charge = await zip.file("data/powerench_main/functions/table/enchanting/charge.mcfunction").async("string");
+		var tr_craft = await zip.file("data/powerench_main/functions/lapis_slice/craft.mcfunction").async("string");
+		var tr_mass_craft = await zip.file("data/powerench_main/functions/lapis_slice/mass_craft.mcfunction").async("string");
+		var tr_transform = await zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction").async("string");
+		var tr_enchanting = await zip.file("data/powerench_main/functions/enchanting/error.mcfunction").async("string");
+
+		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level);
+		tr_table = tr_table.replace("Enchanting Tables need 20 blocks space to each other.", translation_array[tr_array].table_dis);
+		tr_charge = tr_charge.replace("The Enchanting Table is fully charged", translation_array[tr_array].full_charge);
+		tr_craft = tr_craft.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
+		tr_mass_craft = tr_mass_craft.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
+		tr_transform = tr_transform.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
+		tr_enchanting = tr_enchanting.replace("Drop the book back on the table", translation_array[tr_array].book_back);
+		tr_enchanting = tr_enchanting.replace("You need to be Level 30", translation_array[tr_array].level30);
+		tr_enchanting = tr_enchanting.replace("You need to be Level 50", translation_array[tr_array].level50);
+
+		zip.file("data/powerench_main/functions/combining/fail.mcfunction", tr_combining);
+		zip.file("data/powerench_main/functions/table/enchanting/set_false.mcfunction", tr_table);
+		zip.file("data/powerench_main/functions/table/enchanting/charge.mcfunction", tr_charge);
+		zip.file("data/powerench_main/functions/lapis_slice/craft.mcfunction", tr_craft);
+		zip.file("data/powerench_main/functions/lapis_slice/mass_craft.mcfunction", tr_mass_craft);
+		zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction", tr_transform);
+		zip.file("data/powerench_main/functions/enchanting/error.mcfunction", tr_enchanting);
+	}
 
 	// ###########################################################
 	// load dynamic content
@@ -95,7 +127,7 @@ async function generate() {
 				}
 
 				if (search_version == -1) {
-					console.error("Cound't find files of " + ench_array.title);
+					console.error("Cound't find files of " + ench_array.title[0]);
 					continue;
 				}
 
@@ -110,7 +142,7 @@ async function generate() {
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
-				var give_function = `\ngive @s minecraft:enchanted_book{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title}","color":"gray","italic":false}']}}`
+				var give_function = `\ngive @s minecraft:enchanted_book{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title[tr_code]}","color":"gray","italic":false}']}}`
 				giveall_function += give_function;
 				pack_folder.file("functions/give/" + ench_array.ench[0] + ".mcfunction", give_function);
 
@@ -135,7 +167,7 @@ async function generate() {
 				var ench_is_vanilla = 0;
 				if (is_vanilla) {var ench_is_vanilla = 1;}
 
-				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`
+				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title[tr_code]}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`
 
 				if (is_advanced) {
 					adv_enchanting += ench_ench;
@@ -177,12 +209,12 @@ async function generate() {
 				// COMBINING: Lore (all ench in one file)
 				var max_lvl = parseInt(ench_array.max_lvl);
 				if (max_lvl == 1) {
-					comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title}","color":"gray","italic":false}'\n\n`;
+					comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}"}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title[tr_code]}","color":"gray","italic":false}'\n\n`;
 				}
 				else {
 					for (var j = 0; j < max_lvl; j++) {
 						var lvl = convertToRoman(j + 1); // in app.js
-						comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title} ${lvl}","color":"gray","italic":false}'\n`;
+						comb_lore += `data modify entity @s[nbt={Item:{tag:{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:${j + 1}s}]}}}] Item.tag.display.Lore insert 0 value '{"text":"${ench_array.title[tr_code]} ${lvl}","color":"gray","italic":false}'\n`;
 						if (j == max_lvl - 1) {
 							comb_lore += "\n";
 						}

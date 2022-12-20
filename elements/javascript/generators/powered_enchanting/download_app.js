@@ -1,49 +1,55 @@
 // load json
-var article_elements, article_array, not_found, list_options;
+var article_elements, not_found, list_options;
 var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 var selected_edition_db = "320699649726874188";
 
-async function loadEnch() {
+async function loadEnch(lang_id) {
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
 		var article = article_array[i];
 
-		// remove curses from list
-		// if (article.style.includes("curse")) { break; }
-
-		// set path
+		// set comp items path
 		var items = article.comp_items;
 		var img_path = "";
 		var comp_items = "";
 		for (var j = 0; j < items.length; j++) {
 			var item = comp_items_key[items[j]];
-			img_path = img_path + `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`;
-			comp_items = comp_items + item.replaceAll("_", " ") + " ";
+			img_path += `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`;
+			comp_items += item.replaceAll("_", " ") + " ";
 		}
 
+		// set serach for comp items
 		if (comp_items == "all ") {
 			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident ";
 			img_path = "all tools";
 		}
-		if (article.incomp_ench != "false") {
-			article.style = article.style + " show_incomp"
-		}
-		var max_lvl = convertToRoman(article.max_lvl);
 
-		html = html + `
+		// hide settings if no incomp enchantments
+		if (article.ench.length >= 2) {
+			article.style += " has_incomp";
+		}
+
+		// add incomp enchantments to ui
+		var incomp_array = [];
+		for (var j = 1; j < article.ench.length; j++) {
+			var incomp_obj = article_array.find(ench => ench.ench[0] == article.ench[j]);
+			incomp_array.push(incomp_obj.title[lang_id]);
+		}
+
+		html += `
 		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.versions[0]}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
-				<h3>${article.title}</h3>
+				<h3>${article.title[lang_id]}</h3>
 				<p>${article.description}</p>
 				<div class="comp_items">${comp_items}</div>
 			</div>
 			<table>
-				<tr><td>Max Level:</td><td>${max_lvl}</td></tr>
+				<tr><td>Max Level:</td><td>${convertToRoman(article.max_lvl)}</td></tr>
 				<tr title="Can be enchanted on the following tools"><td>Compatible items:</td><td>${img_path}</td></tr>
-				<tr class="incomp_ench" title="Can't be enchantent on the same tool"><td>Incompatible:</td><td>${article.incomp_ench}</td></tr>
+				<tr class="incomp_ench" title="Can't be enchantent on the same tool"><td>Incompatible:</td><td>${incomp_array.join(", ")}</td></tr>
 			</table>
 		</article>
 
@@ -56,8 +62,7 @@ async function loadEnch() {
 	hideIncomp();
 	siteSearch();
 }
-loadEnch();
-
+loadEnch(0);
 
 // ###########################################################
 // Select and Sidebar
@@ -208,7 +213,6 @@ function hideIncomp() {
 	incomp_packs = document.getElementsByClassName("incomp_version").length;
 }
 
-
 // ###########################################################
 // Settings
 var article_setting_el = document.createElement("div"); 
@@ -237,7 +241,7 @@ function setting(article) {
 		else { var adv_ench = ""; }
 
 
-		if (article.classList.contains("options")) {
+		if (article.classList.contains("has_incomp")) {
 			if (article.classList.contains("ignore_incomp")) { var incomp_ench_checked = "checked"; }
 			else { var incomp_ench_checked = ""; }
 			var incomp_ench = '<tr><td>Ignore incompatible enchantments</td><td><input type="checkbox" onclick="incompEnch(this)" ' + incomp_ench_checked + '></td></tr>';
@@ -363,7 +367,7 @@ function importPackId() {
 
 		if (set_article_setting == 1 || set_article_setting == 3) {set_article.classList.add("advanced_ench");}
 		else {set_article.classList.remove("advanced_ench");}
-		if (set_article_setting >= 2 && set_article.classList.contains("options")) {set_article.classList.add("ignore_incomp");}
+		if (set_article_setting >= 2 && set_article.classList.contains("has_incomp")) {set_article.classList.add("ignore_incomp");}
 		else {set_article.classList.remove("ignore_incomp");}
 
 		pack_id = pack_id.substr(3);

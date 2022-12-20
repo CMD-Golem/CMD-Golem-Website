@@ -18,15 +18,52 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="https://cmd-golem.com/"><h2>CMD-Golem</h2></a>
-	<a href="../../info/contact.html#powered_enchanting" target="_blank" class="nav_button disable_link" title="Get help"><img src="../../elements/nav/help.svg" alt="Get help"></a>
+	<a href="../../info/contact.html#powered_enchanting_translate" target="_blank" class="nav_button disable_link" title="Get help"><img src="../../elements/nav/help.svg" alt="Get help"></a>
 </nav>
 
 <main>
-	<p>Work in progress</p>
+	<h1><a href="../powered_enchanting.html" title="Go back to the Powered Enchanting Data Pack">Translate the Data Pack</a></h1>
+	<p>On this website you can help translating the Powered Enchanting Data Pack. You don't have to fill in all fields.</p>
+	<p>You can either edit a current translation if you select a language from the drop down list or add a new one by just typing in the input field.</p>
+	<p>Language: <input type="text" id="lang_input" list="lang_list" style="width: 220px; display: inline-block;" onkeyup="changeLang(this.value)"></p>
+	
+	<div id="input_box" style="display: none;">
+		<p>Messages from the Data Pack</p>
+		<input type="text" id="mis_level" placeholder="You need to be Level 10" onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="table_dis" placeholder="Enchanting Tables need 20 blocks space to each other." onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="full_charge" placeholder="The Enchanting Table is fully charged" onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="lapis_slice" placeholder="Lapis Lazuli Slice" onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="book_back" placeholder="Drop the book back on the table" onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="level30" placeholder="You need to be Level 30" onkeyup="inputEdited(this)" class="autofillable">
+		<input type="text" id="level50" placeholder="You need to be Level 50" onkeyup="inputEdited(this)" class="autofillable">
+
+		<p>Enchantments</p>
+		<div id="enchantments"></div>
+
+		<form name="Translate Powerench" netlify onsubmit="return createForm()" action="/info/form_success.html">
+			<input type="hidden" id="lang" name="Language">
+
+			<p>Credit</p>
+			<input type="text" id="credit" name="Credit" placeholder="Name under which you want to be credited">
+
+			<input type="hidden" id="json" name="Translation JSON">
+
+			<div class="center" style="margin-top: 40px;">
+				<button type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
 </main>
 
 <footer></footer>
 
+<datalist id="lang_list">
+	<option value="English"></option>
+	<option value="German"></option>
+	<option value="Korean"></option>
+</datalist>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/enchantments.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/translate_app.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
