@@ -12,30 +12,30 @@ async function initDatabase(hash) {
 		datapacks = datapacks ?? await readDatabase("all_datapacks");
 		resource_packs = resource_packs ?? await readDatabase("all_resource_packs");
 
-		printOut(datapacks.concat(resource_packs));
+		printOut(datapacks.concat(resource_packs), "date");
 	}
-	else if (hash == "datapacks") { printOut(datapacks) }
-	else if (hash == "resource_packs") { printOut(resource_packs); }
+	else if (hash == "datapacks") { printOut(datapacks, "date") }
+	else if (hash == "resource_packs") { printOut(resource_packs, "date"); }
 	
 	else if (hash == "maps") {
 		maps = maps ?? await readDatabase("all_maps");
-		printOut(maps);
+		printOut(maps, "date");
 	}
 	else if (hash == "help") {
 		help = help ?? await readDatabase("all_help");
-		printOut(help);
+		printOut(help), "date";
 	}
 	else if (hash == "powered_enchanting") {
 		powered_enchanting = powered_enchanting ?? await readDatabase("all_powered_enchanting");
-		printOut(powered_enchanting);
+		printOut(powered_enchanting, "date");
 	}
 	else if (hash == "versions") {
 		versions = versions ?? await readDatabase("all_versions", "no_date");
-		printOut(versions);
+		printOut(versions, "versions");
 	}
 	else if (hash == "countries") {
 		countries = countries ?? await readDatabase("all_countries", "countries");
-		printOut(countries);
+		printOut(countries, "countries");
 	}
 }
 
@@ -73,7 +73,7 @@ async function readDatabase(hash, special) {
 	}
 	else if (special == "countries") {
 		return db_data.map(counter => `
-			<tr class="show_more_button" data-name="${counter.data.country}">
+			<tr class="show_more_button" data-name="${counter.data.counter}">
 				<td><p>${counter.data.country}</p></td>
 				<td><p>${counter.data.counter.toLocaleString('de-CH')}</p></td>
 				<td></td>
@@ -108,14 +108,14 @@ async function readDatabase(hash, special) {
 
 // #################################################################################################
 // fill html
-function printOut(html) {
+function printOut(html, sorting) {
 	table.innerHTML = html;
 
 	var table_header = document.createElement("tr");
 	table_header.innerHTML = `<th><p>Name</p></th><th class="download_th"><p>Downloads</p><img src="../elements/nav/download.svg"></th><th><p>Date</p></th>`;
 	table.insertBefore(table_header, table.firstChild);
 
-	sortTable(table);
+	sortTable(table, sorting);
 }
 
 
@@ -172,7 +172,7 @@ function search() {
 }
 
 // sort Table
-function sortTable(table) {
+function sortTable(table, sorting) {
 	var switching = true;
 
 	while (switching == true) {
@@ -181,33 +181,37 @@ function sortTable(table) {
 
 		for (var i = 0; i < (rows.length - 1); i++) {
 			var should_switch = false;
-			var should_switch_dateless = false;
-			if (rows[i].dataset.date < rows[i + 1].dataset.date) {
+
+			if (sorting == "date" && rows[i].dataset.date < rows[i + 1].dataset.date) {
 				should_switch = true;
 				break;
 			}
-			else if (rows[i].dataset.name < rows[i + 1].dataset.name) {
-				should_switch_dateless = true;
+			else if (sorting == "version" && rows[i].dataset.name < rows[i + 1].dataset.name) {
+				should_switch = true;
+				break;
+			}
+			else if (sorting == "countries" && parseInt(rows[i].dataset.name) < parseInt(rows[i + 1].dataset.name)) {
+				should_switch = true;
 				break;
 			}
 		}
 
 		if (should_switch == true) {
-			var yesterday = rows[i + 1].nextElementSibling;
-			var yyesterday = rows[i + 1].nextElementSibling.nextElementSibling;
-			var last_month = rows[i + 1].nextElementSibling.nextElementSibling.nextElementSibling;
-
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			rows[i].parentNode.insertBefore(yesterday, rows[i + 1]);
-			rows[i].parentNode.insertBefore(yyesterday, rows[i + 1]);
-			rows[i].parentNode.insertBefore(last_month, rows[i + 1]);
-
 			switching = true;
-		}
 
-		if (should_switch_dateless == true) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
+			if (sorting != "date") {
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			}
+			else {
+				var yesterday = rows[i + 1].nextElementSibling;
+				var yyesterday = rows[i + 1].nextElementSibling.nextElementSibling;
+				var last_month = rows[i + 1].nextElementSibling.nextElementSibling.nextElementSibling;
+
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+				rows[i].parentNode.insertBefore(yesterday, rows[i + 1]);
+				rows[i].parentNode.insertBefore(yyesterday, rows[i + 1]);
+				rows[i].parentNode.insertBefore(last_month, rows[i + 1]);
+			}
 		}
 	}
 }
