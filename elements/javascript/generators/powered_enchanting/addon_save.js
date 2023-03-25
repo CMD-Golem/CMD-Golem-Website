@@ -21,6 +21,7 @@ async function generate() {
 	var comb_detect = [];
 	var incomp_id = [];
 	var incomp_detect = [];
+	var namespace = "minecraft";
 
 	//zip
 	var zip = new JSZip();
@@ -46,12 +47,12 @@ async function generate() {
 		}
 
 		// GIVE function for custom enchantments
-		give_function += `\ngive @s minecraft:enchanted_book{PoweredEnchanting:[{id:"minecraft:${ench_id}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_id}",lvl:1s}],display:{Lore:['{"text":"${ench_name}","color":"gray","italic":false}']}}`
+		give_function += `\ngive @s minecraft:enchanted_book{PoweredEnchanting:[{id:"${namespace}:${ench_id}",lvl:1s}],Enchantments:[{id:"${namespace}:${ench_id}",lvl:1s}],display:{Lore:['{"text":"${ench_name}","color":"gray","italic":false}']}}`
 
 		var ench_is_adv = 0;
 		if (is_advanced) {var ench_is_adv = 1;}
 
-		var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_maxlvl}b,name:"${ench_name}",powerench:[{id:"minecraft:${ench_id}",lvl:1s}]}}}\n`
+		var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_maxlvl}b,name:"${ench_name}",powerench:[{id:"${namespace}:${ench_id}",lvl:1s}]}}}\n`
 
 		if (is_advanced) {
 			adv_enchanting += ench_ench;

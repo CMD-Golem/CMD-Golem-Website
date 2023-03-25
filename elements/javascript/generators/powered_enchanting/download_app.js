@@ -96,7 +96,7 @@ function changeEdition(edition) {
 		return;
 	}
 
-	var select_array = document.querySelectorAll(selector);
+	var select_array = document.querySelectorAll(selector + ":not(.curse)");
 
 	for (var i = 0; i < select_array.length; i++) {
 		select(select_array[i], preselection);
