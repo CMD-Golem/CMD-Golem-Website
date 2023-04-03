@@ -1,21 +1,62 @@
 // #####################################################################
-// Newest Version
-var latest_version_el = document.getElementsByClassName("insertLatestVersion");
-for (var i = 0; i < latest_version_el.length; i++) {
-	latest_version_el[i].innerHTML = "1.19.3";
-}
+const pack_array = [
+	{
+		name: "Better Wandering Trader", search_keys: "Villager Survival", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
+		pack_id: "better_wandering_trader", last_version_id: 135, dp_version_id: [133, 130, 122, 121], rp_version_id: [], custom_crafting: false, rp_needed: false, pack_type: "datapacks", db_id: 306823477982134795
+	}
+]
 
 
-var local_date = new Date();
+// pack versions
+// packs = [
+// 	{id: [136, 133, 132, 130, 128]}
+// ]
+// packs[0].versions.find(e => e <= selected_id)
+
+// pack versions
+const version_id_array = [
+	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137},
+	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136},
+	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135},
+	{main: "1.19", sub: 1, db: "325220181196407372", dp: 10, rp: 9, id: 134},
+	{main: "1.19", sub: 0, db: "325220181196407372", dp: 10, rp: 9, id: 133},
+	{main: "1.18", sub: 2, db: "316609019004322377", dp: 9, rp: 8, id: 132},
+	{main: "1.18", sub: 1, db: "316609019004322377", dp: 8, rp: 8, id: 131},
+	{main: "1.18", sub: 0, db: "316609019004322377", dp: 8, rp: 8, id: 130},
+	{main: "1.17", sub: 1, db: "316609012338524745", dp: 7, rp: 7, id: 129},
+	{main: "1.17", sub: 0, db: "316609012338524745", dp: 7, rp: 7, id: 128},
+	{main: "1.16", sub: 5, db: "316609003869176393", dp: 6, rp: 6, id: 127},
+	{main: "1.16", sub: 4, db: "316609003869176393", dp: 6, rp: 6, id: 126},
+	{main: "1.16", sub: 3, db: "316609003869176393", dp: 6, rp: 6, id: 125},
+	{main: "1.16", sub: 2, db: "316609003869176393", dp: 6, rp: 6, id: 124},
+	{main: "1.16", sub: 1, db: "316609003869176393", dp: 5, rp: 5, id: 123},
+	{main: "1.16", sub: 0, db: "316609003869176393", dp: 5, rp: 5, id: 122},
+	{main: "1.15", sub: 2, db: "316608994697282121", dp: 5, rp: 5, id: 121},
+	{main: "1.15", sub: 1, db: "316608994697282121", dp: 5, rp: 5, id: 120},
+	{main: "1.15", sub: 0, db: "316608994697282121", dp: 5, rp: 5, id: 119},
+	{main: "1.14", sub: 4, db: "316608985993052745", dp: 4, rp: 4, id: 118},
+	{main: "1.14", sub: 3, db: "316608985993052745", dp: 4, rp: 4, id: 117},
+	{main: "1.14", sub: 2, db: "316608985993052745", dp: 4, rp: 4, id: 116},
+	{main: "1.14", sub: 1, db: "316608985993052745", dp: 4, rp: 4, id: 115},
+	{main: "1.14", sub: 0, db: "316608985993052745", dp: 4, rp: 4, id: 114},
+	{main: "1.13", sub: 2, db: "316608972792529481", dp: 4, rp: 4, id: 113},
+	{main: "1.13", sub: 1, db: "316608972792529481", dp: 4, rp: 4, id: 112},
+	{main: "1.13", sub: 0, db: "316608972792529481", dp: 4, rp: 4, id: 111},
+	{main: "1.12", db: "316612235991450185", dp: 3, rp: 3, id: 106},
+	{main: "1.11", db: "316612235991450185", dp: 3, rp: 3, id: 105},
+	{main: "1.10", db: "316612235991450185", dp: 2, rp: 2, id: 104},
+	{main: "1.9", db: "316612235991450185", dp: 2, rp: 2, id: 103},
+	{main: "1.8", db: "316612235991450185", dp: 1, rp: 1, id: 102},
+	{main: "1.7", db: "316612235991450185", dp: 1, rp: 1, id: 101},
+	{main: "1.6", db: "316612235991450185", dp: 1, rp: 1, id: 100}
+]
 
 
 
 // #####################################################################
 // Footer
-var date = new Date().getFullYear()
-
-var footer = `
-<div class="footer_left footer_block">©2019 - ${date} by CMD-Golem</div>
+document.getElementsByTagName("footer")[0].innerHTML = `
+<div class="footer_left footer_block">©2019 - ${new Date().getFullYear()} by CMD-Golem</div>
 <div class="footer_center footer_block">
 	<a href="/info/disclaimer.html">Disclaimer</a>
 	<a href="/info/therms_of_use.html">Therms of use</a>
@@ -59,8 +100,6 @@ var footer = `
 	</a>
 </div>
 `;
-
-document.getElementsByTagName("footer")[0].innerHTML = footer;
 
 
 // #####################################################################
@@ -115,10 +154,10 @@ function closeSpoiler(el) {
 
 // #####################################################################
 // User counter
-var already_counted = false;
-var user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
-
 async function userCounter() {
+	var user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
+
+	var local_date = new Date();
 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
 	var was_counted = window.localStorage.getItem("user_counter");
 
@@ -128,9 +167,6 @@ async function userCounter() {
 		var country_response = await fetch("https://cmd-golem.com/get-country");
 		var geo_data = await country_response.json();
 		fetch(`/.netlify/functions/user_counter/` + geo_data.geo.geo.country.name);
-	}
-	else {
-		already_counted = true;
 	}
 }
 

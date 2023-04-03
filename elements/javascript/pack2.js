@@ -1,7 +1,81 @@
 // show download window
-if (window.location.hash.substr(1) == "download") {
-	window.location.hash = "";
+var select_version_text = document.getElementById("select_version_text");
+var pack_id = document.getElementsByName("pack_id")[0].content;
+var selected_pack_obj = pack_array.find(e => e.pack_id == pack_id);
+
+var selection_box = document.getElementById("selection_box");
+var version_main = document.getElementById("version_main");
+var version_sub = document.getElementById("version_sub");
+var select_version = document.getElementById("select_version");
+
+var version_id_array_filtered = [];
+var html_main_version = "";
+var selected_version;
+
+
+function openDownload() {
+	preventScroll(true) //footer.js
+
+	var first_version = selected_pack_obj.dp_version_id[selected_pack_obj.dp_version_id.length - 1];
+	var last_version = selected_pack_obj.last_version_id;
+	var array_main = [];
+	version_id_array_filtered = [];
+	html_main_version = "";
+
+	for (var i = 0; i < version_id_array.length; i++) {
+		var version_id = version_id_array[i];
+
+		if (version_id.id <= last_version && version_id.id >= first_version) {
+			version_id_array_filtered.push(version_id);
+
+			if (!array_main.includes(version_id.main)) {
+				html_main_version += `<div onclick="mainVersion(this)">${version_id.main}</div>`;
+				array_main.push(version_id.main);
+			}
+		}
+	}
+	select_version.innerHTML = version_id_array_filtered[0].main + "." + version_id_array_filtered[0].sub;
+
+	version_main.innerHTML = html_main_version;
+
+	version_main.firstElementChild.id = "version_main_selected";
+	mainVersion(version_main.firstElementChild);
+	subVersion(last_version, version_sub.firstElementChild);
 }
+
+openDownload();
+
+function mainVersion(selected_version_el) {
+	document.getElementById("version_main_selected").id = "";
+	selected_version_el.id = "version_main_selected";
+	var html = "";
+
+	for (var i = 0; i < version_id_array_filtered.length; i++) {
+		var version_id = version_id_array_filtered[i];
+
+		if (version_id.main == selected_version_el.innerHTML) {
+			html += `<div onclick="subVersion(${version_id.id}, this)">.${version_id.sub}</div>`;
+		}
+	}
+	version_sub.innerHTML = html;
+}
+
+function subVersion(selected_version_id, selected_version_el) {
+	selected_version = version_id_array.find(e => e.id == selected_version_id);
+	if (selected_version.sub != undefined) {
+		select_version.innerHTML = selected_version.main + "." + selected_version.sub;
+	}
+	else {
+		select_version.innerHTML = selected_version.main;
+	}
+
+	try { document.getElementById("version_sub_selected").id = ""; } catch (e) {}
+	selected_version_el.id = "version_sub_selected";
+
+	selection_box.classList.add("hidden");
+}
+
+
 
 // download
 var already_download = false;
@@ -54,6 +128,20 @@ async function downloadPack(pack_type, pack_id, version) {
 	else {
 		console.log("Already downloaded");
 	}
+}
+
+if (window.location.hash.substr(1) == "download") {
+	window.location.hash = "";
+	openDownload();
+}
+
+
+var download_box = document.getElementById("download_box");
+
+function closeModal() {
+	download_box.remove();
+
+	preventScroll(false); //footer.js
 }
 
 // ###########################################################
