@@ -15,6 +15,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 
 <style type="text/css">
+.selection_menu {
+	display: flex;
+	justify-content: space-between;
+}
+
+#namespace_box {
+	display: none;
+}
+
 article code.fullwidth {
 	user-select: auto;
 	padding: 7px;
@@ -28,7 +37,6 @@ article code.fullwidth {
 	margin-right: 5px;
 	margin-top: 5px;
 	border-radius: 2px;
-	cursor: pointer;
 }
 
 .tagged_item:hover {
@@ -59,6 +67,9 @@ section {
 	.nav_text {
 		display: none;
 	}
+	.selection_menu {
+		flex-direction: column;
+	}
 }
 </style>
 
@@ -66,7 +77,7 @@ section {
 <body>
 
 <nav>
-	<a class="nav_button disable_link nav_home" href="https://cmd-golem.com/"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
 	<div onclick="generate()" class="nav_button" title="Generate the Data Pack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<div onclick="addEnch(this)" class="nav_button" title="Add new Enchantment (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Enchantment"><p class="nav_text">Add new Enchantment</p></div>
 	<a href="../../info/contact.html#powered_enchanting_addon" target="_blank" class="nav_button disable_link" title="Get help"><img src="../../elements/nav/help.svg" alt="Get help"></a>
@@ -74,7 +85,7 @@ section {
 
 
 <main class="main_sidebar">
-<div>
+<div id="settings_box">
 	<h1><a href="../powered_enchanting.html" title="Go back to the Powered Enchanting Data Pack">Create custom Enchantments</a></h1>
 
 	<div class="hide_compact">
@@ -100,13 +111,31 @@ section {
 	<p>Data Pack ID Name</p>
 	<input type="text" placeholder='datapack_name' class="datapack_name needed">
 
-	<p>Select your Minecraft version</p>
-	<select class="version" id="version">
-		<option value="10" selected>1.19 and newer</option>
-		<option value="9">1.18.2</option>
-		<option value="8">1.18 - 1.18.1</option>
-		<option value="7">1.17 - 1.17.1</option>
-	</select>
+	<div class="selection_menu">
+		<div>
+			<p>Select your Minecraft version</p>
+			<select class="version" id="version">
+				<option value="10" selected>1.19 and newer</option>
+				<option value="9">1.18.2</option>
+				<option value="8">1.18 - 1.18.1</option>
+				<option value="7">1.17 - 1.17.1</option>
+			</select>
+		</div>
+		<div>
+			<p>Addon Type</p>
+			<select onchange="addonType(this.value)">
+				<option value="0" selected>Create custom Enchantments</option>
+				<option value="1">Use a Mod with this Data Pack</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="namespace_box">
+		<p>Mod namespace</p>
+		<input type="text" placeholder='minecraft' class="namespace_name">
+	</div>
+	
+	
 
 	<br><br><hr><br>
 </div>

@@ -2,7 +2,7 @@
 const pack_array = [
 	{
 		name: "Better Wandering Trader", search_keys: "Villager Survival", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
-		pack_id: "better_wandering_trader", last_version_id: 135, dp_version_id: [133, 130, 122, 121], rp_version_id: [], custom_crafting: false, rp_needed: false, pack_type: "datapacks", db_id: 306823477982134795
+		pack_id: "better_wandering_trader", code_version:"4.2", last_version_id: 135, pack_version_id: [133, 130, 122, 121], rp_version_id: [], pack_type: "datapacks", db_id: 306823477982134795
 	}
 ]
 
@@ -15,40 +15,40 @@ const pack_array = [
 
 // pack versions
 const version_id_array = [
-	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137},
-	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136},
-	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135},
-	{main: "1.19", sub: 1, db: "325220181196407372", dp: 10, rp: 9, id: 134},
-	{main: "1.19", sub: 0, db: "325220181196407372", dp: 10, rp: 9, id: 133},
-	{main: "1.18", sub: 2, db: "316609019004322377", dp: 9, rp: 8, id: 132},
-	{main: "1.18", sub: 1, db: "316609019004322377", dp: 8, rp: 8, id: 131},
-	{main: "1.18", sub: 0, db: "316609019004322377", dp: 8, rp: 8, id: 130},
-	{main: "1.17", sub: 1, db: "316609012338524745", dp: 7, rp: 7, id: 129},
-	{main: "1.17", sub: 0, db: "316609012338524745", dp: 7, rp: 7, id: 128},
-	{main: "1.16", sub: 5, db: "316609003869176393", dp: 6, rp: 6, id: 127},
-	{main: "1.16", sub: 4, db: "316609003869176393", dp: 6, rp: 6, id: 126},
-	{main: "1.16", sub: 3, db: "316609003869176393", dp: 6, rp: 6, id: 125},
-	{main: "1.16", sub: 2, db: "316609003869176393", dp: 6, rp: 6, id: 124},
-	{main: "1.16", sub: 1, db: "316609003869176393", dp: 5, rp: 5, id: 123},
-	{main: "1.16", sub: 0, db: "316609003869176393", dp: 5, rp: 5, id: 122},
-	{main: "1.15", sub: 2, db: "316608994697282121", dp: 5, rp: 5, id: 121},
-	{main: "1.15", sub: 1, db: "316608994697282121", dp: 5, rp: 5, id: 120},
-	{main: "1.15", sub: 0, db: "316608994697282121", dp: 5, rp: 5, id: 119},
-	{main: "1.14", sub: 4, db: "316608985993052745", dp: 4, rp: 4, id: 118},
-	{main: "1.14", sub: 3, db: "316608985993052745", dp: 4, rp: 4, id: 117},
-	{main: "1.14", sub: 2, db: "316608985993052745", dp: 4, rp: 4, id: 116},
-	{main: "1.14", sub: 1, db: "316608985993052745", dp: 4, rp: 4, id: 115},
-	{main: "1.14", sub: 0, db: "316608985993052745", dp: 4, rp: 4, id: 114},
-	{main: "1.13", sub: 2, db: "316608972792529481", dp: 4, rp: 4, id: 113},
-	{main: "1.13", sub: 1, db: "316608972792529481", dp: 4, rp: 4, id: 112},
-	{main: "1.13", sub: 0, db: "316608972792529481", dp: 4, rp: 4, id: 111},
-	{main: "1.12", db: "316612235991450185", dp: 3, rp: 3, id: 106},
-	{main: "1.11", db: "316612235991450185", dp: 3, rp: 3, id: 105},
-	{main: "1.10", db: "316612235991450185", dp: 2, rp: 2, id: 104},
-	{main: "1.9", db: "316612235991450185", dp: 2, rp: 2, id: 103},
-	{main: "1.8", db: "316612235991450185", dp: 1, rp: 1, id: 102},
-	{main: "1.7", db: "316612235991450185", dp: 1, rp: 1, id: 101},
-	{main: "1.6", db: "316612235991450185", dp: 1, rp: 1, id: 100}
+	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
+	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
+	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
+	{main: "1.19", sub: 1, db: "325220181196407372", dp: 10, rp: 9, id: 134, main_id: "id1_19", name: "1.19.1"},
+	{main: "1.19", sub: 0, db: "325220181196407372", dp: 10, rp: 9, id: 133, main_id: "id1_19", name: "1.19"},
+	{main: "1.18", sub: 2, db: "316609019004322377", dp: 9, rp: 8, id: 132, main_id: "id1_18", name: "1.18.2"},
+	{main: "1.18", sub: 1, db: "316609019004322377", dp: 8, rp: 8, id: 131, main_id: "id1_18", name: "1.18.1"},
+	{main: "1.18", sub: 0, db: "316609019004322377", dp: 8, rp: 8, id: 130, main_id: "id1_18", name: "1.18"},
+	{main: "1.17", sub: 1, db: "316609012338524745", dp: 7, rp: 7, id: 129, main_id: "id1_17", name: "1.17.1"},
+	{main: "1.17", sub: 0, db: "316609012338524745", dp: 7, rp: 7, id: 128, main_id: "id1_17", name: "1.17"},
+	{main: "1.16", sub: 5, db: "316609003869176393", dp: 6, rp: 6, id: 127, main_id: "id1_16", name: "1.16.5"},
+	{main: "1.16", sub: 4, db: "316609003869176393", dp: 6, rp: 6, id: 126, main_id: "id1_16", name: "1.16.4"},
+	{main: "1.16", sub: 3, db: "316609003869176393", dp: 6, rp: 6, id: 125, main_id: "id1_16", name: "1.16.3"},
+	{main: "1.16", sub: 2, db: "316609003869176393", dp: 6, rp: 6, id: 124, main_id: "id1_16", name: "1.16.2"},
+	{main: "1.16", sub: 1, db: "316609003869176393", dp: 5, rp: 5, id: 123, main_id: "id1_16", name: "1.16.1"},
+	{main: "1.16", sub: 0, db: "316609003869176393", dp: 5, rp: 5, id: 122, main_id: "id1_16", name: "1.16"},
+	{main: "1.15", sub: 2, db: "316608994697282121", dp: 5, rp: 5, id: 121, main_id: "id1_15", name: "1.15.2"},
+	{main: "1.15", sub: 1, db: "316608994697282121", dp: 5, rp: 5, id: 120, main_id: "id1_15", name: "1.15.1"},
+	{main: "1.15", sub: 0, db: "316608994697282121", dp: 5, rp: 5, id: 119, main_id: "id1_15", name: "1.15"},
+	{main: "1.14", sub: 4, db: "316608985993052745", dp: 4, rp: 4, id: 118, main_id: "id1_14", name: "1.14.4"},
+	{main: "1.14", sub: 3, db: "316608985993052745", dp: 4, rp: 4, id: 117, main_id: "id1_14", name: "1.14.3"},
+	{main: "1.14", sub: 2, db: "316608985993052745", dp: 4, rp: 4, id: 116, main_id: "id1_14", name: "1.14.2"},
+	{main: "1.14", sub: 1, db: "316608985993052745", dp: 4, rp: 4, id: 115, main_id: "id1_14", name: "1.14.1"},
+	{main: "1.14", sub: 0, db: "316608985993052745", dp: 4, rp: 4, id: 114, main_id: "id1_14", name: "1.14"},
+	{main: "1.13", sub: 2, db: "316608972792529481", dp: 4, rp: 4, id: 113, main_id: "id1_13", name: "1.13.2"},
+	{main: "1.13", sub: 1, db: "316608972792529481", dp: 4, rp: 4, id: 112, main_id: "id1_13", name: "1.13.1"},
+	{main: "1.13", sub: 0, db: "316608972792529481", dp: 4, rp: 4, id: 111, main_id: "id1_13", name: "1.13"},
+	{main: "1.12", db: "316612235991450185", dp: 3, rp: 3, id: 106, main_id: "id1_12", name: "1.12"},
+	{main: "1.11", db: "316612235991450185", dp: 3, rp: 3, id: 105, main_id: "id1_11", name: "1.11"},
+	{main: "1.10", db: "316612235991450185", dp: 2, rp: 2, id: 104, main_id: "id1_10", name: "1.10"},
+	{main: "1.9", db: "316612235991450185", dp: 2, rp: 2, id: 103, main_id: "id1_9", name: "1.9"},
+	{main: "1.8", db: "316612235991450185", dp: 1, rp: 1, id: 102, main_id: "id1_8", name: "1.8"},
+	{main: "1.7", db: "316612235991450185", dp: 1, rp: 1, id: 101, main_id: "id1_7", name: "1.7"},
+	{main: "1.6", db: "316612235991450185", dp: 1, rp: 1, id: 100, main_id: "id1_6", name: "1.6"}
 ]
 
 

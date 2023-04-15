@@ -29,7 +29,7 @@
 <body>
 
 <nav>
-	<a class="nav_button disable_link nav_home" href="https://cmd-golem.com/"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
 	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<a class="nav_button disable_link nav_install" href="../info/installation.html" title="Installation"><p>Installation</p></a>
 	<a class="nav_button disable_link" href="../info/contact.html#better_wandering_trader" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
@@ -165,10 +165,10 @@
 
 </main>
 
-<section id="download_box">
+<section id="download_box" style="display: none;">
 	<div class="inner_box">
 		<h2>Download</h2>
-		Change Minecraft Version: 
+		Select Minecraft Version: 
 		<div class="select_version_box">
 			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
 			<div id="selection_box">
@@ -177,9 +177,19 @@
 			</div>
 		</div>
 
-		<div id="download">
-			<button onclick="download(false)">Download Data Pack</button>
-			<button onclick="download(true)">Download Ressource Pack</button>
+		<div class="download">
+			<button onclick="downloadPack(false)">Data Pack</button>
+			<button onclick="downloadPack(true)">Ressource Pack</button>
+		</div>
+		<span>The Ressource Pack has to be used</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+			<a href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
 		</div>
 	</div>
 </section>

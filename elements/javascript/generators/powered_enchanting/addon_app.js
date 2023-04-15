@@ -1,54 +1,121 @@
+// Batch generate more tools (Not used on website) 
+function addModedItems(moded_items) {
+	var string = "";
+	var unused_items = [];
+
+	for (var i = 0; i < moded_items.length; i++) {
+		var moded_item = moded_items[i];
+
+		if (moded_item.includes("helmet")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/helmet`;}
+		else if (moded_item.includes("chestplate")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/chestplate`}
+		else if (moded_item.includes("leggings")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/leggings`}
+		else if (moded_item.includes("boots")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/boots`}
+		else if (moded_item.includes("sword")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/sword`}
+		else if (moded_item.includes("pickaxe")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/pickaxe`}
+		else if (moded_item.includes("axe")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/axe`}
+		else if (moded_item.includes("shovel")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/shovel`}
+		else if (moded_item.includes("hoe")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/hoe`}
+		else if (moded_item.includes("shield")) {string += `execute if entity @s[nbt={Item:{id:"mythicmetals:${moded_item}"}}] run function #powerench:items/shield`}
+		// not initalised: flint_and_steel, shears, elytra, carrot_on_a_stick, warped_fungus_on_a_stick, bow, crossbow, fishing_rod, trident
+		else if (
+			// excluded
+			!moded_item.includes("block") &&
+			!moded_item.includes("ingot") && 
+			!moded_item.includes("dust") &&
+			!moded_item.includes("anvil") &&
+			!moded_item.includes("nugget") &&
+			!moded_item.includes("ore") &&
+			!moded_item.includes("raw")
+			) {
+				unused_items.push(moded_item)
+		}
+	}
+
+	console.log(string)
+	console.log(unused_items)
+}
+
+
 // Add new Enchantment
+var settings_box = document.getElementById("settings_box");
 var counter = 0;
+var is_addon_for_mod = false;
 
 function addEnch(el) {
 	// Add Article with Enchantment
-	var el_last_article = document.getElementsByTagName("article");
-	var el_last_article = el_last_article[el_last_article.length - 1];
-
 	if (el != undefined) {el.blur()};
 
 	counter = counter + 1;
 
-	var template_ench = `
-	<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
-		<img src="../../elements/nav/close.svg" alt="Close">
-	</div>
-	
-	<p>Name of the Enchantment</p>
-	<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
+	if (!is_addon_for_mod) {
+		var template_ench = `
+		<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
+			<img src="../../elements/nav/close.svg" alt="Close">
+		</div>
+		
+		<p>Name of the Enchantment</p>
+		<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
 
-	<p>Id of the Enchantment</p>
-	<input type="text" placeholder='vein_miner' class="ench_id">
-	
-	<p>Max Level of the Enchantment: <input type="text" placeholder='3' class="ench_maxlvl" style="display: inline-block; width: 43px; padding: 8px;"><br>
+		<p>Id of the Enchantment</p>
+		<input type="text" placeholder='vein_miner' class="ench_id">
+		
+		<p>Max Level of the Enchantment: <input type="text" placeholder='3' class="ench_maxlvl" style="display: inline-block; width: 43px; padding: 8px;"><br>
 
-	<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
-	
-	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
-	<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
-		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this, true)">
-	</code>
-	
-	<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
-	<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
-		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this, true)">
-	</code>
-	
-	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
-	<select class="ench_chance">
-		<option value="1">10% (e.g. Infinity)</option>
-		<option value="2" selected>20% (e.g. Looting)</option>
-		<option value="5">50% (e.g. Knockback)</option>
-		<option value="0">100% (e.g. Sharpness)</option>
-	</select>
+		<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
+		
+		<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
+		<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
+			<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this, true)">
+		</code>
+		
+		<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
+		<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
+			<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this, true)">
+		</code>
+		
+		<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
+		<select class="ench_chance">
+			<option value="1">10% (e.g. Infinity)</option>
+			<option value="2" selected>20% (e.g. Looting)</option>
+			<option value="5">50% (e.g. Knockback)</option>
+			<option value="0">100% (e.g. Sharpness)</option>
+		</select>
+		`;
+	}
+	else {
+		var template_ench = `
+		<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
+			<img src="../../elements/nav/close.svg" alt="Close">
+		</div>
+
+		<p>Id of the Enchantment</p>
+		<input type="text" placeholder='vein_miner' class="ench_id">
+		
+		<p>Max Level of the Enchantment: <input type="text" placeholder='3' class="ench_maxlvl" style="display: inline-block; width: 43px; padding: 8px;"><br>
+
+		<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
+		
+		<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
+		<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
+			<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this, true)">
+		</code>
+		
+		<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
+		<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
+			<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this, true)">
+		</code>
+		
+		<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
+		<select class="ench_chance">
+			<option value="1">10% (e.g. Infinity)</option>
+			<option value="2" selected>20% (e.g. Looting)</option>
+			<option value="5">50% (e.g. Knockback)</option>
+			<option value="0">100% (e.g. Sharpness)</option>
+		</select>
 	`;
+	}
 
-	// Add Article
-	var new_ench = document.createElement("article");
-	new_ench.innerHTML = template_ench;
-	new_ench.id = counter;
-	el_last_article.parentNode.insertBefore(new_ench, el_last_article.nextSibling);
+	var el_last_article = document.getElementsByTagName("article");
 
 	// Add Sidebar Link
 	var el_last_link = document.getElementsByClassName("sidebar_link");
@@ -59,7 +126,25 @@ function addEnch(el) {
 	new_link.classList.add("sidebar_link");
 	new_link.id = "link_" + counter;
 	new_link.setAttribute("onclick", "scrollToParent('" + counter + "')");
-	el_last_link.parentNode.insertBefore(new_link, el_last_link.nextSibling);
+
+
+	if (el_last_article.length == 0) {
+		// no other articles present
+		sidebar.insertBefore(new_link, null);
+		el_last_article = settings_box;
+	}
+	else {
+		sidebar.insertBefore(new_link, el_last_link.nextSibling);
+		el_last_article = el_last_article[el_last_article.length - 1];
+	}
+
+	// Add Article
+	var new_ench = document.createElement("article");
+	new_ench.innerHTML = template_ench;
+	new_ench.id = counter;
+	el_last_article.parentNode.insertBefore(new_ench, el_last_article.nextSibling);
+
+	
 
 
 	// Finishing up
@@ -188,4 +273,41 @@ window.onhashchange = function() { changeInfo() }
 function openInfo() {
 	if (show_info == false) { window.location.hash = "info"; }
 	else { window.location.hash = ""; }
+}
+
+
+// #################################################################################################
+// change Type of Addon
+var namespace_box = document.getElementById("namespace_box");
+
+function addonType(selected) {
+	var el_article = document.querySelectorAll('article');
+	var confirm_msg = false;
+
+	// Warn before deletion
+	if (el_article.length > 1) {
+		confirm_msg = confirm("You will delete all already entered Enchantments!");
+	}
+	else {
+		confirm_msg = true;
+	}
+	
+	if (confirm_msg == true) {
+		counter = 0;
+		// delete all articles
+		sidebar.innerHTML = "";
+		el_article.forEach(article => { article.remove(); });
+
+		// create new articles
+		if (selected == "1") {
+			is_addon_for_mod = true;
+			namespace_box.style.display = "block";
+			addEnch(undefined);
+		}
+		else {
+			is_addon_for_mod = false;
+			namespace_box.style.display = "none";
+			addEnch(undefined);
+		}
+	}
 }

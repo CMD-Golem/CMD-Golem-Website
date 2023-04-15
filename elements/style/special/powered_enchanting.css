@@ -24,7 +24,7 @@ h2 {
 	background-color: #333333;
 	border: 2px solid #292929;
 	border-radius: 5px;
-	cursor: pointer;
+	user-select: none;
 }
 
 .edition_selection option:hover, .edition_selected {
@@ -45,7 +45,6 @@ article {
 	border-radius: 10px;
 	padding: 20px;
 	text-align: center;
-	cursor: pointer;
 	position: relative;
 }
 
@@ -289,7 +288,6 @@ article td:first-child {
 	outline: none;
 	background-color: #A10000;
 	color: #CCCCCC;
-	cursor: pointer;
 	padding: 12px 15px;
 	border-radius: 10px;
 	transform: rotate(-90deg);
@@ -334,7 +332,6 @@ aside h2 {
 }
 
 .sidebar_link {
-	cursor: pointer;
 	margin: 10px 0;
 }
   

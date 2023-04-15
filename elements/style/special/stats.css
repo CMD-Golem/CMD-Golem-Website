@@ -31,10 +31,6 @@ td:nth-child(1) p, th:nth-child(1) p, td:nth-child(2) p, th:nth-child(2) p {
 
 
 /* Spoiler */
-.show_more_button {
-	cursor: pointer;
-}
-
 tr.active {
 	background-color: #222222;
 }
