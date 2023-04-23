@@ -25,11 +25,16 @@ function openDownload() {
 	// get first and last version compatible with datapack
 	var first_version = selected_pack_obj.pack_version_id[selected_pack_obj.pack_version_id.length - 1]; // oldest comp version
 	var last_version = selected_pack_obj.last_version_id; // newest comp version
+
+	if (last_version == false) {
+		last_version = version_id_array[0].id;
+	}
+
+	// create a html list with all compatible main versions
 	var array_main = [];
 	version_id_array_filtered = [];
 	html_main_version = "";
 
-	// create a html list with all compatible main versions
 	for (var i = 0; i < version_id_array.length; i++) {
 		var version_id = version_id_array[i];
 
@@ -99,9 +104,63 @@ function subVersion(selected_version_el) {
 
 // ###########################################################
 // download
+// 1: datapack with resource pack
+// 2: standalone datapack
+// 3: ressource pack of datapack
+// 4: standalone resource pack
+// 5: map
 var already_download = false;
 
-async function downloadPack(is_ressource_pack) {
+async function downloadPack(pack_type) {
+	var zip = new JSZip();
+
+	var pack_version_ids = selected_pack_obj.pack_version_id;
+	var pack_string = "pack_";
+	var pack_description = "";
+
+	if (pack_type == 1) {
+		var pack_description = "DP ";
+	}
+	else if (pack_type == 3) {
+		var pack_version_ids = selected_pack_obj.rp_version_id;
+		var pack_string = "resource_";
+		var pack_description = "RP ";
+	}
+
+	var pack_git_folder = pack_string + pack_version_ids.find(e => e <= selected_version.id);
+	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
+	await zip.loadAsync(pack.blob());
+
+	// pack.mcmeta
+	if (pack_type != 5) {
+		var mcmeta_string = await zip.file("pack.mcmeta").async("string");
+		var mcmeta_json = JSON.parse(mcmeta_string);
+
+		if (pack_type <= 2) { mcmeta_json.pack.pack_format = selected_version.dp; }
+		else { mcmeta_json.pack.pack_format = selected_version.rp; }
+
+		zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
+	}
+	
+	// download zip
+	var pack = await zip.generateAsync({type:"base64"});
+	var link = document.createElement('a');
+	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${selected_pack_obj.code_version}.zip`;
+	link.href = "data:application/zip;base64," + pack;
+	link.click();
+
+	// download counter
+	// if (already_download != true) {
+	// 	already_download = true;
+	// 	fetch(`/.netlify/functions/update/${selected_pack_obj.pack_type}/${selected_pack_obj.db_id}`);
+	// 	fetch(`/.netlify/functions/version/${selected_version.db}`);
+	// }
+	// else {
+	// 	console.log("Already downloaded");
+	// }
+}
+
+async function downloadPackOld(is_ressource_pack) {
 	// get correct files for version
 	if (is_ressource_pack == true) {
 		var pack_version_ids = selected_pack_obj.rp_version_id;
@@ -139,7 +198,14 @@ async function downloadPack(is_ressource_pack) {
 
 			if (path == "pack.mcmeta") {
 				var pack_mcmeta = await res_content.json();
-				pack_mcmeta.pack.pack_format = pack_format;
+
+				if (selected_pack_obj.pack_type == "datapacks") {
+					pack_mcmeta.pack.pack_format = selected_version.dp;
+				}
+				else if (selected_pack_obj.pack_type == "resource_packs") {
+					pack_mcmeta.pack.pack_format = selected_version.rp;
+				}
+				
 				var content = JSON.stringify(pack_mcmeta);
 			}
 			else { var content = await res_content.blob(); }
@@ -151,19 +217,20 @@ async function downloadPack(is_ressource_pack) {
 	// download zip
 	var pack = await zip.generateAsync({type:"base64"});
 	var link = document.createElement('a');
-	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${selected_pack_obj.code_version}`;
+	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${selected_pack_obj.code_version}.zip`;
 	link.href = "data:application/zip;base64," + pack;
 	link.click();
+	console.timeEnd("max");
 
 	// download counter
-	if (already_download != true) {
-		already_download = true;
-		fetch(`/.netlify/functions/update/${pack_type}/${pack_id}`);
-		fetch(`/.netlify/functions/version/${mc_version}`);
-	}
-	else {
-		console.log("Already downloaded");
-	}
+	// if (already_download != true) {
+	// 	already_download = true;
+	// 	fetch(`/.netlify/functions/update/${selected_pack_obj.pack_type}/${selected_pack_obj.db_id}`);
+	// 	fetch(`/.netlify/functions/version/${selected_version.db}`);
+	// }
+	// else {
+	// 	console.log("Already downloaded");
+	// }
 }
 
 if (window.location.hash.substr(1) == "download") {

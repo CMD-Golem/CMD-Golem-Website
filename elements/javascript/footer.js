@@ -1,17 +1,25 @@
 // #####################################################################
-const pack_array = [
-	{
+const pack_array = [{
 		name: "Better Wandering Trader", search_keys: "Villager Survival", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
-		pack_id: "better_wandering_trader", code_version:"4.2", last_version_id: 135, pack_version_id: [133, 130, 122, 121], rp_version_id: [], pack_type: "datapacks", db_id: 306823477982134795
+		pack_id: "better_wandering_trader", code_version:"4.2", last_version_id: false, pack_version_id: [133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: 306823477982134795
+	},{
+		name: "Fried Eggs", search_keys: "Food Chicken", description: "With this Data Pack you can cook Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
+		pack_id: "fried_eggs", code_version:"5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: 306822932006437387
+	},{
+		name: "Gateway", search_keys: "Travel Portal Teleport TP", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
+		pack_id: "gateway", code_version:"2.1", last_version_id: false, pack_version_id: [130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: 306823200590791179
+	},{
+		name: "Invisible Item Frame", search_keys: "Decoration", description: "Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.",
+		pack_id: "invisible_item_frame", code_version:"2", last_version_id: false, pack_version_id: [128, 122], pack_type: "datapacks", db_id: 306823455236424203
+	},{
+		name: "Jump and Run", search_keys: "Mini Game Play", description: "Build your personal Jump and Run with checkpoints, timer and more.",
+		pack_id: "jump_and_run", code_version:"1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: 306822979300360715
+	},{
+		name: "Key", search_keys: "Lock Chest Protect Storage", description: "Lock your Chest to protect your items from other players and Creepers.",
+		pack_id: "key", code_version:"3.4", last_version_id: false, pack_version_id: [133, 128, 124, 119], rp_version_id: [124, 119], pack_type: "datapacks", db_id: 306823505417077259
 	}
 ]
 
-
-// pack versions
-// packs = [
-// 	{id: [136, 133, 132, 130, 128]}
-// ]
-// packs[0].versions.find(e => e <= selected_id)
 
 // pack versions
 const version_id_array = [
@@ -50,7 +58,6 @@ const version_id_array = [
 	{main: "1.7", db: "316612235991450185", dp: 1, rp: 1, id: 101, main_id: "id1_7", name: "1.7"},
 	{main: "1.6", db: "316612235991450185", dp: 1, rp: 1, id: 100, main_id: "id1_6", name: "1.6"}
 ]
-
 
 
 // #####################################################################
