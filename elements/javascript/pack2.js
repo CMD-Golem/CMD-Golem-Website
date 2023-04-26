@@ -1,7 +1,7 @@
 // show and hide download window
 var select_version_text = document.getElementById("select_version_text");
 var pack_id = document.getElementsByName("pack_id")[0].content;
-var selected_pack_obj = pack_array.find(e => e.pack_id == pack_id);
+var pack_obj = pack_array.find(e => e.pack_id == pack_id);
 
 var download_box = document.getElementById("download_box");
 var selection_box = document.getElementById("selection_box");
@@ -11,16 +11,25 @@ var select_version = document.getElementById("select_version");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
-var selected_version;
+var selected_version, selected_pack_obj;
 
 function closeDownload() {
 	preventScroll(false) //footer.js
 	download_box.style.display = "none";
+	selected_pack_obj = undefined;
 }
 
-function openDownload() {
+function openDownload(addon_id) {
 	preventScroll(true) //footer.js
 	download_box.style.display = "block";
+
+	// set selected pack id
+	if (addon_id == undefined) {
+		selected_pack_obj = pack_obj;
+	}
+	else {
+		selected_pack_obj = pack_array.find(e => e.pack_id == addon_id);
+	}
 
 	// get first and last version compatible with datapack
 	var first_version = selected_pack_obj.pack_version_id[selected_pack_obj.pack_version_id.length - 1]; // oldest comp version
@@ -84,10 +93,16 @@ function mainVersion(selected_version_el) {
 		var version_id = version_id_array_filtered[i];
 
 		if (version_id.main == selected_version_el.innerHTML) {
+
 			html += `<div onclick="subVersion(this)", id="subid${version_id.id}">.${version_id.sub}</div>`;
 		}
 	}
 	version_sub.innerHTML = html;
+
+	// auto select sub version if only one is aviable
+	if (version_sub.childElementCount == 1) {
+		subVersion(version_sub.firstElementChild);
+	}
 }
 
 function subVersion(selected_version_el) {
@@ -127,7 +142,23 @@ async function downloadPack(pack_type) {
 		var pack_description = "RP ";
 	}
 
-	var pack_git_folder = pack_string + pack_version_ids.find(e => e <= selected_version.id);
+	// get matching pack version for selected version
+	for (var i = 0; i < pack_version_ids.length; i++) {
+		if (pack_version_ids[i] <= selected_version.id) {
+			var pack_git_folder = pack_string + pack_version_ids[i];
+
+			// code version
+			if (typeof selected_pack_obj.code_version == 'string') {
+				var code_version = selected_pack_obj.code_version;
+			}
+			else {
+				var code_version = selected_pack_obj.code_version[i];
+			}
+			break;
+		}
+	}
+
+	// var pack_git_folder = pack_string + pack_version_ids.find(e => e <= selected_version.id);
 	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
 	await zip.loadAsync(pack.blob());
 
@@ -145,82 +176,9 @@ async function downloadPack(pack_type) {
 	// download zip
 	var pack = await zip.generateAsync({type:"base64"});
 	var link = document.createElement('a');
-	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${selected_pack_obj.code_version}.zip`;
+	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${code_version}.zip`;
 	link.href = "data:application/zip;base64," + pack;
 	link.click();
-
-	// download counter
-	// if (already_download != true) {
-	// 	already_download = true;
-	// 	fetch(`/.netlify/functions/update/${selected_pack_obj.pack_type}/${selected_pack_obj.db_id}`);
-	// 	fetch(`/.netlify/functions/version/${selected_version.db}`);
-	// }
-	// else {
-	// 	console.log("Already downloaded");
-	// }
-}
-
-async function downloadPackOld(is_ressource_pack) {
-	// get correct files for version
-	if (is_ressource_pack == true) {
-		var pack_version_ids = selected_pack_obj.rp_version_id;
-		var pack_string = "resource_";
-		var pack_description = "TP "
-	}
-	else {
-		var pack_version_ids = selected_pack_obj.pack_version_id;
-		var pack_string = "pack_";
-		if (is_ressource_pack == false) {
-			var pack_description = "DP ";
-		}
-		else {
-			var pack_description = "";
-		}
-	}
-
-	var pack_git_folder = pack_string + pack_version_ids.find(e => e <= selected_version.id);
-
-	// get file tree (https://github.com/misode/bundler)
-	var res_data = await fetch(`https://api.github.com/repos/CMD-Golem/CMD-Golem-Packs/contents/${selected_pack_obj.pack_type}/${selected_pack_obj.pack_id}`);
-	var data = await res_data.json();
-	var sha = data.find(e => e.name === pack_git_folder).sha;
-	var res_tree = await fetch(`https://api.github.com/repos/CMD-Golem/CMD-Golem-Packs/git/trees/${sha}?recursive=1`);
-	var tree = (await res_tree.json()).tree;
-
-	// load files into zip
-	var zip = new JSZip();
-
-	for (var i = 0; i < tree.length; i++) {
-		var file = tree[i];
-		if (file.size != undefined) {
-			var path = file.path;
-			var res_content = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/master/${selected_pack_obj.pack_type}/${selected_pack_obj.pack_id}/${pack_git_folder}/${path}`);
-
-			if (path == "pack.mcmeta") {
-				var pack_mcmeta = await res_content.json();
-
-				if (selected_pack_obj.pack_type == "datapacks") {
-					pack_mcmeta.pack.pack_format = selected_version.dp;
-				}
-				else if (selected_pack_obj.pack_type == "resource_packs") {
-					pack_mcmeta.pack.pack_format = selected_version.rp;
-				}
-				
-				var content = JSON.stringify(pack_mcmeta);
-			}
-			else { var content = await res_content.blob(); }
-			
-			zip.file(path, content)
-		}
-	}
-
-	// download zip
-	var pack = await zip.generateAsync({type:"base64"});
-	var link = document.createElement('a');
-	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${selected_pack_obj.code_version}.zip`;
-	link.href = "data:application/zip;base64," + pack;
-	link.click();
-	console.timeEnd("max");
 
 	// download counter
 	// if (already_download != true) {

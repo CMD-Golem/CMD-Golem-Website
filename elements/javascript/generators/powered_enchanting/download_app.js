@@ -16,7 +16,7 @@ async function loadEnch(lang_id) {
 		var comp_items = "";
 		for (var j = 0; j < items.length; j++) {
 			var item = comp_items_key[items[j]];
-			img_path += `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`;
+			img_path += `<img src="../../elements/pictures/packs/powered_enchanting/items/${item}.png">`;
 			comp_items += item.replaceAll("_", " ") + " ";
 		}
 

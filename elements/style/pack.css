@@ -169,6 +169,12 @@ section {
 	box-shadow: 0 0 15px 0 rgba(0,0,0,0.65);
 }
 
+#version_main {
+	max-height: 40vh;
+	direction: rtl;
+	overflow-y: auto;
+}
+
 #version_main div {
 	padding: 8px 12px;
 	border-radius: 5px;
@@ -187,6 +193,8 @@ section {
 }
 
 #version_sub {
+	max-height: 40vh;
+	overflow-y: auto;
 	border-radius: 5px;
 	background-color: #222222;
 }
