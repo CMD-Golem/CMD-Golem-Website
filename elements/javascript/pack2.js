@@ -8,6 +8,8 @@ var selection_box = document.getElementById("selection_box");
 var version_main = document.getElementById("version_main");
 var version_sub = document.getElementById("version_sub");
 var select_version = document.getElementById("select_version");
+var hide_on_addon = document.getElementsByClassName("hide_on_addon");
+var show_on_addon = document.getElementsByClassName("show_on_addon");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -17,6 +19,14 @@ function closeDownload() {
 	preventScroll(false) //footer.js
 	download_box.style.display = "none";
 	selected_pack_obj = undefined;
+
+	// hide/ unhide addon elements
+	for (var i = 0; i < hide_on_addon.length; i++) {
+		hide_on_addon[i].style.removeProperty("display");
+	}
+	for (var i = 0; i < show_on_addon.length; i++) {
+		show_on_addon[i].style.display = "none";
+	}
 }
 
 function openDownload(addon_id) {
@@ -29,6 +39,14 @@ function openDownload(addon_id) {
 	}
 	else {
 		selected_pack_obj = pack_array.find(e => e.pack_id == addon_id);
+		
+		// hide/ unhide addon elements
+		for (var i = 0; i < hide_on_addon.length; i++) {
+			hide_on_addon[i].style.display = "none";
+		}
+		for (var i = 0; i < show_on_addon.length; i++) {
+			show_on_addon[i].style.removeProperty("display");
+		}
 	}
 
 	// get first and last version compatible with datapack
@@ -128,6 +146,7 @@ var already_download = false;
 
 async function downloadPack(pack_type) {
 	var zip = new JSZip();
+	download_box.classList.add("loading_cursor");
 
 	var pack_version_ids = selected_pack_obj.pack_version_id;
 	var pack_string = "pack_";
@@ -158,7 +177,6 @@ async function downloadPack(pack_type) {
 		}
 	}
 
-	// var pack_git_folder = pack_string + pack_version_ids.find(e => e <= selected_version.id);
 	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
 	await zip.loadAsync(pack.blob());
 
@@ -180,6 +198,8 @@ async function downloadPack(pack_type) {
 	link.href = "data:application/zip;base64," + pack;
 	link.click();
 
+	download_box.classList.remove("loading_cursor");
+
 	// download counter
 	// if (already_download != true) {
 	// 	already_download = true;
@@ -191,10 +211,21 @@ async function downloadPack(pack_type) {
 	// }
 }
 
-if (window.location.hash.substr(1) == "download") {
+var hash = window.location.hash.substr(1)
+
+if (hash != "") {
 	window.location.hash = "";
-	openDownload();
+	if (hash == "download") {
+		openDownload();
+	}
+	else if (pack_array.some(e => e.pack_id == hash)) {
+		openDownload(hash);
+	}
+	else {
+		console.log("Hash is no Pack");
+	}
 }
+
 
 
 // ###########################################################

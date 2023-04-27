@@ -225,6 +225,10 @@ section {
 	fill: #a10000;
 }
 
+.loading_cursor, .loading_cursor * {
+	cursor: progress !important;
+}
+
 @media (max-width: 678px) {
 	.inner_box {
 		width: calc(100vw - 80px);

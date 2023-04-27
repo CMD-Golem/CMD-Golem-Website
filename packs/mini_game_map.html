@@ -8,6 +8,8 @@
 <meta name="robots" content="index, follow, archive"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
+<meta name="pack_id" content="mini_game_map">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
 <link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
 <link rel="icon" href="../elements/nav/favicon.png">
@@ -18,7 +20,6 @@
 <nav>
 	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
 	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
-	<a class="nav_button disable_link nav_install" href="../info/installation.html" title="Installation"><p>Installation</p></a>
 	<a class="nav_button disable_link" href="../info/contact.html" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
@@ -67,30 +68,36 @@
 
 </main>
 
-<section style="display: none;">
-	<div class="download_close" onclick="openDownload()" title="close"><img src="../elements/nav/close.svg" alt="Close"></div>
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
 
-	<h1>Mini Games</h1>
-	<div class="section_header">
-		<div></div>
-		<h3>Download</h3>
-		<div title="Downloads" class="download_container"><span id="download_counter" data-ref="306823905791705611" data-type="maps"></span><img src="../elements/nav/download.svg" alt="Download"></div>
+		<div class="download">
+			<button onclick="downloadPack(5)">Map</button>
+		</div>
+		<div class="download_box_links">
+			<a href="../info/installation.html#map" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
 	</div>
-	<hr>
-
-	<table>
-		<tr>
-			<td class="version">1.14 - 1.14.4</td>
-			<td><a class="button disable_link dl_counter" href="https://drive.google.com/uc?export=download&id=1FgI9kS7Z8VGeVir1LxO-IlF7qRXy5-XT">Download Map</a></td>
-		</tr>
-	</table>
-
 </section>
 
 <footer></footer>
 
-<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack2.js"></script>
 
 </body>
 </html>
