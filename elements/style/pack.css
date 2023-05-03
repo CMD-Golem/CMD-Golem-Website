@@ -154,6 +154,10 @@ section {
 	cursor: default;
 }
 
+#select_version:hover {
+	background-color: #a10000;
+}
+
 #select_version:after {
 	content: " \2BC6";
 }

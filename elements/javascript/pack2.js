@@ -57,7 +57,7 @@ function openDownload(addon_id) {
 		last_version = version_id_array[0].id;
 	}
 
-	// create a html list with all compatible main versions
+	// create a html list with all compatible main versions  // nearly the same funtcion as in article.js
 	var array_main = [];
 	version_id_array_filtered = [];
 	html_main_version = "";
@@ -78,8 +78,8 @@ function openDownload(addon_id) {
 	version_main.innerHTML = html_main_version;
 
 	// check if last selected version is compatible with this pack
-	var selected_version_id = parseInt(window.localStorage.getItem("selected_version_id"));
-	if (selected_version_id != NaN && selected_version_id <= last_version && selected_version_id >= first_version) {
+	var selected_version_id = parseInt(window.sessionStorage.getItem("selected_version_id"));
+	if (!isNaN(selected_version_id) && selected_version_id <= last_version && selected_version_id >= first_version) {
 		// select last selected version
 		selected_version = version_id_array.find(e => e.id == selected_version_id);
 
@@ -128,7 +128,7 @@ function subVersion(selected_version_el) {
 	selected_version_el.classList.add("version_sub_selected");
 
 	selected_version = version_id_array.find(e => "subid" + e.id == selected_version_el.id);
-	window.localStorage.setItem("selected_version_id", selected_version.id);
+	window.sessionStorage.setItem("selected_version_id", selected_version.id);
 
 	select_version.innerHTML = selected_version.name;
 	selection_box.classList.add("hidden");

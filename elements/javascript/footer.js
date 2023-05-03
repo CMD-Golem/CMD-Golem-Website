@@ -20,7 +20,7 @@ const pack_array = [{
 		name: "Key", updated: 20220409, search_keys: "Lock Chest Protect Storage", description: "Lock your Chest to protect your items from other players and Creepers.",
 		pack_id: "key", code_version: "3.4", last_version_id: false, pack_version_id: [133, 128, 124, 119], rp_version_id: [124, 119], pack_type: "datapacks", db_id: "306823505417077259"
 	},{
-		name: "Observer Addon", search_keys: false,
+		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "306824262803522059"
 	},{
 		name: "Mini Games", updated: 20191016, search_keys: "Play", description: "My map for all the different games on my website. Ready to play with your friends.",
@@ -29,13 +29,13 @@ const pack_array = [{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow", description: "This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.",
 		pack_id: "more_arrows", code_version: ["8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
 	},{
-		name: "Craft Addon", search_keys: false, 
+		name: "Craft Addon", updated: 0, search_keys: false, 
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [114], pack_type: "datapacks", db_id: "326870865931141708"
 	},{
 		name: "Murder", updated: 20191018, search_keys: "Play Seek Games", description: "Play Murder with your friends in your own map.",
 		pack_id: "murder", code_version: "2", last_version_id: 127, pack_version_id: [111], pack_type: "datapacks", db_id: "306823130429522443"
 	},{
-		name: "NBT Crafting", updated: 20200422, search_keys: "Recipe", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
+		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
 		pack_id: "nbt_crafting", last_version_id: false, pack_version_id: [114], pack_type: "generators", db_id: "306824373484913163"
 	},{
 		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack", description: "This Data Packs adds a Chest in which you can store your items and follows you like a dog.",
@@ -202,10 +202,10 @@ function closeSpoiler(el) {
 
 // #####################################################################
 // User counter
-async function userCounter() {
-	var user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
+const local_date = new Date();
+const user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
 
-	var local_date = new Date();
+async function userCounter() {
 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
 	var was_counted = window.localStorage.getItem("user_counter");
 
