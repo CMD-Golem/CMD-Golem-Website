@@ -144,16 +144,20 @@ function subVersion(selected_version_el) {
 		var element = document.getElementById(pack.pack_id);
 		var first_version = pack.pack_version_id[pack.pack_version_id.length - 1]; // oldest comp version
 		var last_version = pack.last_version_id; // newest comp version
+		var incomp_version_id = pack.incomp_version_id ?? [];
 
 		if (last_version == false) {
 			last_version = version_id_array[0].id;
 		}
 
-		if (selected_version.id <= last_version && selected_version.id >= first_version) {
-			element.classList.remove("hide_filter");
+		if (!(selected_version.id <= last_version && selected_version.id >= first_version)) {
+			element.classList.add("hide_filter");
+		}
+		else if (incomp_version_id.includes(selected_version.id)) {
+			element.classList.add("hide_filter");
 		}
 		else {
-			element.classList.add("hide_filter");
+			element.classList.remove("hide_filter");
 		}
 	}
 }

@@ -52,10 +52,16 @@ function openDownload(addon_id) {
 	// get first and last version compatible with datapack
 	var first_version = selected_pack_obj.pack_version_id[selected_pack_obj.pack_version_id.length - 1]; // oldest comp version
 	var last_version = selected_pack_obj.last_version_id; // newest comp version
+	var incomp_version_id = selected_pack_obj.incomp_version_id ?? []; // check for incompatible versions
 
 	if (last_version == false) {
 		last_version = version_id_array[0].id;
 	}
+	while (incomp_version_id.includes(last_version)) {
+		last_version--;
+	}
+
+	console.log(last_version);
 
 	// create a html list with all compatible main versions  // nearly the same funtcion as in article.js
 	var array_main = [];
@@ -65,7 +71,7 @@ function openDownload(addon_id) {
 	for (var i = 0; i < version_id_array.length; i++) {
 		var version_id = version_id_array[i];
 
-		if (version_id.id <= last_version && version_id.id >= first_version) {
+		if (version_id.id <= last_version && version_id.id >= first_version && !incomp_version_id.includes(version_id.id)) {
 			version_id_array_filtered.push(version_id);
 
 			if (!array_main.includes(version_id.main)) {
@@ -79,7 +85,7 @@ function openDownload(addon_id) {
 
 	// check if last selected version is compatible with this pack
 	var selected_version_id = parseInt(window.sessionStorage.getItem("selected_version_id"));
-	if (!isNaN(selected_version_id) && selected_version_id <= last_version && selected_version_id >= first_version) {
+	if (!isNaN(selected_version_id) && selected_version_id <= last_version && selected_version_id >= first_version && !incomp_version_id.includes(selected_version_id)) {
 		// select last selected version
 		selected_version = version_id_array.find(e => e.id == selected_version_id);
 

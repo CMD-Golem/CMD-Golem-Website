@@ -338,6 +338,11 @@ input.key_input {
 	margin: 10px 0;
 }
 
+button.center {
+	display: block;
+	margin: 0 auto;
+}
+
 /* Select */
 select {
 	padding: 10px;
