@@ -389,7 +389,7 @@ function importPackIdFail(pack_id_input) {
 
 // #################################################################################################
 // More settingsinfo
-var section = document.getElementsByTagName("section")[0];
+var section = document.getElementById("info_box");
 var main = document.getElementsByTagName("main")[0];
 var sidebar = document.getElementsByTagName("aside")[0];
 var title = document.getElementsByTagName("title")[0];

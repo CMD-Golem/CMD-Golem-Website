@@ -440,7 +440,52 @@ select:focus {
 	}
 }
 
+/* ####################################################################### */
+/* New Spoiler as details */
+details {
+	overflow: hidden;
+	background-color: #2D2D2D;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	transition: max-height 0.2s;
+}
 
+details > * {
+	padding: 10px 15px;
+}
+
+details > div *:first-child {
+	margin-top: 2px;
+}
+
+details > div *:last-child {
+	margin-bottom: 5px;
+}
+
+summary {
+	display: block !important;
+	background-color: #333333;
+	border-radius: 5px;
+	position: relative;
+	user-select: none;
+}
+
+summary::after {
+	content: "+";
+	font-size: 25px;
+	font-weight: bold;
+	position: absolute;
+	top: 7.5px;
+	right: 15px;
+}
+
+.active summary::after {
+	content: "−";
+}
+
+details:not(.active) *:not(summary) {
+	display: none;
+}
 
 /* ####################################################################### */
 /* Footer */

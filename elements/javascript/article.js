@@ -58,6 +58,7 @@ loadPacks();
 //#################################################################################################
 // Version Filter // nearly the same funtcion as in pack2.js
 var version_id_array_filtered = [];
+var article = article_list.children;
 var html_main_version = "";
 var no_filter;
 
@@ -133,7 +134,7 @@ function subVersion(selected_version_el) {
 	var selected_version = version_id_array.find(e => "subid" + e.id == selected_version_el.id);
 	window.sessionStorage.setItem("selected_version_id", selected_version.id);
 
-	select_version.innerHTML = selected_version.name;
+	select_version.innerHTML = selected_version.name.replace(" Preview", "");
 	selection_box.classList.add("hidden");
 
 	// hide all elements which dont support selected version
@@ -172,16 +173,15 @@ function noFilter() {
 	selection_box.classList.add("hidden");
 
 	// unhide all elements
-	var currently_hidden = document.getElementsByClassName("hide_filter");
-	for (var i = 0; i < currently_hidden.length; i++) {
-		currently_hidden[i].classList.remove("hide_filter");
+	for (var i = 0; i < article.length; i++) {
+		article[i].classList.remove("hide_filter");
 	}
 }
 
 //#################################################################################################
 // Site Search
-var article = article_list.children;
 var input = document.getElementById("site_search");
+var not_found = document.getElementById("not_found");
 
 function siteSearch() {
 	var filter = input.value.toUpperCase();
@@ -200,10 +200,8 @@ function siteSearch() {
 	notFound()
 };
 
-//#################################################################################################
-// Show not found when no results
-var not_found = document.getElementById("not_found")
 
+// Show not found when no results
 function notFound() {
 	var hide_search = document.querySelectorAll(".hide_search:not(.hide_filter)").length;
 	var hide_filter = document.getElementsByClassName("hide_filter").length;

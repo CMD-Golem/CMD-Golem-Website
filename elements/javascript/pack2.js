@@ -10,6 +10,7 @@ var version_sub = document.getElementById("version_sub");
 var select_version = document.getElementById("select_version");
 var hide_on_addon = document.getElementsByClassName("hide_on_addon");
 var show_on_addon = document.getElementsByClassName("show_on_addon");
+var preview_warning = document.getElementById("preview_warning");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -61,8 +62,6 @@ function openDownload(addon_id) {
 		last_version--;
 	}
 
-	console.log(last_version);
-
 	// create a html list with all compatible main versions  // nearly the same funtcion as in article.js
 	var array_main = [];
 	version_id_array_filtered = [];
@@ -88,23 +87,21 @@ function openDownload(addon_id) {
 	if (!isNaN(selected_version_id) && selected_version_id <= last_version && selected_version_id >= first_version && !incomp_version_id.includes(selected_version_id)) {
 		// select last selected version
 		selected_version = version_id_array.find(e => e.id == selected_version_id);
-
-		select_version.innerHTML = selected_version.main + "." + selected_version.sub;
-
-		var selected_main = document.getElementById(selected_version.main_id);
-		selected_main.classList.add("version_main_selected");
-
-		mainVersion(selected_main);
-		subVersion(document.getElementById("subid" + selected_version.id));
 	}
 	else {
-		// select newest version
-		select_version.innerHTML = version_id_array_filtered[0].main + "." + version_id_array_filtered[0].sub;
-
-		version_main.firstElementChild.classList.add("version_main_selected");
-		mainVersion(version_main.firstElementChild);
-		subVersion(version_sub.firstElementChild);
+		// select newest version stable version
+		var i = 0;
+		while (version_id_array_filtered[i].preview) { i++; }
+		selected_version = version_id_array_filtered[i];
 	}
+
+	select_version.innerHTML = selected_version.main + "." + selected_version.sub;
+
+	var selected_main = document.getElementById(selected_version.main_id);
+	selected_main.classList.add("version_main_selected");
+
+	mainVersion(selected_main);
+	subVersion(document.getElementById("subid" + selected_version.id));
 }
 
 function mainVersion(selected_version_el) {
@@ -138,6 +135,14 @@ function subVersion(selected_version_el) {
 
 	select_version.innerHTML = selected_version.name;
 	selection_box.classList.add("hidden");
+
+	// show unstable version link
+	if (selected_version.preview) {
+		preview_warning.style.display = "block";
+	}
+	else {
+		preview_warning.style.display = "none";
+	}
 }
 
 

@@ -241,7 +241,7 @@ function scrollToParent(id) {
 
 	closeSpoiler(sel_element);
 
-	setTimeout(function(){ sel_element.style.backgroundColor = "#1C1C1C"; }, 500);
+	setTimeout(function(){ sel_element.style.backgroundColor = "#1c1c1c"; }, 500);
 }
 
 

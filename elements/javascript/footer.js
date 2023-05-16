@@ -64,6 +64,7 @@ const pack_array = [{
 
 // pack versions
 const version_id_array = [
+	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 14, id: 138, main_id: "id1_20", name: "1.20 Preview", preview: true},
 	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
 	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
 	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
@@ -106,9 +107,8 @@ const version_id_array = [
 document.getElementsByTagName("footer")[0].innerHTML = `
 <div class="footer_left footer_block">©2019 - ${new Date().getFullYear()} by CMD-Golem</div>
 <div class="footer_center footer_block">
-	<a href="/info/disclaimer.html">Disclaimer</a>
-	<a href="/info/therms_of_use.html">Therms of use</a>
-	<a href="/info/compatibility.html">Compatibility</a>
+	<a href="/info/legal.html">Disclaimer</a>
+	<a href="/info/legal.html#therms_of_use">Therms of use</a>
 </div>
 <div class="footer_right footer_block">
 	<!--<a href="https: //twitter.com/CmdGolem" target="_blank" title="Twitter">
@@ -168,7 +168,7 @@ function preventScroll(prevent_scroll) {
 
 
 // #####################################################################
-// Footer
+// Spoiler
 function spoiler(el) {
 	el.classList.toggle("active");
 	var panel = el.nextElementSibling;
@@ -197,6 +197,48 @@ function closeSpoiler(el) {
 			el.classList.add("active");
 			panel.style.maxHeight = panel.scrollHeight + "px";
 		}
+	}
+}
+
+// #####################################################################
+// New Spoiler
+var spoilers = document.getElementsByTagName("details");
+for (var i = 0; i < spoilers.length; i++) { spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px"; }
+
+function toggleDetail(e, close_others) {
+	if (e.target) {
+		var el = e.target.parentElement;
+
+		if (e.target.nodeName != "A") {
+			e.preventDefault();
+		}
+		if (e.target.nodeName != "SUMMARY") {
+			return;
+		}
+	}
+	else {
+		var el = e;
+	}
+	
+
+	if (!el.classList.contains("active")) {
+		var spoiler_active = true;
+	}
+
+	if (close_others) {
+		for (var i = 0; i < spoilers.length; i++) {
+			spoilers[i].classList.remove("active");
+			spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px";
+		}
+	}
+
+	if (spoiler_active) {
+		el.classList.add("active");
+		el.style.maxHeight = el.scrollHeight + "px";
+	}
+	else if (!close_others) {
+		el.classList.remove("active");
+		el.style.maxHeight = el.firstElementChild.scrollHeight + "px";
 	}
 }
 
