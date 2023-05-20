@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Legal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+</nav>
+
+
+<main>
+	
+	<h1>Legal</h1>
+	
+	<br>
+	<details onclick="toggleDetail(event, true)" open id="therms_of_use">
+		<summary>Therms of use</summary>
+		<div>
+			<p>You can use all my packs in your singelplayer world and on server with less than 50 slots.
+			If you want to use my packs on a server with more than 50 Slots, please fill out <a href="contact.html#contact">this form</a> and ask for permission.</p>
+			<p>You are welcome to review my packs, but please link this website (<a href="/">cmd-golem.com</a>) or / and the Planet Minecraft page of the reviewed pack in the description.</p>
+			<p>You are not allowed to sell my packs or upload it again. This also applies to the individual files of the packs.
+			If you changed or added something to one of my packs and you want to upload it again, you can send me a link to a zipped file of your pack and ask for permission.</p>
+			<p>The points above also obtain to all the pictures on my website or on Planet Minecraft.
+			Packs stands for Data Packs, Maps and Resource Packs.</p>
+		</div>
+	</details>
+
+		<details onclick="toggleDetail(event, true)" open id="contact">
+			<summary>Contact</summary>
+			<div>
+				<p><a href="contact.html#contact">Contact form</a></p>
+				<p><a href="mailto:info@cmd-golem.com">info@cmd-golem.com</a></p>
+				<p>When you contact us, your e-mail address is stored. The time of sending and your IP address are also sent when you contact us. This data is stored on the Netlify servers <a href="https://www.netlify.com/gdpr-ccpa/" target="_blank">[See GDPR Netlify]</a>. This data won't be removed unless you request it. This can be done via the contact form.</p>
+			</div>
+		</details>
+
+		<details onclick="toggleDetail(event, true)" open id="general">
+			<summary>General</summary>
+			<div>
+				<p>When you visit this website, our host, Netlify Inc., San Francisco, CA 94107, USA, temporarily stores technical information, such as your IP address. This data will be deleted after 30 days. <a href="https://www.netlify.com/gdpr-ccpa/" target="_blank">[See GDPR Netlify]</a></p>
+				<p>This website is not affiliate with Minecraft or Mojang. The content is not approved by or associated with mojang.</p>
+				<p>Our website contains external links. We have no influenece on the content and data collection of those websites.</p>
+				<p>On some of our webpages you can find videos. Those vidoes are stored on YouTube LLC, San Bruno, CA 94066, USA. If you watch this video YouTube can get your personal data. <a href="https://policies.google.com/privacy">[See Privacy Policy YouTube]</a></p>
+				<p>We reserve the right to change our disclaimer if we deem it necessary.</p>
+			</div>
+		</details>
+
+		<details onclick="toggleDetail(event, true)" open id="user_analysis">
+			<summary>User analysis</summary>
+			<div>
+				<p>When you visit our website, the country you were in at the time of visiting the website is stored. The data sent and stored only includes the name of the country.</p>
+				<p>The data is determined by the location of your IP address on the Netlify servers. The data is used for user counting and is not shared with anyone. <a href="https://www.netlify.com/gdpr-ccpa/" target="_blank">[See GDPR Netlify]</a></p>
+				<p>In addition there are different counters, which are triggered when you download one of our packs.</p>
+				<p>The data is stored completly anonymously on the servers of Fauna Inc., San Mateo, CA 94402, USA. <a href="https://fauna.com/privacy" target="_blank">[See Fauna Privacy Policy]</a></p>
+			</div>
+		</details>
+	
+		<details onclick="toggleDetail(event, true)" open id="cookies">
+			<summary>Cookies</summary>
+			<div>
+				<p>We use cookies to store your settings even after reloading the website. Cookies are small text files that can be stored on your computer.</p>
+				<p>We also use Session Cookies to store your selected Minecraft Version. In contrast to the normal Cookies those get deleted when you close the browser.</p>
+				<p>We do not use third-party cookies and also do not use user tracking, neither via cookies nor other methods.</p>
+			</div>
+		</details>
+
+		<details onclick="toggleDetail(event, true)" open id="copyright">
+			<summary>Copyright</summary>
+			<div>
+				<p>In the following are all things liste, we did not made ourself:</p>
+				<ul>
+					<li>Title Font: <a href="https://holitter.wixsite.com/holitter" target="_blank">DragonForcE by Holitter Studio</a></li>
+					<li>Content Font: <a href="https://fonts.google.com/specimen/Fira+Sans?selected=Material+Icons&query=fira" target="_blank">Fira Sans by Carrois Apostrophe</a></li>
+					<li>Icons: <a href="https://fonts.google.com/icons?icon.style=Filled&icon.set=Material+Icons">Material Icons by Google Fonts</a></li>
+					<li>Social Icons: <a href="https://www.planetminecraft.com/blog/planet-minecraft-svg-logo/" target="_blank">Planet Minecraft</a>, <a href="https://support.google.com/youtube/contact/brand_request?hl=en" target="_blank">Youtube</a></li>
+					<li>JS Libraries: <a href="https://stuk.github.io/jszip/" target="_blank">JSZip</a></li>
+				</ul>
+				<p>If you find any content on this website that infringes copyright, please contact us.</p>
+			</div>
+		</details>
+
+		<p><small>Date of last revision: Mai 13, 2023</small></p>
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script>
+var hash = window.location.hash.substr(1)
+
+if (hash != "") {
+	window.location.hash = "";
+	toggleDetail(document.getElementById(hash), true);
+}
+
+</script>
+
+</body>
+</html>

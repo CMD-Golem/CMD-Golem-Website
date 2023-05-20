@@ -1,28 +1,117 @@
-// #####################################################################
-// Newest Version
-var latest_version_el = document.getElementsByClassName("insertLatestVersion");
-for (var i = 0; i < latest_version_el.length; i++) {
-	latest_version_el[i].innerHTML = "1.19.3";
-}
+const pack_array = [{
+		name: "Better Wandering Trader", updated: 20221210, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
+		pack_id: "better_wandering_trader", code_version: "4.2", last_version_id: false, pack_version_id: [133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
+	},{
+		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
+		pack_id: "dark_theme", code_version: "3", last_version_id: false, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "306823878630441483"
+	},{
+		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "With this Data Pack you can cook Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
+		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: "306822932006437387"
+	},{
+		name: "Gateway", updated: 20210708, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
+		pack_id: "gateway", code_version: "2.1", last_version_id: false, pack_version_id: [130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "306823200590791179"
+	},{
+		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.",
+		pack_id: "invisible_item_frame", code_version: ["2", "1.1"], last_version_id: false, pack_version_id: [128, 122], pack_type: "datapacks", db_id: "306823455236424203"
+	},{
+		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
+		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "306822979300360715"
+	},{
+		name: "Key", updated: 20220409, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
+		pack_id: "key", code_version: "3.4", last_version_id: false, pack_version_id: [133, 128, 124, 119], rp_version_id: [124, 119], pack_type: "datapacks", db_id: "306823505417077259"
+	},{
+		name: "Observer Addon", updated: 0, search_keys: false,
+		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "306824262803522059"
+	},{
+		name: "Mini Games", updated: 20191016, search_keys: "Play Map", description: "My map for all the different games on my website. Ready to play with your friends.",
+		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "306823905791705611"
+	},{
+		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.",
+		pack_id: "more_arrows", code_version: ["8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
+	},{
+		name: "Craft Addon", updated: 0, search_keys: false, 
+		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [114], pack_type: "datapacks", db_id: "326870865931141708"
+	},{
+		name: "Murder", updated: 20191018, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
+		pack_id: "murder", code_version: "2", last_version_id: 127, pack_version_id: [111], pack_type: "datapacks", db_id: "306823130429522443"
+	},{
+		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe Generator", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
+		pack_id: "nbt_crafting", last_version_id: false, pack_version_id: [114], pack_type: "generators", db_id: "306824373484913163"
+	},{
+		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack Data Pack", description: "This Data Packs adds a Chest in which you can store your items and follows you like a dog.",
+		pack_id: "petbag", code_version: "3", last_version_id: false, pack_version_id: [128, 114], pack_type: "datapacks", db_id: "306823156900823563"
+	},{
+		name: "Powered Enchanting", updated: 20221217, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
+		pack_id: "powered_enchanting", last_version_id: false, pack_version_id: [128], pack_type: "datapacks", db_id: "320699416718606924"
+	},{
+		name: "Recipe Unlocker", updated: 20210709, search_keys: "Crafting Data Pack", description: "A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes.",
+		pack_id: "recipe_unlocker", code_version: "1", last_version_id: false, pack_version_id: [128], pack_type: "datapacks", db_id: "306823579556643339"
+	},{
+		name: "Redstone Dot", updated: 20200430, search_keys: "Data Pack", description: "Get the old look of a single Redstone, without the need of a Resource Pack.",
+		pack_id: "redstone_dot", code_version: "1", last_version_id: 127, pack_version_id: [122], pack_type: "datapacks", db_id: "306823532283691531"
+	},{
+		name: "Short Commands", updated: 20200728, search_keys: "Creative Admin OP Data Pack", description: "This Data Pack adds new commands to execute existing commands faster.",
+		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [111], pack_type: "datapacks", db_id: "306823355470709259"
+	},{
+		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "With this Data Pack all Golden Tools will get a special effect or ability.",
+		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [128, 124, 119], pack_type: "datapacks", db_id: "306823263439290891"
+	},{
+		name: "Wither Soldier", updated: 20210104, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
+		pack_id: "wither_soldier", code_version: "2.3", last_version_id: false, pack_version_id: [130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "306823400923333131"
+	}
+]
 
 
-var local_date = new Date();
-
+// pack versions
+const version_id_array = [
+	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 14, id: 138, main_id: "id1_20", name: "1.20 Preview", preview: true},
+	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
+	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
+	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
+	{main: "1.19", sub: 1, db: "325220181196407372", dp: 10, rp: 9, id: 134, main_id: "id1_19", name: "1.19.1"},
+	{main: "1.19", sub: 0, db: "325220181196407372", dp: 10, rp: 9, id: 133, main_id: "id1_19", name: "1.19"},
+	{main: "1.18", sub: 2, db: "316609019004322377", dp: 9, rp: 8, id: 132, main_id: "id1_18", name: "1.18.2"},
+	{main: "1.18", sub: 1, db: "316609019004322377", dp: 8, rp: 8, id: 131, main_id: "id1_18", name: "1.18.1"},
+	{main: "1.18", sub: 0, db: "316609019004322377", dp: 8, rp: 8, id: 130, main_id: "id1_18", name: "1.18"},
+	{main: "1.17", sub: 1, db: "316609012338524745", dp: 7, rp: 7, id: 129, main_id: "id1_17", name: "1.17.1"},
+	{main: "1.17", sub: 0, db: "316609012338524745", dp: 7, rp: 7, id: 128, main_id: "id1_17", name: "1.17"},
+	{main: "1.16", sub: 5, db: "316609003869176393", dp: 6, rp: 6, id: 127, main_id: "id1_16", name: "1.16.5"},
+	{main: "1.16", sub: 4, db: "316609003869176393", dp: 6, rp: 6, id: 126, main_id: "id1_16", name: "1.16.4"},
+	{main: "1.16", sub: 3, db: "316609003869176393", dp: 6, rp: 6, id: 125, main_id: "id1_16", name: "1.16.3"},
+	{main: "1.16", sub: 2, db: "316609003869176393", dp: 6, rp: 6, id: 124, main_id: "id1_16", name: "1.16.2"},
+	{main: "1.16", sub: 1, db: "316609003869176393", dp: 5, rp: 5, id: 123, main_id: "id1_16", name: "1.16.1"},
+	{main: "1.16", sub: 0, db: "316609003869176393", dp: 5, rp: 5, id: 122, main_id: "id1_16", name: "1.16"},
+	{main: "1.15", sub: 2, db: "316608994697282121", dp: 5, rp: 5, id: 121, main_id: "id1_15", name: "1.15.2"},
+	{main: "1.15", sub: 1, db: "316608994697282121", dp: 5, rp: 5, id: 120, main_id: "id1_15", name: "1.15.1"},
+	{main: "1.15", sub: 0, db: "316608994697282121", dp: 5, rp: 5, id: 119, main_id: "id1_15", name: "1.15"},
+	{main: "1.14", sub: 4, db: "316608985993052745", dp: 4, rp: 4, id: 118, main_id: "id1_14", name: "1.14.4"},
+	{main: "1.14", sub: 3, db: "316608985993052745", dp: 4, rp: 4, id: 117, main_id: "id1_14", name: "1.14.3"},
+	{main: "1.14", sub: 2, db: "316608985993052745", dp: 4, rp: 4, id: 116, main_id: "id1_14", name: "1.14.2"},
+	{main: "1.14", sub: 1, db: "316608985993052745", dp: 4, rp: 4, id: 115, main_id: "id1_14", name: "1.14.1"},
+	{main: "1.14", sub: 0, db: "316608985993052745", dp: 4, rp: 4, id: 114, main_id: "id1_14", name: "1.14"},
+	{main: "1.13", sub: 2, db: "316608972792529481", dp: 4, rp: 4, id: 113, main_id: "id1_13", name: "1.13.2"},
+	{main: "1.13", sub: 1, db: "316608972792529481", dp: 4, rp: 4, id: 112, main_id: "id1_13", name: "1.13.1"},
+	{main: "1.13", sub: 0, db: "316608972792529481", dp: 4, rp: 4, id: 111, main_id: "id1_13", name: "1.13"},
+	{main: "1.12", sub: 0, db: "316612235991450185", dp: 3, rp: 3, id: 106, main_id: "id1_12", name: "1.12"},
+	{main: "1.11", sub: 0, db: "316612235991450185", dp: 3, rp: 3, id: 105, main_id: "id1_11", name: "1.11"},
+	{main: "1.10", sub: 0, db: "316612235991450185", dp: 2, rp: 2, id: 104, main_id: "id1_10", name: "1.10"},
+	{main: "1.9", sub: 0, db: "316612235991450185", dp: 2, rp: 2, id: 103, main_id: "id1_9", name: "1.9"},
+	{main: "1.8", sub: 0, db: "316612235991450185", dp: 1, rp: 1, id: 102, main_id: "id1_8", name: "1.8"},
+	{main: "1.7", sub: 0, db: "316612235991450185", dp: 1, rp: 1, id: 101, main_id: "id1_7", name: "1.7"},
+	{main: "1.6", sub: 0, db: "316612235991450185", dp: 1, rp: 1, id: 100, main_id: "id1_6", name: "1.6"}
+]
 
 
 // #####################################################################
 // Footer
-var date = new Date().getFullYear()
-
-var footer = `
-<div class="footer_left footer_block">©2019 - ${date} by CMD-Golem</div>
+document.getElementsByTagName("footer")[0].innerHTML = `
+<div class="footer_left footer_block">©2019 - ${new Date().getFullYear()} by CMD-Golem</div>
 <div class="footer_center footer_block">
-	<a href="/info/disclaimer.html">Disclaimer</a>
-	<a href="/info/therms_of_use.html">Therms of use</a>
-	<a href="/info/compatibility.html">Compatibility</a>
+	<a href="/info/legal.html">Disclaimer</a>
+	<a href="/info/legal.html#therms_of_use">Therms of use</a>
 </div>
 <div class="footer_right footer_block">
-	<!--<a href="https://twitter.com/CmdGolem" target="_blank" title="Twitter">
+	<!--<a href="https: //twitter.com/CmdGolem" target="_blank" title="Twitter">
 		<svg viewBox="0 0 246 200">
 			<path d="M220.815 49.7895C220.965 51.9593 220.965 54.1292 220.965 56.3191C220.965 123.045 170.196 200 77.3628 200V199.96C49.9396 200 23.0859 192.141 0 177.321C3.98757 177.801 7.99513 178.041 12.0127 178.051C34.7388 178.071 56.8154 170.442 74.6945 156.393C53.0976 155.983 34.1592 141.894 27.5432 121.325C35.1086 122.785 42.9038 122.485 50.3293 120.455C26.7837 115.695 9.844 94.9966 9.844 70.9581C9.844 70.7382 9.844 70.5282 9.844 70.3182C16.8597 74.2279 24.7149 76.3978 32.75 76.6378C10.5736 61.8087 3.73772 32.2906 17.1296 9.21204C42.7539 40.7601 80.5609 59.9388 121.146 61.9687C117.079 44.4298 122.635 26.051 135.747 13.7218C156.075 -5.39704 188.045 -4.4171 207.154 15.9116C218.457 13.6818 229.29 9.53202 239.204 3.65239C235.436 15.3417 227.551 25.271 217.018 31.5806C227.022 30.4007 236.796 27.7209 246 23.6311C239.224 33.7905 230.689 42.6399 220.815 49.7895Z" fill="#1D9BF0"/>
 		</svg>
@@ -60,8 +149,6 @@ var footer = `
 </div>
 `;
 
-document.getElementsByTagName("footer")[0].innerHTML = footer;
-
 
 // #####################################################################
 // Prevent Scrolling
@@ -81,7 +168,7 @@ function preventScroll(prevent_scroll) {
 
 
 // #####################################################################
-// Footer
+// Spoiler
 function spoiler(el) {
 	el.classList.toggle("active");
 	var panel = el.nextElementSibling;
@@ -114,9 +201,51 @@ function closeSpoiler(el) {
 }
 
 // #####################################################################
+// New Spoiler
+var spoilers = document.getElementsByTagName("details");
+for (var i = 0; i < spoilers.length; i++) { spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px"; }
+
+function toggleDetail(e, close_others) {
+	if (e.target) {
+		var el = e.target.parentElement;
+
+		if (e.target.nodeName != "A") {
+			e.preventDefault();
+		}
+		if (e.target.nodeName != "SUMMARY") {
+			return;
+		}
+	}
+	else {
+		var el = e;
+	}
+	
+
+	if (!el.classList.contains("active")) {
+		var spoiler_active = true;
+	}
+
+	if (close_others) {
+		for (var i = 0; i < spoilers.length; i++) {
+			spoilers[i].classList.remove("active");
+			spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px";
+		}
+	}
+
+	if (spoiler_active) {
+		el.classList.add("active");
+		el.style.maxHeight = el.scrollHeight + "px";
+	}
+	else if (!close_others) {
+		el.classList.remove("active");
+		el.style.maxHeight = el.firstElementChild.scrollHeight + "px";
+	}
+}
+
+// #####################################################################
 // User counter
-var already_counted = false;
-var user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
+const local_date = new Date();
+const user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
 
 async function userCounter() {
 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
@@ -125,12 +254,9 @@ async function userCounter() {
 	if (was_counted != current_day && user_role != "hidden") {
 		window.localStorage.setItem("user_counter", current_day);
 
-		var country_response = await fetch("https://cmd-golem.com/get-country");
+		var country_response = await fetch("https: //cmd-golem.com/get-country");
 		var geo_data = await country_response.json();
 		fetch(`/.netlify/functions/user_counter/` + geo_data.geo.geo.country.name);
-	}
-	else {
-		already_counted = true;
 	}
 }
 

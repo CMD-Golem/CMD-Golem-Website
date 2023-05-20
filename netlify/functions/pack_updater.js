@@ -19,8 +19,6 @@ exports.handler = async function(event, context) {
 	var current_str = event.path.match(/([^\/]*)\/*$/)[0];
 	var target = event.path.replace("/" + current_str, "").match(/([^\/]*)\/*$/)[0];
 
-	console.log(current_str);
-
 	var newest_str = "0.1.1";
 	
 	var update_needed = compare(current_str, newest_str)

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Dark Theme</title>
+<meta name="description" content="Change the look of the Inventory to a simplistic dark gray and blue colored one.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/dark_theme.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="dark_theme">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#dark_theme" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/logo_2.png" alt="Dark Theme Resource Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_1.png" alt="Hotbar"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_2.png" alt="Wandering Trader Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_3.png" alt="Attack cooldown"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_4.png" alt="Furnace Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_5.png" alt="Crafting Table Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_6.png" alt="Chest Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_7.png" alt="Beacon Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_8.png" alt="Enchantment Table Inventory"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/dark_theme/picture_9.png" alt="Hotbar"></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Dark Theme</h1>
+	<p>1.6 +</p>
+</header>
+
+<p>Change the look of the inventory to a simplistic dark gray and blue colored one.</p>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(4)">Ressource Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#resource_pack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

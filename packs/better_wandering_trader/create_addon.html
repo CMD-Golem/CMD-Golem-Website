@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Better Wandering Trader Addons</title>
+<meta name="description" content="Create your own trades for the Better Wandering Trader Data Pack.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/better_wandering_trader/create_addon.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<a class="nav_button disable_link nav_text" href="../better_wandering_trader.html" title="Better Wandering Trader"><p>Better Wandering Trader</p></a>
+	<a href="../../info/contact.html#better_wandering_trader" target="_blank" class="nav_button disable_link" title="Get help"><img src="../../elements/nav/help.svg" alt="Get help"></a>
+</nav>
+
+
+<main>
+<h1><a href="../better_wandering_trader.html" title="Go back to the Better Wandering Trader Data Pack">Better Wandering Trader Addons</a></h1>
+
+<p>Create your own Trades for the Better Wandering Trader Data Pack.</p>
+<ol>
+	<li>Create your item in a summon command with a command generator like <a href="https://mcstacker.net/" target="_blank">MCStacker.net</a>.</li>
+	<li>Make shure that you just changed things in the item part and not ones from the entity itself.</li>
+	<li>Paste the command into the trade input box.</li>
+	<li>Select the correct rarity of your item.</li>
+	<li>Repeat the first two steps for Buy one and Buy two and paste the command into the according box. If you don't want a Buy two you just leave the field blank.</li>
+	<li>If you want to have a setting to disable this trade you can add the id of your item into the Trade ID input box.</li>
+	<li>Copy the commands from the output and save it in a mcfunction file in your Data Pack.</li>
+	<li>To link your trades with the main Data Pack you need to create a usftrader named function tag under the minecraft folder of your Data Pack, like the load named function tag which executes your function every time you reload the world. Make shure that replace isn't set or is set to false.</li>
+</ol>
+
+<br><br>
+<p>Trade (needed)</p>
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:diamond_sword",Count:1b}}' id="trade" onkeyup="generate()">
+
+<input type="radio" name="trade" id="common" checked="true"><label for="common">Common</label><br>
+<input type="radio" name="trade" id="rare"><label for="rare">Rare</label><br>
+<input type="radio" name="trade" id="epic"><label for="epic">Epic</label><br>
+
+<br>
+<p>Buy one (needed)</p>
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:emerald",Count:2b}}' id="buy1" onkeyup="generate()">
+
+<p>Buy two</p>
+<input type="text" class="code fullwidth" placeholder='/summon item ~ ~ ~ {Item:{id:"minecraft:air",Count:1b}}' id="buy2" onkeyup="generate()">
+
+<br>
+<p>Trade ID (to disable the trade)</p>
+<input type="text" class="code fullwidth" placeholder='#diamond_sword' id="trade_id" onkeyup="generate()">
+
+<br>
+<p>Output</p>
+<code id="trade_output" class="fullwidth" oncopy="copyCounter()" style="overflow-wrap: break-word;">Fill in your data...</code>
+
+<a class="button disable_link center" href="https://drive.google.com/uc?export=download&id=1sCFnsSQeVX2Vkqc_NwgNJtuephNVDFit" style="margin: 40px 0; display: block;" target="_blank">Example Pack with a One Hit Sword</a>
+
+</main>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/better_wandering_trader_addon.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+
+</body>
+</html>

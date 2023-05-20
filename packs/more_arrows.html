@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - More Arrows</title>
+<meta name="description" content="This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/more_arrows.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="more_arrows">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/special/more_arrows.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#more_arrows" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/more_arrows/logo_2.png" alt="More Arrows Data Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/more_arrows/picture_1.png" alt="Arrow List"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/more_arrows/picture_2.png" alt="Lightning Arrow"><div class="text">Lightning Arrow</div></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/more_arrows/picture_3.png" alt="Quicksand Arrow"><div class="text">Quicksand Arrow</div></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/more_arrows/picture_4.png" alt="Fangs Arrow"><div class="text">Fangs Arrow</div></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+<header>
+	<h1>More Arrows</h1>
+	<p>1.14 +</p>
+</header>
+
+
+<p>This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.</p>
+<p>It also changes the way to craft Tipped Arrows. Now the crafting for them works like the crafting for the new Arrows. You need to drop a normal Potion or a Splash Potion on a Fletching Table and shoot it with a Bow.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<div class="spoiler_flex">
+			<div class="spoiler_image">
+				<img src="../elements/pictures/packs/more_arrows/recipe.gif" alt="Recipe">
+			</div>
+			<div class="spoiler_text">
+				<p>Drop the matching item, which you can see in the table underneath in the Arrow spoiler, on a <a href="javascript:void(0);" class="a_button" onclick="bigImg('../elements/pictures/packs/more_arrows/recipe_2.png')">Fletching Table</a> and shoot the item with a Bow or Crossbow. (You can't use an Infinity Bow and you need to be in survival or adventure mode)</p>
+			</div>
+		</div>
+		<p>If you have OP or cheats enabled you can get all Arrows with the following command:</p>
+		<code>/function more_arrows:give</code>
+		<div style="height: 30px;"></div>
+		<p>If you want to craft the arrows in the Crafting Table instead of on the Fletching Table, you can additionally install the following pack:<br><small>(If the normal pack slows down your server, you can try this addon as it uses less resources)</small></p>
+		<button class="center" onclick="openDownload('more_arrows_craft')">Download</button>
+	</div>
+</div>
+
+
+
+<h3 class="spoiler_title active" onclick="spoiler(this)" title="Open for more Informations">Arrows</h3>
+<div class="spoiler_show" style="max-height: unset;">
+	<p class="center">Click on the boxes to get a preview of the Arrow ability of it.</p>
+	<div class="spoiler_content arrows">
+		<table>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/shulker_bullet_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/shulker_bullet_arrow.png" alt="Shulker Bullet Arrow"></td>
+				<td class="table_text">Popped Chorus Fruit<br>Shulker Bullet Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/shulker_bullet_arrow.png" alt="Popped Chorus Fruit"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/trap_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/trap_arrow.png" alt="Trap Arrow"></td>
+				<td class="table_text">Tripwire Hook<br>Trap Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/trap_arrow.png" alt="Tripwire Hook"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/freeze_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/freeze_arrow.png" alt="Freeze Arrow"></td>
+				<td class="table_text">Blue Ice<br>Freeze Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/freeze_arrow.png" alt="Blue Ice"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/fangs_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/fangs_arrow.png" alt="Fangs Arrow"></td>
+				<td class="table_text">Emerald<br>Fangs Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/fangs_arrow.png" alt="Emerald"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/lightning_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/lightning_arrow.png" alt="Lightning Arrow"></td>
+				<td class="table_text">Blaze Rod<br>Lightning Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/lightning_arrow.png" alt="Blaze Rod"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/quicksand_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/quicksand_arrow.png" alt="Quicksand Arrow"></td>
+				<td class="table_text">Phantom Membrane<br>Quicksand Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/quicksand_arrow.png" alt="Sand"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/tnt_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/tnt_arrow.png" alt="TNT Arrow"></td>
+				<td class="table_text">TNT<br>TNT Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/tnt_arrow.png" alt="TNT"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/witch_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/witch_arrow.png" alt="Witch Arrow"></td>
+				<td class="table_text">Fermented Spider Eye<br>Witch Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/witch_arrow.png" alt="Fermented Spider Eye"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/tp_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/tp_arrow.png" alt="Teleport Arrow"></td>
+				<td class="table_text">Ender Pearl<br>Teleport Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/tp_arrow.png" alt="Ender Pearl"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/anvil_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/anvil_arrow.png" alt="Anvil Arrow"></td>
+				<td class="table_text">Anvil<br>Anvil Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/anvil_arrow.png" alt="Anvil"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/spider_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/spider_arrow.png" alt="Spider Arrow"></td>
+				<td class="table_text">Cobweb<br>Spider Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/spider_arrow.png" alt="Cobweb"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/torch_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/torch_arrow.png" alt="Torch Arrow"></td>
+				<td class="table_text">Torch<br>Torch Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/torch_arrow.png" alt="Torch"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/dragon_breath_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/dragon_breath_arrow.png" alt="Dragon Breath Arrow"></td>
+				<td class="table_text">Dragon Breath<br>Dragon Breath Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/dragon_breath_arrow.png" alt="Dragon Breath"></td>
+			</tr>
+			<tr onclick="bigImg('../elements/pictures/packs/more_arrows/gif/spike_arrow.gif')">
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/arrow/spike_arrow.png" alt="Spike Arrow"></td>
+				<td class="table_text">Dripstone Block<br>Spike Arrow</td>
+				<td class="table_img"><img src="../elements/pictures/packs/more_arrows/item/spike_arrow.png" alt="Dripstone Block"></td>
+			</tr>
+		</table>
+
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>Disable crafting Tipped Arrows with normal Potions.</p>
+		<code>/scoreboard players set #potion more_arrows 1</code>
+		<p>Disable crafting Tipped Arrows with Splash Potions.</p>
+		<code>/scoreboard players set #splash_potion more_arrows 1</code>
+		<p>Disable Arrows. Replace #id with the id of the according Arrow from the table bellow.</p>
+		<code>/scoreboard players set #id more_arrows 1</code>
+		<p>To enable the Setting again you need to execute the same Command except of the 1 replace with a 0.</p>
+
+		<table class="table">
+			<tr>
+				<td><p>Shulker Bullet Arrow:</p></td>
+				<td><p style="user-select: all;">#shulker_bullet</p></td>
+			</tr>
+			<tr>
+				<td><p>Trap Arrow:</p></td>
+				<td><p style="user-select: all;">#trap</p></td>
+			</tr>
+			<tr>
+				<td><p>Freeze Arrow:</p></td>
+				<td><p style="user-select: all;">#freeze</p></td>
+			</tr>
+			<tr>
+				<td><p>Fangs Arrow:</p></td>
+				<td><p style="user-select: all;">#fangs</p></td>
+			</tr>
+			<tr>
+				<td><p>Lightning Arrow:</p></td>
+				<td><p style="user-select: all;">#lightning</p></td>
+			</tr>
+			<tr>
+				<td><p>TNT Arrow:</p></td>
+				<td><p style="user-select: all;">#tnt</p></td>
+			</tr>
+			<tr>
+				<td><p>Witch Arrow:</p></td>
+				<td><p style="user-select: all;">#witch</p></td>
+			</tr>
+			<tr>
+				<td><p>Teleport Arrow:</p></td>
+				<td><p style="user-select: all;">#tp</p></td>
+			</tr>
+			<tr>
+				<td><p>Anvil Arrow:</p></td>
+				<td><p style="user-select: all;">#anvil</p></td>
+			</tr>
+			<tr>
+				<td><p>Spider Arrow:</p></td>
+				<td><p style="user-select: all;">#spider</p></td>
+			</tr>
+			<tr>
+				<td><p>Torch Arrow:</p></td>
+				<td><p style="user-select: all;">#torch</p></td>
+			</tr>
+			<tr>
+				<td><p>Dragon Breath Arrow:</p></td>
+				<td><p style="user-select: all;">#dragon_breath</p></td>
+			</tr>
+			<tr>
+				<td><p>Spike Arrow:</p></td>
+				<td><p style="user-select: all;">#spike</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</main>
+
+<div id="bigImg" onclick="this.style.display='none'">
+	<span class="bigImg_close">&times;</span>
+	<div class="bigImg_container">
+		<img id="img" style="width: 100%;">
+	</div>
+</div>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download hide_on_addon">
+			<button onclick="downloadPack(1)">Data Pack</button>
+			<button onclick="downloadPack(3)">Ressource Pack</button>
+		</div>
+		<div class="download show_on_addon" style="display: none;">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack_with_resources" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+			<a class="show_on_addon" style="display: none;" href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

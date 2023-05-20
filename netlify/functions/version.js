@@ -9,7 +9,8 @@ var version_id = [
 	"316609003869176393", // 1.16
 	"316609012338524745", // 1.17
 	"316609019004322377", // 1.18
-	"325220181196407372"  // 1.19
+	"325220181196407372", // 1.19
+	"360203636009075289" // 1.20
 ];
 
 var reset_data = {downloads: 0};
@@ -23,7 +24,8 @@ exports.handler = async (event, context) => {
 	// get counter id and type from url
 	var version = event.path.match(/([^\/]*)\/*$/)[0];
 	
-	if (version == "1.19") { var id = version_id[7]; }
+	if (version == "1.20") { var id = version_id[8]; }
+	else if (version == "1.19") { var id = version_id[7]; }
 	else if (version == "1.18") { var id = version_id[6]; }
 	else if (version == "1.17") { var id = version_id[5]; }
 	else if (version == "1.16") { var id = version_id[4]; }

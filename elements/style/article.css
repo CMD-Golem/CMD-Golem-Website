@@ -46,17 +46,25 @@ h2 {
 .nav_search input:focus:hover, .nav_search input:focus, .nav_search input:hover {
 	outline: none;
 	border-radius: 4px;
-	background-color: #1C1C1C;
+	background-color: #1c1c1c;
 }
 
 /* Search Mobile */
 .nav_search_button {
 	display: none;
-	height: 60px;
-	width: 60px;
-	padding: 0;
+	margin-top: 9px;
+	margin-left: 7px;
+	height: 43px;
+	width: 43px;
+	border-radius: 4px;
+	float: right;
 	z-index: 4;
-	background: transparent url('../nav/search.svg') center/30px no-repeat;
+	user-select: none;
+	background: transparent url('../nav/search.svg') center/35px no-repeat;
+}
+
+.nav_search_button:hover {
+	background-color: #333333;
 }
 
 .nav_search_button + label::before {
@@ -93,63 +101,105 @@ h2 {
 
 #nav_search_button:checked ~ .nav_search_button {
 	position: fixed;
-	right: 0;
-	background: transparent url('../nav/close.svg') center/30px no-repeat;
+	right: 7px;
+	background: transparent url('../nav/close.svg') center/35px no-repeat;
 }
 
+#nav_search_button:checked ~ .nav_search_button:hover {
+	background-color: #333333;
+}
 
 /* ####################################################################### */
-/* Filter */
-#filter_button:checked ~ aside {
-	top: 0;
-	transition: top 0.5s ease-in-out;
+/* Version Filter */
+#select_version {
+	float: right;
 	background: #333333;
+	text-align: center;
+	border-radius: 4px;
+	padding: 8px 0;
+	width: 95px;
+	margin-top: 9px;
+	cursor: default;
+	user-select: none;
 }
 
-#filter_button:checked ~ aside .filter_row {
-	display: block;
+#select_version:hover {
+	background-color: #1c1c1c;
 }
 
-#filter_button:checked ~ main {
-	margin-top: 200px;
+#select_version:after {
+	content: " \2BC6";
 }
 
-aside {
+#selection_box {
 	display: flex;
-	justify-content: space-evenly; 
 	position: fixed;
-	top: -100%;
-	padding: 30px;
-	padding-top: 50px;
-	width: 100%;
-	z-index: 1;
-	overflow: scroll;
-	scrollbar-width: none;
+	border-radius: 5px;
+	background-color: #333333;
+	z-index: 4;
+	top: 58px;
+	right: 15%;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,0.65);
 }
 
-aside::-webkit-scrollbar {
-  display: none;
+#version_main {
+	max-height: 40vh;
+	direction: rtl;
+	overflow-y: auto;
 }
 
-/* Checkbox */
-.filter_row {
-	width: 200px;
-	display: none;
+#version_main div {
+	padding: 8px 12px;
+	border-radius: 5px;
+	margin-right: 5px;
 }
 
-aside p {
-	margin-left: 30px;
+#version_main div:hover {
+	background-color: #222222;
 }
 
-@media (max-width: 700px) {
-	aside {
-		flex-direction: column-reverse;
+.version_main_selected {
+	border-radius: 5px 0 0 5px !important;
+	margin-right: 2px !important;
+	background-color: #a10000 !important;
+	position: relative;
+}
+
+#version_sub {
+	max-height: 40vh;
+	overflow-y: auto;
+	border-radius: 5px;
+	background-color: #222222;
+}
+
+#version_sub div {
+	padding: 8px 12px;
+	border-radius: 0 5px 5px 0;
+}
+
+.version_sub_selected, #version_sub div:hover {
+	background-color: #a10000;
+}
+
+.hidden {
+	display: none !important;
+}
+
+@media (max-width: 1600px) {
+	#selection_box {
+		right: 10%;
 	}
-	.filter_row {
-		margin: 0 auto;
+}
+
+@media (max-width: 1350px) {
+	#selection_box {
+		right: 10px;
 	}
-	#filter_button:checked ~ aside {
-		bottom: 0;
+}
+
+@media (max-width: 900px) {
+	#selection_box {
+		right: 60px;
 	}
 }
 
@@ -166,7 +216,7 @@ main {
 }
 
 /* Article */
-.filterme  {
+#article_list a {
 	width: 250px;
 	padding: 20px 40px;
 	background: #333333;
@@ -181,14 +231,14 @@ main {
 	margin: 20px;
 }
 
-.filterme:hover, .filterme:focus {
+#article_list a:hover, #article_list a:focus {
 	background: #222222;
 	outline: none;
 	color: inherit;
 	text-decoration-line: none;
 }
 
-.filterme:link, .filterme:visited, .filterme:active {
+#article_list a:link, #article_list a:visited, #article_list a:active {
 	color: inherit;
 	text-decoration-line: none;
 }
@@ -229,7 +279,7 @@ main {
 }
 
 @media (max-width: 400px) {
-	.filterme {
+	#article_list a {
 		margin: 20px 0px;
 		padding: 20px;
 	}
@@ -237,10 +287,9 @@ main {
 
 /* Hide */
 .hide_search {
-	display: none;
+	display: none !important;
 }
 
 .hide_filter {
-	display: none;
+	display: none !important;
 }
-

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Jump and Run</title>
+<meta name="description" content="Build your personal Jump and Run with checkpoints, timer and more.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/jump_and_run.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="jump_and_run">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#jump_and_run" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/jump_and_run/logo_2.png" alt="Jump and Run Data Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/jump_and_run/picture_1.png" alt="Example Parkour"></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Jump and Run</h1>
+	<p>1.13 +</p>
+</header>
+
+<p>Do you want to build a Jump and Run? Then this is the right Data Pack for you. With it you can create your own Jump and Run with checkpoints and a timer.</p>
+<p>To start the game you have to pass the Jump and Run starting point. To exit the game, you can drop the Barrier in your inventory.<br>When you pass a checkpoint, you will be teleported back to that point, if you fall down.<br>When you pass the Jump and Run end point you have finished the game and the timer stops.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/packs/jump_and_run/recipe_2.png" alt="Setup">
+		</div>
+		<div class="spoiler_text">
+			<ol>
+				<li>Install the Data Pack and rejoin the world or restart the server.</li>
+				<li>Build your Jump and Run. You can only use blocks which are listed in the Parkour Blocks spoiler bellow. The other blocks will teleport you back to the last checkpoint.</li>
+				<li>Enable cheats or give yourself op if you are on a server and execute this command:<br><code>/tag @s add jar_config</code></li>
+				<li>In the picture you can see what the different items do if you place them.</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Parkour Blocks</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>For the Jump and Run you can only use the blocks which are listed below. If the player stands on an other Block, he will be teleported back to his latest checkpoint. You also need to place these blocks below the Start and End Point.</p>
+		<p>The blocks are:</p>
+		<ul>
+			<li>Walls</li>
+			<li>Fences</li>
+			<li>Chorus Fruit</li>
+			<li>Chorus Plant</li>
+			<li>Ladder</li>
+			<li>Vine</li>
+			<li>Iron Bars</li>
+			<li>Glass Pane (stained and clear)</li>
+			<li>Slime Block</li>
+			<li>Honey Block (1.15 +)</li>
+			<li>Chain (1.16 +)</li>
+			<li>Weeping Vines (1.16 +)</li>
+			<li>Twisting Vines (1.16 +)</li>
+			<li>Dripleaves (1.17 +)</li>
+			<li>Slabs</li>
+			<li>Double Slabs (If you place two slabs on each other, they look like an normal block, but they aren't)</li>
+		</ul>
+	</div>
+</div>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+			</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

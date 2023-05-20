@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Short Commands</title>
+<meta name="description" content="This Data Pack adds new commands to execute existing commands faster.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/short_commands.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="short_commands">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#short_commands" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/short_commands/logo_2.png" alt="Short Commands Data Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/short_commands/picture_1.png" alt="Shortcut Menu"></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Short Commands</h1>
+	<p>1.13 +</p>
+</header>
+
+<p>This Data Pack gives you new commands to kill entities in a radius of 1 Block, teleport to the spawn point, to instant heal you and a new chat menu, where you have a lot more shortcuts to execute commands.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Commands</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table dyn_table">
+			<tr>
+				<td><code>/trigger kill</code></td>
+				<td><p>Kills all entities in distance of 1 block.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger reg</code></td>
+				<td><p>Fills your hunger and health bar.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger spawn</code></td>
+				<td><p>Teleports you to your home point.</p></td>
+			</tr>
+			<tr>
+				<td><code>/trigger cmd</code></td>
+				<td><p>Opens the chat menu</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Chat Menu</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table dyn_table">
+			<tr>
+				<td><p>Resistance</p></td>
+				<td><p>Gives you Resistance</p></td>
+			</tr>
+			<tr>
+				<td><p>Night Vision</p></td>
+				<td><p>Gives you Night Vision</p></td>
+			</tr>
+			<tr>
+				<td><p>Kill all Items</p></td>
+				<td><p>Kill all items which are in loaded chunks</p></td>
+			</tr>
+			<tr>
+				<td><p>Toggle Time</p></td>
+				<td><p>Change the time from day to night and backwards</p></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><p>Get Data of nearest Entity</p></td>
+				<td><p>Shows you the NBT data of the entity which is the nearest to you</p></td>
+			</tr>
+			<tr>
+				<td><p>Get Data of Selected Item</p></td>
+				<td><p>Shows you the NBT data of the item you have selected in your hotbar</p></td>
+			</tr>
+		</table>
+		<p>If you press on the Show button next to the last two commands you get the command pasted in you chat to modify it.</p>
+	</div>
+</div>
+
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>On the first time you join the world with the Data Pack installed, you should go to the spawn and execute this command:</p>
+		<code>/function shortcmd:setup</code>
+		<p>This command also changes the following gamerules:</p>
+		<ul>
+			<li>commandBlockOutput to false</li>
+			<li>doDaylightCycle to false</li>
+			<li>doMobSpawning to false</li>
+			<li>doWeatherCycle to false</li>
+			<li>keepInventory to true</li>
+			<li>spawnRadius to 0</li>
+		</ul>
+	</div>
+</div>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

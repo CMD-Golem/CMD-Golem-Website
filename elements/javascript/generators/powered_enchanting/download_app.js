@@ -16,7 +16,7 @@ async function loadEnch(lang_id) {
 		var comp_items = "";
 		for (var j = 0; j < items.length; j++) {
 			var item = comp_items_key[items[j]];
-			img_path += `<img src="../../elements/pictures/datapacks/powered_enchanting/items/${item}.png">`;
+			img_path += `<img src="../../elements/pictures/packs/powered_enchanting/items/${item}.png">`;
 			comp_items += item.replaceAll("_", " ") + " ";
 		}
 
@@ -389,7 +389,7 @@ function importPackIdFail(pack_id_input) {
 
 // #################################################################################################
 // More settingsinfo
-var section = document.getElementsByTagName("section")[0];
+var section = document.getElementById("info_box");
 var main = document.getElementsByTagName("main")[0];
 var sidebar = document.getElementsByTagName("aside")[0];
 var title = document.getElementsByTagName("title")[0];

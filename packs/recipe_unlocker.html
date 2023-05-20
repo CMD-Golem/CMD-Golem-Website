@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Recipe Unlocker</title>
+<meta name="description" content="A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/recipe_unlocker.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="recipe_unlocker">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#recipe_unlocker" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/recipe_unlocker/logo_2.png" alt="Recipe Unlocker Data Pack Logo"></div>
+
+</div>
+
+
+<header>
+	<h1>Recipe Unlocker</h1>
+	<p>1.17 +</p>
+</header>
+
+
+<p>A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes. You can create them with my <a href="../help/nbt_crafting.html">generator</a>.</p>
+<p>This Recipe Unlocker removes all items that the player has received while the recipes are being unlocked. This prevents the player from obtaining the items without actually crafting them.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>Run the unlock Prozess again.</p>
+		<code>/tag @a remove recipe_unlocker</code><br>
+		<code>/reload</code>
+	</div>
+</div>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

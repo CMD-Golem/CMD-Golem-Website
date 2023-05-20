@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Useful Golden Tools</title>
+<meta name="description" content="With this Data Pack all Golden Tools will get a special effect or ability.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/useful_golden_tools.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="useful_golden_tools">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+<style type="text/css">
+@media (max-width: 850px) {
+	.usf_hide {
+		display: none;
+	}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#useful_golden_tools" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/logo_2.png" alt="Useful golden Tools Data Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_1.png" alt="Golden Hoe with Reaping"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_2.png" alt="Golden Hammer with 3x3 Mining"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_3.png" alt="Golden Pickaxe with Autosmelt"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_4.png" alt="Golden Axe with Timber"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_5.png" alt="Golden Sword with Fast Hit"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_6.png" alt="Golden Helmet with Night Vision"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_7.png" alt="Golden Leggings with Stronger Legs"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_8.png" alt="Golden Boots with no Fall Damage"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/useful_golden_tools/picture_9.png" alt="Golden Chestplate with Saturation"></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Useful Golden Tools</h1>
+	<p>1.15 +</p>
+</header>
+
+<p>This Data Pack gives every Golden Tool his own special ability.<br>But be careful! If you die, all Golden Tools in your inventory will disappear and it isn't that easy to get them again, because the crafting recipes are also changed. Instead of using Golden Ingots, you now need Golden Blocks to craft the items.</p>
+<p>But this isn't every thing. Since you crafted the Golden Tools with blocks they got very hard and are unbreakable now.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/packs/useful_golden_tools/recipe.gif" alt="Golden Tools Recipes">
+		</div>
+		<div class="spoiler_text">
+			<p>The crafting remains the same as in vanilla, only the Golden Ingots are replaced with Golden Blocks.</p>
+			<p>The Crafting Table will show a Golden Shovel as result, but you will get the correct item after you take it out.</p>
+		</div>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Abilities</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<table class="table usf_table dyn_table" id="threecoltable">
+			<tr>
+				<th class="usf_hide"><p>Tool</p></th>
+				<th class="usf_hide"><p>Ability</p></th>
+				<th class="usf_hide"><p>Explanation</p></th>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Sword</p></td>
+				<td><p>Fast Hit</p></td>
+				<td class="usf_cell" colspan="2"><p>You haven't any cool down (only 1.15)</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Pickaxe</p></td>
+				<td><p>Autosmelt</p></td>
+				<td class="usf_cell" colspan="2"><p>Smelts all blocks like in furnace</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Axe</p></td>
+				<td><p>Timber</p></td>
+				<td class="usf_cell" colspan="2"><p>Breaks all logs above</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Hammer (Shovel)</p></td>
+				<td><p>3x3 Mining</p></td>
+				<td class="usf_cell" colspan="2"><p>Mines a 3x3 area</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Hoe</p></td>
+				<td><p>Reaping</p></td>
+				<td class="usf_cell" colspan="2"><p>Replants seeds</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>&nbsp;</p></td>
+				<td><p>&nbsp;</p></td>
+				<td class="usf_cell" colspan="2"><p>&nbsp;</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Helmet</p></td>
+				<td><p>Night Vision</p></td>
+				<td class="usf_cell" colspan="2"><p>Always a bright view</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Chestplate</p></td>
+				<td><p>Saturation</p></td>
+				<td class="usf_cell" colspan="2"><p>Never again hunger</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Leggings</p></td>
+				<td><p>Stronger Legs</p></td>
+				<td class="usf_cell" colspan="2"><p>More speed and higher jumps</p></td>
+			</tr>
+			<tr class="usf_row">
+				<td><p>Boots</p></td>
+				<td><p>NoFall Damage</p></td>
+				<td class="usf_cell" colspan="2"><p>No fall damage</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<p>0: The item is unbreakable and you lose it after death if you have it in your inventory. (Default)<br>1: The item is breakable and you don't lose it.<br>2: The item is unbreakable and you don't lose it.<br>3: The Item is breakable and you lose it.</p>
+		<p>To change the setting you need to execute this command and replace x with the matching number from above.</p>
+		<code>/scoreboard players set #setting usfgold x</code>
+	</div>
+</div>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+			<a href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Invisible Item Frame</title>
+<meta name="description" content="Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/invisible_item_frame.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="pack_id" content="invisible_item_frame">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
+<link rel="icon" href="../elements/nav/favicon.png">
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="../info/contact.html#invisible_item_frame" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main>
+<div class="slideshow-container">
+
+	<div class="slideshow"><img src="../elements/pictures/packs/invisible_item_frame/logo_2.png" alt="Invisible Item Frame Data Pack Logo"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/invisible_item_frame/picture_1.png" alt="Invisible Item Frame with Netherite Sword"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/invisible_item_frame/picture_2.png" alt="Invisible Item Frame with nothing in it"><div class="text">Invisible Item Frame with nothing in it</div></div>
+
+	<a class="slideshow_prev" onclick="showSlides(slideIndex += -1)">&#10094;</a>
+	<a class="slideshow_next" onclick="showSlides(slideIndex += 1)">&#10095;</a>
+</div>
+
+
+
+<header>
+	<h1>Invisible Item Frame</h1>
+	<p>1.16 +</p>
+</header>
+
+<p>Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.</p>
+<p>To see the Item Frame when nothing is in it, it is marked with gray particles. After you put something in the Item Frame, they disappear.</p>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting 1.17 +</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content">
+		<div class="spoiler_flex">
+			<div class="spoiler_image">
+				<p><b>Invisible Item Frame Recipe</b></p>
+				<img src="../elements/pictures/packs/invisible_item_frame/recipe.png" alt="Invisible Item Frame Recipe">
+			</div>
+			<div class="spoiler_image">
+				<p><b>Invisible Glow Item Frame Recipe</b></p>
+				<img src="../elements/pictures/packs/invisible_item_frame/recipe_glow.png" alt="Invisible Glow Item Frame Recipe">
+			</div>
+		</div>
+		<p>The Crafting Table will show a Structure Void as result, but you will get the correct item after you take it out.</p>
+	</div>
+</div>
+
+<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting 1.16</h3>
+<div class="spoiler_show">
+	<div class="spoiler_content spoiler_flex">
+		<div class="spoiler_image">
+			<img src="../elements/pictures/packs/invisible_item_frame/recipe_old.png" alt="Invisible Item Frame Recipe">
+		</div>
+		<div class="spoiler_text">
+			<p>The Crafting Table will show a Structure Void as result, but you will get the correct item after you take it out.</p>
+		</div>
+	</div>
+</div>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		Select Minecraft Version: 
+		<div class="select_version_box">
+			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+			<div id="selection_box">
+				<div id="version_main" class="selection"></div>
+				<div id="version_sub" class="selection"></div>
+			</div>
+		</div>
+
+		<div class="download">
+			<button onclick="downloadPack(2)">Data Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<div class="download_box_links">
+			<a href="../info/installation.html#datapack" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
+			<a href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+
+</body>
+</html>
