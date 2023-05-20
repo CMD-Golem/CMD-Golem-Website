@@ -3,10 +3,10 @@ var datapack_name = "powerench"; // define data pack namespace
 var pack_version = "4.1"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
 var version_names = [ // define version name and main pack for selected pack format
-	{version: 7, name: "1.17", counter_name: "1.17", main: 7},
-	{version: 8, name: "1.18", counter_name: "1.18", main: 7},
-	{version: 9, name: "1.18.2", counter_name: "1.18", main: 7},
-	{version: 10, name: "1.19", counter_name: "1.19", main: 10}
+	{version: 7, name: "1.17", main: 7, db: "316609012338524745"},
+	{version: 8, name: "1.18", main: 7, db: "316609019004322377"},
+	{version: 9, name: "1.18.2", main: 7, db: "316609019004322377"},
+	{version: 10, name: "1.19", main: 10, db: "325220181196407372"}
 ];
 var pack_id, already_download;
 
@@ -293,7 +293,7 @@ async function generate() {
 			already_download = true;
 	
 			fetch(`/.netlify/functions/update/datapacks/320699416718606924`); // normal counter
-			fetch(`/.netlify/functions/version/${version_obj.counter_name}`); // version statistic
+			fetch(`/.netlify/functions/version/${version_obj.db}`); // version statistic
 			fetch(`/.netlify/functions/update/powered_enchanting/${selected_edition_db}`); // edition statistic
 		}
 	});

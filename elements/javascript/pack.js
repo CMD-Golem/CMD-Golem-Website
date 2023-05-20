@@ -212,13 +212,13 @@ async function downloadPack(pack_type) {
 	download_box.classList.remove("loading_cursor");
 
 	// download counter
-	if (already_download != true) {
+	if (already_download != true && pack_type != 3) {
 		already_download = true;
 		fetch(`/.netlify/functions/update/${selected_pack_obj.pack_type}/${selected_pack_obj.db_id}`);
 		fetch(`/.netlify/functions/version/${selected_version.db}`);
 	}
 	else {
-		console.log("Already downloaded");
+		console.log("Already downloaded or resource pack of data pack");
 	}
 }
 
