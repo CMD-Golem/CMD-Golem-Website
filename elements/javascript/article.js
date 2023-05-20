@@ -56,7 +56,7 @@ loadPacks();
 
 
 //#################################################################################################
-// Version Filter // nearly the same funtcion as in pack2.js
+// Version Filter // nearly the same funtcion as in pack.js
 var version_id_array_filtered = [];
 var article = article_list.children;
 var html_main_version = "";
