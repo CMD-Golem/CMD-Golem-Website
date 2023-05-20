@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Powered Enchanting Addons</title>
+<meta name="description" content="Create custom Enchantments for the Powered Enchanting Data Pack.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/powered_enchanting/create_addon.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/special/help.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+
+<style type="text/css">
+.selection_menu {
+	display: flex;
+	justify-content: space-between;
+}
+
+#namespace_box {
+	display: none;
+}
+
+article code.fullwidth {
+	user-select: auto;
+	padding: 7px;
+	padding-top: 2px;
+}
+
+.tagged_item {
+	background-color: #222222;
+	display: inline-block;
+	padding: 2px 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.tagged_item:hover {
+	background-color: #A10000;
+}
+
+input.key_input {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+section {
+	padding: 20px;
+	padding-bottom: 50px;
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+	z-index: 1;
+}
+
+@media screen and (max-width: 840px) {
+	section {
+		width: calc(100vw - 40px);
+	}
+}
+
+@media (max-width: 700px) {
+	.nav_text {
+		display: none;
+	}
+	.selection_menu {
+		flex-direction: column;
+	}
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div onclick="generate()" class="nav_button" title="Generate the Data Pack and download it as a zip file. (Ctrl + S)"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<div onclick="addEnch(this)" class="nav_button" title="Add new Enchantment (Ctrl + Enter)"><img src="../../elements/nav/add.svg" alt="Add new Enchantment"><p class="nav_text">Add new Enchantment</p></div>
+	<a href="../../info/contact.html#powered_enchanting_addon" target="_blank" class="nav_button disable_link" title="Get help"><img src="../../elements/nav/help.svg" alt="Get help"></a>
+</nav>
+
+
+<main class="main_sidebar">
+<div id="settings_box">
+	<h1><a href="../powered_enchanting.html" title="Go back to the Powered Enchanting Data Pack">Create custom Enchantments</a></h1>
+
+	<div class="hide_compact">
+		<p>Create custom Enchantments for the Powered Enchanting Data Pack.</p>
+		<p>Note that you need to know commands and functions to use this generator. If you just want to submit an idea for a new Enchantment, follow this <a href="../../info/contact.html#powered_enchanting">link</a>.</p>
+		<ol>
+			<li>Define the name of the Data Pack ID and select the Minecraft version you want to use for the Data Pack.</li>
+			<li>Go to the first dark gray section, which contains all text fields for the first Enchantment, and fill them in.</li>
+			<ul>
+				<li>If you want to add more then one Enchantment, you can add one by clicking on the according button in the navigation bar or by using the key combination Ctrl + Enter.</li>
+				<li>Navigate quickly between all Enchantments by using the buttons in the left sidebar.</li>
+			</ul>
+			<li>To download the finished Data Pack you can, again, use the button in the navigation bar or the key combination Ctrl + S.</li>
+			<li>Create the remaining Commands and functions to execute the Enchantment on the tool, weapon or armor.<br>
+				<small>How to use the built-in functions, like detection of tool usage or multiple durability drain, you can find here:</small>
+				<p class="center"><a class="button disable_link" href="#info">Get some additional tips</a></p>
+			</li>
+		</ol>
+
+		<br><hr><br>
+	</div>
+
+	<p>Data Pack ID Name</p>
+	<input type="text" placeholder='datapack_name' class="datapack_name needed">
+
+	<div class="selection_menu">
+		<div>
+			<p>Select your Minecraft version</p>
+			<select class="version" id="version">
+				<option value="10" selected>1.19 and newer</option>
+				<option value="9">1.18.2</option>
+				<option value="8">1.18 - 1.18.1</option>
+				<option value="7">1.17 - 1.17.1</option>
+			</select>
+		</div>
+		<div>
+			<p>Addon Type</p>
+			<select onchange="addonType(this.value)">
+				<option value="0" selected>Create custom Enchantments</option>
+				<option value="1">Use a Mod with this Data Pack</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="namespace_box">
+		<p>Mod namespace</p>
+		<input type="text" placeholder='minecraft' class="namespace_name">
+	</div>
+	
+	
+
+	<br><br><hr><br>
+</div>
+
+<article id="0">
+	<div onclick="removeEnch(this)" class="close" style="padding-right: 20px;" title="Remove Enchantment">
+		<img src="../../elements/nav/close.svg" alt="Close">
+	</div>
+	
+	<p>Name of the Enchantment</p>
+	<input type="text" placeholder='Vein Miner' class="ench_name" onchange="enchName(this)">
+
+	<p>Id of the Enchantment</p>
+	<input type="text" placeholder='vein_miner' class="ench_id">
+	
+	<p>Max Level of the Enchantment: <input type="text" placeholder='3' class="ench_maxlvl" style="display: inline-block; width: 43px; padding: 8px;"><br>
+
+	<input type="checkbox" class="ench_adv" id="ench_adv"><label for="ench_adv"> Enchantment is an <a href="../powered_enchanting.html#advanced_enchanting" target="_blank">Advanced Enchantment</a></label></p>
+	
+	<p>Tools or Armor, the enchantment can be enchanted on <small>(separate with space)</small></p>
+	<code class="fullwidth ench_items" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='pickaxe' class="key_input" list="input_items" onkeyup="setTagged(this, true)">
+	</code>
+	
+	<p>Incompatible Enchantment Ids <small>(separate with space)</small></p>
+	<code class="fullwidth ench_comp" onclick="this.getElementsByTagName('input')[0].focus();">
+		<input type="text" placeholder='silk_touch' class="key_input" list="input_comp" onkeyup="setTagged(this, true)">
+	</code>
+	
+	<p>Chance that an Enchantment shows in the Selection for Enchanting</p>
+	<select class="ench_chance">
+		<option value="1">10% (e.g. Infinity)</option>
+		<option value="2" selected>20% (e.g. Looting)</option>
+		<option value="5">50% (e.g. Knockback)</option>
+		<option value="0">100% (e.g. Sharpness)</option>
+	</select>
+
+	<!-- <p>Short description of the Enchantment</p>
+	<textarea class="ench_descr" placeholder='Breaks connected Ores'></textarea> -->
+</article>
+
+</main>
+
+<aside>
+	<div class="sidebar_link" onclick="scrollToParent('0')" id="link_0">
+		<div class="dot"></div><span class="disable_link link_text">First Enchantment</span><br>
+	</div>
+</aside>
+
+<div id="progress_bar" style="display: none;">
+	<div class="progress_bar_content">
+		<h3>Downloading</h3>
+		<div class="progress_bar">
+			<div id="bar"></div>
+		</div>
+	</div>
+</div>
+
+<section>
+	<h2>Additional tips</h2>
+	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack and you don't need to create them again.</p>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect if item has Enchantment</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>After the Item has been enchanted, it will have the Enchantment ID saved in the NBT data.<br>You can either use a predicate to detect it:<br>
+			<code>{<br>&nbsp;&nbsp;"condition": "minecraft:entity_properties",<br>&nbsp;&nbsp;"entity": "this",<br>&nbsp;&nbsp;"predicate": {<br>&nbsp;&nbsp;&nbsp;&nbsp;"equipment": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mainhand": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nbt": "{PoweredEnchantments:[{id:\"minecraft:ENCHANTMENT\"}]}"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;}<br>}</code></p>
+			<p>Or a command:<br>
+			<code>execute if entity @s[nbt={SelectedItem:{tag:{PoweredEnchantments:[{id:"minecraft:ENCHANTMENT"}]}}}]</code></p>
+			<p>The Level of the enchantment is stored like vanilla items:<br>
+			<code>{id:"minecraft:ENCHANTMENT", lvl:5s}</code></p>
+		</div>
+	</div>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>The main pack of Powered Enchanting contains four predicates which check for the usage of tools:</p>
+			<ul>
+				<li>With <code>powerench_main:tools/pickaxe</code> you can detect the usage of all Pickaxes</li>
+				<li>With <code>powerench_main:tools/axe</code> you can detect the usage of all Axes</li>
+				<li>With <code>powerench_main:tools/shovel</code> you can detect the usage of all Shovels</li>
+				<li>With <code>powerench_main:tools/seeds</code> you can detect the mining of seeds</li>
+			</ul>
+		</div>
+	</div>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Drain multiple durability points</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>When the following function is executed, it drains a durability point from the selected item in the hotbar:</p>
+			<code>function powerench_main:durability</code>
+		</div>
+	</div>
+
+	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Change max level of vanilla Enchantment</h3>
+	<div class="spoiler_show">
+		<div class="spoiler_content">
+			<p>Execute this command in the function which will be executed on reload:</p>
+			<code>scoreboard players set #protection powerench 5</code>
+			<p>The ID after the # is the ID of the Enchantment and the number at the end defines the new max level.</p>
+		</div>
+	</div>
+
+</section>
+
+<footer></footer>
+
+<datalist id="input_items">
+	<option value="all_items"></option>
+	<option value="axe"></option>
+	<option value="boots"></option>
+	<option value="bow"></option>
+	<option value="carrot_on_a_stick"></option>
+	<option value="chestplate"></option>
+	<option value="crossbow"></option>
+	<option value="elytra"></option>
+	<option value="fishing_rod"></option>
+	<option value="flint_and_steel"></option>
+	<option value="helmet"></option>
+	<option value="hoe"></option>
+	<option value="leggings"></option>
+	<option value="pickaxe"></option>
+	<option value="shears"></option>
+	<option value="shield"></option>
+	<option value="shovel"></option>
+	<option value="sword"></option>
+	<option value="trident"></option>	
+</datalist>
+
+<datalist id="input_comp">
+	<option value="Loading...">
+</datalist>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/enchantments.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_app2.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/addon_save.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+
+</body>
+</html>

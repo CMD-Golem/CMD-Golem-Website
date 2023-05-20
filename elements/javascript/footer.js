@@ -109,6 +109,7 @@ document.getElementsByTagName("footer")[0].innerHTML = `
 <div class="footer_center footer_block">
 	<a href="/info/legal.html">Disclaimer</a>
 	<a href="/info/legal.html#therms_of_use">Therms of use</a>
+	<a href="/info/contact.html#contact">Contact</a>
 </div>
 <div class="footer_right footer_block">
 	<!--<a href="https: //twitter.com/CmdGolem" target="_blank" title="Twitter">
