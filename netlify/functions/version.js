@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
 		var data = {
 			date: new Date(),
 			versions: version_dates
-		}
+		};
 
 		// upload stats
 		data = JSON.parse(JSON.stringify(data));
@@ -67,8 +67,10 @@ exports.handler = async (event, context) => {
 	// update counter
 	var data = {
 		downloads: current_data.downloads + 1
-	}
+	};
 
 	data = JSON.parse(JSON.stringify(data));
-	await client.query(q.Update(q.Ref(`classes/versions/${id}`), {data:data}))
+	await client.query(q.Update(q.Ref(`classes/versions/${id}`), {data:data}));
+
+	return { statusCode: 200 };
 }

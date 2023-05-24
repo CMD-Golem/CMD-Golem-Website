@@ -86,8 +86,8 @@ async function downloadCheck() {
 		var function_craft_text = `execute as @a[tag=${tag}] at @s unless entity @e[type=item,nbt={Item:{id:"${placeholder}",Count:${count}b},Age:1s},distance=..3] run clear @s ${placeholder} ${count}\nexecute at @a[tag=${tag}] run kill @e[type=item,nbt={Item:{id:"${placeholder}",Count:${count}b},Age:1s},distance=..3]\n\ngive @a[tag=${tag}] ${nbt_item} ${count}\nscoreboard players remove @a[tag=${tag}] ${score} 1\n\nexecute as @a[tag=${tag},scores={${score}=1..}] run function ${datapack_name}:${function_mass_path}\n\ntag @a[tag=${tag}] remove ${tag}`;
 		zip.file(`data/${datapack_name}/functions/${function_craft_path}.mcfunction`, function_craft_text);
 		
-		// Function Detect
-		var function_mass_text = `execute as @s run kill @e[type=item,nbt={Item:{id:"minecraft:${placeholder}",Count:${count}b},Age:1},distance=..3]\n\nclear @s ${placeholder} ${count}\ngive @s ${nbt_item} ${count}\nscoreboard players remove @s ${score} 1\n\nexecute if entity @s[scores={${score}=1..}] run function ${datapack_name}:${function_mass_path}`;
+		// Function Mass Craft
+		var function_mass_text = `execute as @s run kill @e[type=item,nbt={Item:{id:"${placeholder}",Count:${count}b},Age:1},distance=..3]\n\nclear @s ${placeholder} ${count}\ngive @s ${nbt_item} ${count}\nscoreboard players remove @s ${score} 1\n\nexecute if entity @s[scores={${score}=1..}] run function ${datapack_name}:${function_mass_path}`;
 		zip.file(`data/${datapack_name}/functions/${function_mass_path}.mcfunction`, function_mass_text);
 	}
 

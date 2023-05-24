@@ -1,6 +1,6 @@
 const pack_array = [{
 		name: "Better Wandering Trader", updated: 20221210, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
-		pack_id: "better_wandering_trader", code_version: "4.2", last_version_id: false, pack_version_id: [133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
+		pack_id: "better_wandering_trader", code_version: "4.3", last_version_id: false, pack_version_id: [133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
 		pack_id: "dark_theme", code_version: "3", last_version_id: false, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "306823878630441483"
