@@ -16,6 +16,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 
 <style>
+.select_version_box {
+	margin: 0;
+}
+
 .create_box {
 	margin-bottom: 20px;
 	display: flex;
@@ -54,13 +58,23 @@
 <main class="main_sidebar">
 	<h1><a href="../powered_enchanting.html" title="Go back to the Powered Enchanting Data Pack">Powered Enchanting</a></h1>
 	<ol>
-		<li>Select the Minecraft version you play in:
+		<li>
+			<!-- Select the Minecraft version you play in:
 			<select id="version" onchange="hideIncomp()">
 				<option value="10" selected>1.19 or newer</option>
 				<option value="9">1.18.2</option>
 				<option value="8">1.18 - 1.18.1</option>
 				<option value="7">1.17 - 1.17.1</option>
-			</select>
+			</select> -->
+			Select Minecraft Version: 
+			<div class="select_version_box">
+				<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+				<div id="selection_box">
+					<div id="version_main" class="selection"></div>
+					<div id="version_sub" class="selection"></div>
+				</div>
+			</div>
+			<span id="preview_warning" style="display: none;"><br>Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
 		</li>
 		<li>Change language:
 			<select id="lang" onchange="changeEdition('none');loadEnch(this.value);">
@@ -134,10 +148,10 @@
 
 <footer></footer>
 
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/enchantments.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/download_app.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/powered_enchanting/download_save.js"></script>
-<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
 
 </body>
 </html>

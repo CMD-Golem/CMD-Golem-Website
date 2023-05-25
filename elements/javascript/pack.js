@@ -1,4 +1,4 @@
-// show and hide download window
+// show and hide download window (also used in powered_enchanting/download_app, article)
 var select_version_text = document.getElementById("select_version_text");
 var download_box = document.getElementById("download_box");
 var selection_box = document.getElementById("selection_box");
@@ -147,7 +147,7 @@ function subVersion(selected_version_el) {
 
 
 // ###########################################################
-// download
+// download (also used in powered_enchanting/download_save)
 // 1: datapack with resource pack
 // 2: standalone datapack
 // 3: ressource pack of datapack

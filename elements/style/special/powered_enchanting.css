@@ -333,6 +333,7 @@ aside h2 {
 
 .sidebar_link {
 	margin: 10px 0;
+	user-select: none;
 }
   
 .dot {

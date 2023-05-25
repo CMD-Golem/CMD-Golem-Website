@@ -4,7 +4,7 @@ var body = document.getElementsByTagName("body")[0];
 var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
 var selected_edition_db = "320699649726874188";
 
-async function loadEnch(lang_id) {
+function loadEnch(lang_id) {
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
 
 	for (var i = 0; i < article_array.length; i++) {
@@ -39,7 +39,7 @@ async function loadEnch(lang_id) {
 		}
 
 		html += `
-		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.versions[0]}">
+		<article id="${article.id}" class="${article.style}" onclick="selectToggle(this)" title="Select" data-chance="${article.chance}" data-arrayId="${i}" data-version="${article.version_id[article.version_id.length - 1]}">
 			<div class="settings_button" onclick="setting(this)" title="Options"><img src="../../elements/nav/settings.svg"></div>
 			<div class="content">
 				<h3>${article.title[lang_id]}</h3>
@@ -59,10 +59,10 @@ async function loadEnch(lang_id) {
 	article_elements = article_list.getElementsByTagName("article");
 	not_found = document.getElementById("not_found");
 	list_options = body.classList[0];
-	hideIncomp();
-	siteSearch();
+	loadVersions();
+	// hideIncomp();
+	// siteSearch();
 }
-loadEnch(0);
 
 // ###########################################################
 // Select and Sidebar
@@ -133,7 +133,25 @@ function select(article, preselection) {
 		new_link.setAttribute("onclick", "scrollToParent('" + article.id + "')");
 		link_bar.appendChild(new_link);
 
-		sortSidebar();
+		// Sort selected items
+		var switching = true;
+		while (switching == true) {
+			switching = false;
+			var items = link_bar.getElementsByClassName("sidebar_link");
+
+			for (var i = 0; i < (items.length - 1); i++) {
+				var should_switch = false;
+				if (items[i].getElementsByTagName("span")[0].innerHTML > items[i + 1].getElementsByTagName("span")[0].innerHTML) {
+					should_switch = true;
+					break;
+				}
+			}
+
+			if (should_switch == true) {
+				items[i].parentNode.insertBefore(items[i + 1], items[i]);
+				switching = true;
+			}
+		}
 
 		// show sidebar
 		if (sidebar_hidden) {
@@ -159,29 +177,6 @@ function deselect(article) {
 	}
 }
 
-// Sort selected items
-function sortSidebar() {
-	var switching = true;
-
-	while (switching == true) {
-		switching = false;
-		var items = link_bar.getElementsByClassName("sidebar_link");
-
-		for (var i = 0; i < (items.length - 1); i++) {
-			var should_switch = false;
-			if (items[i].getElementsByTagName("span")[0].innerHTML > items[i + 1].getElementsByTagName("span")[0].innerHTML) {
-				should_switch = true;
-				break;
-			}
-		}
-
-		if (should_switch == true) {
-			items[i].parentNode.insertBefore(items[i + 1], items[i]);
-			switching = true;
-		}
-	}
-}
-
 // Scroll in view
 function scrollToParent(id) {	
 	var sel_element = document.getElementById(id)
@@ -196,21 +191,6 @@ function hideEnch(option) {
 	body.classList.remove("show_all");
 
 	body.classList.add(option);
-}
-
-// Only show compatible Enchantments
-var incomp_packs = 0;
-function hideIncomp() {
-	var version = document.getElementById("version").value;
-	for (var i = 0; i < article_elements.length; i++) {
-		if (parseInt(article_elements[i].getAttribute("data-version")) > version) {
-			article_elements[i].classList.add("incomp_version");
-		}
-		else {
-			article_elements[i].classList.remove("incomp_version");
-		}
-	}
-	incomp_packs = document.getElementsByClassName("incomp_version").length;
 }
 
 // ###########################################################
@@ -459,6 +439,7 @@ var site_search = document.getElementById("site_search");
 var site_search_mobile = document.getElementById("site_search_mobile");
 var list_options_el = document.getElementById("list_options");
 var searched = false;
+var incomp_packs = 0;
 
 function siteSearch() {
 	var search_value = site_search.value;
@@ -520,3 +501,128 @@ function siteSearchMobile() {
 	site_search.value = site_search_mobile.value;
 	siteSearch();
 }
+
+
+
+// ###########################################################
+// Version Selection // nearly the same funtcion as in pack.js
+var selection_box = document.getElementById("selection_box");
+var version_main = document.getElementById("version_main");
+var version_sub = document.getElementById("version_sub");
+var select_version = document.getElementById("select_version");
+var preview_warning = document.getElementById("preview_warning");
+
+var version_id_array_filtered = [];
+var html_main_version = "";
+var selected_pack_obj = pack_array.find(e => e.pack_id == "powered_enchanting");
+var selected_version;
+
+function loadVersions() {
+	// get first and last version compatible with datapack
+	var first_version = selected_pack_obj.pack_version_id[selected_pack_obj.pack_version_id.length - 1]; // oldest comp version
+	var last_version = selected_pack_obj.last_version_id; // newest comp version
+	var incomp_version_id = selected_pack_obj.incomp_version_id ?? []; // check for incompatible versions
+
+	if (last_version == false) {
+		last_version = version_id_array[0].id;
+	}
+	while (incomp_version_id.includes(last_version)) {
+		last_version--;
+	}
+
+	// create a html list with all compatible main versions  // nearly the same funtcion as in article.js
+	var array_main = [];
+	version_id_array_filtered = [];
+	html_main_version = "";
+
+	for (var i = 0; i < version_id_array.length; i++) {
+		var version_id = version_id_array[i];
+
+		if (version_id.id <= last_version && version_id.id >= first_version && !incomp_version_id.includes(version_id.id)) {
+			version_id_array_filtered.push(version_id);
+
+			if (!array_main.includes(version_id.main)) {
+				html_main_version += `<div onclick="mainVersion(this)" id="${version_id.main_id}">${version_id.main}</div>`;
+				array_main.push(version_id.main);
+			}
+		}
+	}
+
+	version_main.innerHTML = html_main_version;
+
+	// check if last selected version is compatible with this pack
+	var selected_version_id = parseInt(window.sessionStorage.getItem("selected_version_id"));
+	if (!isNaN(selected_version_id) && selected_version_id <= last_version && selected_version_id >= first_version && !incomp_version_id.includes(selected_version_id)) {
+		// select last selected version
+		selected_version = version_id_array.find(e => e.id == selected_version_id);
+	}
+	else {
+		// select newest version stable version
+		var i = 0;
+		while (version_id_array_filtered[i].preview) { i++; }
+		selected_version = version_id_array_filtered[i];
+	}
+
+	select_version.innerHTML = selected_version.main + "." + selected_version.sub;
+
+	var selected_main = document.getElementById(selected_version.main_id);
+	selected_main.classList.add("version_main_selected");
+
+	mainVersion(selected_main);
+	subVersion(document.getElementById("subid" + selected_version.id));
+}
+
+function mainVersion(selected_version_el) {
+	document.getElementsByClassName("version_main_selected")[0].classList.remove("version_main_selected")
+	selected_version_el.classList.add("version_main_selected");
+	var html = "";
+
+	// show sub versions
+	for (var i = 0; i < version_id_array_filtered.length; i++) {
+		var version_id = version_id_array_filtered[i];
+
+		if (version_id.main == selected_version_el.innerHTML) {
+
+			html += `<div onclick="subVersion(this)", id="subid${version_id.id}">.${version_id.sub}</div>`;
+		}
+	}
+	version_sub.innerHTML = html;
+
+	// auto select sub version if only one is aviable
+	if (version_sub.childElementCount == 1) {
+		subVersion(version_sub.firstElementChild);
+	}
+}
+
+function subVersion(selected_version_el) {
+	try { document.getElementsByClassName("version_sub_selected")[0].classList.remove("version_sub_selected"); } catch (e) {}
+	selected_version_el.classList.add("version_sub_selected");
+
+	selected_version = version_id_array.find(e => "subid" + e.id == selected_version_el.id);
+	window.sessionStorage.setItem("selected_version_id", selected_version.id);
+
+	select_version.innerHTML = selected_version.name;
+	selection_box.classList.add("hidden");
+
+	// show unstable version link
+	if (selected_version.preview) {
+		preview_warning.style.display = "block";
+	}
+	else {
+		preview_warning.style.display = "none";
+	}
+
+	// Only show compatible Enchantments
+	for (var i = 0; i < article_elements.length; i++) {
+		if (parseInt(article_elements[i].getAttribute("data-version")) > selected_version.id) {
+			article_elements[i].classList.add("incomp_version");
+		}
+		else {
+			article_elements[i].classList.remove("incomp_version");
+		}
+	}
+	incomp_packs = document.getElementsByClassName("incomp_version").length;
+}
+
+// load html
+loadEnch(0);

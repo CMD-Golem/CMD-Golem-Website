@@ -1,6 +1,0 @@
-If only one file of the pack exists:
-	File is named after Enchantment Id and stored in this directory
-
-If multiple file exists for different versions:
-	File is named pack with the pack format number afterwards (e.g. "pack10")
-	File is stored in a subfolder named after the Enchantment Id

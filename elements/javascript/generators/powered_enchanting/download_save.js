@@ -1,13 +1,6 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_version = "4.1"; // define version of data pack
 var pack_id_load = "1-"; // define version of pack id
-var version_names = [ // define version name and main pack for selected pack format
-	{version: 7, name: "1.17", main: 7, db: "316609012338524745"},
-	{version: 8, name: "1.18", main: 7, db: "316609019004322377"},
-	{version: 9, name: "1.18.2", main: 7, db: "316609019004322377"},
-	{version: 10, name: "1.19", main: 10, db: "325220181196407372"}
-];
 var pack_id, already_download;
 
 // Missing Enchantments
@@ -15,21 +8,52 @@ var pack_id, already_download;
 // Chopping
 
 // Download Resource Pack
-function downloadResourcePack() {
-	var version = document.getElementById("version").value;
+async function downloadResourcePack() {
+	var zip = new JSZip();
+	modal_box.classList.add("loading_cursor");
 
-	if (version == "10") {window.open("https://drive.google.com/uc?export=download&id=1CCfhkyOjYI2yTGUAXTxzNMCgT8Xa5vn5");}
-	else if (version == "9") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
-	else if (version == "8") {window.open("https://drive.google.com/uc?export=download&id=1QkCMN-TgW8URRuWjxi1gSDCuhmeMfQFP");}
-	else if (version == "7") {window.open("https://drive.google.com/uc?export=download&id=1eqDfOCp8Wx3kN_rqZDlpVv-ki4B7UaCI");}
+	var pack_version_ids = selected_pack_obj.rp_version_id;
+	var pack_string = "resource_";
+	var pack_description = "RP ";
+
+	// get matching pack version for selected version
+	for (var i = 0; i < pack_version_ids.length; i++) {
+		if (pack_version_ids[i] <= selected_version.id) {
+			var pack_git_folder = pack_string + pack_version_ids[i];
+
+			// code version
+			if (typeof selected_pack_obj.code_version == 'string') {
+				var code_version = selected_pack_obj.code_version;
+			}
+			else {
+				var code_version = selected_pack_obj.code_version[i];
+			}
+			break;
+		}
+	}
+
+	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
+	await zip.loadAsync(pack.blob());
+
+	// pack.mcmeta
+	var mcmeta_string = await zip.file("pack.mcmeta").async("string");
+	var mcmeta_json = JSON.parse(mcmeta_string);
+	mcmeta_json.pack.pack_format = selected_version.rp;
+	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
+
+	// download zip
+	var pack = await zip.generateAsync({type:"base64"});
+	var link = document.createElement('a');
+	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${code_version}.zip`;
+	link.href = "data:application/zip;base64," + pack;
+	link.click();
+
+	modal_box.classList.remove("loading_cursor");
 }
 
 // ###########################################################
 // Generate
 async function generate() {
-	// var check_selected = checkSelected(document.getElementsByClassName("selected"));
-	// if (!check_selected) {return}
-
 	var sel_article = document.querySelectorAll(".selected,.vanilla");
 	if (show_info == true) { openInfo() }
 
@@ -54,16 +78,29 @@ async function generate() {
 	var progress_width_per_ench = document.getElementById("progress_bar").offsetWidth / article_length;
 	var progress_width = 0;
 
-	// get pos in file array from version
-	var version = document.getElementById("version").value;
-	var version_obj = version_names.find(x => x.version == version);
-
 	//zip
 	var zip = new JSZip();
 	var pack_folder = zip.folder("data/" + datapack_name);
 
 	// load main pack
-	ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/pack" + version_obj.main + ".zip");
+	var pack_version_ids = selected_pack_obj.pack_version_id;
+
+	for (var i = 0; i < pack_version_ids.length; i++) {
+		if (pack_version_ids[i] <= selected_version.id) {
+			var pack_git_folder = "pack_" + pack_version_ids[i];
+
+			// code version
+			if (typeof selected_pack_obj.code_version == 'string') {
+				var code_version = selected_pack_obj.code_version;
+			}
+			else {
+				var code_version = selected_pack_obj.code_version[i];
+			}
+			break;
+		}
+	}
+	// ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/pack" + version_obj.main + ".zip");
+	ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/${pack_git_folder}.zip`);
 	await zip.loadAsync(ench_pack.blob());
 
 	// translation of main pack 0 = EN, 1 = DE, 2 = KO
@@ -116,29 +153,18 @@ async function generate() {
 		if (is_selected) { packId(ench); }
 
 		if (!is_vanilla) {
-			// load files
 			if (!ench.classList.contains("no_files")) {
-				var file_index = -1;
-				var search_version = version;
+				// load files
+				var ench_version_ids = ench_array.version_id;
 
-				while (file_index == -1 && search_version != -1) {
-					file_index = ench_array.versions.indexOf(search_version);
-					search_version--;
+				for (var j = 0; j < ench_version_ids.length; j++) {
+					if (ench_version_ids[j] <= selected_version.id) {
+						var ench_git_folder = "pack_" + ench_version_ids[j];
+						break;
+					}
 				}
 
-				if (search_version == -1) {
-					console.error("Cound't find files of " + ench_array.title[0]);
-					continue;
-				}
-
-				if (ench_array.versions.length == 1) {
-					var file_path = ench_array.ench[0];
-				}
-				else {
-					var file_path = ench_array.ench[0] + "/pack" + ench_array.versions[file_index];
-				}
-
-				ench_pack = await fetch("../../elements/files/powered_enchanting/" + file_path + ".zip");
+				ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/${ench_array.ench[0]}/${ench_git_folder}.zip`);
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
@@ -273,7 +299,7 @@ async function generate() {
 	pack_folder.file("functions/give/all.mcfunction", giveall_function);
 
 	// pack.mcmeta
-	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + selected_version.dp + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
 	document.getElementById("progress_action").innerHTML = "Creating ZIP file"
@@ -284,7 +310,7 @@ async function generate() {
 		preventScroll(false); // footer.js
 
 		var link = document.createElement('a');
-		link.download = "[" + version_obj.name + "] Powered Enchanting Datapack v" + pack_version + ".zip";
+		link.download = "[" + selected_version.name + "] Powered Enchanting Datapack v" + code_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 
@@ -293,7 +319,7 @@ async function generate() {
 			already_download = true;
 	
 			fetch(`/.netlify/functions/update/datapacks/320699416718606924`); // normal counter
-			fetch(`/.netlify/functions/version/${version_obj.db}`); // version statistic
+			fetch(`/.netlify/functions/version/${select_version.db}`); // version statistic
 			fetch(`/.netlify/functions/update/powered_enchanting/${selected_edition_db}`); // edition statistic
 		}
 	});
