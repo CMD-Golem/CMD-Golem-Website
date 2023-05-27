@@ -1,5 +1,5 @@
 const pack_array = [{
-		name: "Better Wandering Trader", updated: 20221210, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
+		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
 		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
@@ -8,7 +8,7 @@ const pack_array = [{
 		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "With this Data Pack you can cook Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
 		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: "306822932006437387"
 	},{
-		name: "Gateway", updated: 20210708, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
+		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
 		pack_id: "gateway", code_version: "3", last_version_id: false, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "306823200590791179"
 	},{
 		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.",
@@ -17,7 +17,7 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "306822979300360715"
 	},{
-		name: "Key", updated: 20220409, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
+		name: "Key", updated: 20230527, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
 		pack_id: "key", code_version: "4", last_version_id: false, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "306823505417077259"
 	},{
 		name: "Observer Addon", updated: 0, search_keys: false,
@@ -56,7 +56,7 @@ const pack_array = [{
 		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "With this Data Pack all Golden Tools will get a special effect or ability.",
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [128, 124, 119], pack_type: "datapacks", db_id: "306823263439290891"
 	},{
-		name: "Wither Soldier", updated: 20210104, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
+		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
 		pack_id: "wither_soldier", code_version: ["3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "306823400923333131"
 	}
 ]
