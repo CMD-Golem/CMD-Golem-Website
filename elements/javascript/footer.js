@@ -1,6 +1,6 @@
 const pack_array = [{
 		name: "Better Wandering Trader", updated: 20221210, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
-		pack_id: "better_wandering_trader", code_version: "4.3", last_version_id: false, pack_version_id: [133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
+		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
 		pack_id: "dark_theme", code_version: "3", last_version_id: false, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "306823878630441483"
@@ -9,16 +9,16 @@ const pack_array = [{
 		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: "306822932006437387"
 	},{
 		name: "Gateway", updated: 20210708, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
-		pack_id: "gateway", code_version: "2.1", last_version_id: false, pack_version_id: [130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "306823200590791179"
+		pack_id: "gateway", code_version: "3", last_version_id: false, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "306823200590791179"
 	},{
 		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.",
-		pack_id: "invisible_item_frame", code_version: ["2", "1.1"], last_version_id: false, pack_version_id: [128, 122], pack_type: "datapacks", db_id: "306823455236424203"
+		pack_id: "invisible_item_frame", code_version: ["2", "1.1"], last_version_id: false, pack_version_id: [138, 128, 122], pack_type: "datapacks", db_id: "306823455236424203"
 	},{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "306822979300360715"
 	},{
 		name: "Key", updated: 20220409, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
-		pack_id: "key", code_version: "3.4", last_version_id: false, pack_version_id: [133, 128, 124, 119], rp_version_id: [124, 119], pack_type: "datapacks", db_id: "306823505417077259"
+		pack_id: "key", code_version: "4", last_version_id: false, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "306823505417077259"
 	},{
 		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "306824262803522059"
@@ -30,7 +30,7 @@ const pack_array = [{
 		pack_id: "more_arrows", code_version: ["8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
-		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [114], pack_type: "datapacks", db_id: "326870865931141708"
+		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [138, 114], pack_type: "datapacks", db_id: "326870865931141708"
 	},{
 		name: "Murder", updated: 20191018, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
 		pack_id: "murder", code_version: "2", last_version_id: 127, pack_version_id: [111], pack_type: "datapacks", db_id: "306823130429522443"
@@ -57,14 +57,14 @@ const pack_array = [{
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [128, 124, 119], pack_type: "datapacks", db_id: "306823263439290891"
 	},{
 		name: "Wither Soldier", updated: 20210104, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
-		pack_id: "wither_soldier", code_version: "2.3", last_version_id: false, pack_version_id: [130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "306823400923333131"
+		pack_id: "wither_soldier", code_version: ["3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "306823400923333131"
 	}
 ]
 
 
-// pack versions
+// pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
-	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 14, id: 138, main_id: "id1_20", name: "1.20 Preview", preview: true},
+	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 14, id: 138, main_id: "id1_20", name: "1.20"},
 	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
 	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
 	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
