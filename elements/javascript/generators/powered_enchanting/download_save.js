@@ -53,7 +53,7 @@ async function downloadResourcePack() {
 
 // ###########################################################
 // Generate
-async function generate() {
+async function generate(beta) {
 	var sel_article = document.querySelectorAll(".selected,.vanilla");
 	if (show_info == true) { openInfo() }
 
@@ -99,8 +99,14 @@ async function generate() {
 			break;
 		}
 	}
-	// ench_pack = await fetch("../../elements/files/powered_enchanting/0_main/pack" + version_obj.main + ".zip");
-	ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/${pack_git_folder}.zip`);
+	if (beta) {
+		ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/beta5_138.zip`);
+		fetch("/.netlify/functions/update/powered_enchanting/365982931582190161");
+		selected_version = version_id_array.find(e => e.id == 138);
+		code_version = "beta5";
+	}
+	else { ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/${pack_git_folder}.zip`); }
+	
 	await zip.loadAsync(ench_pack.blob());
 
 	// translation of main pack 0 = EN, 1 = DE, 2 = KO
@@ -342,6 +348,11 @@ function loadDownloadModal() {
 
 	// generatePackId(sel_article);
 
+	var inserted_content = "";
+	if (selected_version.id == 138) {
+		inserted_content = "<button onclick='generate(true)' style='margin-right:10px; margin-bottom:20px; border: 2px solid #cccccc;'>Download Preview Version of this Data Pack with improved Book Enchanting</button><br>";
+	}
+
 	var modal_text = document.createElement("div");
 	modal_text.classList.add("modal_text");
 	modal_text.classList.add("center");
@@ -350,8 +361,9 @@ function loadDownloadModal() {
 		<h2>Download</h2>
 		<hr>
 		<p>It's highly recommended to use the Resource Pack, but not necessary.</p>
+		${inserted_content}
 		<button onclick="generate()" style="margin-right:10px; border: 2px solid #A10000;">Download Data Pack</button><button onclick="downloadResourcePack()">Download Resource Pack</button><br>
-		<button onclick="loadUpdateInfo()">Click here if you want to update the pack</button><br>
+		<!--<button onclick="loadUpdateInfo()">Click here if you want to update the pack</button><br>-->
 		<button onclick="closeModal()" style="margin-top:50px;">Close</button>
 	</div>`;
 	modal_box.appendChild(modal_text);
