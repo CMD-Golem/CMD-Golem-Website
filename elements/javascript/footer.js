@@ -18,7 +18,7 @@ const pack_array = [{
 		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "306822979300360715"
 	},{
 		name: "Key", updated: 20230527, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
-		pack_id: "key", code_version: "4", last_version_id: false, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "306823505417077259"
+		pack_id: "key", code_version: "4", last_version_id: false, pack_version_id: [138, 133, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "306823505417077259"
 	},{
 		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "306824262803522059"
@@ -27,7 +27,7 @@ const pack_array = [{
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "306823905791705611"
 	},{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.",
-		pack_id: "more_arrows", code_version: ["8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
+		pack_id: "more_arrows", code_version: ["8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [133, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [138, 114], pack_type: "datapacks", db_id: "326870865931141708"
@@ -41,7 +41,7 @@ const pack_array = [{
 		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack Data Pack", description: "This Data Packs adds a Chest in which you can store your items and follows you like a dog.",
 		pack_id: "petbag", code_version: "3", last_version_id: false, pack_version_id: [128, 114], pack_type: "datapacks", db_id: "306823156900823563"
 	},{
-		name: "Powered Enchanting", updated: 20221217, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
+		name: "Powered Enchanting", updated: 20230528, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
 		pack_id: "powered_enchanting", code_version: "4.2", last_version_id: false, pack_version_id: [138, 133, 128], rp_version_id: [122], pack_type: "datapacks", db_id: "320699416718606924"
 	},{
 		name: "Recipe Unlocker", updated: 20210709, search_keys: "Crafting Data Pack", description: "A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes.",
