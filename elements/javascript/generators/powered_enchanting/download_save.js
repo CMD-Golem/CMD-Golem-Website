@@ -103,7 +103,7 @@ async function generate(beta) {
 		ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/beta5_138.zip`);
 		fetch("/.netlify/functions/update/powered_enchanting/365982931582190161");
 		selected_version = version_id_array.find(e => e.id == 138);
-		code_version = "beta5";
+		code_version = "beta5.1";
 	}
 	else { ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/${pack_git_folder}.zip`); }
 	
