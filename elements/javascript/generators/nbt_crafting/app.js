@@ -152,6 +152,50 @@ function refreshVar(path_class, last_article, last_value) {
 	return [folder, file_name_counter, file_name];
 }
 
+// #####################################################################
+// Add select options // nearly the same function as in powered_enchanting/addon_app.js
+var el_version = document.getElementsByClassName("version")[0];
+
+function setVersions() {
+	var version_id_array_filtered = [];
+	var html = "";
+
+	for (var i = 0; i < version_id_array.length; i++) {
+		var version_id = version_id_array[i];
+		var dp = version_id.dp;
+
+		if (version_id.id < 114) {
+			continue;
+		}
+		else if (!(dp in version_id_array_filtered)) {
+			version_id_array_filtered[dp] = {
+				dp: dp,
+				newest_name: version_id.name
+			};
+		}
+		else {
+			version_id_array_filtered[dp].oldest_name = version_id.name;
+		}
+	}
+
+	for (var i = version_id_array_filtered.length - 1; i >= 0; i--) {
+		var version_id = version_id_array_filtered[i];
+
+		if (version_id == undefined) {
+			continue;
+		}
+		else if (version_id.oldest_name == undefined) {
+			html += `<option value="${version_id.dp}">${version_id.newest_name}</option>`
+		}
+		else {
+			html += `<option value="${version_id.dp}">${version_id.oldest_name} - ${version_id.newest_name}</option>`
+		}
+	}
+
+	el_version.innerHTML = html;
+}
+
+setVersions();
 
 // #####################################################################
 // refresh placeholders with Recipe id

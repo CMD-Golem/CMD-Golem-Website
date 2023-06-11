@@ -116,7 +116,8 @@ h2 {
 	background: #333333;
 	text-align: center;
 	border-radius: 4px;
-	padding: 8px 0;
+	padding-top: 2px;
+	padding-bottom: 8px;
 	width: 95px;
 	margin-top: 9px;
 	cursor: default;
@@ -128,7 +129,11 @@ h2 {
 }
 
 #select_version:after {
-	content: " \2BC6";
+	content: "";
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background-image: url("../nav/drop_down.svg");
 }
 
 #selection_box {

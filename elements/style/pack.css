@@ -149,6 +149,7 @@ section {
 	display: inline-block;
 	position: relative;
 	padding: 10px;
+	padding-top: 5px;
 	background: #333333;
 	border-radius: 5px;
 	cursor: default;
@@ -159,7 +160,11 @@ section {
 }
 
 #select_version:after {
-	content: " \2BC6";
+	content: "";
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background-image: url("../nav/drop_down.svg");
 }
 
 #selection_box {

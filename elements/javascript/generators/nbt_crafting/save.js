@@ -16,7 +16,7 @@ async function downloadCheck() {
 	if (el_score.value == "") {var score = el_score.placeholder;}
 	else {var score = el_score.value;}
 
-	var version = document.getElementsByClassName("version")[0].value;
+	var version = el_version.value;
 
 	// go throug all recipes
 	var article = document.getElementsByTagName("article");
@@ -101,7 +101,7 @@ async function downloadCheck() {
 	zip.file("data/minecraft/tags/functions/load.json", function_tag_load);
 
 	// Minecraft pack.mcmeta
-	var pack_mcmeta = '{"pack": {"pack_format": ' + version + ',"description": "Made with the NBT-Crafting Generator by CMD-Golem\ncmd-golem.netlify.app/help/nbt_crafting"}}';
+	var pack_mcmeta = '{"pack": {"pack_format": ' + version + ',"description": "Made with the NBT-Crafting Generator by CMD-Golem\\ncmd-golem.netlify.app/help/nbt_crafting"}}';
 	zip.file("pack.mcmeta", pack_mcmeta);
 
 	// test that each path exists only once

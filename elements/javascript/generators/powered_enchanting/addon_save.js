@@ -5,7 +5,6 @@ var progress_bar = document.getElementById("progress_bar");
 async function generate() {
 	var article = document.getElementsByTagName("article");
 	var datapack_name = document.getElementsByClassName("datapack_name")[0].value;
-	var version = document.getElementsByClassName("version")[0].value;
 
 	if (datapack_name.length == 0) {
 		inputError(0);
@@ -178,9 +177,7 @@ async function generate() {
 	powerench_folder.file("tags/functions/give.json", '{"values": ["' + datapack_name + ':give"]}');
 
 	// pack.mcmeta
-	var version = document.getElementById("version").value;
-
-	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + version + ',"description": "Custom Enchantments Pack for Powered Enchanting Data Pack by CMD-Golem"}}');
+	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + el_version.value + ',"description": "Custom Enchantments Pack for Powered Enchanting Data Pack by CMD-Golem"}}');
 
 	progress_bar.style.display = "block";
 	preventScroll(true); // footer.js
