@@ -59,6 +59,8 @@ function changeLang(input) {
 	if (input == "German") { tr_code = 1; }
 	else if (input == "Korean") { tr_code = 2; }
 	else if (input == "Portuguese") { tr_code = 3; }
+	else if (input == "Spanish") { tr_code = 4; }
+	else if (input == "Ukrainian") { tr_code = 5; }
 	else { tr_code = 0; }
 
 	loadEnch();
