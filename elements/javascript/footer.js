@@ -41,8 +41,8 @@ const pack_array = [{
 		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack Data Pack", description: "This Data Packs adds a Chest in which you can store your items and follows you like a dog.",
 		pack_id: "petbag", code_version: "3", last_version_id: false, pack_version_id: [128, 114], pack_type: "datapacks", db_id: "306823156900823563"
 	},{
-		name: "Powered Enchanting", updated: 20230528, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
-		pack_id: "powered_enchanting", code_version: "4.3", last_version_id: false, pack_version_id: [138, 133, 128], rp_version_id: [122], pack_type: "datapacks", db_id: "320699416718606924"
+		name: "Powered Enchanting", updated: 20230616, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
+		pack_id: "powered_enchanting", code_version: "4.4", last_version_id: false, pack_version_id: [138, 133, 128], rp_version_id: [122], pack_type: "datapacks", db_id: "320699416718606924"
 	},{
 		name: "Recipe Unlocker", updated: 20210709, search_keys: "Crafting Data Pack", description: "A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes.",
 		pack_id: "recipe_unlocker", code_version: "1", last_version_id: false, pack_version_id: [128], pack_type: "datapacks", db_id: "306823579556643339"
