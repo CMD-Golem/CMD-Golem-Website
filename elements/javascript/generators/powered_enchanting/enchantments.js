@@ -1,48 +1,53 @@
 var translation_array = [{
-		mis_level: '[{"text":"Du musst Level ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":" sein","color":"dark_red"}]',
-		mis_level_txt: "Du musst Level 10 sein",
+		lang: "German",
+		mis_level_comb: '[{"text":"Du musst Level ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":" sein","color":"dark_red"}]',
+		mis_level_comb_txt: "Du musst Level 10 sein",
 		table_dis: "Verzauberungstische benötigen 20 Blöcke Abstand zu einander.",
 		full_charge: "Der Verzauberungstisch ist voll aufgeladen",
 		lapis_slice: "Lapislazuli Stück",
 		book_back: "Lege das Buch auf den Tisch zurück",
-		level30: "Du musst Level 30 sein",
-		level50: "Du musst Level 50 sein"
+		mis_level_ench: '[{"text":"Du musst Level ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":" sein","color":"dark_red"}]',
+		mis_level_ench_txt: "Du musst Level 10 sein"
 	},{
-		mis_level:'[{"text":"레벨이 부족합니다 ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
-		mis_level_txt: "레벨이 부족합니다 10",
+		lang: "Korean",
+		mis_level_comb:'[{"text":"레벨이 부족합니다 ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
+		mis_level_comb_txt: "레벨이 부족합니다 10",
 		table_dis:"마법 부여대는 20블록의 간격을 두고 설치해야 합니다.",
 		full_charge:"마법 부여대는 완전히 충전되었습니다",
 		lapis_slice:"청금석 뭉치",
 		book_back:"책을 탁자 위에 다시 내려놓으십시오",
-		level30:"레벨 30이 되어야 합니다",
-		level50:"레벨 50이 되어야 합니다"
+		mis_level_ench:'[{"text":"레벨 ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":"이 되어야 합니다","color":"dark_red"}]',
+		mis_level_ench_txt:"레벨 10이 되어야 합니다"
 	},{
-		mis_level:'[{"text":"Você precisa ter nível ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
-		mis_level_txt: "Você precisa ter nível 10",
+		lang: "Portuguese",
+		mis_level_comb:'[{"text":"Você precisa ter nível ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
+		mis_level_comb_txt: "Você precisa ter nível 10",
 		table_dis:"A mesa de encantamento precisa de 20 blocos de espaço.",
 		full_charge:"A mesa de encantamento está totalmente carregada",
 		lapis_slice:"Fatia de lápis-lazúli",
 		book_back:"Solte o livro de volta na mesa",
-		level30:"Você precisa ter nível 30",
-		level50:"Você precisa ter nível 50"
+		mis_level_ench:'[{"text":"Você precisa ter nível ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]',
+		mis_level_ench_txt:"Você precisa ter nível 10"
 	},{
-		mis_level:'[{"text":"Necesitas nivel ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
-		mis_level_txt: "Necesitas nivel 10",
+		lang: "Spanish",
+		mis_level_comb:'[{"text":"Necesitas nivel ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
+		mis_level_comb_txt: "Necesitas nivel 10",
 		table_dis:"La mesa de encamamientos necesita 20 bloques de espacio para poner otra.",
 		full_charge:"¡La mesa de encantamientos esta totalmente cargada!",
 		lapis_slice:"Lapis Lazuli Slice",
 		book_back:"Deja el libro en la mesa de encantamientos",
-		level30:"Necesitas nivel 30",
-		level50:"Necesitas nivel 50"
+		mis_level_ench:'[{"text":"Necesitas nivel ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]',
+		mis_level_ench_txt:"Necesitas nivel 10"
 	},{
-		mis_level: '[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
-		mis_level_txt: "Ви повинні мати 10-й рівень",
+		lang: "Ukrainian",
+		mis_level_comb: '[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
+		mis_level_comb_txt: "Ви повинні мати 10-й рівень",
 		table_dis:"Столи для зачарування потребують 20 блоків простору один від одного.",
 		full_charge:"Стіл зачарування повністю заряджений",
 		lapis_slice:"Шматочок лазуриту",
 		book_back:"Киньте книгу назад на стіл",
-		level30:"Ви повинні мати 30-й рівень",
-		level50:"Ви повинні мати 50-й рівень"
+		mis_level_ench:'[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
+		mis_level_ench_txt:"Ви повинні мати 10-й рівень"
 }]
 
 
@@ -103,7 +108,7 @@ const article_array = [
     {id:"W", version_id:[133], title:["Swift Sneak V", "Huschen V", "신속한 잠행 V", "Agacho ágil V", "Sigilo veloz V", "Бігкрадькома V"], description:"Increases level of Swift Sneak enchantment", max_lvl:5, chance:0, comp_items:[3], ench:["swift_sneak"], style:"nooptions no_files", load:"scoreboard players set #swift_sneak powerench 5"},
     {id:"M", version_id:[138,128], title:["Swiftness", "Geschwindigkeit", "신속", "Velocidades", "Rapidez", "Сонік"], description:"Increases walking speed", max_lvl:3, chance:2, comp_items:[4], ench:["swiftness", "soul_speed"], style:"e_golem", tick:"execute as @a[predicate=powerench:swiftness/give] run function powerench:enchantments/swiftness/give\nexecute as @a[tag=powerench_swiftness,predicate=powerench:swiftness/clear] run function powerench:enchantments/swiftness/clear"},
     {id:"N", version_id:[128], title:["Thorns", "Dornen", "가시", "Espinhos", "Espinas", "Шипи"], description:"Reflects some of the damage taken to enemie", max_lvl:3, chance:1, comp_items:[1,2,3,4], ench:["thorns"], style:"vanilla e_vanilla e_golem"},
-    {id:"O", version_id:[128], title:["Timber", "Abholzung", "목수의 손길", "Madeira", "Talador", "Дроворуб"], description:"Breaks connected Logs", max_lvl:3, chance:1, comp_items:[0], ench:["timber"], style:" e_golem", tick:"execute as @a[predicate=powerench:timber] at @s at @e[type=item,distance=..7,nbt={Age:0s}] run function powerench:enchantments/timber/execute"},
+    {id:"O", version_id:[128], title:["Timber", "Abholzung", "목수의 손길", "Madeira", "Talador", "Дроворуб"], description:"Breaks connected Logs", max_lvl:3, chance:1, comp_items:[7], ench:["timber"], style:" e_golem", tick:"execute as @a[predicate=powerench:timber] at @s at @e[type=item,distance=..7,nbt={Age:0s}] run function powerench:enchantments/timber/execute"},
     {id:"P", version_id:[128], title:["Unbreaking", "Haltbarkeit", "내구성", "Inquebrável", "Irrompibilidad", "Незламність"], description:"Increases item durability", max_lvl:3, chance:5, comp_items:[0], ench:["unbreaking"], style:"vanilla e_vanilla e_golem"},
     {id:"Q", version_id:[128], title:["Unbreaking V", "Haltbarkeit V", "내구성 V", "Inquebrável V", "Irrompibilidad V", "Незламність V"], description:"Increases level of Unbreaking enchantment", max_lvl:5, chance:5, comp_items:[0], ench:["unbreaking"], style:"e_golem nooptions no_files", load:"scoreboard players set #unbreaking powerench 5"},
     {id:"R", version_id:[128], title:["Upgrade", "Verbesserung", "단단한 껍질", "Upgrade", "Mejora", "Оновлення"], description:"More armor defense points", max_lvl:3, chance:2, comp_items:[13], ench:["ely_upgrade"], style:"e_golem", tick:"execute as @a[tag=!ely_upgrade,predicate=powerench:ely_upgrade] run function powerench:enchantments/ely_upgrade/give\nexecute as @a[tag=ely_upgrade,predicate=!powerench:ely_upgrade] run function powerench:enchantments/ely_upgrade/clear"},

@@ -1,8 +1,9 @@
 // load Enchantment Names
 var article_list = document.getElementById("enchantments");
-var tr_code = 0;
+var lang_list = document.getElementById("lang_list");
+var lang_list_html = "";
 
-function loadEnch() {
+function loadEnch(tr_code) {
 	var html = "";
 
 	for (var i = 0; i < article_array.length; i++) {
@@ -21,17 +22,22 @@ function loadEnch() {
 	article_list.innerHTML = html;
 }
 
-loadEnch();
+// load existing languages
+loadEnch(0);
+
+for (var i = 0; i < translation_array.length; i++) {
+	lang_list_html += `<option value="${translation_array[i].lang}", id="${i}"></option>`;
+}
+lang_list.innerHTML = lang_list_html;
 
 
 // Add current translation as value in inputs
-var mis_level = document.getElementById("mis_level");
+var mis_level_comb = document.getElementById("mis_level_comb");
 var table_dis = document.getElementById("table_dis");
 var full_charge = document.getElementById("full_charge");
 var lapis_slice = document.getElementById("lapis_slice");
 var book_back = document.getElementById("book_back");
-var level30 = document.getElementById("level30");
-var level50 = document.getElementById("level50");
+var mis_level_ench = document.getElementById("mis_level_ench");
 
 var input_box = document.getElementById("input_box");
 var inputs = document.getElementsByClassName("autofillable");
@@ -54,36 +60,35 @@ function changeLang(input) {
 		return;
 	}
 
-
 	// get language codes
-	if (input == "German") { tr_code = 1; }
-	else if (input == "Korean") { tr_code = 2; }
-	else if (input == "Portuguese") { tr_code = 3; }
-	else if (input == "Spanish") { tr_code = 4; }
-	else if (input == "Ukrainian") { tr_code = 5; }
-	else { tr_code = 0; }
+    var lang_list_options = lang_list.children;
+	var tr_array = -1;
 
-	loadEnch();
-	var tr_array = tr_code - 1;
+    for (var i = 0; i < lang_list_options.length; i++){
+        if (lang_list_options[i].value == input) {
+			tr_array = parseInt(lang_list_options[i].id);
+			break;
+		}
+    }
 
 	// change text
-	if (tr_code != 0) {
-		mis_level.value = translation_array[tr_array].mis_level_txt;
+	loadEnch(tr_array + 1);
+
+	if (tr_array != -1) {
+		mis_level_comb.value = translation_array[tr_array].mis_level_comb_txt;
 		table_dis.value = translation_array[tr_array].table_dis;
 		full_charge.value = translation_array[tr_array].full_charge;
 		lapis_slice.value = translation_array[tr_array].lapis_slice;
 		book_back.value = translation_array[tr_array].book_back;
-		level30.value = translation_array[tr_array].level30;
-		level50.value = translation_array[tr_array].level50;
+		mis_level_ench.value = translation_array[tr_array].mis_level_ench_txt;
 	}
 	else {
-		mis_level.value = "";
+		mis_level_comb.value = "";
 		table_dis.value = "";
 		full_charge.value = "";
 		lapis_slice.value = "";
 		book_back.value = "";
-		level30.value = "";
-		level50.value = "";
+		mis_level_ench.value = "";
 	}
 }
 

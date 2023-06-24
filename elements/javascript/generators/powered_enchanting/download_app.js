@@ -291,6 +291,19 @@ function incompEnch(input) {
 
 
 // ###########################################################
+// Change language
+function changeLang(lang_id) {
+	if (document.getElementsByClassName("selected").length == 0) { var confirm_msg = true; }
+	else { var confirm_msg = confirm("If you change the language, your selected enchantments will be reset!"); }
+	
+	if (confirm_msg) {
+		changeEdition('none')
+		loadEnch(lang_id)
+	}
+}
+
+
+// ###########################################################
 // Modal Box
 var modal_box = document.getElementById("modal_box");
 
@@ -626,3 +639,12 @@ function subVersion(selected_version_el) {
 
 // load html
 loadEnch(0);
+
+// load lang list
+var lang_list = document.getElementById("lang");
+var lang_list_html = '<option value="0">English</option>';
+
+for (var i = 0; i < translation_array.length; i++) {
+	lang_list_html += `<option value="${i + 1}">${translation_array[i].lang}</option>`;
+}
+lang_list.innerHTML = lang_list_html;

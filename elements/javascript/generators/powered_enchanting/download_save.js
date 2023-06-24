@@ -1,6 +1,7 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
 var pack_id_load = "1-"; // define version of pack id
+var url = "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main";
 var pack_id, already_download;
 
 // Missing Enchantments
@@ -32,7 +33,7 @@ async function downloadResourcePack() {
 		}
 	}
 
-	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
+	var pack = await fetch(`${url}/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
 	await zip.loadAsync(pack.blob());
 
 	// pack.mcmeta
@@ -99,13 +100,15 @@ async function generate(beta) {
 			break;
 		}
 	}
-	if (beta) {
-		ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/beta5_138.zip`);
-		fetch("/.netlify/functions/update/powered_enchanting/365982931582190161");
-		selected_version = version_id_array.find(e => e.id == 138);
-		code_version = "beta5.2";
-	}
-	else { ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/${pack_git_folder}.zip`); }
+	// if (beta) {
+	// 	ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/beta5_138.zip`);
+	// 	fetch("/.netlify/functions/update/powered_enchanting/365982931582190161");
+	// 	selected_version = version_id_array.find(e => e.id == 138);
+	// 	code_version = "beta5.2";
+	// }
+	// else {
+		ench_pack = await fetch(`${url}/powered_enchanting/0_main/${pack_git_folder}.zip`);
+	// }
 	
 	await zip.loadAsync(ench_pack.blob());
 
@@ -123,15 +126,14 @@ async function generate(beta) {
 		var tr_transform = await zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction").async("string");
 		var tr_enchanting = await zip.file("data/powerench_main/functions/enchanting/error.mcfunction").async("string");
 
-		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"#enchanting_cost","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level);
+		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"#enchanting_cost","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level_comb);
 		tr_table = tr_table.replace("Enchanting Tables need 20 blocks space to each other.", translation_array[tr_array].table_dis);
 		tr_charge = tr_charge.replace("The Enchanting Table is fully charged", translation_array[tr_array].full_charge);
 		tr_craft = tr_craft.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
 		tr_mass_craft = tr_mass_craft.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
 		tr_transform = tr_transform.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
 		tr_enchanting = tr_enchanting.replace("Drop the book back on the table", translation_array[tr_array].book_back);
-		tr_enchanting = tr_enchanting.replace("You need to be Level 30", translation_array[tr_array].level30);
-		tr_enchanting = tr_enchanting.replace("You need to be Level 50", translation_array[tr_array].level50);
+		tr_enchanting = tr_enchanting.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]', translation_array[tr_array].mis_level_ench);
 
 		zip.file("data/powerench_main/functions/combining/fail.mcfunction", tr_combining);
 		zip.file("data/powerench_main/functions/table/enchanting/set_false.mcfunction", tr_table);
@@ -170,7 +172,7 @@ async function generate(beta) {
 					}
 				}
 
-				ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/${ench_array.ench[0]}/${ench_git_folder}.zip`);
+				ench_pack = await fetch(`${url}/powered_enchanting/${ench_array.ench[0]}/${ench_git_folder}.zip`);
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
@@ -346,12 +348,10 @@ function loadDownloadModal() {
 	var check_selected = checkSelected(sel_article);
 	if (!check_selected) {return}
 
-	// generatePackId(sel_article);
-
 	var inserted_content = "";
-	if (selected_version.id == 138) {
-		inserted_content = "<button onclick='generate(true)' style='margin-right:10px; margin-bottom:20px; border: 2px solid #cccccc;'>Download Preview Version of this Data Pack with improved Book Enchanting</button><br>";
-	}
+	// if (selected_version.id == ) {
+	// 	inserted_content = "<button onclick='generate(true)' style='margin-right:10px; margin-bottom:20px; border: 2px solid #cccccc;'>Download Preview Version of this Data Pack with improved Book Enchanting</button><br>";
+	// }
 
 	var modal_text = document.createElement("div");
 	modal_text.classList.add("modal_text");
