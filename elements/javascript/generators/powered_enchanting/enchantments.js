@@ -7,7 +7,9 @@ var translation_array = [{
 		lapis_slice: "Lapislazuli Stück",
 		book_back: "Lege das Buch auf den Tisch zurück",
 		mis_level_ench: '[{"text":"Du musst Level ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":" sein","color":"dark_red"}]',
-		mis_level_ench_txt: "Du musst Level 10 sein"
+		mis_level_ench_txt: "Du musst Level 10 sein",
+		enchanting_cost: "Verzauberungskosten:",
+		levels: "Level"
 	},{
 		lang: "Korean",
 		mis_level_comb:'[{"text":"레벨이 부족합니다 ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
@@ -17,7 +19,9 @@ var translation_array = [{
 		lapis_slice:"청금석 뭉치",
 		book_back:"책을 탁자 위에 다시 내려놓으십시오",
 		mis_level_ench:'[{"text":"레벨 ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":"이 되어야 합니다","color":"dark_red"}]',
-		mis_level_ench_txt:"레벨 10이 되어야 합니다"
+		mis_level_ench_txt:"레벨 10이 되어야 합니다",
+		enchanting_cost: "마법부여 비용:",
+		levels: "레벨"
 	},{
 		lang: "Portuguese",
 		mis_level_comb:'[{"text":"Você precisa ter nível ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
@@ -27,7 +31,9 @@ var translation_array = [{
 		lapis_slice:"Fatia de lápis-lazúli",
 		book_back:"Solte o livro de volta na mesa",
 		mis_level_ench:'[{"text":"Você precisa ter nível ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]',
-		mis_level_ench_txt:"Você precisa ter nível 10"
+		mis_level_ench_txt:"Você precisa ter nível 10",
+		enchanting_cost: "Enchanting Cost:",
+		levels: "Levels"
 	},{
 		lang: "Spanish",
 		mis_level_comb:'[{"text":"Necesitas nivel ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
@@ -37,7 +43,9 @@ var translation_array = [{
 		lapis_slice:"Lapis Lazuli Slice",
 		book_back:"Deja el libro en la mesa de encantamientos",
 		mis_level_ench:'[{"text":"Necesitas nivel ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]',
-		mis_level_ench_txt:"Necesitas nivel 10"
+		mis_level_ench_txt:"Necesitas nivel 10",
+		enchanting_cost: "Enchanting Cost:",
+		levels: "Levels"
 	},{
 		lang: "Ukrainian",
 		mis_level_comb: '[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
@@ -47,7 +55,9 @@ var translation_array = [{
 		lapis_slice:"Шматочок лазуриту",
 		book_back:"Киньте книгу назад на стіл",
 		mis_level_ench:'[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
-		mis_level_ench_txt:"Ви повинні мати 10-й рівень"
+		mis_level_ench_txt:"Ви повинні мати 10-й рівень",
+		enchanting_cost: "Enchanting Cost:",
+		levels: "Levels"
 }]
 
 

@@ -38,6 +38,8 @@ var full_charge = document.getElementById("full_charge");
 var lapis_slice = document.getElementById("lapis_slice");
 var book_back = document.getElementById("book_back");
 var mis_level_ench = document.getElementById("mis_level_ench");
+var enchanting_cost = document.getElementById("enchanting_cost");
+var levels = document.getElementById("levels");
 
 var input_box = document.getElementById("input_box");
 var inputs = document.getElementsByClassName("autofillable");
@@ -81,6 +83,8 @@ function changeLang(input) {
 		lapis_slice.value = translation_array[tr_array].lapis_slice;
 		book_back.value = translation_array[tr_array].book_back;
 		mis_level_ench.value = translation_array[tr_array].mis_level_ench_txt;
+		enchanting_cost.value = translation_array[tr_array].enchanting_cost;
+		levels.value = translation_array[tr_array].levels;
 	}
 	else {
 		mis_level_comb.value = "";
@@ -89,6 +93,8 @@ function changeLang(input) {
 		lapis_slice.value = "";
 		book_back.value = "";
 		mis_level_ench.value = "";
+		enchanting_cost.value = "";
+		levels.value = "";
 	}
 }
 

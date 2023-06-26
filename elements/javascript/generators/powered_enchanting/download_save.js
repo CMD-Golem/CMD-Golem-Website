@@ -125,6 +125,8 @@ async function generate(beta) {
 		var tr_mass_craft = await zip.file("data/powerench_main/functions/lapis_slice/mass_craft.mcfunction").async("string");
 		var tr_transform = await zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction").async("string");
 		var tr_enchanting = await zip.file("data/powerench_main/functions/enchanting/error.mcfunction").async("string");
+		var tr_item_cost = await zip.file("data/powerench_main/loot_tables/powercount.json").async("string");
+		var tr_enchanting_cost = await zip.file("data/powerench_main/item_modifiers/cost.json").async("string");
 
 		tr_combining = tr_combining.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"#enchanting_cost","objective":"powerench"},"color":"dark_red"}]', translation_array[tr_array].mis_level_comb);
 		tr_table = tr_table.replace("Enchanting Tables need 20 blocks space to each other.", translation_array[tr_array].table_dis);
@@ -134,6 +136,8 @@ async function generate(beta) {
 		tr_transform = tr_transform.replace("Lapis Lazuli Slice", translation_array[tr_array].lapis_slice);
 		tr_enchanting = tr_enchanting.replace("Drop the book back on the table", translation_array[tr_array].book_back);
 		tr_enchanting = tr_enchanting.replace('[{"text":"You need to be Level ","color":"dark_red"},{"score":{"name":"@s","objective":"powerench_slot"},"color":"dark_red"}]', translation_array[tr_array].mis_level_ench);
+		tr_item_cost = tr_item_cost.replace("Enchanting Cost:", translation_array[tr_array].enchanting_cost);
+		tr_enchanting_cost = tr_enchanting_cost.replace("Levels", translation_array[tr_array].levels);
 
 		zip.file("data/powerench_main/functions/combining/fail.mcfunction", tr_combining);
 		zip.file("data/powerench_main/functions/table/enchanting/set_false.mcfunction", tr_table);
@@ -142,6 +146,8 @@ async function generate(beta) {
 		zip.file("data/powerench_main/functions/lapis_slice/mass_craft.mcfunction", tr_mass_craft);
 		zip.file("data/powerench_main/functions/lapis_slice/transform.mcfunction", tr_transform);
 		zip.file("data/powerench_main/functions/enchanting/error.mcfunction", tr_enchanting);
+		zip.file("data/powerench_main/loot_tables/powercount.json", tr_item_cost);
+		zip.file("data/powerench_main/item_modifiers/cost.json", tr_enchanting_cost);
 	}
 
 	// ###########################################################
