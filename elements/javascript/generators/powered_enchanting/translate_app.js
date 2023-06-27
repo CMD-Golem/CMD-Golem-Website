@@ -37,7 +37,7 @@ var table_dis = document.getElementById("table_dis");
 var full_charge = document.getElementById("full_charge");
 var lapis_slice = document.getElementById("lapis_slice");
 var book_back = document.getElementById("book_back");
-var mis_level_ench = document.getElementById("mis_level_ench");
+var mis_level_ench = document.getElementById("mis_level_comb");
 var enchanting_cost = document.getElementById("enchanting_cost");
 var levels = document.getElementById("levels");
 
