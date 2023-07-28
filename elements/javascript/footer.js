@@ -64,8 +64,8 @@ const pack_array = [{
 
 // pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
-	{main: "1.20", sub: 1, db: "360203636009075289", dp: 15, rp: 14, id: 139, main_id: "id1_20", name: "1.20.1"},
-	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 14, id: 138, main_id: "id1_20", name: "1.20"},
+	{main: "1.20", sub: 1, db: "360203636009075289", dp: 15, rp: 15, id: 139, main_id: "id1_20", name: "1.20.1"},
+	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 15, id: 138, main_id: "id1_20", name: "1.20"},
 	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
 	{main: "1.19", sub: 3, db: "325220181196407372", dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
 	{main: "1.19", sub: 2, db: "325220181196407372", dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
