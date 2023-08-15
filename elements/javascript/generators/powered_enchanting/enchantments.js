@@ -68,8 +68,8 @@ var translation_array = [{
 		book_back: "Киньте книгу назад на стол",
 		mis_level_ench: '[{"text":"Вы должны иметь ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":"-й уровень","color":"dark_red"}]',
 		mis_level_ench_txt: "Вы должны иметь 10-й уровень",
-		enchanting_cost: "Enchanting Cost:",
-		levels: "Levels"
+		enchanting_cost: "Стоимость зачарования:",
+		levels: "Уровни"
 	},{
 		lang: "Italian",
 		mis_level_comb: '[{"text":"Devi essere al minimo al livello ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"}]',
