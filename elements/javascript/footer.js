@@ -1,9 +1,9 @@
 const pack_array = [{
 		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
-		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
+		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "306823477982134795"
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
-		pack_id: "dark_theme", code_version: "3", last_version_id: false, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "306823878630441483"
+		pack_id: "dark_theme", code_version: "3", last_version_id: 139, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "306823878630441483"
 	},{
 		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "With this Data Pack you can cook Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
 		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: "306822932006437387"
@@ -27,7 +27,7 @@ const pack_array = [{
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "306823905791705611"
 	},{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.",
-		pack_id: "more_arrows", code_version: ["8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [133, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
+		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [140, 133, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "306823023034368523"
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [138, 114], pack_type: "datapacks", db_id: "326870865931141708"
@@ -42,7 +42,7 @@ const pack_array = [{
 		pack_id: "petbag", code_version: "3", last_version_id: false, pack_version_id: [128, 114], pack_type: "datapacks", db_id: "306823156900823563"
 	},{
 		name: "Powered Enchanting", updated: 20230702, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
-		pack_id: "powered_enchanting", code_version: "5.2", last_version_id: false, pack_version_id: [138, 133, 128], rp_version_id: [122], pack_type: "datapacks", db_id: "320699416718606924"
+		pack_id: "powered_enchanting", code_version: "5.3", last_version_id: false, pack_version_id: [140, 138, 133, 128], rp_version_id: [122], pack_type: "datapacks", db_id: "320699416718606924"
 	},{
 		name: "Recipe Unlocker", updated: 20210709, search_keys: "Crafting Data Pack", description: "A Recipe Unlocker Data Pack which is compatible with NBT-Crafting recipes.",
 		pack_id: "recipe_unlocker", code_version: "1", last_version_id: false, pack_version_id: [128], pack_type: "datapacks", db_id: "306823579556643339"
@@ -54,7 +54,7 @@ const pack_array = [{
 		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [111], pack_type: "datapacks", db_id: "306823355470709259"
 	},{
 		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "With this Data Pack all Golden Tools will get a special effect or ability.",
-		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [128, 124, 119], pack_type: "datapacks", db_id: "306823263439290891"
+		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "306823263439290891"
 	},{
 		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
 		pack_id: "wither_soldier", code_version: ["3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "306823400923333131"
@@ -64,6 +64,7 @@ const pack_array = [{
 
 // pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
+	{main: "1.20", sub: 2, db: "360203636009075289", dp: 18, rp: 18, id: 140, main_id: "id1_20", name: "1.20.2"},
 	{main: "1.20", sub: 1, db: "360203636009075289", dp: 15, rp: 15, id: 139, main_id: "id1_20", name: "1.20.1"},
 	{main: "1.20", sub: 0, db: "360203636009075289", dp: 15, rp: 15, id: 138, main_id: "id1_20", name: "1.20"},
 	{main: "1.19", sub: 4, db: "325220181196407372", dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
