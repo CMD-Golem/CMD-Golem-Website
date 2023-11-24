@@ -73,17 +73,3 @@ function generate() {
 		trade_output.innerHTML = trade_disable + 'summon minecraft:armor_stand ~ ~ ~ {ArmorItems:[{tag:{usftrader:[{buy:' + buy1 + ',buyB:' + buy2 + ',sell:' + trade + '}]},id:"minecraft:emerald",Count:1b}],Tags:["usftrader_randomtrade_' + rarity + '"],NoGravity:1b,Invulnerable:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,PersistenceRequired:1b}';
 	}
 }
-
-
-
-var already_download = false;
-
-async function copyCounter() {
-	if (already_download != true) {
-		already_download = true;
-		fetch(`/.netlify/functions/update/help/306823953300587019`);
-	}
-	else {
-		console.log("Already downloaded");
-	}
-}

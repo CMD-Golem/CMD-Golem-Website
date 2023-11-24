@@ -214,8 +214,8 @@ async function downloadPack(pack_type) {
 	// download counter
 	if (already_download != true && pack_type != 3) {
 		already_download = true;
-		fetch(`/.netlify/functions/update/${selected_pack_obj.pack_type}/${selected_pack_obj.db_id}`);
-		fetch(`/.netlify/functions/version/${selected_version.db}`);
+		fetch(`/.netlify/functions/update/pack/${selected_pack_obj.db_id}`);
+		fetch(`/.netlify/functions/version/${selected_version.main_id}`);
 	}
 	else {
 		console.log("Already downloaded or resource pack of data pack");

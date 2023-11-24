@@ -196,7 +196,7 @@ async function generate() {
 		// Count download
 		if (already_download != true) {
 			already_download = true;
-			fetch(`/.netlify/functions/update/help/326586158931771977`);
+			fetch(`/.netlify/functions/update/special/382300690013225026`);
 		}
 		else {
 			console.log("Already downloaded");

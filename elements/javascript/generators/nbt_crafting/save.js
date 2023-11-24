@@ -129,7 +129,7 @@ async function downloadCheck() {
 		// Count download
 		if (already_download != true) {
 			already_download = true;
-			fetch(`/.netlify/functions/update/help/306824373484913163`);
+			fetch(`/.netlify/functions/update/special/382300681448456256`);
 		}
 		else {
 			console.log("Already downloaded");

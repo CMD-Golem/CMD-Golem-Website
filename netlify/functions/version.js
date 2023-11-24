@@ -1,19 +1,8 @@
 var faunadb = require('faunadb')
 var q = faunadb.query;
 
-var version_id = [
-	"316612235991450185", // other versions
-	"316608972792529481", // 1.13
-	"316608985993052745", // 1.14
-	"316608994697282121", // 1.1
-	"316609003869176393", // 1.16
-	"316609012338524745", // 1.17
-	"316609019004322377", // 1.18
-	"325220181196407372", // 1.19
-	"360203636009075289" // 1.20
-];
-
-var reset_data = {downloads: 0};
+var current_month = new Date().getUTCMonth();
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 exports.handler = async (event, context) => {
 	// get FaunaDB secret key
@@ -21,56 +10,42 @@ exports.handler = async (event, context) => {
 		secret: process.env.FAUNADB_SERVER_SECRET
 	});
 
-	// monthly report
-	var last_month = await client.query(q.Get(q.Ref("classes/monthly_report/360186043721319002")));
-	var current_month = new Date().getUTCMonth() + 1;
+	var storage_document = await client.query(q.Get(q.Ref("classes/version_statistics/382300719583068224")));
+	var main_id = event.path.match(/([^\/]*)\/*$/)[0];
 
-	if (current_month != last_month.data.last_recorded_month) {
-		var data_array = [];
-
-		// get current data of all versions and reset db
-		for (var i = 0; i < version_id.length; i++) {
-			var version_data = await client.query(q.Get(q.Ref(`classes/versions/${version_id[i]}`)));
-			data_array.push(JSON.parse(JSON.stringify(version_data)).data);
-			// await client.query(q.Update(q.Ref(`classes/versions/${version_id[i]}`), {data:reset_data}))
-		}
-
-		// array to object
-		var version_dates = data_array.reduce((obj, cur) => ({...obj, [cur.key]: cur.downloads}), {}); //https://stackoverflow.com/a/67042616/14225364
-
+	if (current_month + 1 != storage_document.data.last_recorded_month) {
+		// generate new document on new months
 		var data = {
-			date: new Date(),
-			versions: version_dates
+			date: months[current_month] + " " + new Date().getUTCFullYear(),
+			versions: {}
 		};
+		data.versions[main_id] = 1;
 
-		// upload stats
-		data = JSON.parse(JSON.stringify(data));
-		await client.query(q.Create(q.Collection("monthly_report"), {data:data}));
+		var new_doc = await client.query(q.Create(q.Collection("version_statistics"), {data:data}));
 
-		// update last month store
+		// update storage document
+		var new_id = new_doc.ref.value.id;
+
 		var update_month = {
-			last_recorded_month: current_month
+			current_doc: new_id,
+			last_recorded_month: current_month + 1
 		};
 
-		update_month = JSON.parse(JSON.stringify(update_month));
-		await client.query(q.Update(q.Ref("classes/monthly_report/360186043721319002"), {data:update_month}));
+		await client.query(q.Update(q.Ref("classes/version_statistics/382300719583068224"), {data:update_month}));
 	}
+	else {
+		// update document
+		var doc_id = storage_document.data.current_doc;
+		var doc = await client.query(q.Get(q.Ref(`classes/version_statistics/${doc_id}`)));
+		var counter = doc.data.versions[main_id];
 
-	// ################################################################################
-	// get counter id and type from url
-	var id = event.path.match(/([^\/]*)\/*$/)[0];
-	
-	// get data from db
-	var current = await client.query(q.Get(q.Ref(`classes/versions/${id}`)));
-	var current_data = JSON.parse(JSON.stringify(current)).data;
+		if (counter == undefined) { counter = 1; }
+		else { counter++; }
 
-	// update counter
-	var data = {
-		downloads: current_data.downloads + 1
-	};
+		doc.data.versions[main_id] = counter;
 
-	data = JSON.parse(JSON.stringify(data));
-	await client.query(q.Update(q.Ref(`classes/versions/${id}`), {data:data}));
+		await client.query(q.Update(q.Ref(`classes/version_statistics/${doc_id}`), {data:doc.data}));
+	}
 
 	return { statusCode: 200 };
 }

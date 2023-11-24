@@ -332,9 +332,8 @@ async function generate(beta) {
 		if (already_download != true) {
 			already_download = true;
 	
-			fetch(`/.netlify/functions/update/datapacks/320699416718606924`); // normal counter
-			fetch(`/.netlify/functions/version/${select_version.db}`); // version statistic
-			fetch(`/.netlify/functions/update/powered_enchanting/${selected_edition_db}`); // edition statistic
+			fetch("/.netlify/functions/update/packs/382298385283022914"); // normal counter
+			fetch(`/.netlify/functions/version/${selected_version.main_db}`); // version statistic
 		}
 	});
 }

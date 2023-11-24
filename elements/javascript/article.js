@@ -231,7 +231,7 @@ async function indexCounter() {
 
 	if (was_counted != current_day && user_role != "hidden") {
 		window.localStorage.setItem("index_counter", current_day);
-		fetch(`/.netlify/functions/update/help/350149262119535177`);
+		fetch(`/.netlify/functions/update/special/382300697065947202`);
 	}
 	else {
 		index_counted = true;

@@ -13,30 +13,9 @@ from = "/help"
 to = "/"
 status = 301
 
-# redirect old packs path to new
 [[redirects]]
 from = "/datapacks/*"
 to = "/packs/:splat"
-status = 301
-
-[[redirects]]
-from = "/resource_packs/*"
-to = "/packs/:splat"
-status = 301
-
-[[redirects]]
-from = "/maps/*"
-to = "/packs/:splat"
-status = 301
-
-[[redirects]]
-from = "/datapacks/key/observer_addon.html"
-to = "/packs/key.html#key_observer"
-status = 301
-
-[[redirects]]
-from = "/datapacks/more_arrows/craft_addon.html"
-to = "/packs/more_arrows.html#more_arrows_craft"
 status = 301
 
 # redirect craft subdomain to nbt crafting page
