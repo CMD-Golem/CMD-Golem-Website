@@ -64,43 +64,43 @@ const pack_array = [{
 
 // pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
-	{main: "1.20", sub: 2, dp: 18, rp: 18, id: 140, main_id: "id1_20", name: "1.20.2"},
-	{main: "1.20", sub: 1, dp: 15, rp: 15, id: 139, main_id: "id1_20", name: "1.20.1"},
-	{main: "1.20", sub: 0, dp: 15, rp: 15, id: 138, main_id: "id1_20", name: "1.20"},
-	{main: "1.19", sub: 4, dp: 12, rp: 13, id: 137, main_id: "id1_19", name: "1.19.4"},
-	{main: "1.19", sub: 3, dp: 10, rp: 12, id: 136, main_id: "id1_19", name: "1.19.3"},
-	{main: "1.19", sub: 2, dp: 10, rp: 9, id: 135, main_id: "id1_19", name: "1.19.2"},
-	{main: "1.19", sub: 1, dp: 10, rp: 9, id: 134, main_id: "id1_19", name: "1.19.1"},
-	{main: "1.19", sub: 0, dp: 10, rp: 9, id: 133, main_id: "id1_19", name: "1.19"},
-	{main: "1.18", sub: 2, dp: 9, rp: 8, id: 132, main_id: "id1_18", name: "1.18.2"},
-	{main: "1.18", sub: 1, dp: 8, rp: 8, id: 131, main_id: "id1_18", name: "1.18.1"},
-	{main: "1.18", sub: 0, dp: 8, rp: 8, id: 130, main_id: "id1_18", name: "1.18"},
-	{main: "1.17", sub: 1, dp: 7, rp: 7, id: 129, main_id: "id1_17", name: "1.17.1"},
-	{main: "1.17", sub: 0, dp: 7, rp: 7, id: 128, main_id: "id1_17", name: "1.17"},
-	{main: "1.16", sub: 5, dp: 6, rp: 6, id: 127, main_id: "id1_16", name: "1.16.5"},
-	{main: "1.16", sub: 4, dp: 6, rp: 6, id: 126, main_id: "id1_16", name: "1.16.4"},
-	{main: "1.16", sub: 3, dp: 6, rp: 6, id: 125, main_id: "id1_16", name: "1.16.3"},
-	{main: "1.16", sub: 2, dp: 6, rp: 6, id: 124, main_id: "id1_16", name: "1.16.2"},
-	{main: "1.16", sub: 1, dp: 5, rp: 5, id: 123, main_id: "id1_16", name: "1.16.1"},
-	{main: "1.16", sub: 0, dp: 5, rp: 5, id: 122, main_id: "id1_16", name: "1.16"},
-	{main: "1.15", sub: 2, dp: 5, rp: 5, id: 121, main_id: "id1_15", name: "1.15.2"},
-	{main: "1.15", sub: 1, dp: 5, rp: 5, id: 120, main_id: "id1_15", name: "1.15.1"},
-	{main: "1.15", sub: 0, dp: 5, rp: 5, id: 119, main_id: "id1_15", name: "1.15"},
-	{main: "1.14", sub: 4, dp: 4, rp: 4, id: 118, main_id: "id1_14", name: "1.14.4"},
-	{main: "1.14", sub: 3, dp: 4, rp: 4, id: 117, main_id: "id1_14", name: "1.14.3"},
-	{main: "1.14", sub: 2, dp: 4, rp: 4, id: 116, main_id: "id1_14", name: "1.14.2"},
-	{main: "1.14", sub: 1, dp: 4, rp: 4, id: 115, main_id: "id1_14", name: "1.14.1"},
-	{main: "1.14", sub: 0, dp: 4, rp: 4, id: 114, main_id: "id1_14", name: "1.14"},
-	{main: "1.13", sub: 2, dp: 4, rp: 4, id: 113, main_id: "id1_13", name: "1.13.2"},
-	{main: "1.13", sub: 1, dp: 4, rp: 4, id: 112, main_id: "id1_13", name: "1.13.1"},
-	{main: "1.13", sub: 0, dp: 4, rp: 4, id: 111, main_id: "id1_13", name: "1.13"},
-	{main: "1.12", sub: 0, dp: 3, rp: 3, id: 106, main_id: "id1_12", name: "1.12"},
-	{main: "1.11", sub: 0, dp: 3, rp: 3, id: 105, main_id: "id1_11", name: "1.11"},
-	{main: "1.10", sub: 0, dp: 2, rp: 2, id: 104, main_id: "id1_10", name: "1.10"},
-	{main: "1.9", sub: 0, dp: 2, rp: 2, id: 103, main_id: "id1_9", name: "1.9"},
-	{main: "1.8", sub: 0, dp: 1, rp: 1, id: 102, main_id: "id1_8", name: "1.8"},
-	{main: "1.7", sub: 0, dp: 1, rp: 1, id: 101, main_id: "id1_7", name: "1.7"},
-	{main: "1.6", sub: 0, dp: 1, rp: 1, id: 100, main_id: "id1_6", name: "1.6"}
+	{main: "1.20", sub: 2, dp: 18, rp: 18, id: 140, main_id: "r1_20", name: "1.20.2"},
+	{main: "1.20", sub: 1, dp: 15, rp: 15, id: 139, main_id: "r1_20", name: "1.20.1"},
+	{main: "1.20", sub: 0, dp: 15, rp: 15, id: 138, main_id: "r1_20", name: "1.20"},
+	{main: "1.19", sub: 4, dp: 12, rp: 13, id: 137, main_id: "r1_19", name: "1.19.4"},
+	{main: "1.19", sub: 3, dp: 10, rp: 12, id: 136, main_id: "r1_19", name: "1.19.3"},
+	{main: "1.19", sub: 2, dp: 10, rp: 9, id: 135, main_id: "r1_19", name: "1.19.2"},
+	{main: "1.19", sub: 1, dp: 10, rp: 9, id: 134, main_id: "r1_19", name: "1.19.1"},
+	{main: "1.19", sub: 0, dp: 10, rp: 9, id: 133, main_id: "r1_19", name: "1.19"},
+	{main: "1.18", sub: 2, dp: 9, rp: 8, id: 132, main_id: "r1_18", name: "1.18.2"},
+	{main: "1.18", sub: 1, dp: 8, rp: 8, id: 131, main_id: "r1_18", name: "1.18.1"},
+	{main: "1.18", sub: 0, dp: 8, rp: 8, id: 130, main_id: "r1_18", name: "1.18"},
+	{main: "1.17", sub: 1, dp: 7, rp: 7, id: 129, main_id: "r1_17", name: "1.17.1"},
+	{main: "1.17", sub: 0, dp: 7, rp: 7, id: 128, main_id: "r1_17", name: "1.17"},
+	{main: "1.16", sub: 5, dp: 6, rp: 6, id: 127, main_id: "r1_16", name: "1.16.5"},
+	{main: "1.16", sub: 4, dp: 6, rp: 6, id: 126, main_id: "r1_16", name: "1.16.4"},
+	{main: "1.16", sub: 3, dp: 6, rp: 6, id: 125, main_id: "r1_16", name: "1.16.3"},
+	{main: "1.16", sub: 2, dp: 6, rp: 6, id: 124, main_id: "r1_16", name: "1.16.2"},
+	{main: "1.16", sub: 1, dp: 5, rp: 5, id: 123, main_id: "r1_16", name: "1.16.1"},
+	{main: "1.16", sub: 0, dp: 5, rp: 5, id: 122, main_id: "r1_16", name: "1.16"},
+	{main: "1.15", sub: 2, dp: 5, rp: 5, id: 121, main_id: "r1_15", name: "1.15.2"},
+	{main: "1.15", sub: 1, dp: 5, rp: 5, id: 120, main_id: "r1_15", name: "1.15.1"},
+	{main: "1.15", sub: 0, dp: 5, rp: 5, id: 119, main_id: "r1_15", name: "1.15"},
+	{main: "1.14", sub: 4, dp: 4, rp: 4, id: 118, main_id: "r1_14", name: "1.14.4"},
+	{main: "1.14", sub: 3, dp: 4, rp: 4, id: 117, main_id: "r1_14", name: "1.14.3"},
+	{main: "1.14", sub: 2, dp: 4, rp: 4, id: 116, main_id: "r1_14", name: "1.14.2"},
+	{main: "1.14", sub: 1, dp: 4, rp: 4, id: 115, main_id: "r1_14", name: "1.14.1"},
+	{main: "1.14", sub: 0, dp: 4, rp: 4, id: 114, main_id: "r1_14", name: "1.14"},
+	{main: "1.13", sub: 2, dp: 4, rp: 4, id: 113, main_id: "r1_13", name: "1.13.2"},
+	{main: "1.13", sub: 1, dp: 4, rp: 4, id: 112, main_id: "r1_13", name: "1.13.1"},
+	{main: "1.13", sub: 0, dp: 4, rp: 4, id: 111, main_id: "r1_13", name: "1.13"},
+	{main: "1.12", sub: 0, dp: 3, rp: 3, id: 106, main_id: "r1_12", name: "1.12"},
+	{main: "1.11", sub: 0, dp: 3, rp: 3, id: 105, main_id: "r1_11", name: "1.11"},
+	{main: "1.10", sub: 0, dp: 2, rp: 2, id: 104, main_id: "r1_10", name: "1.10"},
+	{main: "1.9", sub: 0, dp: 2, rp: 2, id: 103, main_id: "r1_9", name: "1.9"},
+	{main: "1.8", sub: 0, dp: 1, rp: 1, id: 102, main_id: "r1_8", name: "1.8"},
+	{main: "1.7", sub: 0, dp: 1, rp: 1, id: 101, main_id: "r1_7", name: "1.7"},
+	{main: "1.6", sub: 0, dp: 1, rp: 1, id: 100, main_id: "r1_6", name: "1.6"}
 ]
 
 
@@ -257,7 +257,7 @@ async function userCounter() {
 	if (was_counted != current_day && user_role != "hidden") {
 		window.localStorage.setItem("user_counter", current_day);
 
-		var country_response = await fetch("https: //cmd-golem.com/get-country");
+		var country_response = await fetch("https://cmd-golem.com/get-country");
 		var geo_data = await country_response.json();
 		fetch(`/.netlify/functions/user_counter/` + geo_data.geo.geo.country.name);
 	}
