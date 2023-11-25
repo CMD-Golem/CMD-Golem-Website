@@ -333,7 +333,7 @@ async function generate(beta) {
 			already_download = true;
 	
 			fetch("/.netlify/functions/update/packs/382298385283022914"); // normal counter
-			fetch(`/.netlify/functions/version/${selected_version.main_db}`); // version statistic
+			fetch(`/.netlify/functions/version/${selected_version.main_id}`); // version statistic
 		}
 	});
 }

@@ -1,5 +1,5 @@
 var table = document.getElementsByTagName("table")[0];
-var datapacks, resource_packs, maps, help, powered_enchanting, versions, countries, sel_db;
+var datapacks, resource_packs, packs, special, powered_enchanting, versions, countries, sel_db;
 
 // determan what data should be loaded
 async function initDatabase(hash) {
@@ -9,25 +9,12 @@ async function initDatabase(hash) {
 	sel_db = hash;
 
 	if (hash == "packs") {
-		datapacks = datapacks ?? await readDatabase("all_datapacks");
-		resource_packs = resource_packs ?? await readDatabase("all_resource_packs");
-
-		printOut(datapacks.concat(resource_packs), "date");
+		packs = packs ?? await readDatabase("all_packs");
+		printOut(packs, "date");
 	}
-	else if (hash == "datapacks") { printOut(datapacks, "date") }
-	else if (hash == "resource_packs") { printOut(resource_packs, "date"); }
-	
-	else if (hash == "maps") {
-		maps = maps ?? await readDatabase("all_maps");
-		printOut(maps, "date");
-	}
-	else if (hash == "help") {
-		help = help ?? await readDatabase("all_help");
-		printOut(help), "date";
-	}
-	else if (hash == "powered_enchanting") {
-		powered_enchanting = powered_enchanting ?? await readDatabase("all_powered_enchanting");
-		printOut(powered_enchanting, "date");
+	else if (hash == "special") {
+		special = special ?? await readDatabase("all_special");
+		printOut(special), "date";
 	}
 	else if (hash == "versions") {
 		versions = versions ?? await readDatabase("all_versions", "no_date");
@@ -43,11 +30,8 @@ initDatabase("packs");
 
 // refresh Table
 function refreshDatabase() {
-	datapacks = undefined;
-	resource_packs = undefined;
-	maps = undefined;
-	help = undefined;
-	powered_enchanting = undefined;
+	packs = undefined;
+	special = undefined;
 	versions = undefined;
 	countries = undefined;
 
