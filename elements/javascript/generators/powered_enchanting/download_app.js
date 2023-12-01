@@ -1,8 +1,7 @@
 // load json
 var article_elements, not_found, list_options;
 var body = document.getElementsByTagName("body")[0];
-var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident"];
-var selected_edition_db = "320699649726874188";
+var comp_items_key = ["all", "helmet", "chestplate", "leggings", "boots", "sword", "pickaxe", "axe", "shovel", "hoe", "bow", "carrot_on_a_stick", "crossbow", "elytra", "fishing_rod", "flint_and_steel", "shears", "shield", "trident", "brush", "horse_armor"];
 
 function loadEnch(lang_id) {
 	var html = "<p id='not_found'>No Results<br><br><br>If you can't find the Enchantment you're looking for, remember to select the appropriate Minecraft version.</p>";
@@ -22,7 +21,7 @@ function loadEnch(lang_id) {
 
 		// set serach for comp items
 		if (comp_items == "all ") {
-			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident ";
+			comp_items = "helmet chestplate leggings boots sword pickaxe axe shovel hoe bow crossbow elytra fishing rod flint and steal shears shield trident brush";
 			img_path = "all tools";
 		}
 
@@ -79,20 +78,16 @@ function changeEdition(edition) {
 	if (edition == "all") {
 		var selector = "article:not(.incomp_version)";
 		var preselection = false;
-		selected_edition_db = "320699603872645708";
 	}
 	else if (edition == "golem") {
 		var selector = ".e_golem:not(.incomp_version)";
 		var preselection = true;
-		selected_edition_db = "320699550069162572";
 	}
 	else if (edition == "vanilla") {
 		var selector = ".e_vanilla:not(.incomp_version)";
 		var preselection = true;
-		selected_edition_db = "320699566604157516";
 	}
 	else {
-		selected_edition_db = "320699649726874188";
 		return;
 	}
 
@@ -365,7 +360,6 @@ function importPackId() {
 
 		pack_id = pack_id.substr(3);
 	}
-	selected_edition_db = "320699587095429708";
 	closeModal();
 }
 

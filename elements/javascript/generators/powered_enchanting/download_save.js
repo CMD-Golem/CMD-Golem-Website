@@ -4,10 +4,6 @@ var pack_id_load = "1-"; // define version of pack id
 var url = "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main";
 var pack_id, already_download;
 
-// Missing Enchantments
-// {"id":"xx", "title":"Swarm", "description":"Low life will spawn a swarm of bees", "max_lvl":"2", "chance":"1", "comp_items":[2], "ench":["swarm"], "incomp_ench":"false", "style":""},
-// Chopping
-
 // Download Resource Pack
 async function downloadResourcePack() {
 	var zip = new JSZip();
@@ -112,7 +108,7 @@ async function generate(beta) {
 	
 	await zip.loadAsync(ench_pack.blob());
 
-	// translation of main pack 0 = EN, 1 = DE, 2 = KO
+	// translation of main pack
 	var tr_code = document.getElementById("lang").value;
 
 	if (tr_code != 0) {
