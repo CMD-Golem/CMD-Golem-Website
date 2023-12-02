@@ -323,16 +323,7 @@ function loadPackIdModal() {
 
 function importPackId() {
 	var pack_id = modal_box.getElementsByTagName("input")[0].value;
-	var pack_id_input = modal_box.getElementsByTagName("input")[0];
 	var pack_id_length = (pack_id.length - 2) / 3;
-
-	// test for corruption
-	if (pack_id.substring(0,2) != "1-" || pack_id_length % 1 != 0) {
-		importPackIdFail(pack_id_input);
-		return;
-	}
-	// remove pack id version
-	pack_id = pack_id.substr(2);
 
 	// unselect all selected
 	var select_array = document.getElementsByTagName("article");
@@ -340,30 +331,94 @@ function importPackId() {
 		if (select_array[i].classList.contains("selected")) { deselect(select_array[i]); }
 	}
 
-	for (var i = 0; i < pack_id_length; i++) {
-		var set_article = document.getElementById(pack_id.charAt());
-		var set_article_setting = pack_id.charAt(2);
+	// first version of pack id
+	if (pack_id.substring(0,2) == "1-" && pack_id_length % 1 == 0) {
+		
+		// remove pack id version
+		pack_id = pack_id.substring(2);
 
-		// test for corruption
-		if (set_article == null || set_article_setting >= 4) {
-			importPackIdFail(pack_id_input);
+		for (var i = 0; i < pack_id_length; i++) {
+			var set_article = document.getElementById(pack_id.charAt());
+			var set_article_setting = pack_id.charAt(2);
+
+			// test for corruption
+			if (set_article == null || set_article_setting >= 4) {
+				importPackIdFail();
+				return;
+			}
+
+			select(set_article, true);
+			set_article.setAttribute("data-chance", pack_id.charAt(1));
+
+			if (set_article_setting == 1 || set_article_setting == 3) {set_article.classList.add("advanced_ench");}
+			else {set_article.classList.remove("advanced_ench");}
+			if (set_article_setting >= 2 && set_article.classList.contains("has_incomp")) {set_article.classList.add("ignore_incomp");}
+			else {set_article.classList.remove("ignore_incomp");}
+
+			pack_id = pack_id.substr(3);
+		}
+		closeModal();
+	}
+	// current version of pack id
+	else if (pack_id.substring(0,2) == "2-") {
+		var pack_id_array = pack_id.split("-");
+
+		if (pack_id_array[1].length /2 %1 != 0 || pack_id_array[2].length /3 %1 != 0) {
+			importPackIdFail();
 			return;
 		}
 
-		select(set_article, true);
-		set_article.setAttribute("data-chance", pack_id.charAt(1));
+		while (pack_id_array[1].length != 0) {
+			var set_article = document.getElementById(pack_id_array[1].charAt());
+			var compressed_letter = pack_id_array[1].charAt(1);
+			pack_id_array[1] = pack_id_array[1].substring(2);
 
-		if (set_article_setting == 1 || set_article_setting == 3) {set_article.classList.add("advanced_ench");}
-		else {set_article.classList.remove("advanced_ench");}
-		if (set_article_setting >= 2 && set_article.classList.contains("has_incomp")) {set_article.classList.add("ignore_incomp");}
-		else {set_article.classList.remove("ignore_incomp");}
+			var catched_error = decompressPackId(compressed_letter, set_article);
+		}
 
-		pack_id = pack_id.substr(3);
+		while (pack_id_array[2].length != 0) {
+			var set_article = document.getElementById(pack_id_array[2].slice(0,2));
+			var compressed_letter = pack_id_array[2].charAt(2);
+			pack_id_array[2] = pack_id_array[2].substring(3);
+
+			var catched_error = decompressPackId(compressed_letter, set_article);
+		}
+
+		if (catched_error) { importPackIdFail(); }
+		else { closeModal(); }
 	}
-	closeModal();
+	else { importPackIdFail(); }
 }
 
-function importPackIdFail(pack_id_input) {
+function decompressPackId(compressed_letter, set_article) {
+	var compressed_value = compressed_letter.charCodeAt(0) - 'A'.charCodeAt(0);
+  
+	// Extract individual bits to get the original values
+	var is_adv_ench = (compressed_value & 1) === 1;
+	var is_ign_incomp = ((compressed_value >> 1) & 1) === 1;
+	var chance = compressed_value >> 2;
+
+	console.log(is_adv_ench, is_ign_incomp, chance)
+
+	// handle errors
+	if (set_article == null || [0,1,2,5].includes(chance)) { return false; }
+
+	// set settings
+	select(set_article, true);
+	set_article.setAttribute("data-chance", chance);
+
+	if (is_adv_ench) { set_article.classList.add("advanced_ench"); }
+	else { set_article.classList.remove("advanced_ench"); }
+
+	if (is_ign_incomp && set_article.classList.contains("has_incomp")) { set_article.classList.add("ignore_incomp"); }
+	else { set_article.classList.remove("ignore_incomp"); }
+
+	return true;
+}
+
+function importPackIdFail() {
+	var pack_id_input = modal_box.getElementsByTagName("input")[0];
+
 	pack_id_input.placeholder = "Pack Id is corrupted!";
 	pack_id_input.style.backgroundColor = "#A10000";
 	pack_id_input.value = "";

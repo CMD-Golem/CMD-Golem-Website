@@ -1,6 +1,6 @@
 // Define variables
 var datapack_name = "powerench"; // define data pack namespace
-var pack_id_load = "1-"; // define version of pack id
+var pack_id_load = "2-"; // define version of pack id
 var url = "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main";
 var pack_id, already_download;
 
@@ -64,7 +64,8 @@ async function generate(beta) {
 	var giveall_function = "function #powerench:give\n"
 	var comb_detect = Array(comp_items_key.length).fill("");
 
-	pack_id = pack_id_load;
+	pack_id_single = "";
+	pack_id_double = "-";
 
 	// user display
 	closeModal();
@@ -309,6 +310,8 @@ async function generate(beta) {
 	pack_folder.file("functions/give/all.mcfunction", giveall_function);
 
 	// pack.mcmeta
+	var pack_id = pack_id_load + pack_id_single + pack_id_double;
+
 	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + selected_version.dp + ',"description": "Powered Enchanting Data Pack by CMD-Golem"}}');
 	zip.file("Pack ID.txt", pack_id);
 
@@ -372,15 +375,6 @@ function loadDownloadModal() {
 	preventScroll(true); // footer.js
 }
 
-// check pack id
-function generatePackId(sel_article) {	
-	pack_id = pack_id_load;
-
-	for (var i = 0; i < sel_article.length; i++) {
-		packId(sel_article[i]);
-	}
-}
-
 // update info
 function loadUpdateInfo() {
 	closeModal();
@@ -409,25 +403,28 @@ function packId(ench) {
 	// get adv_ench and ignore incomp
 	is_adv_ench = ench.classList.contains("advanced_ench");
 	is_ign_incomp = ench.classList.contains("ignore_incomp");
+	var chance = parseInt(ench.getAttribute("data-chance"));
 
-	if (!is_adv_ench && !is_ign_incomp) {var settings_id = "0";}
-	else if (is_adv_ench && !is_ign_incomp) {var settings_id = "1";}
-	else if (!is_adv_ench && is_ign_incomp) {var settings_id = "2";}
-	else {var settings_id = "3";}
+	var compressed_value = (is_adv_ench ? 1 : 0) | ((is_ign_incomp ? 1 : 0) << 1) | (chance << 2);
+	var compressed_letter = String.fromCharCode('A'.charCodeAt(0) + compressed_value);
 
-	pack_id = pack_id + ench.id + ench.getAttribute("data-chance") + settings_id;
+	if (ench.id.length == 1) { pack_id_single += ench.id + compressed_letter }
+	else { pack_id_double += ench.id + compressed_letter }
 }
 
 // get pack id
 function getPackId(button) {	
 	var sel_article = document.getElementsByClassName("selected");
-	pack_id = pack_id_load;
+	pack_id_single = "";
+	pack_id_double = "-";
 	var check_selected = checkSelected(sel_article);
 	if (!check_selected) {return}
 
 	for (var i = 0; i < sel_article.length; i++) {
 		packId(sel_article[i]);
 	}
+
+	var pack_id = pack_id_load + pack_id_single + pack_id_double;
 
 	console.log("Pack Id: " + pack_id);
 
@@ -451,7 +448,7 @@ function checkSelected(sel_article) {
 		alert("Please select your enchantments first!");
 		return false;
 	}
-	else if (sel_article.length <= 5) {
+	else if (sel_article.length <= 4) {
 		var confirm_msg = confirm("Please select at least 5 enchantments.\nPress OK to continue anyway.");
 		if (confirm_msg == true) {
 			return true;

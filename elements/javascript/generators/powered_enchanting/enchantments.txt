@@ -1,12 +1,14 @@
-id				String			Id of the Enchantment (New system for new enchentments needed)
-title			Array[String]	Titel of the Enchantment [EN, DE, KO]
+id				String			Id of the Enchantment
+title			Array[String]	Titel of the Enchantment
 description		String			Description of the Enchantment
 max_lvl			Int				Max Level of the Enchantment
 chance			Int				Chance of the Enchantment: 1 = 10%, 2 = 20%, 5 = 50%, 0 = 100%
 version			Array[Int]		List of pack files according to pack format
-comp_items		Array[Int]		Compatible Items 0 = all, 1 = helmet, 2 = chestplate, 3 = leggings, 4 = boots
+comp_items		Array[Int]		Compatible Items 0 = all
+								1 = helmet, 2 = chestplate, 3 = leggings, 4 = boots
 								5 = sword, 6 = pickaxe, 7 = axe, 8 = shovel, 9 = hoe
-								10 = bow, 11 = carrot_on_a_stick, 12 = crossbow, 13 = elytra, 14 = fishing_rod, 15 = flint_and_steel, 16 = shears, 17 = shield, 18 = trident
+								10 = bow, 12 = crossbow, 13 = elytra, 17 = shield, 18 = trident, 20 = horse_armor
+								11 = carrot_on_a_stick, 14 = fishing_rod, 15 = flint_and_steel, 16 = shears, 19 = brush
 ench			Array[String]	Array[0]: Id of the Enchantment, afterwards ids of all Incompatible Enchantments
 style			String			e_golem: Is part of CMD-Golem Edition
 								e_vanilla: Is part of Vanilla Edition
@@ -18,5 +20,5 @@ style			String			e_golem: Is part of CMD-Golem Edition
 tick			String			Commands which need to be executed every tick (doesn't need to be defined)
 load			String			Commands which need to be executed every on load (doesn't need to be defined)
 
-{"id":"1", "title":"Titel", "description":"Description", "max_lvl":"3", "chance":"2", "version":[7], "comp_items":[1], "ench":["title"], "incomp_ench":"false", "style":""},
-	
+{id:"", version_id:[], title:[""], description:"", max_lvl:, chance:, comp_items:[], ench:[""], style:"", tick:""},
+		
