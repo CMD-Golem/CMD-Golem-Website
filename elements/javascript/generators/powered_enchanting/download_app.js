@@ -343,7 +343,7 @@ function importPackId() {
 
 			// test for corruption
 			if (set_article == null || set_article_setting >= 4) {
-				importPackIdFail();
+				importPackIdFail("1");
 				return;
 			}
 
@@ -364,7 +364,7 @@ function importPackId() {
 		var pack_id_array = pack_id.split("-");
 
 		if (pack_id_array[1].length /2 %1 != 0 || pack_id_array[2].length /3 %1 != 0) {
-			importPackIdFail();
+			importPackIdFail("2");
 			return;
 		}
 
@@ -373,7 +373,7 @@ function importPackId() {
 			var compressed_letter = pack_id_array[1].charAt(1);
 			pack_id_array[1] = pack_id_array[1].substring(2);
 
-			var catched_error = decompressPackId(compressed_letter, set_article);
+			var catched_error = decompressPackId(compressed_letter, set_article) ?? catched_error;
 		}
 
 		while (pack_id_array[2].length != 0) {
@@ -381,13 +381,13 @@ function importPackId() {
 			var compressed_letter = pack_id_array[2].charAt(2);
 			pack_id_array[2] = pack_id_array[2].substring(3);
 
-			var catched_error = decompressPackId(compressed_letter, set_article);
+			var catched_error = decompressPackId(compressed_letter, set_article) ?? catched_error;
 		}
 
-		if (catched_error) { importPackIdFail(); }
+		if (catched_error) { importPackIdFail("3"); }
 		else { closeModal(); }
 	}
-	else { importPackIdFail(); }
+	else { importPackIdFail("4"); }
 }
 
 function decompressPackId(compressed_letter, set_article) {
@@ -398,10 +398,8 @@ function decompressPackId(compressed_letter, set_article) {
 	var is_ign_incomp = ((compressed_value >> 1) & 1) === 1;
 	var chance = compressed_value >> 2;
 
-	console.log(is_adv_ench, is_ign_incomp, chance)
-
 	// handle errors
-	if (set_article == null || [0,1,2,5].includes(chance)) { return false; }
+	if (set_article == null || ![0,1,2,5].includes(chance)) { return true; }
 
 	// set settings
 	select(set_article, true);
@@ -412,12 +410,11 @@ function decompressPackId(compressed_letter, set_article) {
 
 	if (is_ign_incomp && set_article.classList.contains("has_incomp")) { set_article.classList.add("ignore_incomp"); }
 	else { set_article.classList.remove("ignore_incomp"); }
-
-	return true;
 }
 
-function importPackIdFail() {
+function importPackIdFail(error_code) {
 	var pack_id_input = modal_box.getElementsByTagName("input")[0];
+	console.log(error_code);
 
 	pack_id_input.placeholder = "Pack Id is corrupted!";
 	pack_id_input.style.backgroundColor = "#A10000";
