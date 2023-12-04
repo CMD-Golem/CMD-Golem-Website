@@ -4,8 +4,6 @@ var pack_id_load = "2-"; // define version of pack id
 var url = "https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main";
 var pack_id, already_download;
 
-var url = "http://127.0.0.1:54064/";
-
 // Download Resource Pack
 async function downloadResourcePack() {
 	var zip = new JSZip();
