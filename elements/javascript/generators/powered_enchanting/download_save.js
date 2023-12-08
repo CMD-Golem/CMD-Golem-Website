@@ -312,6 +312,27 @@ async function generate(beta) {
 	// GIVE custom enchantments
 	pack_folder.file("functions/give/all.mcfunction", giveall_function);
 
+	// get matching non_solid block tag when needed
+	for (var i = 0; i < non_solid_versions.length; i++) {
+		if (non_solid_versions[i] <= selected_version.id) {
+			var pack_git_path = non_solid_versions[i];
+
+			// code version
+			if (typeof selected_pack_obj.code_version == 'string') {
+				var code_version = selected_pack_obj.code_version;
+			}
+			else {
+				var code_version = selected_pack_obj.code_version[i];
+			}
+			break;
+		}
+	}
+
+	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/_non_solid/tag_${pack_git_path}.json`);
+	var non_solid = await response.text();
+	non_solid = non_solid.replace(`\n\t\t"minecraft:enchanting_table",`, "");
+	zip.file(`data/powerench_main/tags/blocks/non_solid.json`, non_solid);
+
 	// pack.mcmeta
 	var pack_id = pack_id_load + pack_id_single + pack_id_double;
 

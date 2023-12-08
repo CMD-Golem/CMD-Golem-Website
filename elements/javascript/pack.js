@@ -191,6 +191,34 @@ async function downloadPack(pack_type) {
 	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
 	await zip.loadAsync(pack.blob());
 
+	// get matching non_solid block tag when needed
+	if (selected_pack_obj.non_solid != false) {
+		for (var i = 0; i < non_solid_versions.length; i++) {
+			if (non_solid_versions[i] <= selected_version.id) {
+				var pack_git_path = non_solid_versions[i];
+	
+				// code version
+				if (typeof selected_pack_obj.code_version == 'string') {
+					var code_version = selected_pack_obj.code_version;
+				}
+				else {
+					var code_version = selected_pack_obj.code_version[i];
+				}
+				break;
+			}
+		}
+
+		var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/_non_solid/tag_${pack_git_path}.json`);
+		var non_solid = await response.text();
+
+		// replace listed blocks
+		for (var i = 1; i < selected_pack_obj.non_solid.length; i++) {
+			non_solid = non_solid.replace(`\n\t\t"minecraft:${selected_pack_obj.non_solid[i]}",`, "");
+		}
+
+		zip.file(`data/${selected_pack_obj.non_solid[0]}/tags/blocks/non_solid.json`, non_solid);
+	}
+
 	// pack.mcmeta
 	if (pack_type != 5) {
 		var mcmeta_string = await zip.file("pack.mcmeta").async("string");
@@ -201,6 +229,8 @@ async function downloadPack(pack_type) {
 
 		zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 	}
+
+	console.log(zip)
 	
 	// download zip
 	var pack = await zip.generateAsync({type:"base64"});
