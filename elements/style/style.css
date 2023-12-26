@@ -402,7 +402,7 @@ select:focus {
 	margin: 0 auto;
 }
 
-.spoiler_show img {
+.spoiler_image img {
 	width: 100%;
 }
 
@@ -444,30 +444,25 @@ select:focus {
 /* New Spoiler as details */
 details {
 	overflow: hidden;
+	position: relative;
 	background-color: #2D2D2D;
 	border-radius: 5px;
 	margin-bottom: 15px;
-	transition: max-height 0.2s;
+	max-height: 44px;
+	transition: max-height 0.3s;
 }
 
-details > * {
-	padding: 10px 15px;
-}
-
-details > div *:first-child {
-	margin-top: 2px;
-}
-
-details > div *:last-child {
-	margin-bottom: 5px;
+details > div {
+	padding: 0 15px;
 }
 
 summary {
 	display: block !important;
 	background-color: #333333;
 	border-radius: 5px;
-	position: relative;
+	padding: 10px 15px;
 	user-select: none;
+	overflow: hidden;
 }
 
 summary::after {
@@ -479,12 +474,28 @@ summary::after {
 	right: 15px;
 }
 
-.active summary::after {
+
+details.active summary::after {
 	content: "−";
 }
 
-details:not(.active) *:not(summary) {
-	display: none;
+.details_flex {
+	display: flex;
+}
+
+.details_img {
+	width: 40%;
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-right: 10px;
+}
+
+.details_img img {
+	width: 100%;
+}
+
+.details_txt {
+	width: 59%;
 }
 
 /* ####################################################################### */

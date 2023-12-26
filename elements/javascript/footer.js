@@ -210,32 +210,22 @@ function closeSpoiler(el) {
 // #####################################################################
 // New Spoiler
 var spoilers = document.getElementsByTagName("details");
-for (var i = 0; i < spoilers.length; i++) { spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px"; }
 
 function toggleDetail(e, close_others) {
 	if (e.target) {
 		var el = e.target.parentElement;
-
-		if (e.target.nodeName != "A") {
-			e.preventDefault();
-		}
-		if (e.target.nodeName != "SUMMARY") {
-			return;
-		}
+		if (e.target.nodeName != "A") { e.preventDefault(); }
+		if (e.target.nodeName != "SUMMARY") { return; }
 	}
-	else {
-		var el = e;
-	}
+	else { var el = e; }
 	
 
-	if (!el.classList.contains("active")) {
-		var spoiler_active = true;
-	}
-
+	if (close_others == undefined) { close_others = false; }
+	if (!el.classList.contains("active")) { var spoiler_active = true; }
 	if (close_others) {
 		for (var i = 0; i < spoilers.length; i++) {
 			spoilers[i].classList.remove("active");
-			spoilers[i].style.maxHeight = spoilers[i].firstElementChild.scrollHeight + "px";
+			spoilers[i].style.maxHeight = "44px";
 		}
 	}
 
@@ -245,7 +235,7 @@ function toggleDetail(e, close_others) {
 	}
 	else if (!close_others) {
 		el.classList.remove("active");
-		el.style.maxHeight = el.firstElementChild.scrollHeight + "px";
+		el.style.maxHeight = "44px";
 	}
 }
 

@@ -19,7 +19,7 @@
 
 <nav>
 	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
-	<div class="nav_button" onclick="openDownload()" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link" href="key/download.html" id="download_button" title="Download"><img src="../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
 	<a class="nav_button disable_link" href="../info/contact.html#key" title="Report a Bug"><img src="../elements/nav/bug_report.svg" alt="Report a Bug"></a>
 </nav>
 
@@ -28,7 +28,7 @@
 <div class="slideshow-container">
 
 	<div class="slideshow"><img src="../elements/pictures/packs/key/logo_2.png" alt="Key Data Pack Logo"></div>
-	<div class="slideshow"><img src="../elements/pictures/packs/key/picture_1.png" alt="Chest before locking"></div>
+	<div class="slideshow"><img src="../elements/pictures/packs/key/picture_1.png" alt="Chest before locking"><div class="text">Locked chest</div></div>
 	<div class="slideshow"><img src="../elements/pictures/packs/key/picture_2.png" alt="Chest has been locked"></div>
 	<div class="slideshow"><img src="../elements/pictures/packs/key/picture_3.png" alt="Locked Chest"></div>
 	<div class="slideshow"><img src="../elements/pictures/packs/key/picture_4.png" alt="Unlocked Chest"></div>
@@ -42,51 +42,85 @@
 
 <header>
 	<h1>Key</h1>
-	<p>1.15 +</p>
+	<p>1.20.2 +</p>
 </header>
 
-<p>Lock your Chest to protect your items from other players and Creepers. Shift right click on the Chest to lock or unlock it. You can only unlock the Chest if you originally locked it. It doesn't matter which Key you use.</p>
-<p>Even if something destroys the Chest or a Hopper is placed under the Chest, your items can't be stolen. However, be aware that items you put a locked Chest with a Hopper will drop out when you unlock it.</p>
+<p>Lock your containers and doors to protect your items and houses from other players and Creepers. Shift right click on the Block to lock or unlock it.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
-		<div class="spoiler_flex">
-			<div class="spoiler_image">
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Crafting</summary>
+	<div>
+		<div class="details_flex">
+			<div class="details_img">
 				<img src="../elements/pictures/packs/key/recipe.png" alt="Key Recipe">
 			</div>
-			<div class="spoiler_text">
+			<div class="details_txt">
 				<p>The Crafting Table will show a Gold Nugget as result, but you will get the correct item after you take it out.</p>
 			</div>
 		</div>
-		<p>[1.16+] You can repair your Key, if you drop a Gold Ingot with the Key on an Anvil. To get more durability you can also enchant it with Unbreaking.</p>
+		<p>You can repair your Key, if you drop a Gold Ingot with the Key on an Anvil. To get more durability you can also enchant it with Unbreaking.<br>This function can be disabled in the settings of the data pack.</p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Observer Addon</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
-		<p>Use this add-on to automatically unlock the locked Chest if you are in a radius of 2 blocks.</p>
-		<button class="center" onclick="openDownload('key_observer')">Download</button>
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Locking (general settings)</summary>
+	<div>
+		<p>If a player locks a container or door only this player can unlocked it again. The Key doesn't matter in this process since the lock only remembers the player.</p>
+		<p>Additionally you can enable a setting, which allows you to use the name of Keys as password. With those Keys all players which use the right password can unlock the lock. To prevent forgotten passwords the last player which locked the container or door owns it and can in this way also unlock it with any key like described before.</p>
+		<p>If you want to, you can also set the maximum amount of locked containers per player and in total in the world.<br>Use the follwing command to reset it to unlimited:</p>
+		<code>/scoreboard players reset #max_player keylock</code>
+		<code>/scoreboard players reset #max_world keylock</code>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
-		<p>Show messages in the chat instead of above the hotbar.</p>
-		<code>/scoreboard players set #message chestlock 1</code>
-		<p>Get the Admin Key.</p>
-		<code>/function chest_lock:craft/admin_key</code>
-		<p>[1.16+] Disable tool damage when locking a Chest.</p>
-		<code>/scoreboard players set #damage chestlock 1</code>
-		<p>If you get a Green Shulker Box when you lock or unlock a chest you can use this two commands to fix it. Afterwards the Key won't get damaged and all items which are putted into the Chest, while it is looked will be lost if you unlock it.</p>
-		<code>/scoreboard players set #compatible chestlock 1</code>
-		<code>/scoreboard players set #damage chestlock 1</code>
-		<p>To disable the setting again you need to execute the same command except of the 1 replace with a 0.</p>
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Locked containers</summary>
+	<div>
+		<p>After you locked the container, the items in it can't be accessed even by breaking it or placing a hopper underneath it.<br>This also means, that locked furnaces and similar blocks, won't process the items in it. If you put items in a locked container, via hopper or similar, those items will be dropped on unlock.</p>
+		<p>Settings Menu:
+			<ul>
+				<li>You can enable automatic unlocking of containers. With this enabled, all containers withhin your defined radius will be unlocked if you own the container or if you have the right key with password selected in your hotbar. After you move away, the container will be locked again.</li>
+				<li>You can change the behavoir of locked containers. You can either make locked containers unbreakable or replace them with holograms. Additionally the container can also remain as block and after destruction it will be replaced with a hologram.</li>
+			</ul>
+		</p>
 	</div>
-</div>
+</details>
 
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Locked doors and fence gates</summary>
+	<div>
+		<p>All locked doors, trapdoors and fence gates are unbreakable and can't be open. But since normale doors need a support block, even locked doors will break if those gets removed.</p>
+		<p>When you lock a double door, bough door leafs will be locked.</p>
+		<p>Settings Menu:
+			<ul>
+				<li>You can enable automatic opening of the whole double door. This setting works for all doors, regardless of whether they are locked.</li>
+				<li>You can enable automatic opening of doors. With this enabled, all doors three blocks in front of players will be opened. After you move away, the door will close itself again.</li>
+				<li>You can enable automatic unlocking of doors. With this enabled, all doors three blocks in front of players will be unlocked if they own the door or if you have the right key with password selected in your hotbar. After you move away, the door will be locked again.</li>
+			</ul>
+		</p>
+	</div>
+</details>
+
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Important technical stuff</summary>
+	<div>
+		<p>Be aware that other data packs and mods which change the functionality of containers and doors could break the functionality of this pack. In the case of containers, this could lead to loss of items.</p>
+		<p>Never kill all entities in the world, since the locked status is stored in special entities.</p>
+		<p>A server admin can unlock someone elses locked blocks with an Admin Key:</p>
+		<code>/function keylock:craft/admin_key</code>
+		<p>If you can't unlock a container or door anymore, first try to break it. If it replaces itself you can use an Admin Key to unlock it. If this doesn't work for your container and you need your items back, you should use this command to restore them:</p>
+		<code>/function keylock:container/repair with block &#60;container position&#62;</code>
+		<p>You won't be able to use the this command if you lock the container with the missing items with new items in it again. The items itself aren't stored in the special entity, but in storage. The file is located in the data folder of your world and is called command_storage_keylock.dat.</p>
+	</div>
+</details>
+
+<details onclick="toggleDetail(event)" title="Open for more Informations" open>
+	<summary>Adjust lockable Blocks</summary>
+	<div>
+		<p>The easiest way to select your lockable blocks is on the download page of the data pack.</p>
+		<p>If you need to change it after the inital download, you need to unzip the data pack. In the folder data/tags/blocks all the lockable blocks are defined.</p>
+	</div>
+</details>
 
 </main>
 
@@ -102,12 +136,9 @@
 			</div>
 		</div>
 
-		<div class="download hide_on_addon">
+		<div class="download">
 			<button onclick="downloadPack(1)">Data Pack</button>
 			<button onclick="downloadPack(3)">Ressource Pack</button>
-		</div>
-		<div class="download show_on_addon" style="display: none;">
-			<button onclick="downloadPack(2)">Data Pack</button>
 		</div>
 		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
 		<div class="download_box_links">
@@ -125,7 +156,22 @@
 <footer></footer>
 
 <script language="javascript" type="text/javascript" src="../elements/javascript/footer.js"></script>
-<script language="javascript" type="text/javascript" src="../elements/javascript/pack.js"></script>
+<script>
+var slides = document.getElementsByClassName("slideshow");
+if (slides.length != 0) {
+	var slideIndex = 1;
+	showSlides(slideIndex);
+}
+
+function showSlides(n) {
+	if (n > slides.length) {slideIndex = 1}    
+	if (n < 1) {slideIndex = slides.length}
+	for (var i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";  
+	}
+	slides[slideIndex-1].style.display = "block";  
+}
+</script>
 
 </body>
 </html>
