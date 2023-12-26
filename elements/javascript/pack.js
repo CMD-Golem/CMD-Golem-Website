@@ -229,8 +229,6 @@ async function downloadPack(pack_type) {
 
 		zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 	}
-
-	console.log(zip)
 	
 	// download zip
 	var pack = await zip.generateAsync({type:"base64"});

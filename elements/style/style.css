@@ -465,6 +465,10 @@ summary {
 	overflow: hidden;
 }
 
+summary:hover {
+	background-color: #2D2D2D;
+}
+
 summary::after {
 	content: "+";
 	font-size: 25px;
@@ -474,6 +478,9 @@ summary::after {
 	right: 15px;
 }
 
+details.active summary:hover {
+	box-shadow: rgba(0, 0, 0, 0.3) 0 4px 5px;
+}
 
 details.active summary::after {
 	content: "−";
