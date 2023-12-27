@@ -17,8 +17,11 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
-		name: "Key", updated: 20230527, search_keys: "Lock Chest Protect Storage Data Pack", description: "Lock your Chest to protect your items from other players and Creepers.",
-		pack_id: "key", code_version: "4", last_version_id: false, pack_version_id: [138, 133, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
+		name: "Key", updated: 20230527, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		pack_id: "key", code_version: "5", last_version_id: false, pack_version_id: [140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
+	},{
+		name: "Key Gen1", updated: 0, search_keys: false,
+		pack_id: "key_gen1", code_version: "4", last_version_id: false, pack_version_id: [138, 133, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
 	},{
 		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "382298482274205762", non_solid: false

@@ -150,7 +150,7 @@ function subVersion(selected_version_el) {
 // download (also used in powered_enchanting/download_save)
 // 1: datapack with resource pack
 // 2: standalone datapack
-// 3: ressource pack of datapack
+// 3: resource pack of datapack
 // 4: standalone resource pack
 // 5: map
 var already_download = false;

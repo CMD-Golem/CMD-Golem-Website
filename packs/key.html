@@ -3,13 +3,12 @@
 	
 <head>
 <title>CMD-Golem - Key</title>
-<meta name="description" content="Lock your Chest to protect your items from other players and Creepers.">
+<meta name="description" content="Lock your containers and doors to protect your items and buildings from other players and Creepers.">
 <meta rel="canonical" href="https://cmd-golem.com/packs/key.html">
 <meta name="robots" content="index, follow, archive"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="pack_id" content="key">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../elements/style/style.css"/>
 <link rel="stylesheet" type="text/css" href="../elements/style/pack.css"/>
 <link rel="icon" href="../elements/nav/favicon.png">
@@ -56,8 +55,7 @@
 				<p>The Crafting Table will show a Gold Nugget as the result. This will be replaced by the Key after crafting.</p>
 			</div>
 		</div>
-		<p>The Key is damaged every time a block is locked. It can be repair by dropping a Gold Ingot with the Key onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.</p>
-		<p>This functionality can be disabled in the settings of the Data Pack.</p>
+		<p>The Key is damaged every time a block is locked. It can be repair by dropping a Gold Ingot with the Key onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.<br>This functionality can be disabled in the settings of the Data Pack.</p>
 	</div>
 </details>
 
@@ -72,10 +70,12 @@
 	</div>
 </details>
 
+<br>
+
 <details onclick="toggleDetail(event)" open>
 	<summary>Locked containers</summary>
 	<div>
-		<p>Once a container has been locked, the items inside can no longer be accessed, even by breaking it or placing a hopper underneath it.<br>This also means that locked furnaces and similar blocks cannot process the items inside. If items are placed in a locked container via a hopper, they will be dropped when the container is unlocked.</p>
+		<p>Once a container has been locked, the items inside can no longer be accessed, even by breaking it or placing a hopper underneath it.<br>This also means that locked furnaces and similar blocks cannot process the items inside and the fuel currently in use is not preserved. If items are placed in a locked container via a hopper, they will be dropped when the container is unlocked.</p>
 		<p>Settings Menu:
 			<ul>
 				<li>The automatic unlocking of containers can be activated. This causes all containers within a defined radius around the player to be unlocked, as long as the player is the owner of the container or has selected the correct Key with password in their hotbar. After the player has moved away, the container is automatically locked again.</li>
@@ -94,16 +94,18 @@
 			<ul>
 				<li>The automatic opening of double doors can be activated. This setting applies to all doors, regardless of whether they are locked.</li>
 				<li>The automatic opening of doors can be activated. If this is activated, all doors that are three blocks in front of the player are opened. After the player has moved away, the door is automatically closed again.</li>
-				<li>The automatic unlocking of doors can be activated. This will unlock all doors within three blocks of the player, provided the player is the owner of the door or has selected the correct key and password in their hotbar. After the player has moved away, the door is automatically locked again.</li>
+				<li>The automatic unlocking of doors can be activated. This will unlock all doors that are three blocks in front of the player, provided the player is the owner of the door or has selected the correct key and password in their hotbar. After the player has moved away, the door is automatically locked again.</li>
 			</ul>
 		</p>
 	</div>
 </details>
 
+<br>
+
 <details onclick="toggleDetail(event)" open>
 	<summary>Important technical stuff</summary>
 	<div>
-		<p>Be aware that other data packs and mods that change the functionality of containers and doors can interrupt the operation of this pack. In the case of containers, this could result in the loss of items.</p>
+		<p>Be aware that other Data Packs and mods that change the functionality of containers and doors can interrupt the operation of this pack. In the case of containers, this could result in the loss of items.</p>
 		<p>Never kill all entities in the world, as the lock status is stored by the blocks in special entities.</p>
 		<p>A server admin can use an Admin Key to unlock the locked blocks of another player:</p>
 		<code>/function keylock:craft/admin_key</code>
@@ -116,44 +118,24 @@
 <details onclick="toggleDetail(event)" open>
 	<summary>Adjust lockable Blocks</summary>
 	<div>
-		<p>The easiest way to select the lockable blocks is on the download page of the data pack. If these need to be changed after the first download, the data pack must first be unzipped. All lockable blocks are defined under the folder data/tags/blocks.</p>
-		<p>All lockable containers are stored in the containers.json file. The following blocks from Vanilla can be locked when defined in this file:<br>barrel, blast_furnace, brewing_stand, chest, chiseled_bookshelf, dispenser, dropper, furnace, hopper, smoker, trapped_chest and all colour variants of the shulker_box</p>
+		<p>The easiest way to select the lockable blocks is on the download page of the Data Pack. If these need to be changed after the first download, the Data Pack must first be unzipped. All lockable blocks are defined under the folder data/tags/blocks.</p>
+		<p>All lockable containers are stored in the containers.json file. The following blocks from Vanilla can be locked when defined in this file:<br>barrel, blast_furnace, brewing_stand, chest, dispenser, dropper, furnace, hopper, smoker, trapped_chest and all colour variants of the shulker_box</p>
 		<p>All lockable doors are stored in the doors.json file. All doors from Vanilla can be locked when defined in this file.</p>
 		<p>All lockable trapdoors and fence gates are stored in the trapgate.json file. All trapdoors and fence gates from Vanilla can be locked when defined in this file.</p>
 		<p>It is also possible to add blocks from mods. To do this, the block ID is stored in the most fitting block tag json file. In addition, it is always necessary to check whether the locking works correctly before using it.</p>
 	</div>
 </details>
 
-</main>
-
-<section id="download_box" style="display: none;">
-	<div class="inner_box">
-		<h2>Download</h2>
-		Select Minecraft Version: 
-		<div class="select_version_box">
-			<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
-			<div id="selection_box">
-				<div id="version_main" class="selection"></div>
-				<div id="version_sub" class="selection"></div>
-			</div>
-		</div>
-
-		<div class="download">
-			<button onclick="downloadPack(1)">Data Pack</button>
-			<button onclick="downloadPack(3)">Ressource Pack</button>
-		</div>
-		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
-		<div class="download_box_links">
-			<a href="../info/installation.html#datapack_with_resources" title="Installation instructions for the Data Pack and the Ressource Pack">Installation</a>
-			<a class="hide_on_addon" href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
-		</div>
-		<div class="download_close" onclick="closeDownload()" title="close">
-			<svg viewBox="0 0 24 24" fill="#CCCCCC">
-				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-			</svg>
-		</div>
+<details onclick="toggleDetail(event)" open>
+	<summary>Get older versions</summary>
+	<div>
+		<p>If you want to use the older version of this Data Pack, you can get it here.</p>
+		<p>In this version you can only lock normal chests, but this version can be used from Minecraft 1.15 onwards.</p>
+		<p class="center"><a class="button disable_link" href="key/gen1.html">Get older versions</a></p>
 	</div>
-</section>
+</details>
+
+</main>
 
 <footer></footer>
 
