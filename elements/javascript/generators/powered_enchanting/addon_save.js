@@ -194,7 +194,7 @@ async function generate() {
 		link.click();
 
 		// Count download
-		if (already_download != true) {
+		if (already_download != true && user_role != "hidden") {
 			already_download = true;
 			fetch(`/.netlify/functions/update/special/382300690013225026`);
 		}

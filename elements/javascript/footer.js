@@ -117,7 +117,7 @@ document.getElementsByTagName("footer")[0].innerHTML = `
 <div class="footer_left footer_block">©2019 - ${new Date().getFullYear()} by CMD-Golem</div>
 <div class="footer_center footer_block">
 	<a href="/info/legal.html">Disclaimer</a>
-	<a href="/info/legal.html#therms_of_use">Therms of use</a>
+	<a href="/info/legal.html#terms_of_use">Terms of use</a>
 	<a href="/info/contact.html#contact">Contact</a>
 </div>
 <div class="footer_right footer_block">
@@ -217,11 +217,12 @@ var spoilers = document.getElementsByTagName("details");
 function toggleDetail(e, close_others) {
 	if (e.target) {
 		var el = e.target.parentElement;
-		if (e.target.nodeName != "A") { e.preventDefault(); }
+		e.stopPropagation();
+		if (e.target.nodeName == "DETAILS") { e.preventDefault(); }
+		if (e.target.nodeName == "SUMMARY") { e.preventDefault(); }
 		if (e.target.nodeName != "SUMMARY") { return; }
 	}
 	else { var el = e; }
-	
 
 	if (close_others == undefined) { close_others = false; }
 	if (!el.classList.contains("active")) { var spoiler_active = true; }
@@ -234,7 +235,7 @@ function toggleDetail(e, close_others) {
 
 	if (spoiler_active) {
 		el.classList.add("active");
-		el.style.maxHeight = el.scrollHeight + "px";
+		el.style.maxHeight = el.scrollHeight + 35 + "px";
 	}
 	else if (!close_others) {
 		el.classList.remove("active");

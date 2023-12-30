@@ -352,7 +352,7 @@ async function generate(beta) {
 		link.click();
 
 		// Counter
-		if (already_download != true) {
+		if (already_download != true && user_role != "hidden") {
 			already_download = true;
 	
 			fetch("/.netlify/functions/update/packs/382298385283022914"); // normal counter

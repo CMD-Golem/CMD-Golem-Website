@@ -189,7 +189,7 @@ function enchName(input) {
 }
 
 // #####################################################################
-// set tools, weapons and armor
+// set tools, weapons and armor // also in key.js
 function setTagged(input_el, input_check) {
 	if ((input_el.value.includes(" ") || input_el.value.includes(",") || input_check == false) && input_el.value != "") {
 		var item_el = document.createElement("span");

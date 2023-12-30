@@ -1,0 +1,116 @@
+main {
+	user-select: none;
+}
+
+.select_version_box {
+	margin: 0;
+}
+
+label, span {
+	display: block;
+	margin: 10px 0;
+}
+
+/* ####################################################################### */
+/* List */
+.block_container {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 100px);
+	gap: 10px;
+	margin: 10px 0;
+}
+
+.lockable_block {
+	background-color: #333333;
+	border-radius: 5px;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	font-size: small;
+	text-align: center;
+	width: calc(100% - 10px);
+}
+
+.lockable_block:hover {
+	background-color: #292929;
+}
+
+.lockable_block.selected {
+	background-color: #16472b;
+}
+
+#drag_area{
+	position: absolute;
+	display: none;
+	border: 1px solid rgba(0,0,255,.15);
+	background: rgba(0,0,255,.05);
+	pointer-events: none;
+}
+
+/* Tagging for custom lockable blocks */
+code.fullwidth {
+	user-select: auto;
+	padding: 7px;
+	padding-top: 2px;
+	margin-bottom: 25px;
+}
+
+.tagged_item {
+	background-color: #222222;
+	display: inline-block;
+	padding: 2px 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.tagged_item:hover {
+	background-color: #A10000;
+}
+
+input.key_input {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+/* ####################################################################### */
+/* Settings */
+hr {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+mark {
+	display: inline-block;
+	padding: 0 5px;
+	margin-left: 5px;
+	border-radius: 3px;
+	background-color: #a10000;
+	color: inherit;
+	font-weight: bold;
+}
+
+#tooltip {
+	position: absolute;
+	display: none;
+	background-color:#292929;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px 2px;
+	text-align: center;
+	font-size: small;
+	border-radius: 5px;
+	padding: 5px 5px;
+}
+
+input[type=number] {
+	display: inline-block;
+	appearance: textfield;
+	width: 60px;
+	margin: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	appearance: none;
+	margin: 0;
+}
+

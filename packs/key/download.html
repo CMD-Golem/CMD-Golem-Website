@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+<title>CMD-Golem - Key Download</title>
+<meta name="description" content="Lock your containers and doors to protect your items and buildings from other players and Creepers.">
+<meta rel="canonical" href="https://cmd-golem.com/packs/key/download.html">
+<meta name="robots" content="index, follow, archive"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../elements/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/pack.css"/>
+<link rel="stylesheet" type="text/css" href="../../elements/style/special/key.css"/>
+<link rel="icon" href="../../elements/nav/favicon.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+
+</head>
+<body>
+
+<nav>
+	<a class="nav_button disable_link nav_home" href="/"><h2>CMD-Golem</h2></a>
+	<div class="nav_button" onclick="loadDownloadModal()" title="Download"><img src="../../elements/nav/download.svg" alt="Download"><p class="nav_text">Download</p></div>
+	<a class="nav_button disable_link hide_mobile" href="../../info/contact.html#key" title="Report a Bug" target="_blank"><img src="../../elements/nav/bug_report.svg" alt="Report a Bug"></a>
+</nav>
+
+
+<main class="main_sidebar">
+	<h1><a href="../key.html" title="Go back to the Key Data Pack">Key</a></h1>
+
+	<ol style="margin-bottom: 20px;">
+		<li>Select Minecraft Version: 
+			<div class="select_version_box">
+				<div id="select_version" disabled onclick="selection_box.classList.toggle('hidden')"></div>
+				<div id="selection_box">
+					<div id="version_main" class="selection"></div>
+					<div id="version_sub" class="selection"></div>
+				</div>
+			</div>
+		</li>
+		<li>Select all blocks you want to lock.</li>
+		<li>Change settings if needed. Most of them can also be changed ingame.<br>Do not forget to enable the locking of the supergroup in the settings</li>
+		<li>Download the Data Pack</li>
+	</ol>
+
+	<details onclick="toggleDetail(event, true)" open id="containers_spoiler">
+		<summary>Containers</summary>
+		<div>
+			<span>Add custom containers <small>(separate with space)</small></span>
+			<code class="fullwidth" id="containers_custom" onclick="this.getElementsByTagName('input')[0].focus();">
+				<input type="text" placeholder='cmdgolem:custom_chest' class="key_input" onkeyup="setTagged(this, true)">
+			</code>
+		</div>
+		<div>
+			<span>Select containers <small>(selection by dragging is possible)</small></span>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="minecraft:barrel"><img src="../../elements/pictures/packs/key/blocks/containers/barrel.png" alt="Barrel"><span>Barrel</span></div>
+				<div class="lockable_block" data-block_id="minecraft:chest"><img src="../../elements/pictures/packs/key/blocks/containers/chest.png" alt="Chest"><span>Chest</span></div>
+				<div class="lockable_block" data-block_id="minecraft:trapped_chest"><img src="../../elements/pictures/packs/key/blocks/containers/trapped_chest.png" alt="Trapped Chest"><span>Trapped Chest</span></div>
+			</div>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="minecraft:black_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/black_shulker_box.png" alt="Black Shulker Box"><span>Black Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:blast_furnace"><img src="../../elements/pictures/packs/key/blocks/containers/blast_furnace.png" alt="Blast Furnace"><span>Blast Furnace</span></div>
+				<div class="lockable_block" data-block_id="minecraft:blue_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/blue_shulker_box.png" alt="Blue Shulker Box"><span>Blue Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:brewing_stand"><img src="../../elements/pictures/packs/key/blocks/containers/brewing_stand.png" alt="Brewing Stand"><span>Brewing Stand</span></div>
+				<div class="lockable_block" data-block_id="minecraft:brown_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/brown_shulker_box.png" alt="Brown Shulker Box"><span>Brown Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:cyan_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/cyan_shulker_box.png" alt="Cyan Shulker Box"><span>Cyan Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:dispenser"><img src="../../elements/pictures/packs/key/blocks/containers/dispenser.png" alt="Dispenser"><span>Dispenser</span></div>
+				<div class="lockable_block" data-block_id="minecraft:dropper"><img src="../../elements/pictures/packs/key/blocks/containers/dropper.png" alt="Dropper"><span>Dropper</span></div>
+				<div class="lockable_block" data-block_id="minecraft:furnace"><img src="../../elements/pictures/packs/key/blocks/containers/furnace.png" alt="Furnace"><span>Furnace</span></div>
+				<div class="lockable_block" data-block_id="minecraft:gray_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/gray_shulker_box.png" alt="Gray Shulker Box"><span>Gray Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:green_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/green_shulker_box.png" alt="Green Shulker Box"><span>Green Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:hopper"><img src="../../elements/pictures/packs/key/blocks/containers/hopper.png" alt="Hopper"><span>Hopper</span></div>
+				<div class="lockable_block" data-block_id="minecraft:light_blue_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/light_blue_shulker_box.png" alt="Light Blue Shulker Box"><span>Light Blue Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:light_gray_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/light_gray_shulker_box.png" alt="Light Gray Shulker Box"><span>Light Gray Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:lime_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/lime_shulker_box.png" alt="Lime Shulker Box"><span>Lime Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:magenta_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/magenta_shulker_box.png" alt="Magenta Shulker Box"><span>Magenta Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:orange_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/orange_shulker_box.png" alt="Orange Shulker Box"><span>Orange Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:pink_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/pink_shulker_box.png" alt="Pink Shulker Box"><span>Pink Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:purple_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/purple_shulker_box.png" alt="Purple Shulker Box"><span>Purple Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:red_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/red_shulker_box.png" alt="Red Shulker Box"><span>Red Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/shulker_box.png" alt="Shulker Box"><span>Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:smoker"><img src="../../elements/pictures/packs/key/blocks/containers/smoker.png" alt="Smoker"><span>Smoker</span></div>
+				<div class="lockable_block" data-block_id="minecraft:white_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/white_shulker_box.png" alt="White Shulker Box"><span>White Shulker Box</span></div>
+				<div class="lockable_block" data-block_id="minecraft:yellow_shulker_box"><img src="../../elements/pictures/packs/key/blocks/containers/yellow_shulker_box.png" alt="Yellow Shulker Box"><span>Yellow Shulker Box</span></div>
+				
+			</div>
+			<span>Iron Chest Mod by ProgWML6 <a href="https://www.curseforge.com/minecraft/mc-mods/iron-chests" target="_blank">[Shown on curseforge]</a></span>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="ironchest:copper_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/copper_chest.png" alt="Copper Chest"><span>Copper Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:crystal_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/crystal_chest.png" alt="Crystal Chest"><span>Crystal Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:diamond_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/diamond_chest.png" alt="Diamond Chest"><span>Diamond Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:dirt_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/dirt_chest.png" alt="Dirt Chest"><span>Dirt Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:gold_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/gold_chest.png" alt="Gold Chest"><span>Gold Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:iron_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/iron_chest.png" alt="Iron Chest"><span>Iron Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:obsidian_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/obsidian_chest.png" alt="Obsidian Chest"><span>Obsidian Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_copper_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_copper_chest.png" alt="Trapped Copper Chest"><span>Trapped Copper Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_crystal_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_crystal_chest.png" alt="Trapped Crystal Chest"><span>Trapped Crystal Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_diamond_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_diamond_chest.png" alt="Trapped Diamond Chest"><span>Trapped Diamond Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_dirt_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_dirt_chest.png" alt="Trapped Dirt Chest"><span>Trapped Dirt Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_gold_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_gold_chest.png" alt="Trapped Gold Chest"><span>Trapped Gold Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_iron_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_iron_chest.png" alt="Trapped Iron Chest"><span>Trapped Iron Chest</span></div>
+				<div class="lockable_block" data-block_id="ironchest:trapped_obsidian_chest"><img src="../../elements/pictures/packs/key/blocks/containers/ironchest/trapped_obsidian_chest.png" alt="Trapped Obsidian Chest"><span>Trapped Obsidian Chest</span></div>				
+		</div>
+	</details>
+
+	<details onclick="toggleDetail(event, true)" open id="doors_spoiler">
+		<summary>Doors</summary>
+		<div>
+			<span>Add custom doors <small>(separate with space)</small></span>
+			<code class="fullwidth" id="doors_custom" onclick="this.getElementsByTagName('input')[0].focus();">
+				<input type="text" placeholder='cmdgolem:custom_door' class="key_input" onkeyup="setTagged(this, true)">
+			</code>
+		</div>
+		<div>
+			<span>Select doors <small>(selection by dragging is possible)</small></span>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="minecraft:acacia_door"><img src="../../elements/pictures/packs/key/blocks/doors/acacia_door.png" alt="Acacia Door"><span>Acacia Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:bamboo_door"><img src="../../elements/pictures/packs/key/blocks/doors/bamboo_door.png" alt="Bamboo Door"><span>Bamboo Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:birch_door"><img src="../../elements/pictures/packs/key/blocks/doors/birch_door.png" alt="Birch Door"><span>Birch Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:cherry_door"><img src="../../elements/pictures/packs/key/blocks/doors/cherry_door.png" alt="Cherry Door"><span>Cherry Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/copper_door.png" alt="Copper Door"><span>Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:crimson_door"><img src="../../elements/pictures/packs/key/blocks/doors/crimson_door.png" alt="Crimson Door"><span>Crimson Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:dark_oak_door"><img src="../../elements/pictures/packs/key/blocks/doors/dark_oak_door.png" alt="Dark Oak Door"><span>Dark Oak Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:exposed_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/exposed_copper_door.png" alt="Exposed Copper Door"><span>Exposed Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:iron_door"><img src="../../elements/pictures/packs/key/blocks/doors/iron_door.png" alt="Iron Door"><span>Iron Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:jungle_door"><img src="../../elements/pictures/packs/key/blocks/doors/jungle_door.png" alt="Jungle Door"><span>Jungle Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:mangrove_door"><img src="../../elements/pictures/packs/key/blocks/doors/mangrove_door.png" alt="Mangrove Door"><span>Mangrove Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:oak_door"><img src="../../elements/pictures/packs/key/blocks/doors/oak_door.png" alt="Oak Door"><span>Oak Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:oxidized_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/oxidized_copper_door.png" alt="Oxidized Copper Door"><span>Oxidized Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:spruce_door"><img src="../../elements/pictures/packs/key/blocks/doors/spruce_door.png" alt="Spruce Door"><span>Spruce Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:warped_door"><img src="../../elements/pictures/packs/key/blocks/doors/warped_door.png" alt="Warped Door"><span>Warped Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/copper_door.png" alt="Waxed Copper Door"><span>Waxed Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_exposed_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/exposed_copper_door.png" alt="Waxed Exposed Copper Door"><span>Waxed Exposed Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_oxidized_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/oxidized_copper_door.png" alt="Waxed Oxidized Copper Door"><span>Waxed Oxidized Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_weathered_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/weathered_copper_door.png" alt="Waxed Weathered Copper Door"><span>Waxed Weathered Copper Door</span></div>
+				<div class="lockable_block" data-block_id="minecraft:weathered_copper_door"><img src="../../elements/pictures/packs/key/blocks/doors/weathered_copper_door.png" alt="Weathered Copper Door"><span>Weathered Copper Door</span></div>
+			</div>
+		</div>
+	</details>
+
+	<details onclick="toggleDetail(event, true)" open id="trapgate_spoiler">
+		<summary>Trapdoors and fence gates</summary>
+		<div>
+			<span>Add custom trapdoors and fence gates <small>(separate with space)</small></span>
+			<code class="fullwidth" id="trapgate_custom" onclick="this.getElementsByTagName('input')[0].focus();">
+				<input type="text" placeholder='cmdgolem:custom_gate' class="key_input" onkeyup="setTagged(this, true)">
+			</code>
+		</div>
+		<div>
+			<span>Select trapdoors and fence gates <small>(selection by dragging is possible)</small></span>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="minecraft:acacia_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/acacia_trapdoor.png" alt="Acacia Trapdoor"><span>Acacia Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:bamboo_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/bamboo_trapdoor.png" alt="Bamboo Trapdoor"><span>Bamboo Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:birch_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/birch_trapdoor.png" alt="Birch Trapdoor"><span>Birch Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:cherry_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/cherry_trapdoor.png" alt="Cherry Trapdoor"><span>Cherry Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/copper_trapdoor.png" alt="Copper Trapdoor"><span>Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:crimson_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/crimson_trapdoor.png" alt="Crimson Trapdoor"><span>Crimson Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:dark_oak_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/dark_oak_trapdoor.png" alt="Dark Oak Trapdoor"><span>Dark Oak Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:exposed_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/exposed_copper_trapdoor.png" alt="Exposed Copper Trapdoor"><span>Exposed Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:iron_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/iron_trapdoor.png" alt="Iron Trapdoor"><span>Iron Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:jungle_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/jungle_trapdoor.png" alt="Jungle Trapdoor"><span>Jungle Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:mangrove_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/mangrove_trapdoor.png" alt="Mangrove Trapdoor"><span>Mangrove Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:oak_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/oak_trapdoor.png" alt="Oak Trapdoor"><span>Oak Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:oxidized_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/oxidized_copper_trapdoor.png" alt="Oxidized Copper Trapdoor"><span>Oxidized Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:spruce_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/spruce_trapdoor.png" alt="Spruce Trapdoor"><span>Spruce Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:warped_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/warped_trapdoor.png" alt="Warped Trapdoor"><span>Warped Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/copper_trapdoor.png" alt="Waxed Copper Trapdoor"><span>Waxed Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_exposed_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/exposed_copper_trapdoor.png" alt="Waxed Exposed Copper Trapdoor"><span>Waxed Exposed Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_oxidized_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/oxidized_copper_trapdoor.png" alt="Waxed Oxidized Copper Trapdoor"><span>Waxed Oxidized Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:waxed_weathered_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/weathered_copper_trapdoor.png" alt="Waxed Weathered Copper Trapdoor"><span>Waxed Weathered Copper Trapdoor</span></div>
+				<div class="lockable_block" data-block_id="minecraft:weathered_copper_trapdoor"><img src="../../elements/pictures/packs/key/blocks/trapgate/weathered_copper_trapdoor.png" alt="Weathered Copper Trapdoor"><span>Weathered Copper Trapdoor</span></div>
+			</div>
+			<div class="block_container">
+				<div class="lockable_block" data-block_id="minecraft:acacia_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/acacia_fence_gate.png" alt="Acacia Fence Gate"><span>Acacia Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:bamboo_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/bamboo_fence_gate.png" alt="Bamboo Fence Gate"><span>Bamboo Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:birch_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/birch_fence_gate.png" alt="Birch Fence Gate"><span>Birch Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:cherry_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/cherry_fence_gate.png" alt="Cherry Fence Gate"><span>Cherry Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:crimson_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/crimson_fence_gate.png" alt="Crimson Fence Gate"><span>Crimson Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:dark_oak_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/dark_oak_fence_gate.png" alt="Dark Oak Fence Gate"><span>Dark Oak Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:jungle_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/jungle_fence_gate.png" alt="Jungle Fence Gate"><span>Jungle Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:mangrove_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/mangrove_fence_gate.png" alt="Mangrove Fence Gate"><span>Mangrove Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:oak_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/oak_fence_gate.png" alt="Oak Fence Gate"><span>Oak Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:spruce_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/spruce_fence_gate.png" alt="Spruce Fence Gate"><span>Spruce Fence Gate</span></div>
+				<div class="lockable_block" data-block_id="minecraft:warped_fence_gate"><img src="../../elements/pictures/packs/key/blocks/trapgate/warped_fence_gate.png" alt="Warped Fence Gate"><span>Warped Fence Gate</span></div>				
+			</div>
+	</details>
+
+
+	<details onclick="toggleDetail(event, true)" open>
+		<summary>Settings</summary>
+		<div>
+			<span>General</span>
+			<label><input type="checkbox" id="settings_damage" checked> Enable Key damage on locking</label>
+			<label><input type="checkbox" id="settings_key_name"> Allow name of Key as password<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_message"> Show locking messages in chat instead of actionbar</label>
+			<label title="Leave blank for unlimited">Maximum count of locked blocks by player: <input type="number" id="settings_max_player" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></label>
+			<label title="Leave blank for unlimited">Maximum count of locked blocks in world: <input type="number" id="settings_max_world" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></label>
+		</div>
+		<hr>
+		<div>
+			<span>Containers</span>
+			<label><input type="checkbox" id="settings_enable_containers" checked> Enable locking of containers</label>
+			<label><input type="checkbox" id="settings_auto_containers"> Enable automatic unlocking of containers<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="radio" name="trade" id="settings_container_type_0" checked> Unbreakable containers</label>
+			<label><input type="radio" name="trade" id="settings_container_type_1"> Replace broken containers with hologram</label>
+			<label><input type="radio" name="trade" id="settings_container_type_2"> Always show hologram for locked containers</label>
+			<label title="Standard is 5 blocks">Automatic unlocking radius: <input type="number" id="settings_auto_radius" min="0" value="5" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Could lead to lags if values are too large">!</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+		</div>
+		<hr>
+		<div>
+			<span>Doors</span>
+			<label><input type="checkbox" id="settings_enable_doors"> Enable locking of doors</label>
+			<label><input type="checkbox" id="settings_double_doors"> Open whole double door<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_open_doors"> Enable automatic opening of doors<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_auto_doors"> Enable automatic unlock of doors<mark data-title="Could lead to lags if activated">!</mark></label>
+		</div>
+		<hr>
+		<div>
+			<span>Trapdoors and fence gates</span>
+			<label><input type="checkbox" id="settings_enable_trapgate"> Enable locking of trapdoors and fence gates</label>
+			<label><input type="checkbox" id="settings_open_trapgate"> Enable automatic opening of trapdoors and fence gates<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_auto_trapgate"> Enable automatic unlock of trapdoors and fence gates<mark data-title="Could lead to lags if activated">!</mark></label>
+		</div>
+	</details>
+
+
+</main>
+
+<section id="download_box" style="display: none;">
+	<div class="inner_box">
+		<h2>Download</h2>
+		<div class="download">
+			<button onclick="downloadDataPack()">Data Pack</button>
+			<button onclick="downloadResourcePack()">Resource Pack</button>
+		</div>
+		<span id="preview_warning" style="display: none;">Be aware that all packs for preview versions haven't been fully tested yet and may not work</span>
+		<label><input type="checkbox" id="allow_storing_custom" checked> Allow sharing of custom blocks for analyses</label>
+		<div class="download_box_links">
+			<a href="../../info/installation.html#datapack_with_resources" title="Installation instructions for the Data Pack and the Resource Pack">Installation</a>
+			<a href="recipe_unlocker.html" title="If you want to use a Recipe Unlocker, you need to use this one">Recipe Unlocker</a>
+		</div>
+		<div class="download_close" onclick="closeDownload()" title="close">
+			<svg viewBox="0 0 24 24" fill="#CCCCCC">
+				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+			</svg>
+		</div>
+	</div>
+</section>
+
+<div id="drag_area"></div>
+
+<div id="tooltip"></div>
+
+<footer></footer>
+
+<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/generators/key.js"></script>
+
+</body>
+</html>

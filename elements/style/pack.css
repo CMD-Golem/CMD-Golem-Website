@@ -126,10 +126,14 @@ section {
 	margin: 5px;
 }
 
-.inner_box span {
+.inner_box span, .inner_box label {
 	display: block;
 	font-size: 0.8em;
 	margin-bottom: 8px;
+}
+
+.inner_box input[type=checkbox] {
+	margin-bottom: 1px;
 }
 
 .download_box_links a {
@@ -176,6 +180,7 @@ section {
 	left: 50%;
 	transform: translate(-50%, 0);
 	box-shadow: 0 0 15px 0 rgba(0,0,0,0.65);
+	z-index: 2;
 }
 
 #version_main {
