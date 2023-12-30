@@ -40,6 +40,10 @@ label, span {
 	background-color: #16472b;
 }
 
+.lockable_block.incomp_version {
+	display: none;
+}
+
 #drag_area{
 	position: absolute;
 	display: none;

@@ -1,5 +1,20 @@
+var download_box = document.getElementById("download_box");
+var download_box_open = false;
 var already_download;
 
+function loadDownloadModal() {
+	download_box.style.display = "block";
+	download_box_open = true;
+	preventScroll(true); // footer.js
+}
+
+function closeDownload() {
+	download_box.style.display = "none";
+	download_box_open = false;
+	preventScroll(false); //footer.js
+}
+
+// ###########################################################
 // Download Resource Pack
 async function downloadResourcePack() {
 	var zip = new JSZip();
@@ -28,6 +43,26 @@ async function downloadResourcePack() {
 	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
 	await zip.loadasync(pack.blob());
 
+	// rename folders when disabled particles should be active // https://github.com/Stuk/jszip/pull/622/files#diff-04e29f4d54f1b1704cb01a060edc2f7e451f7f82a5e75b76b52cda457dcc4205
+	if (document.getElementById("settings_resource_pack").checked) {
+		var replace_text = "data/powerench_main/functions/";
+		var replace_with = "data/powerench_main/executables/";
+
+		for (var key in zip.files) {
+			if (zip.files.hasOwnProperty(key)) {
+				var entry = zip.files[key];
+
+				if (replace_text.endsWith("/") ? entry.name.startsWith(replace_text) : entry.name === replace_text) {
+					delete zip.files[key];
+		
+					entry.name = (replace_with + entry.name.substr(replace_text.length));
+		
+					zip.files[entry.name] = entry;
+				}
+			}
+		}
+	}
+
 	// pack.mcmeta
 	var mcmeta_string = await zip.file("pack.mcmeta").async("string");
 	var mcmeta_json = JSON.parse(mcmeta_string);
@@ -50,6 +85,7 @@ async function downloadResourcePack() {
 var containers_spoiler = document.getElementById("containers_spoiler");
 var doors_spoiler = document.getElementById("doors_spoiler");
 var trapgate_spoiler = document.getElementById("trapgate_spoiler");
+var has_storing_custom = false;
 
 async function downloadDataPack() {
 	var zip = new JSZip();
@@ -76,16 +112,46 @@ async function downloadDataPack() {
 	await zip.loadasync(pack.blob());
 
 	// store settings
+	var settings_string = "scoreboard players set #default keylock 1\n\n";
 
+	var bool_settings = ["damage", "key_name", "message", "enable_containers", "auto_containers", "enable_doors", "double_doors", "open_doors", "auto_doors", "enable_trapgate", "open_trapgate", "auto_trapgate"];
+	for (var i = 0; i < bool_settings.length; i++) {
+		var bool_setting = bool_settings[i];
+		if (document.getElementById("settings_" + bool_setting).checked) {
+			settings_string += ("scoreboard players set #" + bool_setting + " keylock 1\n");
+		}
+	}
+
+	var max_player = document.getElementById("settings_max_player").value;
+	var max_world = document.getElementById("settings_max_world").value;
+	if (max_player != "0" && max_player != "") { settings_string += "scoreboard players set #max_player keylock " + max_player + "\n"; }
+	if (max_world != "0" && max_world != "") { settings_string += "scoreboard players set #max_world keylock " + max_world + "\n"; }
+
+	if (document.getElementById("settings_container_type_1").checked) { settings_string += "scoreboard players set #container_type keylock 1\n"; }
+	else if (document.getElementById("settings_container_type_2").checked) { settings_string += "scoreboard players set #container_type keylock 2\n"; }
+
+	// store special automatic unlocking radius of containers 
+	var auto_radius = parseInt(document.getElementById("settings_auto_radius").value);
+	if (auto_radius != 5 && auto_radius != 0 && auto_radius != NaN) {
+		var auto_container_string = await zip.file("data/keylock/functions/container/auto_container/run.mcfunction").async("string");
+
+		if (auto_radius <= 0) { auto_radius = 1; }
+		if (auto_radius > 20) { auto_radius = 20; }
+
+		auto_container_string.replace("distance=..5", `distance=..${auto_radius}`);
+		auto_container_string.replace("distance=5..6", `distance=${auto_radius}..${auto_radius + 1}`);
+		auto_container_string.replace("distance=..6", `distance=..${auto_radius + 1}`);
+
+		zip.file("data/keylock/functions/container/auto_container/run.mcfunction", auto_container_string);
+		settings_string += "\n# automatic unlocking radius of containers is set to " + auto_radius;
+	}
+
+	zip.file("data/keylock/functions/settings/default.mcfunction", settings_string);
 	
 	// add selected blocks to block tag
-	var containers_tag = generateBlockTags(containers_spoiler.getElementsByClassName(".selected"));
-	var doors_tag = generateBlockTags(doors_spoiler.getElementsByClassName(".selected"));
-	var trapgate_tag = generateBlockTags(trapgate_spoiler.getElementsByClassName(".selected"));
-
-	zip.file("data/keylock/tags/blocks/containers.json", containers_tag);
-	zip.file("data/keylock/tags/blocks/doors.json", doors_tag);
-	zip.file("data/keylock/tags/blocks/trapgate.json", trapgate_tag);
+	zip.file("data/keylock/tags/blocks/containers.json", generateBlockTags(containers_spoiler, "storing_custom_containers"));
+	zip.file("data/keylock/tags/blocks/doors.json", generateBlockTags(doors_spoiler, "storing_custom_doors"));
+	zip.file("data/keylock/tags/blocks/trapgate.json", generateBlockTags(trapgate_spoiler, "storing_custom_trapgates"));
 
 	// get matching non_solid block tag when needed
 	for (var i = 0; i < non_solid_versions.length; i++) {
@@ -113,12 +179,25 @@ async function downloadDataPack() {
 	mcmeta_json.pack.pack_format = selected_version.rp;
 	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 
+	// download zip
 	var content = await zip.generateasync({type:"base64"});
 	var link = document.createElement('a');
 	link.download = "[" + selected_version.name + "] Key DP v" + code_version + ".zip";
 	link.href = "data:application/zip;base64," + content;
 	link.click();
 	download_box.classList.remove("loading_cursor");
+
+	// form
+	if (has_storing_custom && document.getElementById("allow_storing_custom").checked) {
+		await fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(new FormData(document.getElementById("storing_custom_form"))).toString(),
+		});
+
+		has_storing_custom = false;
+	}
+	
 
 	// Counter
 	if (already_download != true && user_role != "hidden") {
@@ -130,25 +209,38 @@ async function downloadDataPack() {
 }
 
 
-function generateBlockTags(selected_elements) {
+// add selected blocks to block tag
+function generateBlockTags(parent, form_id) {
+	var block_tag_string = '{\n  "replace": false,\n  "values": [';
+	var form_string = "";
 
-}
+	// add selected predefined blocks to block tag
+	var selected_elements = parent.querySelectorAll(".selected:not(.incomp_version)");
+	for (var i = 0; i < selected_elements.length; i++) {
+		block_tag_string += `\n    "${selected_elements[i].getAttribute("data-block_id")}",`;
+	}
 
-// ###########################################################
-// Download
-var download_box = document.getElementById("download_box");
-var download_box_open = false;
+	// add custom blocks to block tag
+	var custom_elements = parent.getElementsByClassName("custom_blocks")[0].children;
+	for (var i = 0; i < custom_elements.length - 1; i++) {
+		block_tag_string += `\n    "${custom_elements[i].innerHTML}",`;
+		form_string += custom_elements[i].innerHTML + ", ";
+	}
 
-function loadDownloadModal() {
-	download_box.style.display = "block";
-	download_box_open = true;
-	preventScroll(true); // footer.js
-}
+	// form
+	if (form_string != "") {
+		document.getElementById(form_id).value = form_string.slice(0, -2);
+		has_storing_custom = true;
+	}
 
-function closeDownload() {
-	download_box.style.display = "none";
-	download_box_open = false;
-	preventScroll(false); //footer.js
+	// return string
+	if (selected_elements.length + custom_elements.length > 1) {
+		block_tag_string = block_tag_string.slice(0, -1);
+	}
+
+	block_tag_string += "\n  ]\n}";
+
+	return block_tag_string
 }
 
 
@@ -160,7 +252,7 @@ function setTagged(input_el, input_check) {
 			alert("You should define the full namespace of your block!\nTutorial: https://cmd-golem.com/help/get_namespaced_id.html")
 		}
 		var item_el = document.createElement("span");
-		item_el.innerHTML = input_el.value.replace(/[^a-zA-Z_:]/g, "");
+		item_el.innerHTML = input_el.value.toLowerCase().replace(/[^a-z0-9_:-]/g, "");
 		item_el.classList.add("tagged_item");
 		item_el.addEventListener("click", removeTagged);
 
@@ -303,15 +395,20 @@ function subVersion(selected_version_el) {
 	}
 
 	// Only show compatible Enchantments
-	// for (var i = 0; i < article_elements.length; i++) {
-	// 	if (parseInt(article_elements[i].getAttribute("data-version")) > selected_version.id) {
-	// 		article_elements[i].classList.add("incomp_version");
-	// 	}
-	// 	else {
-	// 		article_elements[i].classList.remove("incomp_version");
-	// 	}
-	// }
-	// incomp_packs = document.getElementsByClassName("incomp_version").length;
+	for (var i = 0; i < lockable_blocks.length; i++) {
+		if (parseInt(lockable_blocks[i].getAttribute("data-version")) > selected_version.id) {
+			lockable_blocks[i].classList.add("incomp_version");
+		}
+		else {
+			lockable_blocks[i].classList.remove("incomp_version");
+		}
+	}
+
+	// resize active spoiler
+	var active_spoiler = document.getElementsByClassName("active")[0];
+	if (active_spoiler != undefined) {
+		active_spoiler.style.maxHeight = active_spoiler.scrollHeight + "px"
+	};
 }
 
 // on load
@@ -324,8 +421,6 @@ window.onload = function() {
 		el_mark[i].addEventListener("mouseout", hideToolTip);
 	}
 };
-
-
 
 // ###########################################################
 // Selection by dragging // https://codepen.io/lancebush/pen/GqoGjd
@@ -413,8 +508,12 @@ document.addEventListener("mouseup", function (event) {
 						got_methode = true;
 						var methode = lockable_block.classList.contains('selected');
 					}
-					if (methode) { lockable_block.classList.remove('selected'); }
-					else { lockable_block.classList.add('selected'); }
+					if (methode) {
+						lockable_block.classList.remove('selected');
+					}
+					else {
+						lockable_block.classList.add('selected');
+					}
 				}
 			}
 		}
