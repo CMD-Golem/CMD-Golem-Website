@@ -41,12 +41,12 @@ async function downloadResourcePack() {
 	}
 
 	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/${selected_pack_obj.pack_id}/${pack_git_folder}.zip`);
-	await zip.loadasync(pack.blob());
+	await zip.loadAsync(pack.blob());
 
 	// rename folders when disabled particles should be active // https://github.com/Stuk/jszip/pull/622/files#diff-04e29f4d54f1b1704cb01a060edc2f7e451f7f82a5e75b76b52cda457dcc4205
 	if (document.getElementById("settings_resource_pack").checked) {
-		var replace_text = "data/powerench_main/functions/";
-		var replace_with = "data/powerench_main/executables/";
+		var replace_text = "assets/minecraft/models/doors/";
+		var replace_with = "assets/minecraft/models/block/";
 
 		for (var key in zip.files) {
 			if (zip.files.hasOwnProperty(key)) {
@@ -70,7 +70,7 @@ async function downloadResourcePack() {
 	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 
 	// download zip
-	var pack = await zip.generateasync({type:"base64"});
+	var pack = await zip.generateAsync({type:"base64"});
 	var link = document.createElement('a');
 	link.download = `[${selected_version.name}] ${selected_pack_obj.name} ${pack_description}by CMD-Golem v${code_version}.zip`;
 	link.href = "data:application/zip;base64," + pack;
@@ -108,8 +108,8 @@ async function downloadDataPack() {
 			break;
 		}
 	}
-	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/key/${pack_git_folder}.zip`);
-	await zip.loadasync(pack.blob());
+	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/key_gen2/${pack_git_folder}.zip`);
+	await zip.loadAsync(pack.blob());
 
 	// store settings
 	var settings_string = "scoreboard players set #default keylock 1\n\n";
@@ -180,7 +180,7 @@ async function downloadDataPack() {
 	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 
 	// download zip
-	var content = await zip.generateasync({type:"base64"});
+	var content = await zip.generateAsync({type:"base64"});
 	var link = document.createElement('a');
 	link.download = "[" + selected_version.name + "] Key DP v" + code_version + ".zip";
 	link.href = "data:application/zip;base64," + content;
@@ -217,13 +217,13 @@ function generateBlockTags(parent, form_id) {
 	// add selected predefined blocks to block tag
 	var selected_elements = parent.querySelectorAll(".selected:not(.incomp_version)");
 	for (var i = 0; i < selected_elements.length; i++) {
-		block_tag_string += `\n    "${selected_elements[i].getAttribute("data-block_id")}",`;
+		block_tag_string += `\n    ${selected_elements[i].getAttribute("data-block_id")},`;
 	}
 
 	// add custom blocks to block tag
 	var custom_elements = parent.getElementsByClassName("custom_blocks")[0].children;
 	for (var i = 0; i < custom_elements.length - 1; i++) {
-		block_tag_string += `\n    "${custom_elements[i].innerHTML}",`;
+		block_tag_string += `\n    {"id":"${custom_elements[i].innerHTML}","required": false},`;
 		form_string += custom_elements[i].innerHTML + ", ";
 	}
 

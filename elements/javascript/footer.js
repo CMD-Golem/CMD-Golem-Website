@@ -1,23 +1,23 @@
 const pack_array = [{
-		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "With this Data Pack you get a lot of small useful things, which you can trade with Wandering Traders.",
+		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "Trade a lot of small and useful things with the Wandering Trader.",
 		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "382298450599870528", non_solid: ["usftrader"]
 	},{
-		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of the Inventory to a simplistic dark gray and blue colored one.",
+		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of your Inventory to a simplistic dark gray and blue colored one.",
 		pack_id: "dark_theme", code_version: "3", last_version_id: 139, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "382298352174235714", non_solid: false
 	},{
-		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "With this Data Pack you can cook Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
+		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "Cook your Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
 		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
 	},{
-		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step. Mark each Gateway with a block to easily remember where it leads.",
+		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step.",
 		pack_id: "gateway", code_version: "3", last_version_id: false, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "382298414500544578", non_solid: false
 	},{
-		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Adds a recipe to craft an Invisible Item Frame to make some nice looking buildings.",
+		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Craft Invisible Item Frames to improve your buildings.",
 		pack_id: "invisible_item_frame", code_version: ["2", "2", "1.1"], last_version_id: false, pack_version_id: [138, 128, 122], pack_type: "datapacks", db_id: "382298438526566464", non_solid: false
 	},{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: false, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
-		name: "Key", updated: 20230527, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		name: "Key", updated: 20240104, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
 		pack_id: "key", code_version: "5", last_version_id: false, pack_version_id: [140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
@@ -26,10 +26,10 @@ const pack_array = [{
 		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: false, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "382298482274205762", non_solid: false
 	},{
-		name: "Mini Games", updated: 20191016, search_keys: "Play Map", description: "My map for all the different games on my website. Ready to play with your friends.",
+		name: "Mini Games", updated: 20191016, search_keys: "Play Map", description: "The map for all my different games. Ready to play with your friends.",
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "382298372461035584", non_solid: false
 	},{
-		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "This Data Pack adds a lot new Arrows. Like TNT Arrow, Teleport Arrow and so on.",
+		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "Get a lot of new Arrows like TNT Arrow, Teleport Arrow, Freeze Arrow and more.",
 		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [141, 140, 133, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
@@ -41,7 +41,7 @@ const pack_array = [{
 		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe Generator", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
 		pack_id: "nbt_crafting", last_version_id: false, pack_version_id: [114], pack_type: "generators", db_id: "382220706418524365", non_solid: false
 	},{
-		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack Data Pack", description: "This Data Packs adds a Chest in which you can store your items and follows you like a dog.",
+		name: "Petbag", updated: 20190718, search_keys: "Bag Backpack Data Pack", description: "Store your items in a Chest which follows you like a dog.",
 		pack_id: "petbag", code_version: "3", last_version_id: false, pack_version_id: [128, 114], pack_type: "datapacks", db_id: "382298313890725954", non_solid: false
 	},{
 		name: "Powered Enchanting", updated: 20231203, search_keys: "Enchantments Tools Armor Weapons Data Pack", description: "Enchant your tools and armor with new Enchantments and create your own.",
@@ -53,13 +53,13 @@ const pack_array = [{
 		name: "Redstone Dot", updated: 20200430, search_keys: "Data Pack", description: "Get the old look of a single Redstone, without the need of a Resource Pack.",
 		pack_id: "redstone_dot", code_version: "1", last_version_id: 127, pack_version_id: [122], pack_type: "datapacks", db_id: "382298469397692480", non_solid: false
 	},{
-		name: "Short Commands", updated: 20200728, search_keys: "Creative Admin OP Data Pack", description: "This Data Pack adds new commands to execute existing commands faster.",
+		name: "Short Commands", updated: 20200728, search_keys: "Creative Admin OP Data Pack", description: "Data Pack which adds new commands to execute existing commands faster.",
 		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
 	},{
-		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "With this Data Pack all Golden Tools will get a special effect or ability.",
+		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "Improve your Golden Tools with a special effect or ability.",
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: false, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: ["useful_gold"]
 	},{
-		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "This Data Pack adds a new mob which spawns rarely in the Soul Sand Valley.",
+		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "Fight against a new mob which spawns rarely in the Soul Sand Valley.",
 		pack_id: "wither_soldier", code_version: ["3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
 	}
 ]

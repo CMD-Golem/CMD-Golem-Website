@@ -8,112 +8,122 @@
 
 <url>
   <loc>https://cmd-golem.com/</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/more_arrows.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/wither_soldier.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/better_wandering_trader.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/key.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2024-01-02T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/fried_eggs.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/powered_enchanting.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/gateway.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/invisible_item_frame.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/dark_theme.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/short_commands.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/useful_golden_tools.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/jump_and_run.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/murder.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/mini_game_map.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/petbag.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/redstone_dot.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/recipe_unlocker.html</loc>
-  <lastmod>2021-07-09T12:53:04+00:00</lastmod>
+  <lastmod>2021-07-09T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/better_wandering_trader/create_addon.html</loc>
-  <lastmod>2021-06-26T12:53:04+00:00</lastmod>
+  <lastmod>2021-06-26T20:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cmd-golem.com/packs/key/gen1.html</loc>
+  <lastmod>2024-01-02T20:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cmd-golem.com/packs/key/download.html</loc>
+  <lastmod>2024-01-02T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/powered_enchanting/create_addon.html</loc>
-  <lastmod>2022-03-19T12:53:04+00:00</lastmod>
+  <lastmod>2022-03-19T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/powered_enchanting/download.html</loc>
-  <lastmod>2022-03-19T12:53:04+00:00</lastmod>
+  <lastmod>2022-03-19T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://cmd-golem.com/packs/powered_enchanting/translate.html</loc>
-  <lastmod>2022-12-15T12:53:04+00:00</lastmod>
+  <lastmod>2022-12-15T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
@@ -126,6 +136,11 @@
 <url>
   <loc>https://cmd-golem.com/help/fauna_counter.html</loc>
   <lastmod>2021-08-28T20:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cmd-golem.com/help/get_namespaced_id.html</loc>
+  <lastmod>2024-01-02T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
