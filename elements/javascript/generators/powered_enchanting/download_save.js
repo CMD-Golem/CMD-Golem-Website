@@ -347,7 +347,7 @@ async function generate(beta) {
 		preventScroll(false); // footer.js
 
 		var link = document.createElement('a');
-		link.download = "[" + selected_version.name + "] Powered Enchanting Datapack v" + code_version + ".zip";
+		link.download = "[" + selected_version.name + "] Powered Enchanting DP by CMD-Golem v" + code_version + ".zip";
 		link.href = "data:application/zip;base64," + content;
 		link.click();
 

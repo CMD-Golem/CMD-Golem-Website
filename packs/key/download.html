@@ -48,43 +48,43 @@
 		<div>
 			<span>General</span>
 			<label><input type="checkbox" id="settings_damage" checked> Enable Key damage on locking</label>
-			<label><input type="checkbox" id="settings_key_name"> Allow name of Key as password<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_key_name"> Allow name of Key as password</label>
 			<label><input type="checkbox" id="settings_message"> Show locking messages in chat instead of actionbar</label>
-			<label title="Leave blank for unlimited">Maximum number of locked blocks per player: <input type="number" id="settings_max_player" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></label>
-			<label title="Leave blank for unlimited">Maximum number of locked blocks in world: <input type="number" id="settings_max_world" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"></label>
+			<label>Maximum number of locked blocks per player: <input type="number" id="settings_max_player" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Leave blank for unlimited" style="background-color: #008611;">?</mark></label>
+			<label>Maximum number of locked blocks in world: <input type="number" id="settings_max_world" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Leave blank for unlimited" style="background-color: #008611;">?</mark></label>
 		</div>
 		<hr>
 		<div>
 			<span>Containers</span>
 			<label><input type="checkbox" id="settings_enable_containers" checked> Enable locking of containers</label>
-			<label><input type="checkbox" id="settings_auto_containers"> Enable automatic unlocking of containers<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_auto_containers"> Enable automatic unlocking of containers</label>
 			<label><input type="radio" name="trade" id="settings_container_type_0" checked> Unbreakable containers</label>
 			<label><input type="radio" name="trade" id="settings_container_type_1"> Replace broken containers with holograms</label>
 			<label><input type="radio" name="trade" id="settings_container_type_2"> Always display holograms for locked containers</label>
-			<label title="Standard is 5 blocks / min: 1 / max: 20">Automatic unlocking radius: <input type="number" id="settings_auto_radius" min="0" value="5" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Could lead to lags if values are too large">!</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+			<label>Automatic unlocking radius: <input type="number" id="settings_auto_radius" min="0" value="5" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Standard is 5 blocks / min: 1 / max: 20" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
 		</div>
 		<hr>
 		<div>
 			<span>Doors</span> <!-- onclick="if(this.checked) {document.getElementById('settings_resource_pack').checked = true;}" -->
 			<label><input type="checkbox" id="settings_enable_doors"> Enable locking of doors</label>
-			<label><input type="checkbox" id="settings_double_doors"> Open entire double door<mark data-title="Could lead to lags if activated">!</mark></label>
-			<label><input type="checkbox" id="settings_open_doors"> Enable automatic opening of doors<mark data-title="Could lead to lags if activated">!</mark></label>
-			<label><input type="checkbox" id="settings_auto_doors"> Enable automatic unlocking of doors<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_double_doors"> Open entire double door</label>
+			<label><input type="checkbox" id="settings_open_doors"> Enable automatic opening of doors</label>
+			<label><input type="checkbox" id="settings_auto_doors"> Enable automatic unlocking of doors</label>
 			<label><input type="checkbox" id="settings_resource_pack"> Hide breaking particles of doors <small>(setting of Resource Pack)</small><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
 		</div>
 		<hr>
 		<div>
 			<span>Trapdoors and fence gates</span>
 			<label><input type="checkbox" id="settings_enable_trapgate"> Enable locking of trapdoors and fence gates</label>
-			<label><input type="checkbox" id="settings_open_trapgate"> Enable automatic opening of trapdoors and fence gates<mark data-title="Could lead to lags if activated">!</mark></label>
-			<label><input type="checkbox" id="settings_auto_trapgate"> Enable automatic unlocking of trapdoors and fence gates<mark data-title="Could lead to lags if activated">!</mark></label>
+			<label><input type="checkbox" id="settings_open_trapgate"> Enable automatic opening of trapdoors and fence gates</label>
+			<label><input type="checkbox" id="settings_auto_trapgate"> Enable automatic unlocking of trapdoors and fence gates</label>
 		</div>
 	</details>
 
 	<details onclick="toggleDetail(event, true)" open id="containers_spoiler">
 		<summary>Containers</summary>
 		<div>
-			<span>Add custom containers <small>(separate with space)</small><mark data-title="Data Pack won't work if entered incorrectly" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom containers <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_chest' class="key_input" onkeyup="setTagged(this, true)">
 			</code>
@@ -145,7 +145,7 @@
 	<details onclick="toggleDetail(event, true)" open id="doors_spoiler">
 		<summary>Doors</summary>
 		<div>
-			<span>Add custom doors <small>(separate with space)</small><mark data-title="Data Pack won't work if entered incorrectly" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom doors <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_door' class="key_input" onkeyup="setTagged(this, true)">
 			</code>
@@ -180,7 +180,7 @@
 	<details onclick="toggleDetail(event, true)" open id="trapgate_spoiler">
 		<summary>Trapdoors and fence gates</summary>
 		<div>
-			<span>Add custom trapdoors and fence gates <small>(separate with space)</small><mark data-title="Data Pack won't work if entered incorrectly" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom trapdoors and fence gates <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_gate' class="key_input" onkeyup="setTagged(this, true)">
 			</code>

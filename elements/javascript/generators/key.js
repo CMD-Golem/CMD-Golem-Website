@@ -108,7 +108,7 @@ async function downloadDataPack() {
 			break;
 		}
 	}
-	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/key_gen2/${pack_git_folder}.zip`);
+	var pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/key/${pack_git_folder}.zip`);
 	await zip.loadAsync(pack.blob());
 
 	// store settings
@@ -182,7 +182,7 @@ async function downloadDataPack() {
 	// download zip
 	var content = await zip.generateAsync({type:"base64"});
 	var link = document.createElement('a');
-	link.download = "[" + selected_version.name + "] Key DP v" + code_version + ".zip";
+	link.download = "[" + selected_version.name + "] Key DP by CMD-Golem v" + code_version + ".zip";
 	link.href = "data:application/zip;base64," + content;
 	link.click();
 	download_box.classList.remove("loading_cursor");
