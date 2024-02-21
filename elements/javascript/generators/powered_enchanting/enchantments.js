@@ -50,7 +50,7 @@ var translation_array = [{
 		lang: "Ukrainian",
 		mis_level_comb: '[{"text":"Ви повинні мати ","color":"dark_red"},{"score":{"name":"@e[tag=powerench_combine_detect,limit=1,sort=nearest]","objective":"powerench"},"color":"dark_red"},{"text":"-й рівень","color":"dark_red"}]',
 		mis_level_comb_txt: "Ви повинні мати 10-й рівень",
-		table_dis:"Столи для зачарування потребують 20 блоків простору один від одного.",
+		table_dis:"Столи для зачарування потребують 20 блоків простору один від одногj.",
 		full_charge:"Стіл зачарування повністю заряджений",
 		lapis_slice:"Шматочок лазуриту",
 		book_back:"Киньте книгу назад на стіл",
