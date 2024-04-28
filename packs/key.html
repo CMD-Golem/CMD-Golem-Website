@@ -50,10 +50,10 @@
 				<img src="../elements/pictures/packs/key/recipe.png" alt="Key Recipe">
 			</div>
 			<div class="details_txt">
-				<p>The Crafting Table will show a Gold Nugget as the result. This will be replaced by the Key after crafting.</p>
+				<p>[1.20.2 - 1.20.4] The Crafting Table will show a Knowledge Book as the result. This will be replaced by the Key after crafting.</p>
 			</div>
 		</div>
-		<p>The Key is damaged every time a block is locked. It can be repair by dropping a Gold Ingot with the Key onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.<br>This functionality can be disabled in the settings of the Data Pack.</p>
+		<p>The Key is damaged every time a block is locked. It can be repair by dropping a Gold Ingot with the Key onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.<br>This functionality can be changed in the settings of the Data Pack. The damage can also occur when unlocking, every time the Key is used or be completely deactivated.</p>
 	</div>
 </details>
 
@@ -89,7 +89,7 @@
 <details onclick="toggleDetail(event)" open>
 	<summary>Locked doors and fence gates</summary>
 	<div>
-		<p>All locked doors, trapdoors and fence gates are unbreakable and cannot be opened. However, if the support block is removed from normal doors, locked doors will also break.</p>
+		<p>All locked doors, trapdoors and fence gates are unbreakable and cannot be opened. However, the lock can be released by a piston if it moves the door, trapdoor or fence gate. Removing the support block from a normal door also causes the door to break.</p>
 		<p>If a double door is locked, both door leaves are locked.</p>
 		<p>Settings Menu:
 			<ul>
@@ -109,7 +109,7 @@
 		<p>Be aware that other Data Packs and mods that change the functionality of containers and doors can interrupt the operation of this pack. In the case of containers, this could result in the loss of items.</p>
 		<p>Never kill all entities in the world, as the lock status is stored by the blocks in special entities.</p>
 		<p>A server admin can use an Admin Key to unlock the locked blocks of another player:</p>
-		<code>/function keylock:craft/admin_key</code>
+		<code>/function keylock:admin_key</code>
 		<p>If a container or door can no longer be unlocked, an attempt should first be made to break it. If the locked block replaces itself, an Admin Key can be used to unlock it. If a locked container no longer replaces itself, the original container must be placed again first. The following command can then be used to restore the items in the container:</p>
 		<code>/function keylock:container/repair with block &#60;container position&#62;</code>
 		<p>This command cannot be used if a container has been locked again at the same position with new items in it. This will overwrite the data at this position.<br>The items themselves are not saved in the special entity, but in the command storage. The file is located in the data folder of your world and is called command_storage_keylock.dat.</p>

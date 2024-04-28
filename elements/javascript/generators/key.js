@@ -114,7 +114,7 @@ async function downloadDataPack() {
 	// store settings
 	var settings_string = "scoreboard players set #default keylock 1\n\n";
 
-	var bool_settings = ["damage", "key_name", "message", "enable_containers", "auto_containers", "enable_doors", "double_doors", "open_doors", "auto_doors", "enable_trapgate", "open_trapgate", "auto_trapgate"];
+	var bool_settings = ["key_name", "message", "enable_containers", "auto_containers", "enable_doors", "double_doors", "open_doors", "auto_doors", "enable_trapgate", "open_trapgate", "auto_trapgate"];
 	for (var i = 0; i < bool_settings.length; i++) {
 		var bool_setting = bool_settings[i];
 		if (document.getElementById("settings_" + bool_setting).checked) {
@@ -129,6 +129,10 @@ async function downloadDataPack() {
 
 	if (document.getElementById("settings_container_type_1").checked) { settings_string += "scoreboard players set #container_type keylock 1\n"; }
 	else if (document.getElementById("settings_container_type_2").checked) { settings_string += "scoreboard players set #container_type keylock 2\n"; }
+
+	if (document.getElementById("settings_damage_1").checked) { settings_string += "scoreboard players set #damage keylock 1\n"; }
+	else if (document.getElementById("settings_damage_2").checked) { settings_string += "scoreboard players set #damage keylock 2\n"; }
+	else if (document.getElementById("settings_damage_3").checked) { settings_string += "scoreboard players set #damage keylock 3\n"; }
 
 	// store special automatic unlocking radius of containers 
 	var auto_radius = parseInt(document.getElementById("settings_auto_radius").value);
@@ -388,7 +392,7 @@ function subVersion(selected_version_el) {
 
 	// show unstable version link
 	if (selected_version.preview) {
-		preview_warning.style.display = "block";
+		// preview_warning.style.display = "block";
 	}
 	else {
 		preview_warning.style.display = "none";
