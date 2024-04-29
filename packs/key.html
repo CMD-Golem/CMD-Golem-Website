@@ -53,7 +53,7 @@
 				<p>[1.20.2 - 1.20.4] The Crafting Table will show a Knowledge Book as the result. This will be replaced by the Key after crafting.</p>
 			</div>
 		</div>
-		<p>The Key is damaged every time a block is locked. It can be repair by dropping a Gold Ingot with the Key onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.<br>This functionality can be changed in the settings of the Data Pack. The damage can also occur when unlocking, every time the Key is used or be completely deactivated.</p>
+		<p>The Key is damaged every time a block is locked. This functionality can be changed in the settings of the Data Pack. The damage can also occur when unlocking, every time the Key is used or be completely deactivated.<br>The Key can be repair by dropping it with a Gold Ingot onto an Anvil. To increase its durability, it can also be enchanted with Unbreaking.</p>
 	</div>
 </details>
 
@@ -79,7 +79,7 @@
 		<p>Once a container has been locked, the items inside can no longer be accessed, even by breaking it or placing a hopper underneath it.<br>This also means that locked furnaces and similar blocks cannot process the items inside and the fuel currently in use is not preserved. If items are placed in a locked container via a hopper, they will be dropped when the container is unlocked.</p>
 		<p>Settings Menu:
 			<ul>
-				<li>The automatic unlocking of containers can be activated. This causes all containers within a defined radius around the player to be unlocked, as long as the player is the owner of the container or has selected the correct Key with password in their hotbar. After the player has moved away, the container is automatically locked again.</li>
+				<li>The automatic unlocking of containers can be activated. This causes all containers within a defined radius around the player to be unlocked, as long as the player is the owner of the container or has the correct Key with password selected in their hotbar. After the player has moved away, the container is automatically locked again.</li>
 				<li>The behaviour of locked containers can be changed. Locked containers can either be made unbreakable or replaced by holograms. Furthermore, the container can also remain as a block and only be replaced by a hologram once it has been destroyed.<br>A hologram is a visualisation of the locked container. A player can walk through it without resistance and place and break blocks in it.</li>
 			</ul>
 		</p>
@@ -95,7 +95,7 @@
 			<ul>
 				<li>The automatic opening of double doors can be activated. This setting applies to all doors, regardless of whether they are locked.</li>
 				<li>The automatic opening of doors can be activated. If this is activated, all doors that are three blocks in front of the player are opened. After the player has moved away, the door is automatically closed again.</li>
-				<li>The automatic unlocking of doors can be activated. This will unlock and open all doors that are three blocks in front of the player, provided the player is the owner of the door or has selected the correct key and password in their hotbar. After the player has moved away, the door is automatically closed and dslocked again.</li>
+				<li>The automatic unlocking of doors can be activated. This will unlock and open all doors that are three blocks in front of the player, provided the player is the owner of the door or has selected the correct key and password in their hotbar. After the player has moved away, the door is automatically closed and locked again.</li>
 			</ul>
 		</p>
 	</div>
@@ -107,7 +107,7 @@
 	<summary>Important technical stuff</summary>
 	<div>
 		<p>Be aware that other Data Packs and mods that change the functionality of containers and doors can interrupt the operation of this pack. In the case of containers, this could result in the loss of items.</p>
-		<p>Never kill all entities in the world, as the lock status is stored by the blocks in special entities.</p>
+		<p>Never kill all entities in the world, as the lock status of the block is stored in special entities.</p>
 		<p>A server admin can use an Admin Key to unlock the locked blocks of another player:</p>
 		<code>/function keylock:admin_key</code>
 		<p>If a container or door can no longer be unlocked, an attempt should first be made to break it. If the locked block replaces itself, an Admin Key can be used to unlock it. If a locked container no longer replaces itself, the original container must be placed again first. The following command can then be used to restore the items in the container:</p>
