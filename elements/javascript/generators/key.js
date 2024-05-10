@@ -392,7 +392,7 @@ function subVersion(selected_version_el) {
 
 	// show unstable version link
 	if (selected_version.preview) {
-		// preview_warning.style.display = "block";
+		preview_warning.style.display = "block";
 	}
 	else {
 		preview_warning.style.display = "none";

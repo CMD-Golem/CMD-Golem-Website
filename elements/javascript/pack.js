@@ -8,6 +8,7 @@ var select_version = document.getElementById("select_version");
 var hide_on_addon = document.getElementsByClassName("hide_on_addon");
 var show_on_addon = document.getElementsByClassName("show_on_addon");
 var preview_warning = document.getElementById("preview_warning");
+var recipe_unlocker = document.getElementById("recipe_unlocker")
 
 var pack_id = document.getElementsByName("pack_id")[0].content;
 var pack_obj = pack_array.find(e => e.pack_id == pack_id);
@@ -89,10 +90,14 @@ function openDownload(addon_id) {
 		selected_version = version_id_array.find(e => e.id == selected_version_id);
 	}
 	else {
-		// select newest version stable version
+		// select newest version stable version and show or hide recipe unlocker
 		var i = 0;
 		while (version_id_array_filtered[i].preview) { i++; }
 		selected_version = version_id_array_filtered[i];
+
+		if (recipe_unlocker != null && selected_version.id >= 143) {
+			recipe_unlocker.style.display = "none";
+		}
 	}
 
 	select_version.innerHTML = selected_version.main + "." + selected_version.sub;
@@ -142,6 +147,14 @@ function subVersion(selected_version_el) {
 	}
 	else {
 		preview_warning.style.display = "none";
+	}
+
+	// show or hide recipe unlocker
+	if (recipe_unlocker != null && selected_version.id >= 143) {
+		recipe_unlocker.style.display = "none";
+	}
+	else if (recipe_unlocker != null) {
+		recipe_unlocker.style.display = "inline";
 	}
 }
 
