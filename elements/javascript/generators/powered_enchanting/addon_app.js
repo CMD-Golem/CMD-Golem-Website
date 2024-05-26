@@ -202,7 +202,7 @@ function setVersions() {
 		var version_id = version_id_array[i];
 		var dp = version_id.dp;
 
-		if (version_id.id < 128) {
+		if (version_id.id < 128 || version_id.id >= 143) {
 			continue;
 		}
 		else if (!(dp in version_id_array_filtered)) {

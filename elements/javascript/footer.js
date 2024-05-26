@@ -21,7 +21,7 @@ const pack_array = [{
 		pack_id: "key", code_version: ["6.1", "6"], last_version_id: false, pack_version_id: [143, 140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
-		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 133, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
+		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
 	},{
 		name: "Observer Addon", updated: 0, search_keys: false,
 		pack_id: "key_observer", code_version: "2", last_version_id: 142, pack_version_id: [128, 119], pack_type: "datapacks", db_id: "382298482274205762", non_solid: false
@@ -30,7 +30,7 @@ const pack_array = [{
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "382298372461035584", non_solid: false
 	},{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "Get a lot of new Arrows like TNT Arrow, Teleport Arrow, Freeze Arrow and more.",
-		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [143, 141, 140, 133, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
+		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
@@ -57,7 +57,7 @@ const pack_array = [{
 		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
 	},{
 		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "Improve your Golden Tools with a special effect or ability.",
-		pack_id: "useful_golden_tools", code_version: "4", last_version_id: 142, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: ["useful_gold"]
+		pack_id: "useful_golden_tools", code_version: "4", last_version_id: 142, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: false
 	},{
 		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "Fight against a new mob which spawns rarely in the Soul Sand Valley.",
 		pack_id: "wither_soldier", code_version: ["3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
