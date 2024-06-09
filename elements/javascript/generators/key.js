@@ -173,7 +173,7 @@ async function downloadDataPack() {
 		}
 	}
 
-	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/_non_solid/tag_${pack_git_path}.json`);
+	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/.non_solid/tag_${pack_git_path}.json`);
 	var non_solid = await response.text();
 	zip.file("data/keylock/tags/blocks/non_solid.json", non_solid);
 
@@ -396,6 +396,14 @@ function subVersion(selected_version_el) {
 	}
 	else {
 		preview_warning.style.display = "none";
+	}
+
+	// show or hide recipe unlocker
+	if (recipe_unlocker != null && selected_version.id >= 143) {
+		recipe_unlocker.style.display = "none";
+	}
+	else if (recipe_unlocker != null) {
+		recipe_unlocker.style.display = "inline";
 	}
 
 	// Only show compatible Enchantments

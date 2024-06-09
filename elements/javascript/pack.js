@@ -221,7 +221,7 @@ async function downloadPack(pack_type) {
 			}
 		}
 
-		var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/_non_solid/tag_${pack_git_path}.json`);
+		var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/.non_solid/tag_${pack_git_path}.json`);
 		var non_solid = await response.text();
 
 		// replace listed blocks

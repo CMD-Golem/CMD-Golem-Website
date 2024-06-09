@@ -328,7 +328,7 @@ async function generate(beta) {
 		}
 	}
 
-	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/_non_solid/tag_${pack_git_path}.json`);
+	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/.non_solid/tag_${pack_git_path}.json`);
 	var non_solid = await response.text();
 	non_solid = non_solid.replace(`\n\t\t"minecraft:enchanting_table",`, "");
 	zip.file(`data/powerench_main/tags/blocks/non_solid.json`, non_solid);
