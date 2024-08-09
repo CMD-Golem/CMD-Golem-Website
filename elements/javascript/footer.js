@@ -69,6 +69,7 @@ const non_solid_versions = [141, 138, 133, 128, 122, 114, 112, 111];
 
 // pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
+	{main: "1.21", sub: 1, dp: 48, rp: 34, id: 146, main_id: "r1_21", name: "1.21.1"},
 	{main: "1.21", sub: 0, dp: 48, rp: 34, id: 145, main_id: "r1_21", name: "1.21"},
 	{main: "1.20", sub: 6, dp: 41, rp: 32, id: 144, main_id: "r1_20", name: "1.20.6"},
 	{main: "1.20", sub: 5, dp: 41, rp: 32, id: 143, main_id: "r1_20", name: "1.20.5"},
