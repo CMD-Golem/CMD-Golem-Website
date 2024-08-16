@@ -17,8 +17,8 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
-		name: "Key", updated: 20240428, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: ["6.1", "6.1", "6"], last_version_id: false, pack_version_id: [145, 143, 140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
+		name: "Key", updated: 20240428, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		pack_id: "key", code_version: ["6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [147, 145, 143, 140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
@@ -66,9 +66,21 @@ const pack_array = [{
 
 const non_solid_versions = [141, 138, 133, 128, 122, 114, 112, 111];
 
+async function getPreviewWarning() {
+	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
+	var response = await fetch("https://api.github.com/repos/CMD-Golem/CMD-Golem-Packs/issues/2");
+	var json = await response.json();
+
+	// var text = "Be aware that all packs for preview versions haven't been fully tested yet and may not work.";
+	var text = `Be aware that this pack isn't checked for each new snapshot and even checked versions aren't yet fully tested.<br>Latest code check was performed for the snapshot ${json.body}.`
+
+	return text
+}
+
 
 // pack versions name: "1.20 Preview", preview: true
 const version_id_array = [
+	{main: "1.21", sub: 2, dp: 49, rp: 35, id: 147, main_id: "r1_21", name: "1.21.2", preview: true},
 	{main: "1.21", sub: 1, dp: 48, rp: 34, id: 146, main_id: "r1_21", name: "1.21.1"},
 	{main: "1.21", sub: 0, dp: 48, rp: 34, id: 145, main_id: "r1_21", name: "1.21"},
 	{main: "1.20", sub: 6, dp: 41, rp: 32, id: 144, main_id: "r1_20", name: "1.20.6"},

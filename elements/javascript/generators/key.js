@@ -87,6 +87,8 @@ var doors_spoiler = document.getElementById("doors_spoiler");
 var trapgate_spoiler = document.getElementById("trapgate_spoiler");
 var has_storing_custom = false;
 
+var test = "";
+
 async function downloadDataPack() {
 	var zip = new JSZip();
 	download_box.classList.add("loading_cursor");
@@ -113,6 +115,8 @@ async function downloadDataPack() {
 
 	// store settings
 	var settings_string = "scoreboard players set #default keylock 1\n\n";
+	if (selected_version.id >= 145) var functions_path = "function";
+	else var functions_path = "functions";
 
 	var bool_settings = ["key_name", "message", "enable_containers", "auto_containers", "enable_doors", "double_doors", "open_doors", "auto_doors", "enable_trapgate", "open_trapgate", "auto_trapgate"];
 	for (var i = 0; i < bool_settings.length; i++) {
@@ -137,20 +141,28 @@ async function downloadDataPack() {
 	// store special automatic unlocking radius of containers 
 	var auto_radius = parseInt(document.getElementById("settings_auto_radius").value);
 	if (auto_radius != 5 && auto_radius != 0 && auto_radius != NaN) {
-		var auto_container_string = await zip.file("data/keylock/functions/container/auto_container/run.mcfunction").async("string");
+		var auto_container_string = await zip.file(`data/keylock/${functions_path}/container/auto_container/run.mcfunction`).async("string");
 
 		if (auto_radius <= 0) { auto_radius = 1; }
 		if (auto_radius > 20) { auto_radius = 20; }
 
-		auto_container_string.replace("distance=..5", `distance=..${auto_radius}`);
-		auto_container_string.replace("distance=5..6", `distance=${auto_radius}..${auto_radius + 1}`);
-		auto_container_string.replace("distance=..6", `distance=..${auto_radius + 1}`);
+		auto_container_string = auto_container_string.replace("distance=..5", `distance=..${auto_radius}`);
+		auto_container_string = auto_container_string.replace("distance=5..6", `distance=${auto_radius}..${auto_radius + 1}`);
+		auto_container_string = auto_container_string.replace("distance=..6", `distance=..${auto_radius + 1}`);
 
-		zip.file("data/keylock/functions/container/auto_container/run.mcfunction", auto_container_string);
+		zip.file(`data/keylock/${functions_path}/container/auto_container/run.mcfunction`, auto_container_string);
 		settings_string += "\n# automatic unlocking radius of containers is set to " + auto_radius;
 	}
 
-	zip.file("data/keylock/functions/settings/default.mcfunction", settings_string);
+	// store special key durability
+	var settings_durability = parseInt(el_durability.value);
+	if (selected_version.id >= 147 && settings_durability != 400) {
+		var recipe_string = await zip.file("data/keylock/recipe/recipe.json").async("string");
+		recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
+		zip.file("data/keylock/recipe/recipe.json", recipe_string);
+	}
+
+	zip.file(`data/keylock/${functions_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
 	zip.file("data/keylock/tags/blocks/containers.json", generateBlockTags(containers_spoiler, "storing_custom_containers"));
@@ -297,6 +309,7 @@ var version_main = document.getElementById("version_main");
 var version_sub = document.getElementById("version_sub");
 var select_version = document.getElementById("select_version");
 var preview_warning = document.getElementById("preview_warning");
+var el_durability = document.getElementById("settings_durability");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -309,8 +322,11 @@ function loadVersions() {
 	var last_version = selected_pack_obj.last_version_id; // newest comp version
 	var incomp_version_id = selected_pack_obj.incomp_version_id ?? []; // check for incompatible versions
 
-	if (last_version == false) {
+	if (last_version == false && selected_pack_obj.preview) {
 		last_version = version_id_array[0].id;
+	}
+	else if (last_version == false) {
+		last_version = version_id_array.find(e => !e.preview).id;
 	}
 	while (incomp_version_id.includes(last_version)) {
 		last_version--;
@@ -380,7 +396,7 @@ function mainVersion(selected_version_el) {
 	}
 }
 
-function subVersion(selected_version_el) {
+async function subVersion(selected_version_el) {
 	try { document.getElementsByClassName("version_sub_selected")[0].classList.remove("version_sub_selected"); } catch (e) {}
 	selected_version_el.classList.add("version_sub_selected");
 
@@ -393,6 +409,7 @@ function subVersion(selected_version_el) {
 	// show unstable version link
 	if (selected_version.preview) {
 		preview_warning.style.display = "block";
+		preview_warning.innerHTML = await getPreviewWarning();
 	}
 	else {
 		preview_warning.style.display = "none";
@@ -421,6 +438,16 @@ function subVersion(selected_version_el) {
 	if (active_spoiler != undefined) {
 		active_spoiler.style.maxHeight = active_spoiler.scrollHeight + "px"
 	};
+
+	// enable or disable durability input
+	if (selected_version.id >= 147) {
+		el_durability.value = "400";
+		el_durability.disabled = false;
+	}
+	else {
+		el_durability.value = "100";
+		el_durability.disabled = true;
+	}
 }
 
 // on load

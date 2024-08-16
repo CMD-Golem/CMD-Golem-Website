@@ -59,6 +59,7 @@
 			<label><input type="radio" name="damage" id="settings_damage_1" checked> Key damage on locking</label>
 			<label><input type="radio" name="damage" id="settings_damage_3"> Key damage on unlocking</label>
 			<label><input type="radio" name="damage" id="settings_damage_2"> Key damage on every use</label>
+			<label>Change the durability of the Key: <input type="number" id="settings_durability" min="0" value="400" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Standard is 400 / Only 1.21.2 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
 		</div>
 		<hr>
 		<div>

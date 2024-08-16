@@ -582,8 +582,11 @@ function loadVersions() {
 	var last_version = selected_pack_obj.last_version_id; // newest comp version
 	var incomp_version_id = selected_pack_obj.incomp_version_id ?? []; // check for incompatible versions
 
-	if (last_version == false) {
+	if (last_version == false && selected_pack_obj.preview) {
 		last_version = version_id_array[0].id;
+	}
+	else if (last_version == false) {
+		last_version = version_id_array.find(e => !e.preview).id;
 	}
 	while (incomp_version_id.includes(last_version)) {
 		last_version--;
@@ -653,7 +656,7 @@ function mainVersion(selected_version_el) {
 	}
 }
 
-function subVersion(selected_version_el) {
+async function subVersion(selected_version_el) {
 	try { document.getElementsByClassName("version_sub_selected")[0].classList.remove("version_sub_selected"); } catch (e) {}
 	selected_version_el.classList.add("version_sub_selected");
 
@@ -666,6 +669,7 @@ function subVersion(selected_version_el) {
 	// show unstable version link
 	if (selected_version.preview) {
 		preview_warning.style.display = "block";
+		preview_warning.innerHTML = await getPreviewWarning();
 	}
 	else {
 		preview_warning.style.display = "none";
