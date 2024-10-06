@@ -87,8 +87,6 @@ var doors_spoiler = document.getElementById("doors_spoiler");
 var trapgate_spoiler = document.getElementById("trapgate_spoiler");
 var has_storing_custom = false;
 
-var test = "";
-
 async function downloadDataPack() {
 	var zip = new JSZip();
 	download_box.classList.add("loading_cursor");
