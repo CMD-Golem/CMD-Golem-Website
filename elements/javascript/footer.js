@@ -6,13 +6,13 @@ const pack_array = [{
 		pack_id: "dark_theme", code_version: "3", last_version_id: 139, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "382298352174235714", non_solid: false
 	},{
 		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "Cook your Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
-		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
+		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [147, 145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
 	},{
 		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step.",
 		pack_id: "gateway", code_version: "3", last_version_id: 142, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "382298414500544578", non_solid: false
 	},{
 		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Craft Invisible Item Frames to improve your buildings.",
-		pack_id: "invisible_item_frame", code_version: ["2.1", "2", "2", "2", "1.1"], last_version_id: false, pack_version_id: [145, 143, 138, 128, 122], pack_type: "datapacks", db_id: "382298438526566464", non_solid: false
+		pack_id: "invisible_item_frame", code_version: ["2.1", "2.1", "2", "2", "2", "1.1"], last_version_id: false, pack_version_id: [147, 145, 143, 138, 128, 122], pack_type: "datapacks", db_id: "382298438526566464", non_solid: false
 	},{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
@@ -33,7 +33,7 @@ const pack_array = [{
 		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [145, 143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
-		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
+		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
 	},{
 		name: "Murder", updated: 20191018, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
 		pack_id: "murder", code_version: "2", last_version_id: 127, pack_version_id: [111], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
