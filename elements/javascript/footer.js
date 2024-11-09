@@ -60,7 +60,7 @@ const pack_array = [{
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: 142, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: false
 	},{
 		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "Fight against a new mob which spawns rarely in the Soul Sand Valley.",
-		pack_id: "wither_soldier", code_version: ["3", "3", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
+		pack_id: "wither_soldier", code_version: ["3.1", "3.1", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
 	}
 ]
 
