@@ -38,38 +38,44 @@
 </header>
 
 <p>This Data Pack adds the game Murder. The game is modular, so you can play it on any map with a short and simple installation.</p>
-<h3>How to Play</h3>
-<ol>
-	<li>Finish the setup and exit the Config Mode.</li>
-	<li>Start the game with the following command. You don't need op for that.<br><code>/trigger Murder</code><br>To exit the game you have to execute the same command again.</li>
-	<li>After that a 30 sec long countdown starts. During this time other players can join the game. (At least 2 players are needed for the game to start.)</li>
-	<li>After the 30 secs, the game starts and the randomly selected Murder has 5 mins to kill all the other players.</li>
-	<li>One of the other players gets a Bow. He is the Detective and must find the Murder and kill him before he can kill the other players.</li>
-	<li>The other players can hide from the Murder or collect Gold. (With 6 Gold you get a bow, with which you can also hunt the Murder)</li>
-	<li>When the Murder has killed all the players, he wins. But if the time runs out before he has killed all players or he is killed, the surviving players win.</li>
-</ol>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content spoiler_flex">
-		<div class="spoiler_image">
-			<img src="../elements/pictures/packs/murder/recipe.png" alt="Setup">
-		</div>
-		<div class="spoiler_text">
-			<ol>
-				<li>Install the Data Pack and rejoin the world or restart the server.</li>
-				<li>Build your Murder map.</li>
-				<li>Enable cheats or give yourself op if you are on a server, and execute this command:<br><code>/tag @s add murder_config</code></li>
-				<li>In the picture you can see what the different items do if you place them.</li>
-			</ol>
+<details onclick="toggleDetail(event)" open>
+	<summary>How to Play</summary>
+	<div>
+		<ol>
+			<li>Finish the setup and exit the Config Mode.</li>
+			<li>Start the game with the following command. You don't need op for that.<br><code>/trigger Murder</code><br>To exit the game you have to execute the same command again.</li>
+			<li>After that a 30 sec long countdown starts. During this time other players can join the game. (At least 2 players are needed for the game to start.)</li>
+			<li>After the 30 secs, the game starts and the randomly selected Murder has 5 mins to kill all the other players.</li>
+			<li>One of the other players gets a Bow. He is the Detective and must find the Murder and kill him before he can kill the other players.</li>
+			<li>The other players can hide from the Murder or collect Gold. (With 6 Gold you get a bow, with which you can also hunt the Murder)</li>
+			<li>When the Murder has killed all the players, he wins. But if the time runs out before he has killed all players or he is killed, the surviving players win.</li>
+		</ol>
+	</div>
+</details>
+
+<details onclick="toggleDetail(event)" open>
+	<summary>Setup</summary>
+	<div>
+		<div class="details_flex">
+			<div class="details_img">
+				<img src="../elements/pictures/packs/murder/recipe.png" alt="Setup">
+			</div>
+			<div class="details_txt">
+				<ol>
+					<li>Install the Data Pack and rejoin the world or restart the server.</li>
+					<li>Build your Murder map.</li>
+					<li>Enable cheats or give yourself op if you are on a server, and execute this command:<br><code>/tag @s add murder_config</code></li>
+					<li>In the picture you can see what the different items do if you place them.</li>
+				</ol>
+			</div>
 		</div>
 	</div>
-</div>
+</details>
 
-
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>Disable spectator after death.</p>
 		<code>/scoreboard players set #spectator murder 1</code>
 		<p>Disable Gold drop.</p>
@@ -80,8 +86,7 @@
 		<code>/scoreboard players set #chatstart murder 1</code>
 		<p>To enable the setting again you need to execute the same command except of the 1 replace with a 0.</p>
 	</div>
-</div>
-
+</details>
 
 </main>
 

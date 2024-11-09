@@ -36,9 +36,10 @@
 <p>If the existing Enchantments still aren't enough for you and you have some experience with commands and Data Packs you can even create an Enchantment by yourself, which will integrate seamlessly into the new enchanting system.</p>
 <p>Unlike many other Data Packs with custom Enchantments, this pack is fully compatible with the Anvil and Grindstone. Note that any combining of Enchantments and items must be done on the Enchanting Table and not in the Anvil.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Custom Enchantments</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+
+<details onclick="toggleDetail(event)" open>
+	<summary>Custom Enchantments</summary>
+	<div>
 		<p class="center"><a href="powered_enchanting/download.html" class="button disable_link">Open download page for more informations</a></p>
 		<table class="table dyn_table">
 			<tr><td><p>3x3 Mining</p></td><td><p>Mines a three by three area</p></td></tr>
@@ -70,65 +71,63 @@
 			<tr><td><p>Vision</p></td><td><p>Gives the player night vision</p></td></tr>
 		</table>
 	</div>
-</div>
+</details>
 
-<a class="button fullwidth disable_link" href="powered_enchanting/create_addon.html">Create your own Enchantments</a>
+<a class="button fullwidth disable_link" href="powered_enchanting/create_addon.html">Create your own Enchantments</a><br>
 
-<br>
-
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Build the Enchanting Table</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Build the Enchanting Table</summary>
+	<div>
 		<p>First craft the normal Enchanting Table and place it. Then you need to build the pillars around it. To simplify this process, you can drop a Glowstone Dust on the Enchantment Table. At the four places where blue particles can be seen, you need to place two Lapis Lazuli Blocks on top of each other, and at the four white particles, you need to place Chiseled Quartz Blocks.</p>
 		<p>To start the enchanting process, you need to make Lapis Lazuli Slices. For each Enchantment you create, one of them will be consumed.</p>
 		<p>To remove the Enchantment Table, you need to break the block underneath it. If you have already started the Enchanting, you must finish it before breaking the Enchantment Table.</p>
 
-		<div class="spoiler_flex">
-			<div class="spoiler_image">
+		<div class="details_flex">
+			<div class="details_img">
 				<img src="../elements/pictures/packs/powered_enchanting/recipe.png" alt="Lapis Lazuli Slice Recipe">
 			</div>
-			<div class="spoiler_text">
-				<p>Lapis Lazuli Slice Recipe</p>
-				<p><small>The Crafting Table will show a Lapis Lazuli as result, but you will get the correct item after you take it out.</small></p>
+			<div class="details_txt">
+				<p><b>Lapis Lazuli Slice Recipe</b></p>
+				<p>The Crafting Table will show a Lapis Lazuli as the result. This will be replaced by the Lapis Lazuli Slice after crafting.</p>
 			</div>
 		</div>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" id="advanced_enchanting">Enchanting</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open id="advanced_enchanting">
+	<summary>Enchanting</summary>
+	<div>
 		<p>To start enchanting, you need to drop a Book on the Enchanting Table. After that, four books appear near the Enchanting Table and move towards the Quartz Blocks. After they reach the blocks, each book gets an Enchantment. This Enchantment is displayed as a floating text above the book with the cost of enchanting displayed underneath it. Now you can choose one of the Enchantments by placing the Lapis Lazuli Slice on the Quartz Block below it.</p>
 		<p>The chance to get a higher leveled Enchantments is 60% for each level. The cost of enchanting is calculated depending on the maximum level of the enchantment and rises up to 3 Experience Levels. For example a Silk Touch Enchantment, which has only one level always costs 3 Experience Levels, while Sharpness 1 Enchantment only costs 1 Experience Level because this Enchantment has the maximum level of 5. To be able to enchant you need to have at least 10 times the cost of the enchantment in Experience Levels. This means that for the Silk Touch Enchantment you need to have 30 Experience Levels and for Sharpness 1 you need to have 10 Levels.</p>
 		<p><b>Advanced Enchanting</b><br>To get rarer Enchantments like Mending, you need to charge the Enchanting Table. To do this, you need to drop an End Crystal on top of the table. The state of charging can be seen from the End Crystals floating above the Lapis Lazuli pillars. You can charge the table with a maximum of four End Crystals, but for the enchanting only one is needed.</p>
 		<p>The enchanting works the same way as the normal enchanting: You drop a book on the table and each quartz pillar gets an Enchantment from which you can choose one. The Advanced Enchantments are indicated with a red name and will always stay at level 1. Those Enchantments cost 6 Experience Levels and requires you to have 50 Experience Levels.</p>
 		<p>After the enchanting one of the charged End Crystals will be consumed, even if you didn't select an Advanced Enchantment.</p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Combining</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Combining</summary>
+	<div>
 		<p>To get an Enchantment on a tool or armor, you need to drop it on an Enchanting Table along with the Enchanted Book. You can also combine the Enchantments of two different items. If you do that, the first item you dropped will be preserved and gets the Enchantments of the second one.</p>
 		<p>Each time you enchant the item, the experience cost doubles. At combining the cost of the more expensive item counts.<br>Warning: The combination in the Anvil will no longer work.</p>
 	</div>
-</div>
+</details>
 
 <br>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>Give yourself custom Enchantments (Replace &#60;enchantment_id&#62; with the Id of the Enchantment or with all to get all Enchantments)</p>
 		<code>/function powerench:give/&#60;enchantment_id&#62;</code>
 		<p>Remove custom Enchantments and lore from selected item. (for deinstallation)</p>
 		<code>/item modify entity @s weapon.mainhand powerench_main:remove_powerench</code>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations" id="older_versions">Older versions for 1.15 - 1.16.5</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open id="older_versions">
+	<summary>Older versions for 1.15 - 1.16.5</summary>
+	<div>
 		<p>Please note that the older versions of this pack don't support all features of the newer versions:</p>
 		<ul>
 			<li>You can only get level one Enchantments from enchanting. To get higher leveled Enchantments, you need to combine Books.</li>
@@ -141,7 +140,7 @@
 		<a class="button disable_link a_button" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1aMJxjydyyNAtFtzqf7PJurD_R6IdQ6yE" style="margin:10px; display:inline-block;" onclick="downloadOld('r1_15')">1.15 Vanilla Edition</a>
 		<a class="button disable_link a_button" rel="nofollow" href="https://drive.google.com/uc?export=download&id=1oRSvzFJ6ZZG7hV8EMguYf-VBhXSAyANY" style="margin:10px; display:inline-block;">1.15 Resource Pack</a><br><br>
 	</div>
-</div>
+</details>
 
 </main>
 
@@ -152,7 +151,7 @@
 window.onload = function(){
 	if (window.location.hash.substr(1) == "advanced_enchanting") {
 		var spoiler_el = document.getElementById("advanced_enchanting");
-		spoiler(spoiler_el);
+		toggleDetail(spoiler_el);
 		setTimeout(function() {
 			spoiler_el.scrollIntoView({block: 'start', behavior: 'smooth'});
 		}, 200);
@@ -160,7 +159,7 @@ window.onload = function(){
 
 	if (window.location.hash.substr(1) == "older_versions") {
 		var spoiler_el = document.getElementById("older_versions");
-		spoiler(spoiler_el);
+		toggleDetail(spoiler_el);
 		setTimeout(function() {
 			spoiler_el.scrollIntoView({block: 'center', behavior: 'smooth'});
 		}, 200);

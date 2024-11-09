@@ -59,22 +59,24 @@
 <p>This Data Pack gives every Golden Tool his own special ability.<br>But be careful! If you die, all Golden Tools in your inventory will disappear and it isn't that easy to get them again, because the crafting recipes are also changed. Instead of using Golden Ingots, you now need Golden Blocks to craft the items.</p>
 <p>But this isn't every thing. Since you crafted the Golden Tools with blocks they got very hard and are unbreakable now.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content spoiler_flex">
-		<div class="spoiler_image">
-			<img src="../elements/pictures/packs/useful_golden_tools/recipe.gif" alt="Golden Tools Recipes">
-		</div>
-		<div class="spoiler_text">
-			<p>The crafting remains the same as in vanilla, only the Golden Ingots are replaced with Golden Blocks.</p>
-			<p>The Crafting Table will show a Golden Shovel as result, but you will get the correct item after you take it out.</p>
+<details onclick="toggleDetail(event)" open>
+	<summary>Crafting</summary>
+	<div>
+		<p>The crafting remains the same as in vanilla, but with Golden Blocks instead of Golden Ingots.</p>
+		<div class="details_flex">
+			<div class="details_img">
+				<img src="../elements/pictures/packs/useful_golden_tools/recipe.gif" alt="Golden Tools Recipe">
+			</div>
+			<div class="details_txt">
+				<p>The Crafting Table will show a Golden Shovel as the result. This will be replaced with the correct item after crafting.</p>
+			</div>
 		</div>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Abilities</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Abilities</summary>
+	<div>
 		<table class="table usf_table dyn_table" id="threecoltable">
 			<tr>
 				<th class="usf_hide"><p>Tool</p></th>
@@ -133,16 +135,16 @@
 			</tr>
 		</table>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>0: The item is unbreakable and you lose it after death if you have it in your inventory. (Default)<br>1: The item is breakable and you don't lose it.<br>2: The item is unbreakable and you don't lose it.<br>3: The Item is breakable and you lose it.</p>
 		<p>To change the setting you need to execute this command and replace x with the matching number from above.</p>
 		<code>/scoreboard players set #setting usfgold x</code>
 	</div>
-</div>
+</details>
 
 
 </main>

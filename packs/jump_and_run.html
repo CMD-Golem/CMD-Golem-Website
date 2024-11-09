@@ -44,26 +44,28 @@
 <p>Do you want to build a Jump and Run? Then this is the right Data Pack for you. With it you can create your own Jump and Run with checkpoints and a timer.</p>
 <p>To start the game you have to pass the Jump and Run starting point. To exit the game, you can drop the Barrier in your inventory.<br>When you pass a checkpoint, you will be teleported back to that point, if you fall down.<br>When you pass the Jump and Run end point you have finished the game and the timer stops.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content spoiler_flex">
-		<div class="spoiler_image">
-			<img src="../elements/pictures/packs/jump_and_run/recipe_2.png" alt="Setup">
-		</div>
-		<div class="spoiler_text">
-			<ol>
-				<li>Install the Data Pack and rejoin the world or restart the server.</li>
-				<li>Build your Jump and Run. You can only use blocks which are listed in the Parkour Blocks spoiler bellow. The other blocks will teleport you back to the last checkpoint.</li>
-				<li>Enable cheats or give yourself op if you are on a server and execute this command:<br><code>/tag @s add jar_config</code></li>
-				<li>In the picture you can see what the different items do if you place them.</li>
-			</ol>
+<details onclick="toggleDetail(event)" open>
+	<summary>Setup</summary>
+	<div>
+		<div class="details_flex">
+			<div class="details_img">
+				<img src="../elements/pictures/packs/jump_and_run/recipe_2.png" alt="Setup">
+			</div>
+			<div class="details_txt">
+				<ol>
+					<li>Install the Data Pack and rejoin the world or restart the server.</li>
+					<li>Build your Jump and Run. You can only use blocks which are listed in the Parkour Blocks spoiler bellow. The other blocks will teleport you back to the last checkpoint.</li>
+					<li>Enable cheats or give yourself op if you are on a server and execute this command:<br><code>/tag @s add jar_config</code></li>
+					<li>In the picture you can see what the different items do if you place them.</li>
+				</ol>
+			</div>
 		</div>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Parkour Blocks</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Parkour Blocks</summary>
+	<div>
 		<p>For the Jump and Run you can only use the blocks which are listed below. If the player stands on an other Block, he will be teleported back to his latest checkpoint. You also need to place these blocks below the Start and End Point.</p>
 		<p>The blocks are:</p>
 		<ul>
@@ -85,8 +87,7 @@
 			<li>Double Slabs (If you place two slabs on each other, they look like an normal block, but they aren't)</li>
 		</ul>
 	</div>
-</div>
-
+</details>
 
 </main>
 

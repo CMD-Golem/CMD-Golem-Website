@@ -43,9 +43,9 @@
 
 <p>This Data Pack gives you new commands to kill entities in a radius of 1 Block, teleport to the spawn point, to instant heal you and a new chat menu, where you have a lot more shortcuts to execute commands.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Commands</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Commands</summary>
+	<div>
 		<table class="table dyn_table">
 			<tr>
 				<td><code>/trigger kill</code></td>
@@ -65,11 +65,11 @@
 			</tr>
 		</table>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Chat Menu</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Chat Menu</summary>
+	<div>
 		<table class="table dyn_table">
 			<tr>
 				<td><p>Resistance</p></td>
@@ -102,12 +102,11 @@
 		</table>
 		<p>If you press on the Show button next to the last two commands you get the command pasted in you chat to modify it.</p>
 	</div>
-</div>
+</details>
 
-
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Setup</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Setup</summary>
+	<div>
 		<p>On the first time you join the world with the Data Pack installed, you should go to the spawn and execute this command:</p>
 		<code>/function shortcmd:setup</code>
 		<p>This command also changes the following gamerules:</p>
@@ -120,7 +119,7 @@
 			<li>spawnRadius to 0</li>
 		</ul>
 	</div>
-</div>
+</details>
 
 
 </main>

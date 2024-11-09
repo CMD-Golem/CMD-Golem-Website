@@ -45,56 +45,54 @@ function addRecipe(el) {
 		<br><br><hr>
 		<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Advanced Options</h3>
 		<div class="spoiler_show">
-			<div class="spoiler_content">
-				<table style="width: 100%;">
-					<tr>
-						<td colspan="2"><br>Tag Name</td>
-					</tr>
-					<tr>
-						<td colspan="2"><input type="text" placeholder='${tag}${counter}' class="tag"></td>
-					</tr>
-					<tr>
-						<td><br>Advancement Folder Path</td>
-						<td><br>Advancement File Name</td>
-					</tr>
-					<tr>
-						<td><input type="text" placeholder='${advancement[0]}' class="advancement_folder folder"></td>
-						<td><input type="text" placeholder='${advancement[1]}' class="advancement_name"></td>
-					</tr>
-					<tr>
-						<td><br>Recipe Folder Path</td>
-						<td><br>Recipe File Name</td>
-					</tr>
-					<tr>
-						<td><input type="text" placeholder='${recipe[0]}' class="recipe_folder folder"></td>
-						<td><input type="text" placeholder='${recipe[1]}' class="recipe_name"></td>
-					</tr>
-					<tr>
-						<td><br>Function Detect Folder Path</td>
-						<td><br>Function Detect File Name</td>
-					</tr>
-					<tr>
-						<td><input type="text" placeholder='${function_detect[0]}' class="function_detect_folder folder"></td>
-						<td><input type="text" placeholder='${function_detect[1]}' class="function_detect_name"></td>
-					</tr>
-					<tr>
-						<td>Function Craft Folder Path</td>
-						<td>Function Craft File Name</td>
-					</tr>
-					<tr>
-						<td><input type="text" placeholder='${function_craft[0]}' class="function_craft_folder folder"></td>
-						<td><input type="text" placeholder='${function_craft[1]}' class="function_craft_name"></td>
-					</tr>
-					<tr>
-						<td>Function Mass Craft Folder Path</td>
-						<td>Function Mass Craft File Name</td>
-					</tr>
-					<tr>
-						<td><input type="text" placeholder='${function_mass[0]}' class="function_mass_folder folder"></td>
-						<td><input type="text" placeholder='${function_mass[1]}' class="function_mass_name"></td>
-					</tr>
-				</table>
-			</div>
+			<table style="width: 100%;">
+				<tr>
+					<td colspan="2"><br>Tag Name</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="text" placeholder='${tag}${counter}' class="tag"></td>
+				</tr>
+				<tr>
+					<td><br>Advancement Folder Path</td>
+					<td><br>Advancement File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='${advancement[0]}' class="advancement_folder folder"></td>
+					<td><input type="text" placeholder='${advancement[1]}' class="advancement_name"></td>
+				</tr>
+				<tr>
+					<td><br>Recipe Folder Path</td>
+					<td><br>Recipe File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='${recipe[0]}' class="recipe_folder folder"></td>
+					<td><input type="text" placeholder='${recipe[1]}' class="recipe_name"></td>
+				</tr>
+				<tr>
+					<td><br>Function Detect Folder Path</td>
+					<td><br>Function Detect File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='${function_detect[0]}' class="function_detect_folder folder"></td>
+					<td><input type="text" placeholder='${function_detect[1]}' class="function_detect_name"></td>
+				</tr>
+				<tr>
+					<td>Function Craft Folder Path</td>
+					<td>Function Craft File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='${function_craft[0]}' class="function_craft_folder folder"></td>
+					<td><input type="text" placeholder='${function_craft[1]}' class="function_craft_name"></td>
+				</tr>
+				<tr>
+					<td>Function Mass Craft Folder Path</td>
+					<td>Function Mass Craft File Name</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder='${function_mass[0]}' class="function_mass_folder folder"></td>
+					<td><input type="text" placeholder='${function_mass[1]}' class="function_mass_name"></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	`;
@@ -368,5 +366,26 @@ function compactView(used_element) {
 	if (used_element == "button") {
 		el_compact_view.style.backgroundColor = "#A10000";
 		setTimeout(function(){ el_compact_view.removeAttribute("style"); }, 500);
+	}
+}
+
+/* Spoiler */
+function closeSpoiler(el) {
+	var other_el = document.getElementsByClassName("spoiler_title");
+	if (el.classList.contains("active") == true) {
+		var active_el = true;
+	}
+
+	for (var i = 0; i < other_el.length; i++) {
+		other_el[i].classList.remove("active");
+		other_el[i].nextElementSibling.style.maxHeight = null;
+	}
+
+	if (el.classList.contains("spoiler_title") == true) {
+		var panel = el.nextElementSibling;
+		if (active_el != true) {
+			el.classList.add("active");
+			panel.style.maxHeight = panel.scrollHeight + "px";
+		}
 	}
 }

@@ -142,8 +142,13 @@ function search() {
 		if (filterwords.toUpperCase().indexOf(filter) > -1) {
 			packs[i].classList.remove("hide_search");
 		} else {
-			closeSpoiler(packs[i]);
-			packs[i].classList.add("hide_search");
+			var el = packs[i]
+			el.classList.remove("active");
+			el.classList.add("hide_search");
+			var panel = el.nextElementSibling;
+			panel.style.display = null;
+			panel.nextElementSibling.style.display = null;
+			panel.nextElementSibling.nextElementSibling.style.display = null;
 		}
 	}
 

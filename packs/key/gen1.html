@@ -50,32 +50,32 @@
 <p>Lock your Chest to protect your items from other players and Creepers. Shift right click on the Chest to lock or unlock it. You can only unlock the Chest if you originally locked it. It doesn't matter which Key you use.</p>
 <p>Even if something destroys the Chest or a Hopper is placed under the Chest, your items can't be stolen. However, be aware that items you put a locked Chest with a Hopper will drop out when you unlock it.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
-		<div class="spoiler_flex">
-			<div class="spoiler_image">
-				<img src="../../elements/pictures/packs/key_gen1/recipe.png" alt="Key Recipe">
+<details onclick="toggleDetail(event)" open>
+	<summary>Crafting</summary>
+	<div>
+		<div class="details_flex">
+			<div class="details_img">
+				<img src="../../elements/pictures/packs/key/recipe.png" alt="Key Recipe">
 			</div>
-			<div class="spoiler_text">
-				<p>The Crafting Table will show a Gold Nugget as result, but you will get the correct item after you take it out.</p>
+			<div class="details_txt">
+				<p>The Crafting Table will show a Gold Nugget as the result. This will be replaced by the Key after crafting.</p>
 			</div>
 		</div>
 		<p>[1.16+] You can repair your Key, if you drop a Gold Ingot with the Key on an Anvil. To get more durability you can also enchant it with Unbreaking.</p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Observer Addon</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Observer Addon</summary>
+	<div>
 		<p>Use this add-on to automatically unlock the locked Chest if you are in a radius of 2 blocks.</p>
 		<button class="center" onclick="openDownload('key_observer')">Download</button>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>Show messages in the chat instead of above the hotbar.</p>
 		<code>/scoreboard players set #message chestlock 1</code>
 		<p>Get the Admin Key.</p>
@@ -87,8 +87,8 @@
 		<code>/scoreboard players set #damage chestlock 1</code>
 		<p>To disable the setting again you need to execute the same command except of the 1 replace with a 0.</p>
 	</div>
-</div>
-
+	</div>
+</details>
 
 </main>
 

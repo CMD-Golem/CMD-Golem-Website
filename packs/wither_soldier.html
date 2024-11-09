@@ -44,35 +44,32 @@
 	<p>1.15 +</p>
 </header>
 
-<p>This Data Pack adds a new mob called Wither Soldier to the game. It spawns very rarely in the Soul Sand Valley.<br>The Wither Soldier holds a Netherite Sword and rides a Wither Skeleton Horse.</p>
-<p>If you kill one of these you get Wither Bones and with a very small chance a Wither Soldier Skull or even a Netherite Sword.</p>
-<br>
-<p>Info: If you use this Data Pack in 1.15, the Wither Soldier can spawn every where in the Nether.</p>
+<p>This Data Pack adds a new mob called Wither Soldier to the game. It spawns very rarely in the Soul Sand Valley or for 1.15 everywhere in the nehter.<br>The Wither Soldier holds a Netherite Sword and rides a Wither Skeleton Horse.</p>
+<p>If you kill one of them you get Wither Bones and with a small chance a Wither Soldier Skull or a Netherite Sword.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Drops</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Drops</summary>
+	<div>
 		<p><b>Wither Bones</b></p>
-		<p>If you use this on Grass, Saplings or Flowers, the Plant will die. If you use it on flowers they have a chance to turn into Wither Roses.</p>
-		<div class="spoiler_flex">
-			<div class="spoiler_image">
+		<div class="details_flex">
+			<div class="details_img">
 				<img src="../elements/pictures/packs/wither_soldier/recipe.png" alt="Wither Bone Meal Recipe">
 			</div>
-			<div class="spoiler_text">
-				<p>The Crafting Table will show normal Bone Meal as result, but you will get the correct item after you take it out.</p>
-				<p>[1.15 - 1.19.4] The Crafting needs to be done by dropping a Wither Bone on top of a Crafting Table.</p>
+			<div class="details_txt">
+				<p>The Crafting Table will show normal Bone Meal as the result. This will be replaced by the Wither Bone Meal after crafting.</p>
+				<p>This recipe won't work in the Crafter.</p>
 			</div>
 		</div>
-
+		<p>[1.15 - 1.19.4] The Crafting needs to be done by dropping a Wither Bone on top of a Crafting Table.</p>
 		<p><b>Wither Soldier Skull</b></p>
 		<p>Put it on your head and you will be able to see all Ancient Debris in a radius of 5 blocks.</p>
 		<p>But be aware that you will get the Wither Effect as long as you have it on.</p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Stats</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Stats</summary>
+	<div>
 		<p><b>Wither Soldier</b> (Changes from normal Wither Skeleton)</p>
 		<table class="table dyn_table">
 			<tr>
@@ -81,7 +78,7 @@
 			</tr>
 			<tr>
 				<td><p>Attack Damage</p></td>
-				<td><p>Easy: 5 Hearts Damage (10 Health Points)<br>Normal: 7 Hearts Damage (14 Health Points)<br>Easy: 8 Hearts Damage (16 Health Points)</p></td>
+				<td><p>Easy: 5 Hearts Damage (10 Health Points)<br>Normal: 7 Hearts Damage (14 Health Points)<br>Hard: 8 Hearts Damage (16 Health Points)</p></td>
 			</tr>
 			<tr>
 				<td><p>Attack Knockback</p></td>
@@ -106,14 +103,18 @@
 			</tr>
 		</table>
 	</div>
-</div>
+</details>
 
-<p>You can summon the Wither Soldier manual with this command:</p>
-<code>/function wither_soldier:spawn</code>
+<details onclick="toggleDetail(event)" open>
+	<summary>Commands</summary>
+	<div>
+		<p>Summon the Wither Soldier manually:</p>
+		<code>/function wither_soldier:spawn</code>
 
-<p>You can give yourself the Wither Soldier Skull with this command:</p>
-<code>/function wither_soldier:wither_soldier_skull/give</code>
-
+		<p>Give Wither Soldier Skull:</p>
+		<code>/function wither_soldier:wither_soldier_skull/give</code>
+	</div>
+</details>
 
 </main>
 

@@ -60,9 +60,9 @@
 <p>The entire spawning system of the Wandering Trader has also been reworked. Now, a Wandering Trader spawns every five days at random player who hasn't hit a Trader in the last five days. After two days, the Trader despawns again.</p>
 <p>If you play on a server or a weak PC, please check first if the Nether and the End Gate place and remove the blocks correctly. If they don't  place a 3x3 platform in the end or in the nether underneath you, you should disable these trades!</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Common Trades</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Common Trades</summary>
+	<div>
 		<table class="table">
 			<tr>
 				<td><img src="../elements/pictures/packs/better_wandering_trader/items/death_coords.png" alt="Death Coords"></td>
@@ -95,12 +95,11 @@
 		</table>
 		<p>Vanilla Minecraft Trades:<br>Kelp<wbr><small class="usftrader_id">#kelp</small></p>
 	</div>
-</div>
+</details>
 
-
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Rare Trades</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Rare Trades</summary>
+	<div>
 		<table class="table">
 			<tr>
 				<td><img src="../elements/pictures/packs/better_wandering_trader/items/xp_cost_reducer.png" alt="XP Cost Reducer"></td>
@@ -121,11 +120,11 @@
 		</table>
 		<p>Vanilla Minecraft Trades:<br>Bamboo<wbr><small class="usftrader_id">#bamboo</small><br>Slimeball<wbr><small class="usftrader_id">#slime_ball</small></p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Epic Trades</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Epic Trades</summary>
+	<div>
 		<table class="table">
 			<tr>
 				<td><img src="../elements/pictures/packs/better_wandering_trader/items/spawner_breaker.png" alt="Spawner Breaker"></td>
@@ -142,12 +141,11 @@
 		</table>
 		<p>Vanilla Minecraft Trades:<br>Turtle Egg<wbr><small class="usftrader_id">#turtle_egg</small></p>
 	</div>
-</div>
+</details>
 
-
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>Disable custom spawning. Afterward the Wandering Trader will spawn like normal, but he will still have the custom trades.</p>
 		<code>/scoreboard players set #spawn_normal usftrader 1</code><br>
 		<code>/reload</code>
@@ -157,10 +155,9 @@
 		<code>/scoreboard players set #disruptor_sound usftrader 1</code>
 		<p>To enable the setting again you need to execute the same command except of the 1 replace with a 0.</p>
 	</div>
-</div>
+</details>
 
 <a class="button disable_link center" href="better_wandering_trader/create_addon.html" style="margin: 40px 0; display: block;">Create your own Trades</a>
-
 
 </main>
 

@@ -44,30 +44,36 @@
 </header>
 
 <p>This Data Pack adds the ability to travel very fast between places you've already visited. You can even mark each Gateway with a block to easily remember which Gateway to take.</p>
-<p><b>Setup</b><br>Craft two Gateways and a Gateway Linker. Place the Gateways at the two endpoints and right click the block below the two Gateways with the Gateway Linker. If a Gateway isn't linked, it will cry because it has no partner.<br>To mark a Gateway you need to drop a Flint along with the marker block underneath the Gateway. Only the Flint will be consumed in the process.</p>
-<p>To remove the Gateway simply break the Block underneath it. If the Gateway was linked to another one, the linked Gateway will be removed as well.</p>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Crafting</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
-		<div class="spoiler_flex">
-			<div class="spoiler_image">
-				<p><b>Gateway Linker Recipe</b></p>
+<details onclick="toggleDetail(event)" open>
+	<summary>Setup</summary>
+	<div>
+		<p>Craft two Gateways and a Gateway Linker. Place the Gateways at the two endpoints and right click the block below the two Gateways with the Gateway Linker. If a Gateway isn't linked, it will cry because it has no partner.<br>To mark a Gateway you need to drop a Flint along with the marker block underneath the Gateway. Only the Flint will be consumed in the process.</p>
+		<p>To remove the Gateway simply break the Block underneath it. If the Gateway was linked to another one, the linked Gateway will be removed as well.</p>
+	</div>
+</details>
+
+<details onclick="toggleDetail(event)" open>
+	<summary>Crafting</summary>
+	<div>
+		<div class="details_flex">
+			<div class="details_img">
+				<p>Gateway Linker Recipe</p>
 				<img src="../elements/pictures/packs/gateway/recipe_1.png" alt="Gateway Linker Recipe">
 			</div>
-			<div class="spoiler_image">
-				<p><b>Gateway Recipe</b></p>
+			<div class="details_img">
+				<p>Gateway Recipe</p>
 				<img src="../elements/pictures/packs/gateway/recipe_2.png" alt="Gateway Recipe">
 			</div>
 		</div>
-		<p>The Crafting Table will show a Eye of Ender or a Crying Obsidian as result, but you will get the correct item after you take it out.</p>
+		<p>The Crafting Table will show a Eye of Ender or a Crying Obsidian as result. These will be replaced with the correct item after crafting.</p>
 		<p>You can repair your Gateway Linker, if you drop a Ender Pearl with the Gateway Linker on an Anvil. To get more durability you can also enchant it with Unbreaking.</p>
 	</div>
-</div>
+</details>
 
-<h3 class="spoiler_title" onclick="spoiler(this)" title="Open for more Informations">Settings</h3>
-<div class="spoiler_show">
-	<div class="spoiler_content">
+<details onclick="toggleDetail(event)" open>
+	<summary>Settings</summary>
+	<div>
 		<p>Change the maximum count of linked Gateways you can have in the world. (Default: 20)<br>It can cause lags, if you have a to big amount of Gateways.</p>
 		<code>/scoreboard players set #max gateway 20</code>
 		<p>Disable tool damage for the Gateway Linker.<br>To enable it again you need to execute the same command except of the 1 replace with a 0.</p>
@@ -75,8 +81,7 @@
 		<p>Remove all Gateways.</p>
 		<code>/function gateway:reset</code>
 	</div>
-</div>
-
+</details>
 
 </main>
 

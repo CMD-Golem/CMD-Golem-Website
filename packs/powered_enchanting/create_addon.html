@@ -164,9 +164,9 @@ section {
 	<h2>Additional tips</h2>
 	<p>The tick.mcfunction in the function directory is executed every tick and the load.mcfunction is executed on reload. The function tags to do this are in the main pack and you don't need to create them again.</p>
 
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect if item has Enchantment</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
+	<details onclick="toggleDetail(event)" open>
+		<summary>Detect if item has Enchantment</summary>
+		<div>
 			<p>After the Item has been enchanted, it will have the Enchantment ID saved in the NBT data.<br>You can either use a predicate to detect it:<br>
 			<code>{<br>&nbsp;&nbsp;"condition": "minecraft:entity_properties",<br>&nbsp;&nbsp;"entity": "this",<br>&nbsp;&nbsp;"predicate": {<br>&nbsp;&nbsp;&nbsp;&nbsp;"equipment": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mainhand": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nbt": "{PoweredEnchantments:[{id:\"minecraft:ENCHANTMENT\"}]}"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;}<br>}</code></p>
 			<p>Or a command:<br>
@@ -174,11 +174,11 @@ section {
 			<p>The Level of the enchantment is stored like vanilla items:<br>
 			<code>{id:"minecraft:ENCHANTMENT", lvl:5s}</code></p>
 		</div>
-	</div>
+	</details>
 
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Detect the usage of a tool</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
+	<details onclick="toggleDetail(event)" open>
+		<summary>Detect the usage of a tool</summary>
+		<div>
 			<p>The main pack of Powered Enchanting contains four predicates which check for the usage of tools:</p>
 			<ul>
 				<li>With <code>powerench_main:tools/pickaxe</code> you can detect the usage of all Pickaxes</li>
@@ -187,24 +187,24 @@ section {
 				<li>With <code>powerench_main:tools/seeds</code> you can detect the mining of seeds</li>
 			</ul>
 		</div>
-	</div>
+	</details>
 
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Drain multiple durability points</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
+	<details onclick="toggleDetail(event)" open>
+		<summary>Drain multiple durability points</summary>
+		<div>
 			<p>When the following function is executed, it drains a durability point from the selected item in the hotbar:</p>
 			<code>function powerench_main:durability</code>
 		</div>
-	</div>
+	</details>
 
-	<h3 class="spoiler_title" title="Open for more Informations" style="font-weight: normal; font-size: inherit;" onclick="closeSpoiler(this)">Change max level of vanilla Enchantment</h3>
-	<div class="spoiler_show">
-		<div class="spoiler_content">
+	<details onclick="toggleDetail(event)" open>
+		<summary>Change max level of vanilla Enchantment</summary>
+		<div>
 			<p>Execute this command in the function which will be executed on reload:</p>
 			<code>scoreboard players set #protection powerench 5</code>
 			<p>The ID after the # is the ID of the Enchantment and the number at the end defines the new max level.</p>
 		</div>
-	</div>
+	</details>
 
 </section>
 
