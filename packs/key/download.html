@@ -49,6 +49,7 @@
 			<span>General</span>
 			<label><input type="checkbox" id="settings_key_name"> Allow name of Key as password</label>
 			<label><input type="checkbox" id="settings_message"> Show locking messages in chat instead of actionbar</label>
+			<label><input type="checkbox" id="settings_model"> Use item model instead of custom model data <mark data-title="Use this if other Resource Pack breaks texture of Key.\nAll players must have Key Resource Pack installed with this setting.\nOnly 1.21.4 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
 			<label>Maximum number of locked blocks per player: <input type="number" id="settings_max_player" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Leave blank for unlimited" style="background-color: #008611;">?</mark></label>
 			<label>Maximum number of locked blocks in world: <input type="number" id="settings_max_world" min="0" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Leave blank for unlimited" style="background-color: #008611;">?</mark></label>
 		</div>
@@ -174,6 +175,7 @@
 				<div class="lockable_block selected" data-block_id='"minecraft:mangrove_door"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/doors/mangrove_door.png" alt="Mangrove Door"><span>Mangrove Door</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:oak_door"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/doors/oak_door.png" alt="Oak Door"><span>Oak Door</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:oxidized_copper_door"' data-version="141"><img src="../../elements/pictures/packs/key/blocks/doors/oxidized_copper_door.png" alt="Oxidized Copper Door"><span>Oxidized Copper Door</span></div>
+				<div class="lockable_block selected" data-block_id='"minecraft:pale_oak_door"' data-version="149"><img src="../../elements/pictures/packs/key/blocks/doors/pale_oak_door.png" alt="Pale Oak Door"><span>Pale Oak Door</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:spruce_door"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/doors/spruce_door.png" alt="Spruce Door"><span>Spruce Door</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:warped_door"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/doors/warped_door.png" alt="Warped Door"><span>Warped Door</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:waxed_copper_door"' data-version="141"><img src="../../elements/pictures/packs/key/blocks/doors/copper_door.png" alt="Waxed Copper Door"><span>Waxed Copper Door</span></div>
@@ -209,6 +211,7 @@
 				<div class="lockable_block selected" data-block_id='"minecraft:mangrove_trapdoor"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/mangrove_trapdoor.png" alt="Mangrove Trapdoor"><span>Mangrove Trapdoor</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:oak_trapdoor"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/oak_trapdoor.png" alt="Oak Trapdoor"><span>Oak Trapdoor</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:oxidized_copper_trapdoor"' data-version="141"><img src="../../elements/pictures/packs/key/blocks/trapgate/oxidized_copper_trapdoor.png" alt="Oxidized Copper Trapdoor"><span>Oxidized Copper Trapdoor</span></div>
+				<div class="lockable_block selected" data-block_id='"minecraft:pale_oak_trapdoor"' data-version="149"><img src="../../elements/pictures/packs/key/blocks/trapgate/pale_oak_trapdoor.png" alt="Pale Oak Trapdoor"><span>Pale Oak Trapdoor</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:spruce_trapdoor"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/spruce_trapdoor.png" alt="Spruce Trapdoor"><span>Spruce Trapdoor</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:warped_trapdoor"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/warped_trapdoor.png" alt="Warped Trapdoor"><span>Warped Trapdoor</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:waxed_copper_trapdoor"' data-version="141"><img src="../../elements/pictures/packs/key/blocks/trapgate/copper_trapdoor.png" alt="Waxed Copper Trapdoor"><span>Waxed Copper Trapdoor</span></div>
@@ -227,6 +230,7 @@
 				<div class="lockable_block selected" data-block_id='"minecraft:jungle_fence_gate"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/jungle_fence_gate.png" alt="Jungle Fence Gate"><span>Jungle Fence Gate</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:mangrove_fence_gate"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/mangrove_fence_gate.png" alt="Mangrove Fence Gate"><span>Mangrove Fence Gate</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:oak_fence_gate"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/oak_fence_gate.png" alt="Oak Fence Gate"><span>Oak Fence Gate</span></div>
+				<div class="lockable_block selected" data-block_id='"minecraft:pale_oak_fence_gate"' data-version="149"><img src="../../elements/pictures/packs/key/blocks/trapgate/pale_oak_fence_gate.png" alt="Pale Oak Fence Gate"><span>Pale Oak Fence Gate</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:spruce_fence_gate"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/spruce_fence_gate.png" alt="Spruce Fence Gate"><span>Spruce Fence Gate</span></div>
 				<div class="lockable_block selected" data-block_id='"minecraft:warped_fence_gate"' data-version="140"><img src="../../elements/pictures/packs/key/blocks/trapgate/warped_fence_gate.png" alt="Warped Fence Gate"><span>Warped Fence Gate</span></div>				
 			</div>

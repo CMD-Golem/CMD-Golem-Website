@@ -34,7 +34,7 @@
 
 <header>
 	<h1>Murder</h1>
-	<p>1.13 - 1.16.5</p>
+	<p>1.13 - 1.16.5 / 1.21 +</p>
 </header>
 
 <p>This Data Pack adds the game Murder. The game is modular, so you can play it on any map with a short and simple installation.</p>
@@ -55,7 +55,29 @@
 </details>
 
 <details onclick="toggleDetail(event)" open>
-	<summary>Setup</summary>
+	<summary>Setup 1.21 +</summary>
+	<div>
+		<ol>
+			<li>Install the Data Pack and rejoin the world or restart the server.</li>
+			<li>Build your Murder map.</li>
+			<li>Enable cheats or give yourself op if you are on a server, and execute this command: <code>/function murder:config</code></li>
+			<li>You get three Armor Stands:
+				<ul>
+					<li>Place the Spawn Point at the Point where the players should be teleported when they want to play Murder. For each game a random Spawn Point is selected.</li>
+					<li>Place the End Point at the Point where the players should be teleported when the game is finished. Players get teleported to a random End Point</li>
+					<li>Place Gold Spawners around your map to let normal players collect Gold. Gold spawns there all 2 mins.</li>
+				</ul>
+			</li>
+			<li>To remove one point again hit the Armor Stand</li>
+			<li>Remove all Gold Spawners with this command: <code>/kill @e[tag=murder_e_golddrop]</code></li>
+			<li>Remove all Murder related Armor Stand with <code>/kill @e[tag=murder_e_point]</code></li>
+			<li>To save your changes execute <code>/function murder:save</code></li>
+		</ol>
+	</div>
+</details>
+
+<details onclick="toggleDetail(event)" open>
+	<summary>Setup 1.13 - 1.16.5</summary>
 	<div>
 		<div class="details_flex">
 			<div class="details_img">

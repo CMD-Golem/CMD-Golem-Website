@@ -100,7 +100,7 @@ mark {
 	display: none;
 	background-color:#292929;
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px 2px;
-	text-align: center;
+	text-align: left;
 	font-size: small;
 	border-radius: 5px;
 	padding: 5px 5px;

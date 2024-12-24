@@ -152,14 +152,23 @@ async function downloadDataPack() {
 		settings_string += "\n# automatic unlocking radius of containers is set to " + auto_radius;
 	}
 
-	// store special key durability
+	// store special key durability and item model
 	var settings_durability = parseInt(el_durability.value);
-	if (selected_version.id >= 147 && settings_durability != 400) {
+	var settings_model = parseBool(el_durability.value);
+	if (settings_durability != 400 || settings_model) {
 		var recipe_string = await zip.file("data/keylock/recipe/recipe.json").async("string");
-		recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
+
+		if (selected_version.id >= 147 && settings_durability != 400) recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
+		if (selected_version.id >= 149 && settings_model) {
+			var admin_string = await zip.file("data/keylock/function/admin_key.mcfunction").async("string");
+			zip.file("data/keylock/function/admin_key.mcfunction", admin_string.replace("minecraft:item_model=\"minecraft:warped_fungus_on_a_stick", "minecraft:item_model=\"keylock:key"));
+			
+			recipe_string = recipe_string.replace("minecraft:item_model\": \"minecraft:warped_fungus_on_a_stick", "minecraft:item_model\": \"keylock:key");
+		}
+	
 		zip.file("data/keylock/recipe/recipe.json", recipe_string);
 	}
-
+	
 	zip.file(`data/keylock/${functions_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
@@ -292,7 +301,7 @@ function showToolTip(e) {
 	tooltip.style.display = "block";
 	tooltip.style.top = pos.top + window.scrollY - 0.5 + "px";
 	tooltip.style.left = pos.left + window.scrollX + 20 + "px";
-	tooltip.innerHTML = e.target.getAttribute("data-title");
+	tooltip.innerHTML = e.target.getAttribute("data-title").replaceAll("\\n", "<br>");
 }
 
 
@@ -308,6 +317,7 @@ var version_sub = document.getElementById("version_sub");
 var select_version = document.getElementById("select_version");
 var preview_warning = document.getElementById("preview_warning");
 var el_durability = document.getElementById("settings_durability");
+var el_model = document.getElementById("settings_model");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -446,6 +456,10 @@ async function subVersion(selected_version_el) {
 		el_durability.value = "100";
 		el_durability.disabled = true;
 	}
+
+	// use item_model
+	if (selected_version.id >= 149) el_model.disabled = false;
+	else el_model.disabled = true;
 }
 
 // on load

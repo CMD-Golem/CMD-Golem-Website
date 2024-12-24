@@ -17,8 +17,8 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
-		name: "Key", updated: 20240428, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: ["6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [147, 145, 143, 140], rp_version_id: [140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
+		name: "Key", updated: 20242312, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		pack_id: "key", code_version: ["6.2", "6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
@@ -35,8 +35,8 @@ const pack_array = [{
 		name: "Craft Addon", updated: 0, search_keys: false, 
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
 	},{
-		name: "Murder", updated: 20191018, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
-		pack_id: "murder", code_version: "2", last_version_id: 127, pack_version_id: [111], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
+		name: "Murder", updated: 20241223, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
+		pack_id: "murder", code_version: "2", last_version_id: false, pack_version_id: [145, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
 	},{
 		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe Generator", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
 		pack_id: "nbt_crafting", last_version_id: 142, pack_version_id: [114], pack_type: "generators", db_id: "382220706418524365", non_solid: false
@@ -64,7 +64,7 @@ const pack_array = [{
 	}
 ]
 
-const non_solid_versions = [141, 138, 133, 128, 122, 114, 112, 111];
+const non_solid_versions = [149, 141, 138, 133, 128, 122, 114, 112, 111];
 
 async function getPreviewWarning() {
 	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "1.21", sub: 4, dp: 61, rp: 46, id: 149, main_id: "r1_21", name: "1.21.4"},
 	{main: "1.21", sub: 3, dp: 57, rp: 42, id: 148, main_id: "r1_21", name: "1.21.3"},
 	{main: "1.21", sub: 2, dp: 57, rp: 42, id: 147, main_id: "r1_21", name: "1.21.2"},
 	{main: "1.21", sub: 1, dp: 48, rp: 34, id: 146, main_id: "r1_21", name: "1.21.1"},
