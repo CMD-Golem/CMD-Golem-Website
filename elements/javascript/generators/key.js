@@ -154,12 +154,11 @@ async function downloadDataPack() {
 
 	// store special key durability and item model
 	var settings_durability = parseInt(el_durability.value);
-	var settings_model = parseBool(el_durability.value);
-	if (settings_durability != 400 || settings_model) {
+	if (settings_durability != 400 || el_model.checked) {
 		var recipe_string = await zip.file("data/keylock/recipe/recipe.json").async("string");
 
 		if (selected_version.id >= 147 && settings_durability != 400) recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
-		if (selected_version.id >= 149 && settings_model) {
+		if (selected_version.id >= 149 && el_model.checked) {
 			var admin_string = await zip.file("data/keylock/function/admin_key.mcfunction").async("string");
 			zip.file("data/keylock/function/admin_key.mcfunction", admin_string.replace("minecraft:item_model=\"minecraft:warped_fungus_on_a_stick", "minecraft:item_model=\"keylock:key"));
 			
