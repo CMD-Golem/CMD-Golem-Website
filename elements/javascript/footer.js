@@ -1,12 +1,12 @@
 const pack_array = [{
 		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "Trade a lot of small and useful things with the Wandering Trader.",
-		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [145, 143, 140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "382298450599870528", non_solid: ["usftrader"]
+		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [149, 145, 143, 140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "382298450599870528", non_solid: ["usftrader"]
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of your Inventory to a simplistic dark gray and blue colored one.",
 		pack_id: "dark_theme", code_version: "3", last_version_id: 139, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "382298352174235714", non_solid: false
 	},{
 		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "Cook your Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
-		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [147, 145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
+		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [149, 147, 145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
 	},{
 		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step.",
 		pack_id: "gateway", code_version: "3", last_version_id: 142, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "382298414500544578", non_solid: false
@@ -17,7 +17,7 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
-		name: "Key", updated: 20242312, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		name: "Key", updated: 20241223, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
 		pack_id: "key", code_version: ["6.2", "6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
@@ -30,10 +30,10 @@ const pack_array = [{
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "382298372461035584", non_solid: false
 	},{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "Get a lot of new Arrows like TNT Arrow, Teleport Arrow, Freeze Arrow and more.",
-		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [145, 143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
+		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [149, 145, 143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
-		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
+		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [149, 147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
 	},{
 		name: "Murder", updated: 20241223, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
 		pack_id: "murder", code_version: "2", last_version_id: false, pack_version_id: [145, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
@@ -54,13 +54,13 @@ const pack_array = [{
 		pack_id: "redstone_dot", code_version: "1", last_version_id: 127, pack_version_id: [122], pack_type: "datapacks", db_id: "382298469397692480", non_solid: false
 	},{
 		name: "Short Commands", updated: 20200728, search_keys: "Creative Admin OP Data Pack", description: "Data Pack which adds new commands to execute existing commands faster.",
-		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
+		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [145, 111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
 	},{
 		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "Improve your Golden Tools with a special effect or ability.",
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: 142, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: false
 	},{
 		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "Fight against a new mob which spawns rarely in the Soul Sand Valley.",
-		pack_id: "wither_soldier", code_version: ["3.1", "3.1", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
+		pack_id: "wither_soldier", code_version: ["3.1", "3.1", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [149, 145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
 	}
 ]
 
