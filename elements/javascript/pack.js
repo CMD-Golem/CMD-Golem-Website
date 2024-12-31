@@ -232,8 +232,9 @@ async function downloadPack(pack_type) {
 		for (var i = 1; i < selected_pack_obj.non_solid.length; i++) {
 			non_solid = non_solid.replace(`\n\t\t"minecraft:${selected_pack_obj.non_solid[i]}",`, "");
 		}
-
-		zip.file(`data/${selected_pack_obj.non_solid[0]}/tags/blocks/non_solid.json`, non_solid);
+		
+		if (selected_version.id >= 145) zip.file(`data/${selected_pack_obj.non_solid[0]}/tags/block/non_solid.json`, non_solid);
+		else zip.file(`data/${selected_pack_obj.non_solid[0]}/tags/blocks/non_solid.json`, non_solid);
 	}
 
 	// pack.mcmeta

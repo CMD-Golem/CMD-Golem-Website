@@ -113,8 +113,8 @@ async function downloadDataPack() {
 
 	// store settings
 	var settings_string = "scoreboard players set #default keylock 1\n\n";
-	if (selected_version.id >= 145) var functions_path = "function";
-	else var functions_path = "functions";
+	if (selected_version.id >= 145) var special_path = "";
+	else var special_path = "s";
 
 	var bool_settings = ["key_name", "message", "enable_containers", "auto_containers", "enable_doors", "double_doors", "open_doors", "auto_doors", "enable_trapgate", "open_trapgate", "auto_trapgate"];
 	for (var i = 0; i < bool_settings.length; i++) {
@@ -139,7 +139,7 @@ async function downloadDataPack() {
 	// store special automatic unlocking radius of containers 
 	var auto_radius = parseInt(document.getElementById("settings_auto_radius").value);
 	if (auto_radius != 5 && auto_radius != 0 && auto_radius != NaN) {
-		var auto_container_string = await zip.file(`data/keylock/${functions_path}/container/auto_container/run.mcfunction`).async("string");
+		var auto_container_string = await zip.file(`data/keylock/function${special_path}/container/auto_container/run.mcfunction`).async("string");
 
 		if (auto_radius <= 0) { auto_radius = 1; }
 		if (auto_radius > 20) { auto_radius = 20; }
@@ -148,7 +148,7 @@ async function downloadDataPack() {
 		auto_container_string = auto_container_string.replace("distance=5..6", `distance=${auto_radius}..${auto_radius + 1}`);
 		auto_container_string = auto_container_string.replace("distance=..6", `distance=..${auto_radius + 1}`);
 
-		zip.file(`data/keylock/${functions_path}/container/auto_container/run.mcfunction`, auto_container_string);
+		zip.file(`data/keylock/function${special_path}/container/auto_container/run.mcfunction`, auto_container_string);
 		settings_string += "\n# automatic unlocking radius of containers is set to " + auto_radius;
 	}
 
@@ -168,12 +168,12 @@ async function downloadDataPack() {
 		zip.file("data/keylock/recipe/recipe.json", recipe_string);
 	}
 	
-	zip.file(`data/keylock/${functions_path}/settings/default.mcfunction`, settings_string);
+	zip.file(`data/keylock/function${special_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
-	zip.file("data/keylock/tags/blocks/containers.json", generateBlockTags(containers_spoiler, "storing_custom_containers"));
-	zip.file("data/keylock/tags/blocks/doors.json", generateBlockTags(doors_spoiler, "storing_custom_doors"));
-	zip.file("data/keylock/tags/blocks/trapgate.json", generateBlockTags(trapgate_spoiler, "storing_custom_trapgates"));
+	zip.file(`data/keylock/tags/block${special_path}/containers.json`, generateBlockTags(containers_spoiler, "storing_custom_containers"));
+	zip.file(`data/keylock/tags/block${special_path}/doors.json`, generateBlockTags(doors_spoiler, "storing_custom_doors"));
+	zip.file(`data/keylock/tags/block${special_path}/trapgate.json`, generateBlockTags(trapgate_spoiler, "storing_custom_trapgates"));
 
 	// get matching non_solid block tag when needed
 	for (var i = 0; i < non_solid_versions.length; i++) {
