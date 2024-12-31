@@ -154,7 +154,7 @@ async function downloadDataPack() {
 
 	// store special key durability and item model
 	var settings_durability = parseInt(el_durability.value);
-	if (settings_durability != 400 || el_model.checked) {
+	if (selected_version.id >= 147 && (settings_durability != 400 || el_model.checked)) {
 		var recipe_string = await zip.file("data/keylock/recipe/recipe.json").async("string");
 
 		if (selected_version.id >= 147 && settings_durability != 400) recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
@@ -193,7 +193,7 @@ async function downloadDataPack() {
 
 	var response = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/.non_solid/tag_${pack_git_path}.json`);
 	var non_solid = await response.text();
-	zip.file("data/keylock/tags/blocks/non_solid.json", non_solid);
+	zip.file(`data/keylock/tags/block${special_path}/non_solid.json`, non_solid);
 
 	// pack.mcmeta
 	var mcmeta_string = await zip.file("pack.mcmeta").async("string");
