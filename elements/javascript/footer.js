@@ -36,7 +36,7 @@ const pack_array = [{
 		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [149, 147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
 	},{
 		name: "Murder", updated: 20241223, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
-		pack_id: "murder", code_version: ["3", "2"], last_version_id: false, pack_version_id: [145, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
+		pack_id: "murder", code_version: ["3", "2"], last_version_id: false, pack_version_id: [145, 138, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
 	},{
 		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe Generator", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
 		pack_id: "nbt_crafting", last_version_id: 142, pack_version_id: [114], pack_type: "generators", db_id: "382220706418524365", non_solid: false
