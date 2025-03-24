@@ -44,7 +44,7 @@ async function downloadResourcePack() {
 	await zip.loadAsync(pack.blob());
 
 	// rename folders when disabled particles should be active // https://github.com/Stuk/jszip/pull/622/files#diff-04e29f4d54f1b1704cb01a060edc2f7e451f7f82a5e75b76b52cda457dcc4205
-	if (document.getElementById("settings_resource_pack").checked) {
+	if (selected_version.id <= 149 && el_settings_resource_pack.checked) {
 		var replace_text = "assets/minecraft/models/doors/";
 		var replace_with = "assets/minecraft/models/block/";
 
@@ -317,6 +317,7 @@ var select_version = document.getElementById("select_version");
 var preview_warning = document.getElementById("preview_warning");
 var el_durability = document.getElementById("settings_durability");
 var el_model = document.getElementById("settings_model");
+var el_settings_resource_pack = document.getElementById("settings_resource_pack");
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -459,6 +460,10 @@ async function subVersion(selected_version_el) {
 	// use item_model
 	if (selected_version.id >= 149) el_model.disabled = false;
 	else el_model.disabled = true;
+
+	// disable hide breaking particle 
+	if (selected_version.id <= 149) el_settings_resource_pack.disabled = false;
+	else el_settings_resource_pack.disabled = true;
 }
 
 // on load
