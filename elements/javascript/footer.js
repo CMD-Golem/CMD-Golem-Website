@@ -1,18 +1,18 @@
 const pack_array = [{
 		name: "Better Wandering Trader", updated: 20230527, search_keys: "Villager Trading Data Pack", description: "Trade a lot of small and useful things with the Wandering Trader.",
-		pack_id: "better_wandering_trader", code_version: "5", last_version_id: false, pack_version_id: [149, 145, 143, 140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "382298450599870528", non_solid: ["usftrader"]
+		pack_id: "better_wandering_trader", code_version: "5", last_version_id: 149, pack_version_id: [149, 145, 143, 140, 138, 133, 130, 124, 121], rp_version_id: [121], pack_type: "datapacks", db_id: "382298450599870528", non_solid: ["usftrader"]
 	},{
 		name: "Dark Theme", updated: 20210615, search_keys: "Inventory Gray Blue Resource Pack", description: "Change the look of your Inventory to a simplistic dark gray and blue colored one.",
 		pack_id: "dark_theme", code_version: "3", last_version_id: 139, pack_version_id: [137, 136, 128, 122, 111, 105, 103, 100], pack_type: "resource_packs", db_id: "382298352174235714", non_solid: false
 	},{
 		name: "Fried Eggs", updated: 20200728, search_keys: "Food Chicken Data Pack", description: "Cook your Eggs in the Furnace, Smoker or on the Campfire to get Fried Eggs.",
-		pack_id: "fried_eggs", code_version: "5", last_version_id: false, pack_version_id: [149, 147, 145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
+		pack_id: "fried_eggs", code_version: "5", last_version_id: 149, pack_version_id: [149, 147, 145, 143, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298342277775424", non_solid: false
 	},{
 		name: "Gateway", updated: 20230527, search_keys: "Travel Portal Teleport TP Data Pack", description: "Travel between your visited places with just a step.",
 		pack_id: "gateway", code_version: "3", last_version_id: 142, pack_version_id: [138, 130, 128, 122], rp_version_id: [122], pack_type: "datapacks", db_id: "382298414500544578", non_solid: false
 	},{
 		name: "Invisible Item Frame", updated: 20210608, search_keys: "Decoration Data Pack", description: "Craft Invisible Item Frames to improve your buildings.",
-		pack_id: "invisible_item_frame", code_version: ["2.1", "2.1", "2", "2", "2", "1.1"], last_version_id: false, pack_version_id: [147, 145, 143, 138, 128, 122], pack_type: "datapacks", db_id: "382298438526566464", non_solid: false
+		pack_id: "invisible_item_frame", code_version: ["2.1", "2.1", "2", "2", "2", "1.1"], last_version_id: 149, pack_version_id: [147, 145, 143, 138, 128, 122], pack_type: "datapacks", db_id: "382298438526566464", non_solid: false
 	},{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
@@ -30,13 +30,13 @@ const pack_array = [{
 		pack_id: "mini_game_map", code_version: "1", last_version_id: 118, pack_version_id: [114], pack_type: "maps", db_id: "382298372461035584", non_solid: false
 	},{
 		name: "More Arrows", updated: 20220322, search_keys: "Bow Crossbow Data Pack", description: "Get a lot of new Arrows like TNT Arrow, Teleport Arrow, Freeze Arrow and more.",
-		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: false, pack_version_id: [149, 145, 143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
+		pack_id: "more_arrows", code_version: ["8.1", "8.1", "8.1", "8.1", "8.1", "7.1", "7.1"], last_version_id: 149, pack_version_id: [149, 145, 143, 141, 140, 128, 124, 114], rp_version_id: [114], pack_type: "datapacks", db_id: "382298403980181570", non_solid: ["more_arrows"]
 	},{
 		name: "Craft Addon", updated: 0, search_keys: false, 
-		pack_id: "more_arrows_craft", code_version: "2", last_version_id: false, pack_version_id: [149, 147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
+		pack_id: "more_arrows_craft", code_version: "2", last_version_id: 149, pack_version_id: [149, 147, 145, 143, 138, 114], pack_type: "datapacks", db_id: "382298501057347648", non_solid: false
 	},{
 		name: "Murder", updated: 20241223, search_keys: "Play Seek Games Data Pack", description: "Play Murder with your friends in your own map.",
-		pack_id: "murder", code_version: ["3", "3.1", "3", "2"], last_version_id: false, pack_version_id: [147, 145, 138, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
+		pack_id: "murder", code_version: ["3", "3.1", "3", "2"], last_version_id: 149, pack_version_id: [147, 145, 138, 111], incomp_version_id: [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 143, 144], pack_type: "datapacks", db_id: "382298361014779968", non_solid: false
 	},{
 		name: "NBT Crafting", updated: 20220422, search_keys: "Recipe Generator", description: "Create a recipe for the Crafting Table that has an item with NBT data as result.",
 		pack_id: "nbt_crafting", last_version_id: 142, pack_version_id: [114], pack_type: "generators", db_id: "382220706418524365", non_solid: false
@@ -54,17 +54,17 @@ const pack_array = [{
 		pack_id: "redstone_dot", code_version: "1", last_version_id: 127, pack_version_id: [122], pack_type: "datapacks", db_id: "382298469397692480", non_solid: false
 	},{
 		name: "Short Commands", updated: 20200728, search_keys: "Creative Admin OP Data Pack", description: "Data Pack which adds new commands to execute existing commands faster.",
-		pack_id: "short_commands", code_version: "3", last_version_id: false, pack_version_id: [145, 111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
+		pack_id: "short_commands", code_version: "3", last_version_id: 149, pack_version_id: [145, 111], pack_type: "datapacks", db_id: "382298330934280258", non_solid: false
 	},{
 		name: "Useful Golden Tools", updated: 20210627, search_keys: "Armor Weapons Enchantments Data Pack", description: "Improve your Golden Tools with a special effect or ability.",
 		pack_id: "useful_golden_tools", code_version: "4", last_version_id: 142, pack_version_id: [140, 128, 124, 119], pack_type: "datapacks", db_id: "382298422849306688", non_solid: false
 	},{
 		name: "Wither Soldier", updated: 20230527, search_keys: "Nether Mob Monster Boss Data Pack", description: "Fight against a new mob which spawns rarely in the Soul Sand Valley.",
-		pack_id: "wither_soldier", code_version: ["3.1", "3.1", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: false, pack_version_id: [149, 145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
+		pack_id: "wither_soldier", code_version: ["3.1", "3.1", "3", "2.3", "2.3", "2.3", "2.3"], last_version_id: 149, pack_version_id: [149, 145, 143, 138, 130, 128, 124, 119], rp_version_id: [124, 119], incomp_version_id: [137], pack_type: "datapacks", db_id: "382298430549000256", non_solid: false
 	}
 ]
 
-const non_solid_versions = [149, 141, 138, 133, 128, 122, 114, 112, 111];
+const non_solid_versions = [150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
 
 async function getPreviewWarning() {
 	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "1.21", sub: 4, dp: 71, rp: 55, id: 150, main_id: "r1_21", name: "1.21.5"},
 	{main: "1.21", sub: 4, dp: 61, rp: 46, id: 149, main_id: "r1_21", name: "1.21.4"},
 	{main: "1.21", sub: 3, dp: 57, rp: 42, id: 148, main_id: "r1_21", name: "1.21.3"},
 	{main: "1.21", sub: 2, dp: 57, rp: 42, id: 147, main_id: "r1_21", name: "1.21.2"},
