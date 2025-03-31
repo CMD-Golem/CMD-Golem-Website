@@ -18,7 +18,7 @@ const pack_array = [{
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", db_id: "382298394226327616", non_solid: false
 	},{
 		name: "Key", updated: 20241223, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: ["6.2", "6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
+		pack_id: "key", code_version: ["6.2", "6.2", "6.1", "6.1", "6.1", "6"], last_version_id: false, pack_version_id: [150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", db_id: "385283010901049410", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", db_id: "382298461898276930", non_solid: ["chest_lock", "chest"]
