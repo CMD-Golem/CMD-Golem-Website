@@ -258,14 +258,13 @@ async function downloadPack(pack_type) {
 	download_box.classList.remove("loading_cursor");
 
 	// download counter
-	if (already_download != true && pack_type != 3 && user_role != "hidden") {
-		already_download = true;
-		fetch(`/.netlify/functions/update/packs/${selected_pack_obj.db_id}`);
-		fetch(`/.netlify/functions/version/${selected_version.main_id}`);
-	}
-	else {
-		console.log("Already downloaded or resource pack of data pack");
-	}
+	// if (already_download != true && pack_type != 3 && user_role != "hidden") {
+	// 	already_download = true;
+	// 	fetch();
+	// }
+	// else {
+	// 	console.log("Already downloaded or resource pack of data pack");
+	// }
 }
 
 var hash = window.location.hash.substr(1)

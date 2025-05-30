@@ -224,9 +224,7 @@ async function downloadDataPack() {
 	// Counter
 	if (already_download != true && user_role != "hidden") {
 		already_download = true;
-
-		fetch("/.netlify/functions/update/packs/385283010901049410"); // normal counter
-		fetch(`/.netlify/functions/version/${selected_version.main_id}`); // version statistic
+		fetch();
 	}
 }
 

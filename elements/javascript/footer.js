@@ -236,20 +236,17 @@ function toggleDetail(e, close_others) {
 
 // #####################################################################
 // User counter
-const local_date = new Date();
-const user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
+// const local_date = new Date();
+// const user_role = window.localStorage.getItem("user_role"); // window.localStorage.setItem("user_role", "hidden")
 
-async function userCounter() {
-	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
-	var was_counted = window.localStorage.getItem("user_counter");
+// async function userCounter() {
+// 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
+// 	var was_counted = window.localStorage.getItem("user_counter");
 
-	if (was_counted != current_day && user_role != "hidden") {
-		window.localStorage.setItem("user_counter", current_day);
+// 	if (was_counted != current_day && user_role != "hidden") {
+// 		window.localStorage.setItem("user_counter", current_day);
+// 		fetch();
+// 	}
+// }
 
-		var country_response = await fetch("https://cmd-golem.com/get-country");
-		var geo_data = await country_response.json();
-		fetch(`/.netlify/functions/user_counter/` + geo_data.geo.geo.country.name);
-	}
-}
-
-userCounter();
+// userCounter();

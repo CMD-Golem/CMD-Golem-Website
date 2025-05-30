@@ -101,7 +101,7 @@ async function downloadCheck() {
 	zip.file("data/minecraft/tags/functions/load.json", function_tag_load);
 
 	// Minecraft pack.mcmeta
-	var pack_mcmeta = '{"pack": {"pack_format": ' + version + ',"description": "Made with the NBT-Crafting Generator by CMD-Golem\\ncmd-golem.netlify.app/help/nbt_crafting"}}';
+	var pack_mcmeta = '{"pack": {"pack_format": ' + version + ',"description": "Made with the NBT-Crafting Generator by CMD-Golem\\ncmd-golem.com/help/nbt_crafting"}}';
 	zip.file("pack.mcmeta", pack_mcmeta);
 
 	// test that each path exists only once
@@ -129,7 +129,7 @@ async function downloadCheck() {
 		// Count download
 		if (already_download != true && user_role != "hidden") {
 			already_download = true;
-			fetch(`/.netlify/functions/update/special/382300681448456256`);
+			fetch();
 		}
 		else {
 			console.log("Already downloaded");

@@ -37,13 +37,13 @@ function refreshDatabase() {
 
 	table.innerHTML = "";
 
-	initDatabase(sel_db);
+	// initDatabase(sel_db);
 }
 
 // #################################################################################################
 // get data from db
 async function readDatabase(hash, special) {
-	var response = await fetch(`/.netlify/functions/read_all/${hash}`);
+	var response = await fetch();
 	var db_data = await response.json();
 
 	if (special == "no_date") {

@@ -223,19 +223,19 @@ window.onload = function onload() {
 }
 
 // Counter
-var index_counted = false;
+// var index_counted = false;
 
-async function indexCounter() {
-	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
-	var was_counted = window.localStorage.getItem("index_counter");
+// async function indexCounter() {
+// 	var current_day = local_date.getFullYear + "." + local_date.getMonth + "." + local_date.getDay;
+// 	var was_counted = window.localStorage.getItem("index_counter");
 
-	if (was_counted != current_day && user_role != "hidden") {
-		window.localStorage.setItem("index_counter", current_day);
-		fetch(`/.netlify/functions/update/special/382300697065947202`);
-	}
-	else {
-		index_counted = true;
-	}
-}
+// 	if (was_counted != current_day && user_role != "hidden") {
+// 		window.localStorage.setItem("index_counter", current_day);
+// 		fetch();
+// 	}
+// 	else {
+// 		index_counted = true;
+// 	}
+// }
 
-indexCounter();
+// indexCounter();

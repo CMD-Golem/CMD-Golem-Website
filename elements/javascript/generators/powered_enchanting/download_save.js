@@ -97,15 +97,7 @@ async function generate(beta) {
 			break;
 		}
 	}
-	// if (beta) {
-	// 	ench_pack = await fetch(`https://raw.githubusercontent.com/CMD-Golem/CMD-Golem-Packs/main/powered_enchanting/0_main/beta5_138.zip`);
-	// 	fetch("/.netlify/functions/update/powered_enchanting/365982931582190161");
-	// 	selected_version = version_id_array.find(e => e.id == 138);
-	// 	code_version = "beta5.2";
-	// }
-	// else {
-		ench_pack = await fetch(`${url}/powered_enchanting/0_main/${pack_git_folder}.zip`);
-	// }
+	ench_pack = await fetch(`${url}/powered_enchanting/0_main/${pack_git_folder}.zip`);
 	
 	await zip.loadAsync(ench_pack.blob());
 
@@ -354,9 +346,7 @@ async function generate(beta) {
 		// Counter
 		if (already_download != true && user_role != "hidden") {
 			already_download = true;
-	
-			fetch("/.netlify/functions/update/packs/382298385283022914"); // normal counter
-			fetch(`/.netlify/functions/version/${selected_version.main_id}`); // version statistic
+			fetch();
 		}
 	});
 }

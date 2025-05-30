@@ -1,7 +1,3 @@
-[[edge_functions]]
-path = "/get-country"
-function = "location"
-
 ## redirects
 [[redirects]]
 from = "/packs"
@@ -17,13 +13,6 @@ status = 301
 from = "/datapacks/*"
 to = "/packs/:splat"
 status = 301
-
-# redirect craft subdomain to nbt crafting page
-[[redirects]]
-from = "https://craft.cmd-golem.com/"
-to = "https://cmd-golem.com/help/nbt_crafting.html"
-status = 200
-force = true
 
 [[redirects]]
 from = "https://cmd-golem.netlify.app/*"

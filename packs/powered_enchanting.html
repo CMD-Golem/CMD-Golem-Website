@@ -171,9 +171,7 @@ var already_download = false;
 function downloadOld(version) {
 	if (already_download != true && user_role != "hidden") {
 		already_download = true;
-
-		fetch("/.netlify/functions/update/packs/382298385283022914"); // normal counter
-		fetch(`/.netlify/functions/version/${version}`); // version statistic
+		fetch();
 	}
 }
 </script>

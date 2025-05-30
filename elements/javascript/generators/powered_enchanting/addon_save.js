@@ -196,7 +196,7 @@ async function generate() {
 		// Count download
 		if (already_download != true && user_role != "hidden") {
 			already_download = true;
-			fetch(`/.netlify/functions/update/special/382300690013225026`);
+			fetch();
 		}
 		else {
 			console.log("Already downloaded");
