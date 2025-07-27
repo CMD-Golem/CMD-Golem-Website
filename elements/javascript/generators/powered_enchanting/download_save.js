@@ -171,7 +171,7 @@ async function generate(beta) {
 				await pack_folder.loadAsync(ench_pack.blob());
 
 				// GIVE function for custom enchantments
-				var give_function = `\ngive @s minecraft:enchanted_book{PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title[tr_code]}","color":"gray","italic":false}']}}`
+				var give_function = `\ngive @s minecraft:enchanted_book{has_powerench:1b,PoweredEnchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],Enchantments:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}],display:{Lore:['{"text":"${ench_array.title[tr_code]}","color":"gray","italic":false}']}}`
 				giveall_function += give_function;
 				pack_folder.file("functions/give/" + ench_array.ench[0] + ".mcfunction", give_function);
 
@@ -196,7 +196,7 @@ async function generate(beta) {
 				var ench_is_vanilla = 0;
 				if (is_vanilla) {var ench_is_vanilla = 1;}
 
-				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title[tr_code]}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`
+				var ench_ench = `execute if predicate powerench_main:enchanting/chance${ench_chance} run summon item ~ ~ ~ {Tags:["powerench_enchantment"],Item:{id:"minecraft:enchanted_book",Count:1b,tag:{has_powerench:1b,vanilla:${ench_is_vanilla}b,advanced_ench:${ench_is_adv}b,max_lvl:${ench_array.max_lvl}b,name:"${ench_array.title[tr_code]}",powerench:[{id:"minecraft:${ench_array.ench[0]}",lvl:1s}]}}}\n`
 
 				if (is_advanced) {
 					adv_enchanting += ench_ench;
