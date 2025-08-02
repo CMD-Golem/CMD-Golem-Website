@@ -122,6 +122,7 @@
 	<div>
 		<p>The easiest way to select the lockable blocks is on the download page of the Data Pack. If these need to be changed after the first download, the Data Pack must first be unzipped. All lockable blocks are defined under the folder data/tags/blocks.</p>
 		<p>All lockable containers are stored in the containers.json file. The following blocks from Vanilla can be locked when defined in this file:<br>barrel, blast_furnace, brewing_stand, chest, dispenser, dropper, furnace, hopper, smoker, trapped_chest and all colour variants of the shulker_box</p>
+		<p>If a container doesn't drop its content when broken (like shulker boxes) the container must be listed in the keep_inventory.json file. If this is not done, the items placed in the container while it is locked will be lost.</p>
 		<p>All lockable doors are stored in the doors.json file. All doors from Vanilla can be locked when defined in this file.</p>
 		<p>All lockable trapdoors and fence gates are stored in the trapgate.json file. All trapdoors and fence gates from Vanilla can be locked when defined in this file.</p>
 		<p>It is also possible to add blocks from mods. To do this, the block ID is stored in the most fitting block tag json file. In addition, it is always necessary to check whether the locking works correctly before using it.</p>
