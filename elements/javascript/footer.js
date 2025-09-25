@@ -17,8 +17,8 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", non_solid: false
 	},{
-		name: "Key", updated: 20250802, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: "7", last_version_id: false, pack_version_id: [150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
+		name: "Key", updated: 20250921, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		pack_id: "key", code_version: "7.1", last_version_id: false, pack_version_id: [150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", non_solid: ["chest_lock", "chest"]
@@ -64,7 +64,7 @@ const pack_array = [{
 	}
 ]
 
-const non_solid_versions = [151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
+const non_solid_versions = [154, 151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
 
 async function getPreviewWarning() {
 	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "1.21", sub: 9, dp: 88, rp: 69, id: 154, main_id: "r1_21", name: "1.21.9"},
 	{main: "1.21", sub: 8, dp: 81, rp: 64, id: 153, main_id: "r1_21", name: "1.21.8"},
 	{main: "1.21", sub: 7, dp: 81, rp: 64, id: 152, main_id: "r1_21", name: "1.21.7"},
 	{main: "1.21", sub: 6, dp: 80, rp: 63, id: 151, main_id: "r1_21", name: "1.21.6"},

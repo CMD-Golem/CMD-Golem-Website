@@ -66,6 +66,10 @@ async function downloadResourcePack() {
 	// pack.mcmeta
 	var mcmeta_string = await zip.file("pack.mcmeta").async("string");
 	var mcmeta_json = JSON.parse(mcmeta_string);
+	if (selected_version.id >= 154) {
+		mcmeta_json.pack.min_format = selected_version.rp;
+		mcmeta_json.pack.max_format = selected_version.rp;
+	}
 	mcmeta_json.pack.pack_format = selected_version.rp;
 	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 
@@ -198,7 +202,11 @@ async function downloadDataPack() {
 	// pack.mcmeta
 	var mcmeta_string = await zip.file("pack.mcmeta").async("string");
 	var mcmeta_json = JSON.parse(mcmeta_string);
-	mcmeta_json.pack.pack_format = selected_version.rp;
+	if (selected_version.id >= 154) {
+		mcmeta_json.pack.min_format = selected_version.dp;
+		mcmeta_json.pack.max_format = selected_version.dp;
+	}
+	mcmeta_json.pack.pack_format = selected_version.dp;
 	zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 
 	// download zip

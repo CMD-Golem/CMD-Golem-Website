@@ -242,8 +242,14 @@ async function downloadPack(pack_type) {
 		var mcmeta_string = await zip.file("pack.mcmeta").async("string");
 		var mcmeta_json = JSON.parse(mcmeta_string);
 
-		if (pack_type <= 2) { mcmeta_json.pack.pack_format = selected_version.dp; }
-		else { mcmeta_json.pack.pack_format = selected_version.rp; }
+		if (pack_type <= 2) { var pack_version = selected_version.dp; }
+		else { var pack_version = selected_version.rp; }
+
+		if (selected_version.id >= 154) {
+			mcmeta_json.pack.min_format = pack_version;
+			mcmeta_json.pack.max_format = pack_version;
+		}
+		mcmeta_json.pack.pack_format = pack_version;
 
 		zip.file("pack.mcmeta", JSON.stringify(mcmeta_json));
 	}
