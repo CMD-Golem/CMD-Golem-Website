@@ -63,15 +63,15 @@ function changeLang(input) {
 	}
 
 	// get language codes
-    var lang_list_options = lang_list.children;
+	var lang_list_options = lang_list.children;
 	var tr_array = -1;
 
-    for (var i = 0; i < lang_list_options.length; i++){
-        if (lang_list_options[i].value == input) {
+	for (var i = 0; i < lang_list_options.length; i++){
+		if (lang_list_options[i].value == input) {
 			tr_array = parseInt(lang_list_options[i].id);
 			break;
 		}
-    }
+	}
 
 	// change text
 	loadEnch(tr_array + 1);
@@ -109,14 +109,11 @@ function inputEdited(el) {
 }
 
 
-// create json for all Translation
-var el_json = document.getElementById("json");
-var lang_input = document.getElementById("lang_input");
-var form_lang = document.getElementById("lang");
+// send Translation
+var el_mains = document.getElementsByTagName("main");
 
-function createForm() {
+async function sendForm() {
 	var tr_array = [];
-	form_lang.value = lang_input.value;
 
 	for (var i = 0; i < inputs.length; i++) {
 		var article = inputs[i];
@@ -124,22 +121,37 @@ function createForm() {
 			tr_array.push({id:article.id, tr:article.value});
 		}
 	}
-	if (tr_array.length != 0) {
-		el_json.value = JSON.stringify(tr_array);
-	}
-	else {
+	if (tr_array.length == 0) {
 		alert("Translate at least one thing");
 		return false;
 	}
+
+	var form_body = {
+		subject: "Powered Enchanting Translation",
+		body: `
+			<p>Language: ${document.getElementById("lang_input").value}</p>
+			<p>Credit: ${document.getElementById("credit").value}</p>
+			<p>Translation:<br>${tr_array}</p>`
+	};
+
+	var response = await fetch("https://api.tabq.ch/forms-fg/mail", {
+		method: "POST",
+		body: JSON.stringify(form_body),
+	});
+
+	if (response.ok) {
+		el_mains[0].style.display = "none";
+		el_mains[1].style.display = "block";
+	}
+	else {
+		var error = response.text();
+		console.error(error);
+		alert("An error has occurred: " + error);
+	}
 }
 
-
-// Prevent sending when pressing enter in input elements
-var el_input = document.getElementsByTagName("input");
-for (var i = 0; i < el_input.length; i++) {
-	el_input[i].addEventListener("keydown", e => {
-		if ((e.which == 13 || e.keyCode == 13) ) {
-			e.preventDefault();
-		}
-	});
+function goBack() {
+	var history_length = history.length;
+	if (history_length >= 2) window.history.go(-1);
+	else window.location.href = "/";
 }

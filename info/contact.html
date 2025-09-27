@@ -34,22 +34,15 @@
 		<h2>Contact form</h2>
 	</div>
 
-	<form name="Contact" netlify onsubmit="validateForm()" method="POST" style="text-align: left;">
-		<p>Your email address <small>(only needs to be filled in if feedback is expected)</small></p>
-		<input type="email" name="Email" placeholder="Write your answer">
+	<p style="text-align: left;"> Your email address <small>(only needs to be filled in if feedback is expected)</small></p>
+	<input type="email" id="email" placeholder="Write your answer">
 
-		<input type="hidden" name="Pack" id="pack_type">
+	<p style="text-align: left;">Description</p>
+	<textarea type="text" rows="2" class="autosize" id="description" placeholder="Write your answer"></textarea>
 
-		<p>Description</p>
-		<textarea type="text" name="Description" rows="2" class="autosize" id="description" placeholder="Write your answer"></textarea>
-
-		<div class="center" style="margin-top: 40px;">
-			<button type="submit">Submit</button>
-		</div>
-		
-	</form>
-	
-
+	<div class="center" style="margin-top: 40px;">
+		<button onclick="sendForm()">Submit</button>
+	</div>
 </main>
 
 <main style="display: none; text-align: center;">
