@@ -21,7 +21,7 @@ async function sendForm() {
 		body: `
 			<p>Email: ${document.getElementById("email").value}</p>
 			<p>Pack: ${hashfilter}</p>
-			<p>${description}</p>`
+			<p>${el_description.value}</p>`
 	};
 
 	var response = await fetch("https://api.tabq.ch/forms-fg/mail", {
