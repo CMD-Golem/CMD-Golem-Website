@@ -17,7 +17,7 @@ async function sendForm() {
 
 	var selected_pack_name = pack_array.find(e => e.pack_id == hashfilter)?.name || hashfilter;
 	var form_body = {
-		subject: `Contact ${selected_pack_name}`,
+		subject: `CMD-Golem ${selected_pack_name}`,
 		body: `
 			<p>Email: ${document.getElementById("email").value}</p>
 			<p>Pack: ${hashfilter}</p>

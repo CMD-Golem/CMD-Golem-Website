@@ -139,28 +139,28 @@ const version_id_array = [
 document.getElementsByTagName("footer")[0].innerHTML = `
 <div class="footer_left footer_block">©2019 - ${new Date().getFullYear()} by CMD-Golem</div>
 <div class="footer_center footer_block">
-	<a href="/info/legal.html">Disclaimer</a>
-	<a href="/info/legal.html#terms_of_use">Terms of use</a>
-	<a href="/info/contact.html#contact">Contact</a>
+	<a class="footer_link" href="/info/legal.html">Disclaimer</a>
+	<a class="footer_link" href="/info/legal.html#terms_of_use">Terms of use</a>
+	<a class="footer_link" href="/info/contact.html#contact">Contact</a>
 </div>
 <div class="footer_right footer_block">
-	<a href="" target="_blank" title="Support CMD-Golem">
+	<div class="footer_link" title="Support CMD-Golem" onclick="vposFrame()">
 		<svg viewBox="0 0 24 24">
 			<path d="M 12.520001,10.533333 C 9.4933335,9.746667 8.5200002,8.933333 8.5200002,7.666667 8.5200002,6.2133333 9.8666665,5.2 12.120001,5.2 c 2.373333,0 3.253333,1.1333333 3.333332,2.8 H 18.4 C 18.30667,5.7066667 16.906666,3.6 14.120001,2.92 V 0 h -4 V 2.88 C 7.5333335,3.44 5.4533335,5.12 5.4533335,7.693333 c 0,3.08 2.5466667,4.613334 6.2666675,5.506667 3.333333,0.8 4,1.973333 4,3.213333 0,0.92 -0.653334,2.386667 -3.6,2.386667 C 9.3733335,18.8 8.2933335,17.573333 8.1466668,16 H 5.2133335 c 0.16,2.92 2.3466667,4.56 4.9066675,5.106667 V 24 h 4 V 21.133333 C 16.72,20.64 18.786666,19.133333 18.786666,16.4 c 0,-3.786667 -3.24,-5.08 -6.266665,-5.866667 z" fill="#a10000"/>
 		</svg>
-	</a>
-	<a href="https://www.youtube.com/@cmd-golem" target="_blank" title="YouTube">
+	</div>
+	<a class="footer_link" href="https://www.youtube.com/@cmd-golem" target="_blank" title="YouTube">
 		<svg viewBox="0 0 90 64">
 			<rect x="31" y="17" width="30" height="30" fill="#FFFFFF"/>
 			<path d="M44.9877 1.60527e-07C44.9877 1.60527e-07 16.8477 -0.00522923 9.83183 1.87656C5.96458 2.91377 2.90759 5.96336 1.87039 9.83809C-0.00398172 16.8541 7.12697e-08 31.5016 7.12697e-08 31.5016C7.12697e-08 31.5016 0.00091366 46.149 1.88269 53.1651C2.91989 57.0398 5.9633 60.0834 9.83798 61.1204C16.8539 63.0023 45 63.0031 45 63.0031C45 63.0031 73.1402 63.0023 80.1559 61.1204C84.0308 60.0834 87.0803 57.0398 88.1173 53.1651C89.9992 46.149 90 31.5016 90 31.5016C90 31.5016 89.9928 16.8541 88.1112 9.83809C87.0738 5.96336 84.0244 2.91377 80.1497 1.87656C73.1338 -0.00523768 44.9877 1.60527e-07 44.9877 1.60527e-07ZM35.9988 18.0027L59.3724 31.5016L35.9988 45.0005V18.0027Z" fill="#FF0000"/>
 		</svg>
 	</a>
-	<a href="https://modrinth.com/user/CMD-Golem" target="_blank" title="Modrinth">
+	<a class="footer_link" href="https://modrinth.com/user/CMD-Golem" target="_blank" title="Modrinth">
 		<svg viewBox="0 0 512 514">
 			<path d="M 253.28125 1.0097656 C 232.14473 1.2196462 210.69099 4.063676 189.33008 9.7792969 C 83.810284 38.019259 11.389401 128.07081 0.68945312 230.4707 L 43.990234 230.4707 C 54.290224 147.33079 113.74009 74.728961 199.75 51.708984 C 306.04989 23.259013 415.12996 80.67086 453.16992 181.38086 L 411.0293 192.65039 C 391.63932 145.80044 352.57073 111.4505 306.30078 96.820312 L 298.56055 140.66016 C 335.09051 154.13014 364.72056 184.5002 375.56055 224.91016 C 391.36053 283.8001 361.94049 344.13995 308.56055 369.16992 L 320.08984 412.16016 C 390.24977 383.21019 432.39968 310.30055 422.42969 235.14062 L 464.41016 223.91016 C 468.91015 252.62013 467.35077 281.16034 460.55078 308.07031 L 503.16016 323.56055 C 514.55014 281.47059 515.31921 235.90972 503.19922 190.75977 C 472.29269 75.562609 367.41846 -0.12358954 253.28125 1.0097656 z M 250.33789 89.087891 C 237.68634 89.499453 224.88085 91.347269 212.13086 94.759766 C 122.41095 118.76964 69.170962 210.87079 93.210938 300.4707 C 95.390935 308.60069 98.130763 316.41993 101.38086 323.91992 L 62.789062 347.07031 C 57.449068 335.75032 53.039684 323.79905 49.679688 311.28906 C 46.469691 299.34907 44.35953 287.37093 43.269531 275.46094 L 0 275.46094 C 1.1699988 291.33092 3.8393793 307.31025 8.109375 323.24023 C 44.749328 459.7701 185.27037 540.80067 321.99023 504.2207 C 398.22016 483.82072 457.17058 431.16079 488.06055 364.88086 L 445.41992 349.38086 C 419.39995 402.56081 371.34931 444.64017 309.60938 461.16016 C 223.83946 484.11013 136.25067 451.16962 85.640625 384.67969 L 124.05078 361.64062 C 160.10075 406.82058 218.12912 431.41077 277.53906 423.55078 L 266.00977 380.56055 C 226.19981 383.93054 187.79974 367.77919 162.25977 338.69922 L 212.08008 308.81055 L 240.66016 340.63086 L 304.39062 320.44922 L 342.41992 273.82031 L 331.43945 249.11914 L 294.58008 260.78906 L 277.69922 279.33008 L 253.98047 285.64062 C 253.95047 285.63063 237.16016 267.78906 237.16016 267.78906 L 228.86914 244.7207 L 245.78906 227.33008 L 269.4707 219.88086 L 296.61914 192.38086 L 279.57031 171.39062 L 220.66992 184.08008 L 174.07031 231.94922 L 188.93945 271.38086 L 139.58984 300.99023 C 138.12985 297.13024 136.85 293.15984 135.75 289.08984 C 118.01002 222.94991 157.30936 154.97998 223.5293 137.25 C 234.10929 134.42 244.72946 133.05 255.18945 133 L 262.92969 89.150391 C 258.75469 88.972891 254.55507 88.950703 250.33789 89.087891 z " fill="#1bd96a"/>
 		</svg>
 	</a>
-	<a href="https://www.planetminecraft.com/member/cmd-golem" target="_blank" title="Planet Minecraft">
+	<a class="footer_link" href="https://www.planetminecraft.com/member/cmd-golem" target="_blank" title="Planet Minecraft">
 		<svg viewBox="0 0 56 58">
 			<g id="water">
 				<path d="M0 38V36H19V38H52V47H51V48H50V49H47V51H46V52H45V53H44V54H38V56H37V57H36V58H20V57H19V56H18V54H11V53H10V52H9V51H8V49H6V48H5V47H4V40H2V39H1V38H0Z" fill="#012647"/>
@@ -235,6 +235,46 @@ function toggleDetail(e, close_others) {
 		el.classList.remove("active");
 		el.style.maxHeight = "44px";
 	}
+}
+
+// #####################################################################
+// Support button iframe
+function vposFrame() {
+	// https://docs.payrexx.com/developer/guides/embedding/iframe
+	// create iframe
+	var iframe = document.createElement("iframe");
+	iframe.allow = "payment *";
+	iframe.src = "https://tabq.payrexx.com/de/vpos?appview=1&purpose=cmdgolem";
+
+	iframe.addEventListener("load", () => {
+		container.classList.remove("vpos_loading");
+		iframe.contentWindow.postMessage(
+			JSON.stringify({ origin: window.location.origin }),
+			iframe.src
+		);
+	});
+
+	// create container
+	var container  = document.createElement("div");
+	container.classList.add("vpos_container", "vpos_loading");
+	container.appendChild(iframe);
+	document.querySelector("body").appendChild(container);
+
+	// listen to iframe messages
+	window.addEventListener("message", e => {
+		if (typeof e.data != "string") return;
+		var data = JSON.parse(e.data);
+
+		// remove iframe
+		if (data.payrexx?.closeModal == "") container.remove();
+
+		// change size of iframe
+		else if (typeof data.payrexx?.height == "string") {
+			var height = data.payrexx.height;
+			if (parseInt(height) > 800) iframe.style.height = height;
+			else iframe.style.height = "800px"
+		}
+	});
 }
 
 // #####################################################################
