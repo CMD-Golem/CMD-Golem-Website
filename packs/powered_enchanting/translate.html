@@ -41,19 +41,27 @@
 		<p>Enchantments</p>
 		<div id="enchantments"></div>
 
-		<form name="Translate Powerench" netlify onsubmit="return createForm()" action="/info/form_success.html">
-			<input type="hidden" id="lang" name="Language">
+		<p>Credit</p>
+		<input type="text" id="credit" name="Credit" placeholder="Name under which you want to be credited">
 
-			<p>Credit</p>
-			<input type="text" id="credit" name="Credit" placeholder="Name under which you want to be credited">
-
-			<input type="hidden" id="json" name="Translation JSON">
-
-			<div class="center" style="margin-top: 40px;">
-				<button type="submit">Submit</button>
-			</div>
+		<div class="center" style="margin-top: 40px;">
+			<button onclick="sendForm()">Submit</button>
+		</div>
 		</form>
 	</div>
+</main>
+
+<main style="display: none; text-align: center;">
+	<h1>Translation sent</h1>
+
+	<p>Thank you for translation Powered Enchanting.</p>
+	<p>It was sent successfully.</p>
+
+	<div style="height:10vh;"></div>
+
+	<p><span class="button" style="padding-left: 50px; padding-right: 50px;" onclick="goBack()">Go to the last page</span></p>
+
+	<div style="height:10vh;"></div>
 </main>
 
 <footer></footer>

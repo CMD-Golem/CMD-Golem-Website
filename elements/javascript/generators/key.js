@@ -89,7 +89,6 @@ async function downloadResourcePack() {
 var containers_spoiler = document.getElementById("containers_spoiler");
 var doors_spoiler = document.getElementById("doors_spoiler");
 var trapgate_spoiler = document.getElementById("trapgate_spoiler");
-var has_storing_custom = false;
 
 async function downloadDataPack() {
 	var zip = new JSZip();
@@ -175,9 +174,13 @@ async function downloadDataPack() {
 	zip.file(`data/keylock/function${special_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
-	zip.file(`data/keylock/tags/block${special_path}/containers.json`, generateBlockTags(containers_spoiler, "storing_custom_containers"));
-	zip.file(`data/keylock/tags/block${special_path}/doors.json`, generateBlockTags(doors_spoiler, "storing_custom_doors"));
-	zip.file(`data/keylock/tags/block${special_path}/trapgate.json`, generateBlockTags(trapgate_spoiler, "storing_custom_trapgates"));
+	var custom_containers_tag, custom_containers_form = generateBlockTags(containers_spoiler);
+	var custom_doors_tag, custom_doors_form = generateBlockTags(doors_spoiler);
+	var custom_trapgates_tag, custom_trapgates_form = generateBlockTags(trapgate_spoiler);
+
+	zip.file(`data/keylock/tags/block${special_path}/containers.json`, custom_containers_tag);
+	zip.file(`data/keylock/tags/block${special_path}/doors.json`, custom_doors_tag);
+	zip.file(`data/keylock/tags/block${special_path}/trapgate.json`, custom_trapgates_tag);
 
 	// get matching non_solid block tag when needed
 	for (var i = 0; i < non_solid_versions.length; i++) {
@@ -218,27 +221,31 @@ async function downloadDataPack() {
 	download_box.classList.remove("loading_cursor");
 
 	// form
-	if (has_storing_custom && document.getElementById("allow_storing_custom").checked) {
-		await fetch("/", {
+	if (document.getElementById("allow_storing_custom").checked && (custom_containers_form != "" || custom_doors_form != "" || custom_trapgates_form != "")) {
+		var form_body = {
+			subject: "Key Custom Blocks",
+			body: `
+				<p>Custom Containers:<br>${custom_containers_form}</p>
+				<p>Custom Doors:<br>${custom_doors_form}</p>
+				<p>Custom Trapdoors and Fence Gates:<br>${custom_trapgates_form}</p>`
+		};
+	
+		await fetch("https://api.tabq.ch/forms-fg/mail", {
 			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: new URLSearchParams(new FormData(document.getElementById("storing_custom_form"))).toString(),
+			body: JSON.stringify(form_body),
 		});
-
-		has_storing_custom = false;
 	}
 	
-
 	// Counter
-	if (already_download != true && user_role != "hidden") {
-		already_download = true;
-		fetch();
-	}
+	// if (already_download != true && user_role != "hidden") {
+	// 	already_download = true;
+	// 	fetch();
+	// }
 }
 
 
 // add selected blocks to block tag
-function generateBlockTags(parent, form_id) {
+function generateBlockTags(parent) {
 	var block_tag_string = '{\n  "replace": false,\n  "values": [';
 	var form_string = "";
 
@@ -255,12 +262,6 @@ function generateBlockTags(parent, form_id) {
 		form_string += custom_elements[i].innerHTML + ", ";
 	}
 
-	// form
-	if (form_string != "") {
-		document.getElementById(form_id).value = form_string.slice(0, -2);
-		has_storing_custom = true;
-	}
-
 	// return string
 	if (selected_elements.length + custom_elements.length > 1) {
 		block_tag_string = block_tag_string.slice(0, -1);
@@ -268,7 +269,7 @@ function generateBlockTags(parent, form_id) {
 
 	block_tag_string += "\n  ]\n}";
 
-	return block_tag_string
+	return (block_tag_string, form_string.slice(0, -2))
 }
 
 

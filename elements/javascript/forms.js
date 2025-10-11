@@ -8,47 +8,47 @@ for (var i = 0; i < el_textarea.length; i++) {
 }
 
 
-// validate Form
+// send Form
 var el_mains = document.getElementsByTagName("main");
 var el_description = document.getElementById("description");
 
-async function validateForm() {
-	event.preventDefault();
+async function sendForm() {
+	if (el_description.value == "") return alert("Add your comment first");
 
-	if (el_description.value == "") alert("Add your comment first");
-	else {
-		await fetch("/", {
-			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: new URLSearchParams(new FormData(event.target)).toString(),
-		})
+	var selected_pack_name = pack_array.find(e => e.pack_id == hashfilter)?.name || hashfilter;
+	var form_body = {
+		subject: `CMD-Golem ${selected_pack_name}`,
+		body: `
+			<p>Email: ${document.getElementById("email").value}</p>
+			<p>Pack: ${hashfilter}</p>
+			<p>${description}</p>`
+	};
 
+	var response = await fetch("https://api.tabq.ch/forms-fg/mail", {
+		method: "POST",
+		body: JSON.stringify(form_body),
+	});
+
+	if (response.ok) {
 		el_mains[0].style.display = "none";
 		el_mains[1].style.display = "block";
-		return true;
+	}
+	else {
+		var error = await response.text();
+		console.error(error);
+		alert("An error has occurred: " + error);
 	}
 }
 
 function goBack() {
 	var history_length = history.length;
-	if (history_length >= 3) window.history.go(-2);
-	else window.location.href = "https://cmd-golem.com/";
-}
-
-// Prevent sending when pressing enter in input elements
-var el_input = document.getElementsByTagName("input");
-for (var i = 0; i < el_input.length; i++) {
-	el_input[i].addEventListener("keydown", e => {
-		if ((e.which == 13 || e.keyCode == 13) ) {
-			e.preventDefault();
-		}
-	});
+	if (history_length >= 2) window.history.go(-1);
+	else window.location.href = "/";
 }
 
 // Read hash
 var hashfilter = window.location.hash.substr(1);
 var planetminecraft = document.getElementById("planetminecraft");
-document.getElementById("pack_type").value = hashfilter;
 
 // Github
 document.getElementById("github").href = "https://github.com/CMD-Golem/CMD-Golem-Packs/issues/new?template=support_request.md&labels=question," + hashfilter;
@@ -68,14 +68,10 @@ else if (hashfilter == "useful_golden_tools") planetminecraft.href = "https://ww
 else if (hashfilter == "wither_soldier") planetminecraft.href = "https://www.planetminecraft.com/data-pack/wither-soldier-4502139/";
 else if (hashfilter == "invisible_item_frame") planetminecraft.href = "https://www.planetminecraft.com/data-pack/invisible-item-frame-4506693/";
 else if (hashfilter == "better_wandering_trader") planetminecraft.href = "https://www.planetminecraft.com/data-pack/better-wandering-trader/";
-else if (hashfilter == "key") planetminecraft.href = "https://www.planetminecraft.com/data-pack/key-lock-chests/";
+else if (hashfilter == "key" || hashfilter == "key_gen1") planetminecraft.href = "https://www.planetminecraft.com/data-pack/key-lock-chests/";
 else if (hashfilter == "redstone_dot") planetminecraft.href = "https://www.planetminecraft.com/data-pack/restone-dut/";
 else if (hashfilter == "recipe_unlocker") planetminecraft.href = "https://www.planetminecraft.com/data-pack/recipe-unlocker/";
 
 else if (hashfilter == "powered_enchanting") planetminecraft.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";
 else if (hashfilter == "powered_enchanting_addon") planetminecraft.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";
 else if (hashfilter == "powered_enchanting_translate") planetminecraft.href = "https://www.planetminecraft.com/data-pack/powered-enchanting/";
-
-
-// Not Minecraft
-else if (hashfilter == "fauna_counter") document.getElementById("hide").style.display = "none";
