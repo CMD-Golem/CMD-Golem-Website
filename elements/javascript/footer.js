@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "1.21", sub: 10, dp: 88, rp: 69, id: 155, main_id: "r1_21", name: "1.21.10"},
 	{main: "1.21", sub: 9, dp: 88, rp: 69, id: 154, main_id: "r1_21", name: "1.21.9"},
 	{main: "1.21", sub: 8, dp: 81, rp: 64, id: 153, main_id: "r1_21", name: "1.21.8"},
 	{main: "1.21", sub: 7, dp: 81, rp: 64, id: 152, main_id: "r1_21", name: "1.21.7"},
