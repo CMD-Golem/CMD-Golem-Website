@@ -174,9 +174,9 @@ async function downloadDataPack() {
 	zip.file(`data/keylock/function${special_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
-	var custom_containers_tag, custom_containers_form = generateBlockTags(containers_spoiler);
-	var custom_doors_tag, custom_doors_form = generateBlockTags(doors_spoiler);
-	var custom_trapgates_tag, custom_trapgates_form = generateBlockTags(trapgate_spoiler);
+	var {custom_containers_tag, custom_containers_form} = generateBlockTags(containers_spoiler);
+	var {custom_doors_tag, custom_doors_form} = generateBlockTags(doors_spoiler);
+	var {custom_trapgates_tag, custom_trapgates_form} = generateBlockTags(trapgate_spoiler);
 
 	zip.file(`data/keylock/tags/block${special_path}/containers.json`, custom_containers_tag);
 	zip.file(`data/keylock/tags/block${special_path}/doors.json`, custom_doors_tag);
@@ -269,7 +269,7 @@ function generateBlockTags(parent) {
 
 	block_tag_string += "\n  ]\n}";
 
-	return (block_tag_string, form_string.slice(0, -2))
+	return {block_tag_string, form_string.slice(0, -2)}
 }
 
 
