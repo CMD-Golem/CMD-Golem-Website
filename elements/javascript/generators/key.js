@@ -174,13 +174,13 @@ async function downloadDataPack() {
 	zip.file(`data/keylock/function${special_path}/settings/default.mcfunction`, settings_string);
 	
 	// add selected blocks to block tag
-	var {custom_containers_tag, custom_containers_form} = generateBlockTags(containers_spoiler);
-	var {custom_doors_tag, custom_doors_form} = generateBlockTags(doors_spoiler);
-	var {custom_trapgates_tag, custom_trapgates_form} = generateBlockTags(trapgate_spoiler);
+	var custom_containers = generateBlockTags(containers_spoiler);
+	var custom_doors = generateBlockTags(doors_spoiler);
+	var custom_trapgates = generateBlockTags(trapgate_spoiler);
 
-	zip.file(`data/keylock/tags/block${special_path}/containers.json`, custom_containers_tag);
-	zip.file(`data/keylock/tags/block${special_path}/doors.json`, custom_doors_tag);
-	zip.file(`data/keylock/tags/block${special_path}/trapgate.json`, custom_trapgates_tag);
+	zip.file(`data/keylock/tags/block${special_path}/containers.json`, custom_containers[0]);
+	zip.file(`data/keylock/tags/block${special_path}/doors.json`, custom_doors[0]);
+	zip.file(`data/keylock/tags/block${special_path}/trapgate.json`, custom_trapgates[0]);
 
 	// get matching non_solid block tag when needed
 	for (var i = 0; i < non_solid_versions.length; i++) {
@@ -221,13 +221,13 @@ async function downloadDataPack() {
 	download_box.classList.remove("loading_cursor");
 
 	// form
-	if (document.getElementById("allow_storing_custom").checked && (custom_containers_form != "" || custom_doors_form != "" || custom_trapgates_form != "")) {
+	if (document.getElementById("allow_storing_custom").checked && (custom_containers[1] != "" || custom_doors[1] != "" || custom_trapgates[1] != "")) {
 		var form_body = {
 			subject: "Key Custom Blocks",
 			body: `
-				<p>Custom Containers:<br>${custom_containers_form}</p>
-				<p>Custom Doors:<br>${custom_doors_form}</p>
-				<p>Custom Trapdoors and Fence Gates:<br>${custom_trapgates_form}</p>`
+				<p>Custom Containers:<br>${custom_containers[1]}</p>
+				<p>Custom Doors:<br>${custom_doors[1]}</p>
+				<p>Custom Trapdoors and Fence Gates:<br>${custom_trapgates[1]}</p>`
 		};
 	
 		await fetch("https://api.tabq.ch/forms-fg/mail", {
@@ -269,7 +269,7 @@ function generateBlockTags(parent) {
 
 	block_tag_string += "\n  ]\n}";
 
-	return {block_tag_string, form_string.slice(0, -2)}
+	return [block_tag_string, form_string.slice(0, -2)];
 }
 
 
