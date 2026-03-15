@@ -126,13 +126,6 @@
   <lastmod>2022-12-15T20:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
-
-
-
-
-
-
-
 <url>
   <loc>https://cmd-golem.com/help/get_namespaced_id.html</loc>
   <lastmod>2024-01-02T20:00:00+00:00</lastmod>
@@ -142,10 +135,5 @@
   <loc>https://cmd-golem.com/help/nbt_crafting.html</loc>
   <lastmod>2021-08-28T20:00:00+00:00</lastmod>
   <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cmd-golem.com/help/csv_to_sn-spreadsheet.html</loc>
-  <lastmod>2025-01-24T20:00:00+00:00</lastmod>
-  <priority>0.64</priority>
 </url>
 </urlset>

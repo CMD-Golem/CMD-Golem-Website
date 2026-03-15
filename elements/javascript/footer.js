@@ -64,7 +64,7 @@ const pack_array = [{
 	}
 ]
 
-const non_solid_versions = [154, 151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
+const non_solid_versions = [157, 154, 151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
 
 async function getPreviewWarning() {
 	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "26", sub: 1, dp: 101, rp: 84, id: 157, main_id: "r26", name: "26.1"},
 	{main: "1.21", sub: 11, dp: 94, rp: 75, id: 156, main_id: "r1_21", name: "1.21.11"},
 	{main: "1.21", sub: 10, dp: 88, rp: 69, id: 155, main_id: "r1_21", name: "1.21.10"},
 	{main: "1.21", sub: 9, dp: 88, rp: 69, id: 154, main_id: "r1_21", name: "1.21.9"},
