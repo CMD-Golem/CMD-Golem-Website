@@ -57,12 +57,19 @@
 		</div>
 		<hr>
 		<div>
-			<span>Key Damage</span>
+			<span>Key</span>
 			<label><input type="radio" name="damage" id="settings_damage_0"> Disable Key damage</label>
 			<label><input type="radio" name="damage" id="settings_damage_1" checked> Key damage on locking</label>
 			<label><input type="radio" name="damage" id="settings_damage_3"> Key damage on unlocking</label>
 			<label><input type="radio" name="damage" id="settings_damage_2"> Key damage on every use</label>
 			<label>Change the durability of the Key: <input type="number" id="settings_durability" min="0" value="400" oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"><mark data-title="Default is 400 / Only 1.21.2 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+			<!-- <label>Change repair item in the Anvil. Enter block id: <input class="inline" type="text" id="settings_repariable" value="minecraft:gold_ingot"><mark data-title="Only 1.21.2 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark><mark data-title="Breaks Key crafting when entered incorrectly">!</mark></label>
+			
+			<span>Texture</span>
+			<label><input type="radio" name="texture" id="settings_texture_0" checked onchange="document.getElementById('settings_texture_value').parentElement.classList.add('hidden')"> Use custom model data <small>(Key Resource Pack must always be the top one)</small><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+			<label><input type="radio" name="texture" id="settings_texture_1" onchange="document.getElementById('settings_texture_value').parentElement.classList.add('hidden')"> Use item model <small>(All Players must have the Resource Pack installed)</small><mark data-title="Only 1.21.4 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+			<label><input type="radio" name="texture" id="settings_texture_2" onchange="document.getElementById('settings_texture_value').parentElement.classList.remove('hidden')"> Choose own item model <small>(Use any vanilla or modded item texture)</small><mark data-title="Only 1.21.4 +" style="background-color: #008611;">?</mark><mark data-title="Can't be changed ingame" style="background-color: #0064ff;">!</mark></label>
+			<label class="hidden" style="margin-left: 29px;">Enter block ID: <input class="inline" type="text" id="settings_texture_value" placeholder="minecraft:tripewire_hook"><mark data-title="Breaks Key crafting when entered incorrectly">!</mark></label> -->
 		</div>
 		<hr>
 		<div>
@@ -95,7 +102,7 @@
 	<details onclick="toggleDetail(event, true)" open id="containers_spoiler">
 		<summary>Containers</summary>
 		<div>
-			<span>Add custom containers <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom containers <small>(separate with space)</small><mark data-title="Breaks pack when entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_chest' class="key_input" onkeyup="setTagged(this, true)">
 			</code>
@@ -180,7 +187,7 @@
 	<details onclick="toggleDetail(event, true)" open id="doors_spoiler">
 		<summary>Doors</summary>
 		<div>
-			<span>Add custom doors <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom doors <small>(separate with space)</small><mark data-title="Breaks pack when entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_door' class="key_input" onkeyup="setTagged(this, true)">
 			</code>
@@ -216,7 +223,7 @@
 	<details onclick="toggleDetail(event, true)" open id="trapgate_spoiler">
 		<summary>Trapdoors and fence gates</summary>
 		<div>
-			<span>Add custom trapdoors and fence gates <small>(separate with space)</small><mark data-title="Won't work if entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
+			<span>Add custom trapdoors and fence gates <small>(separate with space)</small><mark data-title="Breaks pack when entered incorrectly">!</mark><mark data-title="Always check whether the locking works correctly before using" style="background-color: #0064ff;">!</mark></span>
 			<code class="fullwidth custom_blocks" onclick="this.getElementsByTagName('input')[0].focus();">
 				<input type="text" placeholder='cmdgolem:custom_gate' class="key_input" onkeyup="setTagged(this, true)">
 			</code>
@@ -304,7 +311,7 @@
 
 <footer></footer>
 
-<script language="javascript" type="text/javascript" src="../../elements/javascript/footer.js"></script>
+<script language="javascript" type="text/javascript" src="../../elements/javascript/main.js"></script>
 <script language="javascript" type="text/javascript" src="../../elements/javascript/generators/key.js"></script>
 
 </body>

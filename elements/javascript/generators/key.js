@@ -5,13 +5,13 @@ var already_download;
 function loadDownloadModal() {
 	download_box.style.display = "block";
 	download_box_open = true;
-	preventScroll(true); // footer.js
+	preventScroll(true); // main.js
 }
 
 function closeDownload() {
 	download_box.style.display = "none";
 	download_box_open = false;
-	preventScroll(false); //footer.js
+	preventScroll(false); //main.js
 }
 
 // ###########################################################
@@ -127,10 +127,10 @@ async function downloadDataPack() {
 		}
 	}
 
-	var max_player = document.getElementById("settings_max_player").value;
-	var max_world = document.getElementById("settings_max_world").value;
-	if (max_player != "0" && max_player != "") { settings_string += "scoreboard players set #max_player keylock " + max_player + "\n"; }
-	if (max_world != "0" && max_world != "") { settings_string += "scoreboard players set #max_world keylock " + max_world + "\n"; }
+	var max_player = parseInt(document.getElementById("settings_max_player").value);
+	var max_world = parseInt(document.getElementById("settings_max_world").value);
+	if (max_player != NaN && max_player > 0) { settings_string += "scoreboard players set #max_player keylock " + max_player + "\n"; }
+	if (max_world != NaN && max_world > 0) { settings_string += "scoreboard players set #max_world keylock " + max_world + "\n"; }
 
 	if (document.getElementById("settings_container_type_1").checked) { settings_string += "scoreboard players set #container_type keylock 1\n"; }
 	else if (document.getElementById("settings_container_type_2").checked) { settings_string += "scoreboard players set #container_type keylock 2\n"; }
@@ -141,7 +141,7 @@ async function downloadDataPack() {
 
 	// store special automatic unlocking radius of containers 
 	var auto_radius = parseInt(document.getElementById("settings_auto_radius").value);
-	if (auto_radius != 5 && auto_radius != 0 && auto_radius != NaN) {
+	if (auto_radius != 5 && auto_radius != NaN) {
 		var auto_container_string = await zip.file(`data/keylock/function${special_path}/container/auto_container/run.mcfunction`).async("string");
 
 		if (auto_radius <= 0) { auto_radius = 1; }
@@ -155,19 +155,36 @@ async function downloadDataPack() {
 		settings_string += "\n# automatic unlocking radius of containers is set to " + auto_radius;
 	}
 
-	// store special key durability and item model
+	// store special key durability, repair item and item model
 	var settings_durability = parseInt(el_durability.value);
+	// var settings_repariable = el_settings_repariable.value;
+	// if (selected_version.id >= 147 && (settings_durability != 400 || el_texture_1.checked || el_texture_2.checked || settings_repariable != "minecraft:gold_ingot")) {
 	if (selected_version.id >= 147 && (settings_durability != 400 || el_model.checked)) {
 		var recipe_string = await zip.file("data/keylock/recipe/recipe.json").async("string");
 
 		if (selected_version.id >= 147 && settings_durability != 400) recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
 		if (selected_version.id >= 149 && el_model.checked) {
 			var admin_string = await zip.file("data/keylock/function/admin_key.mcfunction").async("string");
-			zip.file("data/keylock/function/admin_key.mcfunction", admin_string.replace("minecraft:item_model=\"minecraft:warped_fungus_on_a_stick", "minecraft:item_model=\"keylock:key"));
+			zip.file("data/keylock/function/admin_key.mcfunction", admin_string.replace("minecraft:item_model=\"minecraft:tripwire_hook", "minecraft:item_model=\"keylock:key"));
 			
-			recipe_string = recipe_string.replace("minecraft:item_model\": \"minecraft:warped_fungus_on_a_stick", "minecraft:item_model\": \"keylock:key");
+			recipe_string = recipe_string.replace("minecraft:item_model\": \"minecraft:tripwire_hook", "minecraft:item_model\": \"keylock:key");
+
+		// if (selected_version.id >= 147 && settings_durability != 400 && settings_durability != NaN && settings_durability > 0) recipe_string = recipe_string.replace("max_damage\": 400", "max_damage\": " + settings_durability);
+
+		// if (selected_version.id >= 147 && settings_repariable != "" && settings_repariable != "minecraft:gold_ingot") recipe_string = recipe_string.replace("items\": \"minecraft:gold_ingot", "items\": \"" + settings_repariable);
+
+		// if (selected_version.id >= 149 && (el_texture_1.checked || el_texture_2.checked)) {
+		// 	if (el_texture_1.checked) var item_model = "keylock:key";
+		// 	else if (el_texture_2.checked) var item_model = document.getElementById("settings_texture_value").value;
+
+		// 	if (item_model != "") {
+		// 		var admin_string = await zip.file("data/keylock/function/admin_key.mcfunction").async("string");
+		// 		zip.file("data/keylock/function/admin_key.mcfunction", admin_string.replace("minecraft:item_model=\"minecraft:tripwire_hook", "minecraft:item_model=\"" + item_model));
+
+		// 		recipe_string = recipe_string.replace("minecraft:item_model\": \"minecraft:tripwire_hook", "minecraft:item_model\": \"" + item_model);
+		// 	}
 		}
-	
+
 		zip.file("data/keylock/recipe/recipe.json", recipe_string);
 	}
 	
@@ -324,7 +341,12 @@ var select_version = document.getElementById("select_version");
 var preview_warning = document.getElementById("preview_warning");
 var el_durability = document.getElementById("settings_durability");
 var el_model = document.getElementById("settings_model");
+var el_texture_0 = document.getElementById("settings_texture_0");
+var el_texture_1 = document.getElementById("settings_texture_1");
+var el_texture_2 = document.getElementById("settings_texture_2");
 var el_settings_resource_pack = document.getElementById("settings_resource_pack");
+var el_settings_repariable = document.getElementById("settings_repariable");
+
 
 var version_id_array_filtered = [];
 var html_main_version = "";
@@ -457,16 +479,28 @@ async function subVersion(selected_version_el) {
 	// enable or disable durability input
 	if (selected_version.id >= 147) {
 		el_durability.value = "400";
+		// el_settings_repariable.disabled = false;
 		el_durability.disabled = false;
 	}
 	else {
 		el_durability.value = "100";
+		// el_settings_repariable.disabled = true;
 		el_durability.disabled = true;
 	}
 
 	// use item_model
-	if (selected_version.id >= 149) el_model.disabled = false;
-	else el_model.disabled = true;
+	if (selected_version.id >= 149) {
+		el_model.disabled = false;
+		// el_texture_0.disabled = false;
+		// el_texture_1.disabled = false;
+		// el_texture_2.disabled = false;
+	}
+	else {
+		el_model.disabled = true;
+		// el_texture_0.disabled = true;
+		// el_texture_1.disabled = true;
+		// el_texture_2.disabled = true;
+	}
 
 	// disable hide breaking particle 
 	if (selected_version.id <= 149) el_settings_resource_pack.disabled = false;

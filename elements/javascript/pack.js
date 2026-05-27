@@ -18,7 +18,7 @@ var html_main_version = "";
 var selected_version, selected_pack_obj;
 
 function closeDownload() {
-	preventScroll(false) //footer.js
+	preventScroll(false) //main.js
 	download_box.style.display = "none";
 	selected_pack_obj = undefined;
 
@@ -32,7 +32,7 @@ function closeDownload() {
 }
 
 function openDownload(addon_id) {
-	preventScroll(true) //footer.js
+	preventScroll(true) //main.js
 	download_box.style.display = "block";
 
 	// set selected pack id

@@ -105,11 +105,15 @@ mark {
 	border-radius: 5px;
 	padding: 5px 5px;
 }
-
 input[type=number] {
 	display: inline-block;
 	appearance: textfield;
 	width: 60px;
+	margin: 0;
+}
+input.inline {
+	display: inline-block;
+	width: unset;
 	margin: 0;
 }
 input::-webkit-outer-spin-button,
@@ -117,4 +121,3 @@ input::-webkit-inner-spin-button {
 	appearance: none;
 	margin: 0;
 }
-

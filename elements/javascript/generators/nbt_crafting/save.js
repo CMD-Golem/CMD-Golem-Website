@@ -113,13 +113,13 @@ async function downloadCheck() {
 	// Download
 	var progress_bar = document.getElementById("progress_bar");
 	progress_bar.style.display = "block";
-	preventScroll(true); // footer.js
+	preventScroll(true); // main.js
 
 	zip.generateAsync({type:"base64"}, function updateCallback(metadata) {
 		document.getElementById("bar").style.width = metadata.percent + "%";
 	}).then(function (content) {
 		progress_bar.style.display = "none";
-		preventScroll(false); // footer.js
+		preventScroll(false); // main.js
 		
 		var link = document.createElement('a');
 		link.download = "NBT-Crafting";

@@ -306,7 +306,7 @@ function closeModal() {
 	modal_box.innerHTML = "";
 	modal_box.classList = "";
 
-	preventScroll(false); //footer.js
+	preventScroll(false); //main.js
 }
 
 // ###########################################################
@@ -318,7 +318,7 @@ function loadPackIdModal() {
 	modal_text.innerHTML = '<div class="modal_padding_box"><input placeholder="Insert Pack Id..."></div><button onclick="importPackId()">Load</button><button onclick="closeModal()" style="margin-left:10px;">Close</button>';
 	modal_box.appendChild(modal_text);
 
-	preventScroll(true) //footer.js
+	preventScroll(true) //main.js
 }
 
 function importPackId() {

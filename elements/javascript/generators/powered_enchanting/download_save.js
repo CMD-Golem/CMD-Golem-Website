@@ -336,7 +336,7 @@ async function generate(beta) {
 		progress_bar.style.width = metadata.percent + "%";
 	}).then(function (content) {
 		closeModal();
-		preventScroll(false); // footer.js
+		preventScroll(false); // main.js
 
 		var link = document.createElement('a');
 		link.download = "[" + selected_version.name + "] Powered Enchanting DP by CMD-Golem v" + code_version + ".zip";
@@ -386,7 +386,7 @@ function loadDownloadModal() {
 	</div>`;
 	modal_box.appendChild(modal_text);
 
-	preventScroll(true); // footer.js
+	preventScroll(true); // main.js
 }
 
 // update info
@@ -408,7 +408,7 @@ function loadUpdateInfo() {
 	</div>`;
 	modal_box.appendChild(modal_text);
 
-	preventScroll(true); // footer.js
+	preventScroll(true); // main.js
 }
 
 //#################################################################################################

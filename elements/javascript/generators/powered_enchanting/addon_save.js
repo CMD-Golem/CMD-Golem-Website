@@ -180,13 +180,13 @@ async function generate() {
 	zip.file("pack.mcmeta", '{"pack": {"pack_format": ' + el_version.value + ',"description": "Custom Enchantments Pack for Powered Enchanting Data Pack by CMD-Golem"}}');
 
 	progress_bar.style.display = "block";
-	preventScroll(true); // footer.js
+	preventScroll(true); // main.js
 	
 	zip.generateAsync({type:"base64"}, function updateCallback(metadata) {
 		progress_bar.style.width = metadata.percent + "%";
 	}).then(function (content) {
 		progress_bar.style.display = "none";
-		preventScroll(false); // footer.js
+		preventScroll(false); // main.js
 
 		var link = document.createElement('a');
 		link.download = "Custom Enchantments Pack for Powered Enchanting Datapack.zip";
