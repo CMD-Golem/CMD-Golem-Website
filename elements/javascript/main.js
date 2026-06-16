@@ -17,8 +17,8 @@ const pack_array = [{
 		name: "Jump and Run", updated: 20191106, search_keys: "Mini Games Play Data Pack", description: "Build your personal Jump and Run with checkpoints, timer and more.",
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", non_solid: false
 	},{
-		name: "Key", updated: 20260527, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: "8", last_version_id: false, pack_version_id: [158, 150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
+		name: "Key", updated: 20260616, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
+		pack_id: "key", code_version: "8.1", last_version_id: false, pack_version_id: [158, 150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", non_solid: ["chest_lock", "chest"]
@@ -80,7 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
-	{main: "26", sub: 2, dp: 106, rp: 88, id: 158, main_id: "r26", name: "26.2"},
+	{main: "26", sub: 2, dp: 107, rp: 88, id: 158, main_id: "r26", name: "26.2"},
 	{main: "26", sub: 1, dp: 101, rp: 84, id: 157, main_id: "r26", name: "26.1"},
 	{main: "1.21", sub: 11, dp: 94, rp: 75, id: 156, main_id: "r1_21", name: "1.21.11"},
 	{main: "1.21", sub: 10, dp: 88, rp: 69, id: 155, main_id: "r1_21", name: "1.21.10"},
