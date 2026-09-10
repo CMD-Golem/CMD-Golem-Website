@@ -18,7 +18,7 @@ const pack_array = [{
 		pack_id: "jump_and_run", code_version: "1", last_version_id: 142, pack_version_id: [128, 124, 119, 114, 111], pack_type: "datapacks", non_solid: false
 	},{
 		name: "Key", updated: 20260616, preview: true, search_keys: "Lock Chest Barrel Door Trapdoor Fence Gate Protect Storage Data Pack", description: "Lock your containers and doors to protect your items and buildings from other players and Creepers.",
-		pack_id: "key", code_version: "8.1", last_version_id: false, pack_version_id: [158, 150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
+		pack_id: "key", code_version: "8.1", last_version_id: false, pack_version_id: [159, 158, 150, 149, 147, 145, 143, 140], rp_version_id: [149, 140], pack_type: "datapacks", non_solid: ["keylock"]
 	},{
 		name: "Key Gen1", updated: 0, search_keys: false,
 		pack_id: "key_gen1", code_version: "4", last_version_id: 142, pack_version_id: [138, 128, 122, 119], rp_version_id: [122, 119], pack_type: "datapacks", non_solid: ["chest_lock", "chest"]
@@ -64,7 +64,7 @@ const pack_array = [{
 	}
 ]
 
-const non_solid_versions = [158, 157, 154, 151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
+const non_solid_versions = [159, 158, 157, 154, 151, 150, 149, 141, 138, 133, 128, 122, 114, 112, 111];
 
 async function getPreviewWarning() {
 	// https://github.com/CMD-Golem/CMD-Golem-Packs/issues/2
@@ -80,6 +80,7 @@ async function getPreviewWarning() {
 
 // pack versions name: "1.20 Preview", preview: true (also on pack_array)
 const version_id_array = [
+	{main: "26", sub: 3, dp: 121, rp: 97, id: 159, main_id: "r26", name: "26.3"},
 	{main: "26", sub: 2, dp: 107, rp: 88, id: 158, main_id: "r26", name: "26.2"},
 	{main: "26", sub: 1, dp: 101, rp: 84, id: 157, main_id: "r26", name: "26.1"},
 	{main: "1.21", sub: 11, dp: 94, rp: 75, id: 156, main_id: "r1_21", name: "1.21.11"},
@@ -258,10 +259,19 @@ function vposFrame() {
 		);
 	});
 
+	// powered by link
+	var link = document.createElement("a");
+	link.innerText = "Powered by payrexx";
+	link.href = "https://tabq.payrexx.com/de/vpos";
+	link.target = "_blank";
+
 	// create container
+	var wrapper  = document.createElement("div");
 	var container  = document.createElement("div");
 	container.classList.add("vpos_container", "vpos_loading");
-	container.appendChild(iframe);
+	wrapper.appendChild(iframe);
+	wrapper.appendChild(link);
+	container.appendChild(wrapper);
 	document.querySelector("body").appendChild(container);
 
 	// listen to iframe messages

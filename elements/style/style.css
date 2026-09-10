@@ -454,22 +454,30 @@ details.active summary::after {
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
-.vpos_container iframe {
+.vpos_container div {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 0;
-	width: 0;
-	border: none;
-	border-radius: 20px;
-	max-height: calc(100vh - 80px);
-	transition: height 0.5s, width 0.5s;
+	transform: scale(1) translate(-50%, -50%);
+	transition: transform 0.5s;
+
 }
 
-.vpos_container:not(.vpos_loading) iframe {
+.vpos_container.vpos_loading div {
+	transform: scale(0);
+}
+
+.vpos_container a {
+	display: block;
+	text-align: center;
+}
+
+.vpos_container iframe {
 	width: 400px;
 	height: 800px;
+	max-height: calc(100vh - 80px);
+	border: none;
+	border-radius: 20px;
 }
 
 .vpos_loading::after {
